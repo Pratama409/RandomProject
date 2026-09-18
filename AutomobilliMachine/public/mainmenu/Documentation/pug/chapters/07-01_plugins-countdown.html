@@ -1,0 +1,90 @@
+<div id="countdown" class="content__item">
+
+  <h3>Countdown</h3>
+  <p>Axio template comes with one countdown type:</p>
+  <ul>
+    <li>
+      <code>#countdown</code>
+      <img src="img/plugins/12-docs-countdown-1.jpg" alt="Countdown Image">
+    </li>
+  </ul>
+
+  <p>Axio template comes with KBW Countdown Plugin. This plugin can be tricky to set up, but it is very flexible and has a lot of features.</p>
+  <p>For more details you can see documentation reference page:
+    <a href="http://keith-wood.name/countdownRef.html" target="_blank">keith-wood.name/countdownRef.html</a>
+    or see a minimal page with basic settings:
+    <a href="http://keith-wood.name/countdownBasics.html" target="_blank">keith-wood.name/countdownBasics.html</a>.
+    In our case we are using UTCDate function. (You can also find this function in documentation reference page):
+  </p>
+  <p><code>$.countdown.UTCDate(tz, year, month, day, hours, mins, secs, ms)</code></p>
+
+  <ul>
+    <li>
+      <code>tz</code>
+      - timezone offset, either in hours or minutes, from GMT, for example, Brisbane, Australia, would be +10 or +600;
+    </li>
+    <li>
+      <code>year</code>
+      -  local year;
+    </li>
+    <li>
+      <code>month</code>
+      - local month (0 to 11);
+    </li>
+    <li>
+      <code>day</code>
+      - local day in the month;
+    </li>
+    <li>
+      <code>hours</code>
+      - local hour;
+    </li>
+    <li>
+      <code>mins</code>
+      - local minute;
+    </li>
+    <li>
+      <code>secs</code>
+      - local second;
+    </li>
+    <li>
+      <code>ms</code>
+      - local millisecond.
+    </li>
+  </ul>
+
+  <p><span>So here:</span> <code>countdown.UTCDate(10, 2022, 11, 22)</code></p>
+  <ul>
+    <li>10 – timezone;</li>
+    <li>2022 – local year;</li>
+    <li>11 – local month;</li>
+    <li>22 – local day.</li>
+  </ul>
+
+  <p>Find the <code>Load Scripts</code> section at the end of <code>&lt;body&gt;</code> and make sure that all the necessary js files are added in the following order:</p>
+  <ul>
+    <li>libs.min.js</li>
+    <li>custom.js</li>
+  </ul>
+  <pre>
+    <code class="language-html">
+      &lt;!-- Load Scripts Start--&gt;
+      &lt;script src=&quot;js/libs.min.js&quot;&gt;&lt;/script&gt;
+      ...
+      &lt;script src=&quot;js/custom.js&quot;&gt;&lt;/script&gt;
+      ...
+      &lt;!-- Load Scripts End--&gt;
+    </code>
+  </pre>
+
+  <p>Setting your own date for countdown script can be done in <code>custom.js</code> file in <code>js</code> folder:</p>
+  <pre>
+    <code class="language-js">
+      $('#countdown').countdown({until: $.countdown.UTCDate(+10, 2022, 2, 19), format: 'D'});
+    </code>
+  </pre>
+
+  <p>Visit KBW Countdown site for more details and settings -
+    <a href="#!" target="_blank">keith-wood.name/countdown.html</a>
+  </p>
+</div>

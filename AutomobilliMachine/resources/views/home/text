@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CARPEDIA — Explore the World of Cars</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/carpedia-home.css') }}">
+</head>
+<body>
+
+    <header class="site-header">
+        <a href="#" class="brand-mark">
+            <span class="brand-symbol">C</span>
+            <span>CARPEDIA</span>
+        </a>
+
+        <nav class="main-nav">
+            <a href="#home">Home</a>
+            <a href="#brands">Brands</a>
+            <a href="#cars">Cars</a>
+            <a href="#compare">Compare</a>
+            <a href="#about">About</a>
+        </nav>
+
+        <a href="#" class="header-login">Login <span>↗</span></a>
+
+        <button class="menu-toggle" aria-label="Open menu">
+            <span></span><span></span>
+        </button>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-glow"></div>
+            <div class="hero-grid"></div>
+
+            <div class="hero-copy">
+                <div class="eyebrow">AUTOMOTIVE INFORMATION PLATFORM</div>
+                <h1>
+                    DISCOVER<br>
+                    <span>THE WORLD</span><br>
+                    OF CARS.
+                </h1>
+                <p>
+                    Explore automotive brands, iconic models, detailed
+                    specifications, stories and comparisons — all in one place.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#cars" class="btn btn-primary">Explore Cars <span>↗</span></a>
+                    <a href="#compare" class="btn btn-ghost">Compare Cars</a>
+                </div>
+            </div>
+
+            <div class="hero-car-wrap">
+                <div class="hero-orbit orbit-one"></div>
+                <div class="hero-orbit orbit-two"></div>
+                <div class="hero-car-shadow"></div>
+                <div class="hero-car">
+                    <div class="car-light"></div>
+                    <div class="car-roof"></div>
+                    <div class="car-glass"></div>
+                    <div class="car-body"></div>
+                    <div class="car-hood"></div>
+                    <div class="car-wheel wheel-left"></div>
+                    <div class="car-wheel wheel-right"></div>
+                    <div class="car-wheel-inner wheel-left"></div>
+                    <div class="car-wheel-inner wheel-right"></div>
+                    <div class="car-line line-one"></div>
+                    <div class="car-line line-two"></div>
+                </div>
+                <div class="hero-car-label">
+                    <span>FEATURED</span>
+                    <strong>THE DRIVE STARTS HERE.</strong>
+                </div>
+            </div>
+
+            <div class="hero-scroll">
+                <span>SCROLL TO EXPLORE</span>
+                <i></i>
+            </div>
+
+            <div class="hero-count">
+                <strong>01</strong>
+                <span>/ 05</span>
+            </div>
+        </section>
+
+        <section class="brands-section section-pad" id="brands">
+            <div class="section-head">
+                <div>
+                    <div class="eyebrow">01 — EXPLORE</div>
+                    <h2>POPULAR<br><span>BRANDS.</span></h2>
+                </div>
+                <p>Discover the identity, history, philosophy and legendary cars behind every automotive brand.</p>
+            </div>
+
+            <div class="brand-grid">
+                <a href="#" class="brand-card brand-toyota">
+                    <div class="brand-number">01</div>
+                    <div class="brand-logo">TOYOTA</div>
+                    <div class="brand-arrow">↗</div>
+                    <div class="brand-meta">JAPAN · 1937</div>
+                </a>
+
+                <a href="#" class="brand-card brand-honda">
+                    <div class="brand-number">02</div>
+                    <div class="brand-logo">HONDA</div>
+                    <div class="brand-arrow">↗</div>
+                    <div class="brand-meta">JAPAN · 1948</div>
+                </a>
+
+                <a href="#" class="brand-card brand-bmw">
+                    <div class="brand-number">03</div>
+                    <div class="brand-logo">BMW</div>
+                    <div class="brand-arrow">↗</div>
+                    <div class="brand-meta">GERMANY · 1916</div>
+                </a>
+            </div>
+        </section>
+
+        <section class="featured-section section-pad" id="cars">
+            <div class="section-head compact">
+                <div>
+                    <div class="eyebrow">02 — FEATURED</div>
+                    <h2>ICONIC<br><span>CARS.</span></h2>
+                </div>
+                <a href="#" class="text-link">View all cars <span>↗</span></a>
+            </div>
+
+            <div class="featured-grid">
+                <article class="featured-card featured-large">
+                    <div class="featured-visual visual-supra">
+                        <span class="visual-tag">SPORTS CAR</span>
+                        <div class="fake-car fake-car-red">
+                            <div class="fake-roof"></div>
+                            <div class="fake-window"></div>
+                            <div class="fake-wheel fake-wheel-a"></div>
+                            <div class="fake-wheel fake-wheel-b"></div>
+                        </div>
+                    </div>
+                    <div class="featured-info">
+                        <span>TOYOTA</span>
+                        <h3>SUPRA</h3>
+                        <p>A sports car icon with generations of heritage and performance.</p>
+                        <a href="#">Discover model ↗</a>
+                    </div>
+                </article>
+
+                <article class="featured-card">
+                    <div class="featured-visual visual-m4">
+                        <span class="visual-tag">PERFORMANCE</span>
+                        <div class="fake-car fake-car-blue">
+                            <div class="fake-roof"></div>
+                            <div class="fake-window"></div>
+                            <div class="fake-wheel fake-wheel-a"></div>
+                            <div class="fake-wheel fake-wheel-b"></div>
+                        </div>
+                    </div>
+                    <div class="featured-info">
+                        <span>BMW</span>
+                        <h3>M4</h3>
+                        <p>Precision, performance and unmistakable character.</p>
+                        <a href="#">Discover model ↗</a>
+                    </div>
+                </article>
+
+                <article class="featured-card">
+                    <div class="featured-visual visual-civic">
+                        <span class="visual-tag">HOT HATCH</span>
+                        <div class="fake-car fake-car-white">
+                            <div class="fake-roof"></div>
+                            <div class="fake-window"></div>
+                            <div class="fake-wheel fake-wheel-a"></div>
+                            <div class="fake-wheel fake-wheel-b"></div>
+                        </div>
+                    </div>
+                    <div class="featured-info">
+                        <span>HONDA</span>
+                        <h3>CIVIC TYPE R</h3>
+                        <p>Engineering built for people who love to drive.</p>
+                        <a href="#">Discover model ↗</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="compare-section" id="compare">
+            <div class="compare-backdrop"></div>
+            <div class="compare-content">
+                <div class="eyebrow">03 — COMPARE</div>
+                <h2>ONE GARAGE.<br><span>ENDLESS</span> POSSIBILITIES.</h2>
+                <p>
+                    Put your favorite cars side by side and see the differences
+                    in engine, power, torque, dimensions, performance and more.
+                </p>
+                <a href="#" class="btn btn-light">Start Comparing <span>↗</span></a>
+            </div>
+
+            <div class="compare-cars">
+                <div class="compare-mini compare-mini-red">
+                    <span>TOYOTA</span>
+                    <strong>SUPRA</strong>
+                </div>
+                <div class="versus">VS</div>
+                <div class="compare-mini compare-mini-blue">
+                    <span>BMW</span>
+                    <strong>M4</strong>
+                </div>
+            </div>
+        </section>
+
+        <section class="discover-section section-pad" id="about">
+            <div class="discover-grid">
+                <div class="discover-copy">
+                    <div class="eyebrow">04 — GO DEEPER</div>
+                    <h2>EVERY CAR<br>HAS A <span>STORY.</span></h2>
+                    <p>
+                        From a brand's origin and philosophy to the cars that changed
+                        automotive history. CARPEDIA is built to make exploring cars
+                        feel as exciting as driving them.
+                    </p>
+                    <a href="#" class="text-link">Explore our world <span>↗</span></a>
+                </div>
+
+                <div class="discover-stats">
+                    <div class="stat">
+                        <strong>03</strong>
+                        <span>BRANDS</span>
+                    </div>
+                    <div class="stat">
+                        <strong>∞</strong>
+                        <span>MODELS TO DISCOVER</span>
+                    </div>
+                    <div class="stat">
+                        <strong>01</strong>
+                        <span>PLACE FOR EVERY CAR STORY</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-top">
+            <a href="#" class="brand-mark">
+                <span class="brand-symbol">C</span>
+                <span>CARPEDIA</span>
+            </a>
+            <p>Explore. Compare. Discover.</p>
+        </div>
+
+        <div class="footer-bottom">
+            <span>© 2026 CARPEDIA</span>
+            <span>Automotive Information Platform</span>
+        </div>
+    </footer>
+
+    <script src="{{ asset('js/carpedia-home.js') }}"></script>
+</body>
+</html>

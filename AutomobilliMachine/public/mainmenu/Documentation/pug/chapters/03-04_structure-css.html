@@ -1,0 +1,46 @@
+<div class="content__item" id="css-structure">
+  <h3>CSS Files</h3>
+  <p>Axio template CSS files have a well-organized structure and a table of contents, as you can see on image below:</p>
+  <img src="img/structure/css.jpg" alt="CSS Structure Image">
+  <p>All CSS files are placed in
+    <code>css</code>
+    folder and have to be included in the
+    <code>&lt;head&gt;</code>
+    tag.
+    Axio uses uncompressed CSS files.
+    If you want to improve Google PageSpeed Insights performance, you can use minificated files from
+    <code>source-files &#8594; axio-css-min-files</code>.
+  </p>
+
+  <pre>
+    <code class="language-html">
+      &lt;!-- Template Styles Start--&gt;
+      &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/loaders/loader-color-1.css&quot;&gt;
+      &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/plugins.css&quot;&gt;
+      &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/main.css&quot;&gt;
+      &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/colors/color-1.css&quot;&gt;
+      &lt;!-- Template Styles End--&gt;
+    </code>
+  </pre>
+
+  <p>CSS files that have to be included in chosen <code>.html</code> file:</p>
+  <ul>
+    <li><code>loader-color-*.css</code>
+    </li>
+    <li><code>plugins.css</code>
+    </li>
+    <li><code>main.css</code>
+    </li>
+    <li><code>color-*.css</code>
+    </li>
+  </ul>
+  <p>If you want to customize CSS styles, We recommend to create your own
+    <code>custom.css</code>
+    file and include it to
+    <span>Template Styles</span>
+    section of the
+    <span>HTML</span>
+    file. This solution will help you in future updates.
+  </p>
+  <p class="help-text">* - Color skin number or name</p>
+</div>
