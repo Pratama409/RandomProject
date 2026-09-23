@@ -1,27 +1,14 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutomobilliMachine</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+@extends('layouts.app')
 
-    <link rel="icon" type="image/png/jpg" href="{{ asset('image/Favicon/Favicon.jpg') }}">
+@section('title', 'Beranda - AutomobilliMachine')
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
-</head>
-<body>
+@section('content')
 
-    <!-- =========================================
-         HERO SECTION: FULL SCREEN VISUAL
-         ========================================= -->
+    <!-- ==================================================================== -->
+    <!-- 1. HERO SECTION: FULLSCREEN ANGLED GALLERY                           -->
+    <!-- ==================================================================== -->
     <main class="hero-wrapper" id="top">
-        <!-- Background Penuh Foto Mobil (Fixed 100vw x 100vh) -->
+        <!-- Visual Gambar Miring Latar Belakang Penuh -->
         <aside class="hero-visual-fullscreen">
             <div class="hero-backdrop-overlay"></div>
 
@@ -83,7 +70,7 @@
                     </div>
                 </div>
 
-                <!-- Kolom 4 (Melengkapi Ujung Kanan) -->
+                <!-- Kolom 4 -->
                 <div class="gallery-col col-offset-4">
                     <div class="showcase-card">
                         <img src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?w=700&auto=format&fit=crop&q=80" alt="Ferrari 812">
@@ -104,7 +91,7 @@
             </div>
         </aside>
 
-        <!-- Konten Teks Mengambang di Atas Gambar Penuh -->
+        <!-- Teks Mengambang di Atas Gambar -->
         <section class="hero-content">
             <h1 class="hero-title">
                 Automotive Excellence
@@ -117,248 +104,284 @@
 
             <div class="hero-actions">
                 <a href="#brands" class="btn-primary">Eksplor Brand</a>
-                <a href="{{ url('/compare') }}" class="btn-outline">Bandingkan Mobil</a>
+                <a href="#compare" class="btn-outline">Bandingkan Mobil</a>
             </div>
 
             <div class="scroll-indicator" title="Scroll ke bawah"></div>
         </section>
     </main>
 
+    <!-- ==================================================================== -->
+    <!--                              NAVBAR                                  -->
+    <!-- ==================================================================== -->
 
-    <!-- =========================================
-         SECTION BRAND 1: PORSCHE
-         ========================================= -->
-    <section class="brand-section" id="brands">
-        <div class="section-container">
-            <div class="brand-header">
-                <h2 class="brand-title">Porsche / Stuttgart Heritage</h2>
-                <p class="brand-desc">
-                    Keunggulan presisi teknik Jerman dengan konfigurasi mesin boxer ikonik dan filosofi performa murni.
-                </p>
-                <div class="color-swatches">
-                    <div class="swatch-circle" style="background-color: #d11920;"></div>
-                    <div class="swatch-circle" style="background-color: #c0c0c0;"></div>
+    @include('partials.navbar')
+    
+    <!-- ==================================================================== -->
+    <!-- 2. SEKSI TRANSISI: ENGINEERED FOR PASSION                            -->
+    <!-- ==================================================================== -->
+    <section id="beranda" class="transition-banner text-center">
+        <div class="container py-4">
+            <span class="badge bg-danger px-3 py-2 text-uppercase mb-3 tracking-wide">
+                The Ultimate Performance Hub
+            </span>
+
+            <h2 class="display-4 fw-bold brand-font text-white mb-3">
+                ENGINEERED FOR PASSION
+            </h2>
+
+            <p class="text-secondary mx-auto fs-5 mb-4 transition-desc">
+                Eksplorasi filosofi, warisan sejarah, dan inovasi mahakarya otomotif dunia dalam satu platform.
+            </p>
+
+            <div class="row g-3 justify-content-center mt-2">
+                <div class="col-md-3 col-sm-6">
+                    <div class="transition-feature">
+                        <i class="fa-solid fa-flag-checkered text-danger me-2"></i>
+                        <span>Heritage & Racing DNA</span>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="transition-feature">
+                        <i class="fa-solid fa-microchip text-danger me-2"></i>
+                        <span>Technical Specs Murni</span>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="transition-feature">
+                        <i class="fa-solid fa-scale-balanced text-danger me-2"></i>
+                        <span>Head-to-Head Compare</span>
+                    </div>
                 </div>
             </div>
 
-            <div class="brand-grid">
-                <a href="{{ url('/brands/porsche/911-gt3-rs') }}" class="car-card">
-                    <div class="car-thumbnail-wrapper">
-                        <span class="badge-tag badge-green">ICONIC</span>
-                        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&auto=format&fit=crop&q=80" alt="Porsche 911 GT3 RS">
-                    </div>
-                    <div class="car-card-body">
-                        <div>
-                            <h3>911 GT3 RS</h3>
-                            <p>Atmospheric Boxer • 9,000 RPM Redline</p>
-                        </div>
-                        <span class="btn-card-action">Detail &rarr;</span>
-                    </div>
-                </a>
-
-                <a href="{{ url('/brands/porsche/taycan-turbo-s') }}" class="car-card">
-                    <div class="car-thumbnail-wrapper">
-                        <span class="badge-tag badge-purple">EV SPORT</span>
-                        <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=800&auto=format&fit=crop&q=80" alt="Porsche Taycan Turbo S">
-                    </div>
-                    <div class="car-card-body">
-                        <div>
-                            <h3>Taycan Turbo S</h3>
-                            <p>Dual Electric Motor • 750 HP Overboost</p>
-                        </div>
-                        <span class="btn-card-action">Detail &rarr;</span>
-                    </div>
-                </a>
-
-                <a href="{{ url('/brands/porsche/718-cayman-gt4') }}" class="car-card">
-                    <div class="car-thumbnail-wrapper">
-                        <span class="badge-tag">TRACK READY</span>
-                        <img src="https://images.unsplash.com/photo-1611821064430-0d40291d0f0b?w=800&auto=format&fit=crop&q=80" alt="718 Cayman GT4 RS">
-                    </div>
-                    <div class="car-card-body">
-                        <div>
-                            <h3>718 Cayman GT4 RS</h3>
-                            <p>Mid-Engine Balance • 493 HP</p>
-                        </div>
-                        <span class="btn-card-action">Detail &rarr;</span>
-                    </div>
-                </a>
-
-                <a href="{{ url('/brands/porsche/panamera-turbo') }}" class="car-card">
-                    <div class="car-thumbnail-wrapper">
-                        <span class="badge-tag badge-green">LUXURY</span>
-                        <img src="https://images.unsplash.com/photo-1541348263662-e0c8de4259ba?w=800&auto=format&fit=crop&q=80" alt="Panamera Turbo E-Hybrid">
-                    </div>
-                    <div class="car-card-body">
-                        <div>
-                            <h3>Panamera Turbo E-Hybrid</h3>
-                            <p>4.0L V8 + Motor Listrik • 670 HP</p>
-                        </div>
-                        <span class="btn-card-action">Detail &rarr;</span>
-                    </div>
+            <div class="mt-4">
+                <a href="#brands" class="text-danger text-decoration-none fw-semibold small tracking-wide">
+                    PILIH BRAND MOBIL <i class="fa-solid fa-chevron-down ms-1"></i>
                 </a>
             </div>
         </div>
     </section>
 
-
-    <!-- =========================================
-         SECTION BRAND 2: FERRARI
-         ========================================= -->
-    <section class="brand-section">
-        <div class="section-container">
-            <div class="brand-header">
-                <h2 class="brand-title">Ferrari / Maranello Passion</h2>
-                <p class="brand-desc">
-                    DNA Scuderia dari Italia. Suara raungan mesin V8 dan V12 yang memadukan gairah balap serta desain eksotis.
-                </p>
-                <div class="color-swatches">
-                    <div class="swatch-circle" style="background-color: #d40000;"></div>
-                    <div class="swatch-circle" style="background-color: #ffde00;"></div>
-                </div>
+    <!-- ==================================================================== -->
+    <!-- 3. BRAND SELECTOR SECTION (PILIH BRAND MOBIL)                         -->
+    <!-- ==================================================================== -->
+    <section id="brands" class="py-5">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <h6 class="text-danger fw-bold text-uppercase" style="letter-spacing: 2px;">Brand Showcase</h6>
+                <h2 class="fw-bold brand-font">PILIH BRAND MOBIL</h2>
+                <p class="text-muted">Masuk ke setiap brand untuk menelusuri sejarah, filosofi, dan katalog mobil.</p>
             </div>
 
-            <div class="brand-grid">
-                <a href="{{ url('/brands/ferrari/f8-tributo') }}" class="car-card">
-                    <div class="car-thumbnail-wrapper">
-                        <span class="badge-tag">V8 POWER</span>
-                        <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=800&auto=format&fit=crop&q=80" alt="Ferrari F8 Tributo">
-                    </div>
-                    <div class="car-card-body">
+            <div class="row g-4 justify-content-center">
+                <!-- Ferrari -->
+                <div class="col-md-4">
+                    <div class="custom-card h-100 p-4 d-flex flex-column justify-content-between text-center">
                         <div>
-                            <h3>F8 Tributo</h3>
-                            <p>3.9L Twin-Turbo V8 • 710 HP</p>
+                            <div class="mb-3 overflow-hidden rounded">
+                                <img src="{{ asset('image/Ferrari SF90 Spider.jpg') }}" alt="Ferrari" class="img-fluid" style="height: 180px; width: 100%; object-fit: cover;">
+                            </div>
+                            <span class="badge bg-danger mb-2">ITALIA</span>
+                            <h3 class="fw-bold brand-font mb-2">FERRARI</h3>
+                            <p class="text-muted small">
+                                "Essence of Italian Passion & Racing Heritage" — Dedikasi performa sirkuit F1 yang dibawa ke jalan raya.
+                            </p>
                         </div>
-                        <span class="btn-card-action">Detail &rarr;</span>
+                        <a href="{{ url('/ferrari') }}" class="btn btn-racing w-100 mt-3">
+                            Masuk Brand Ferrari <i class="fa-solid fa-arrow-right ms-2"></i>
+                        </a>
                     </div>
-                </a>
+                </div>
 
-                <a href="{{ url('/brands/ferrari/sf90-stradale') }}" class="car-card">
-                    <div class="car-thumbnail-wrapper">
-                        <span class="badge-tag badge-purple">HYBRID 1000HP</span>
-                        <img src="https://images.unsplash.com/photo-1592198084033-aade902d1aae?w=800&auto=format&fit=crop&q=80" alt="Ferrari SF90 Stradale">
-                    </div>
-                    <div class="car-card-body">
+                <!-- Lamborghini -->
+                <div class="col-md-4">
+                    <div class="custom-card h-100 p-4 d-flex flex-column justify-content-between text-center">
                         <div>
-                            <h3>SF90 Stradale</h3>
-                            <p>V8 PHEV AWD • 986 HP</p>
+                            <div class="mb-3 overflow-hidden rounded">
+                                <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?w=600&auto=format&fit=crop&q=80" alt="Lamborghini" class="img-fluid" style="height: 180px; width: 100%; object-fit: cover;">
+                            </div>
+                            <span class="badge bg-warning text-dark mb-2">ITALIA</span>
+                            <h3 class="fw-bold brand-font mb-2">LAMBORGHINI</h3>
+                            <p class="text-muted small">
+                                "Expect the Unexpected" — Desain tajam, aerodinamika radikal, dan raungan mesin V12 sang banteng tempur.
+                            </p>
                         </div>
-                        <span class="btn-card-action">Detail &rarr;</span>
+                        <a href="#" class="btn btn-outline-custom w-100 mt-3">
+                            Masuk Brand Lamborghini <i class="fa-solid fa-arrow-right ms-2"></i>
+                        </a>
                     </div>
-                </a>
+                </div>
 
-                <a href="{{ url('/brands/ferrari/roma') }}" class="car-card">
-                    <div class="car-thumbnail-wrapper">
-                        <span class="badge-tag badge-green">GRAND TOURER</span>
-                        <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?w=800&auto=format&fit=crop&q=80" alt="Ferrari Roma">
-                    </div>
-                    <div class="car-card-body">
+                <!-- Mercedes-Benz -->
+                <div class="col-md-4">
+                    <div class="custom-card h-100 p-4 d-flex flex-column justify-content-between text-center">
                         <div>
-                            <h3>Ferrari Roma</h3>
-                            <p>Nuova Dolce Vita • 612 HP</p>
+                            <div class="mb-3 overflow-hidden rounded">
+                                <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=600&auto=format&fit=crop&q=80" alt="Mercedes-Benz" class="img-fluid" style="height: 180px; width: 100%; object-fit: cover;">
+                            </div>
+                            <span class="badge bg-secondary mb-2">JERMAN</span>
+                            <h3 class="fw-bold brand-font mb-2">MERCEDES-BENZ</h3>
+                            <p class="text-muted small">
+                                "The Best or Nothing" — Harmonisasi kemewahan kelas atas dan tenaga monster dari divisi AMG.
+                            </p>
                         </div>
-                        <span class="btn-card-action">Detail &rarr;</span>
+                        <a href="#" class="btn btn-outline-custom w-100 mt-3">
+                            Masuk Brand Mercedes <i class="fa-solid fa-arrow-right ms-2"></i>
+                        </a>
                     </div>
-                </a>
-
-                <a href="{{ url('/brands/ferrari/812-competizione') }}" class="car-card">
-                    <div class="car-thumbnail-wrapper">
-                        <span class="badge-tag">V12 NA</span>
-                        <img src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?w=800&auto=format&fit=crop&q=80" alt="Ferrari 812 Superfast">
-                    </div>
-                    <div class="car-card-body">
-                        <div>
-                            <h3>812 Competizione</h3>
-                            <p>6.5L Naturally Aspirated V12 • 819 HP</p>
-                        </div>
-                        <span class="btn-card-action">Detail &rarr;</span>
-                    </div>
-                </a>
+                </div>
             </div>
         </div>
     </section>
 
-
-    <!-- =========================================
-         SECTION BRAND 3: BMW
-         ========================================= -->
-    <section class="brand-section">
-        <div class="section-container">
-            <div class="brand-header">
-                <h2 class="brand-title">BMW / The Ultimate Driving Machine</h2>
-                <p class="brand-desc">
-                    Divisi BMW M menyajikan distribusi bobot seimbang 50:50 dan mesin inline-6 legendaris yang responsif.
-                </p>
-                <div class="color-swatches">
-                    <div class="swatch-circle" style="background-color: #0066b1;"></div>
-                    <div class="swatch-circle" style="background-color: #e21b23;"></div>
+    <!-- ==================================================================== -->
+    <!-- 4. ICONIC CARS SHOWCASE SECTION                                      -->
+    <!-- ==================================================================== -->
+    <section id="iconic" class="py-5" style="background-color: #0e0e12;">
+        <div class="container py-4">
+            <div class="d-flex justify-content-between align-items-end mb-4">
+                <div>
+                    <h6 class="text-danger fw-bold text-uppercase" style="letter-spacing: 2px;">Hall of Fame</h6>
+                    <h2 class="fw-bold brand-font mb-0">MOBIL ICONIC PILIHAN</h2>
                 </div>
+                <span class="text-muted small d-none d-md-block">Spesifikasi Murni & Masterpiece</span>
             </div>
 
-            <div class="brand-grid">
-                <a href="{{ url('/brands/bmw/m4-competition') }}" class="car-card">
-                    <div class="car-thumbnail-wrapper">
-                        <span class="badge-tag badge-green">M POWER</span>
-                        <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=800&auto=format&fit=crop&q=80" alt="BMW M4">
-                    </div>
-                    <div class="car-card-body">
-                        <div>
-                            <h3>M4 Competition</h3>
-                            <p>3.0L S58 Twin-Turbo Inline-6 • 503 HP</p>
+            <div class="row g-4">
+                <!-- Ferrari F40 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="custom-card h-100">
+                        <img src="{{ asset('image/Ferrari F40.jpg') }}" class="card-img-top" alt="Ferrari F40" style="height: 220px; object-fit: cover;">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-danger">FERRARI</span>
+                                <span class="text-muted small"><i class="fa-regular fa-calendar me-1"></i> 1987</span>
+                            </div>
+                            <h4 class="fw-bold brand-font text-white mb-3">Ferrari F40</h4>
+                            <div class="row g-2">
+                                <div class="col-4"><div class="spec-box"><div class="spec-label">Tenaga</div><div class="spec-val">471 HP</div></div></div>
+                                <div class="col-4"><div class="spec-box"><div class="spec-label">0-100 km/h</div><div class="spec-val">4.1 s</div></div></div>
+                                <div class="col-4"><div class="spec-box"><div class="spec-label">Top Speed</div><div class="spec-val">324 km/h</div></div></div>
+                            </div>
                         </div>
-                        <span class="btn-card-action">Detail &rarr;</span>
                     </div>
-                </a>
+                </div>
 
-                <a href="{{ url('/brands/bmw/m5-cs') }}" class="car-card">
-                    <div class="car-thumbnail-wrapper">
-                        <span class="badge-tag">SUPER SEDAN</span>
-                        <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&auto=format&fit=crop&q=80" alt="BMW M5 CS">
-                    </div>
-                    <div class="car-card-body">
-                        <div>
-                            <h3>M5 CS</h3>
-                            <p>4.4L Twin-Turbo V8 • 627 HP</p>
+                <!-- Ferrari LaFerrari -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="custom-card h-100">
+                        <img src="{{ asset('image/Ferrari LaFerrari.avif') }}" class="card-img-top" alt="Ferrari LaFerrari" style="height: 220px; object-fit: cover;">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-danger">FERRARI</span>
+                                <span class="text-muted small"><i class="fa-regular fa-calendar me-1"></i> 2013</span>
+                            </div>
+                            <h4 class="fw-bold brand-font text-white mb-3">LaFerrari</h4>
+                            <div class="row g-2">
+                                <div class="col-4"><div class="spec-box"><div class="spec-label">Tenaga</div><div class="spec-val">950 HP</div></div></div>
+                                <div class="col-4"><div class="spec-box"><div class="spec-label">0-100 km/h</div><div class="spec-val">2.4 s</div></div></div>
+                                <div class="col-4"><div class="spec-box"><div class="spec-label">Top Speed</div><div class="spec-val">350 km/h</div></div></div>
+                            </div>
                         </div>
-                        <span class="btn-card-action">Detail &rarr;</span>
                     </div>
-                </a>
+                </div>
 
-                <a href="{{ url('/brands/bmw/m2-coupe') }}" class="car-card">
-                    <div class="car-thumbnail-wrapper">
-                        <span class="badge-tag badge-purple">AGILE</span>
-                        <img src="https://images.unsplash.com/photo-1607853202273-797f1c22a38e?w=800&auto=format&fit=crop&q=80" alt="BMW M2 Coupe">
-                    </div>
-                    <div class="car-card-body">
-                        <div>
-                            <h3>M2 Coupe</h3>
-                            <p>Compact Track Monster • 453 HP</p>
+                <!-- Ferrari SF90 Spider -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="custom-card h-100">
+                        <img src="{{ asset('image/Ferrari SF90 Spider.jpg') }}" class="card-img-top" alt="Ferrari SF90 Spider" style="height: 220px; object-fit: cover;">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-danger">FERRARI</span>
+                                <span class="text-muted small"><i class="fa-regular fa-calendar me-1"></i> 2020</span>
+                            </div>
+                            <h4 class="fw-bold brand-font text-white mb-3">SF90 Spider</h4>
+                            <div class="row g-2">
+                                <div class="col-4"><div class="spec-box"><div class="spec-label">Tenaga</div><div class="spec-val">986 HP</div></div></div>
+                                <div class="col-4"><div class="spec-box"><div class="spec-label">0-100 km/h</div><div class="spec-val">2.5 s</div></div></div>
+                                <div class="col-4"><div class="spec-box"><div class="spec-label">Top Speed</div><div class="spec-val">340 km/h</div></div></div>
+                            </div>
                         </div>
-                        <span class="btn-card-action">Detail &rarr;</span>
                     </div>
-                </a>
-
-                <a href="{{ url('/brands/bmw/i8-roadster') }}" class="car-card">
-                    <div class="car-thumbnail-wrapper">
-                        <span class="badge-tag">FUTURISTIC</span>
-                        <img src="https://images.unsplash.com/photo-1556189250-72ba954cfc2b?w=800&auto=format&fit=crop&q=80" alt="BMW i8 Roadster">
-                    </div>
-                    <div class="car-card-body">
-                        <div>
-                            <h3>i8 Roadster</h3>
-                            <p>Hybrid Aero Innovation • Butterfly Doors</p>
-                        </div>
-                        <span class="btn-card-action">Detail &rarr;</span>
-                    </div>
-                </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Tombol Mengapung Scroll To Top -->
-    <a href="#top" class="btn-scroll-top" title="Kembali ke atas">&#8593;</a>
+    <!-- ==================================================================== -->
+    <!-- 5. QUICK COMPARE TEASER WIDGET                                       -->
+    <!-- ==================================================================== -->
+    <section id="compare" class="py-5">
+        <div class="container py-4">
+            <div class="compare-teaser">
+                <div class="row align-items-center">
+                    <div class="col-lg-7">
+                        <span class="badge bg-danger mb-2">HEAD-TO-HEAD</span>
+                        <h2 class="fw-bold brand-font mb-3">BANDINGKAN MOBIL IMPIAN</h2>
+                        <p class="text-muted mb-4">
+                            Bandingkan spesifikasi mobil secara berdampingan mulai dari tenaga mesin, akselerasi, bobot, hingga kecepatan maksimal.
+                        </p>
+                        <div class="d-flex flex-wrap gap-3">
+                            <span class="text-secondary small"><i class="fa-solid fa-check text-danger me-1"></i> Perbandingan Mesin</span>
+                            <span class="text-secondary small"><i class="fa-solid fa-check text-danger me-1"></i> Akselerasi 0-100 km/h</span>
+                            <span class="text-secondary small"><i class="fa-solid fa-check text-danger me-1"></i> Power-to-Weight Ratio</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 text-center mt-4 mt-lg-0">
+                        <div class="p-4 bg-dark rounded border border-secondary">
+                            <div class="display-6 brand-font fw-bold text-danger mb-3">VS</div>
+                            <p class="small text-secondary mb-3">Pilih 2 hingga 3 mobil dari berbagai brand</p>
+                            <a href="#" class="btn btn-racing w-100">Buka Tool Komparasi</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- JavaScript Terpisah -->
-    <script src="{{ asset('js/home.js') }}"></script>
-</body>
-</html>
+    <!-- ==================================================================== -->
+    <!-- 6. MEMBERSHIP TEASER                                                 -->
+    <!-- ==================================================================== -->
+    <section id="membership" class="py-5" style="background-color: #0e0e12;">
+        <div class="container py-4">
+            <div class="row justify-content-center text-center mb-4">
+                <div class="col-md-8">
+                    <h6 class="text-danger fw-bold text-uppercase" style="letter-spacing: 2px;">Exclusive Privilege</h6>
+                    <h2 class="fw-bold brand-font">AUTOMOBILLI CLUB MEMBERSHIP</h2>
+                    <p class="text-muted">Akses fitur eksklusif untuk para antusias mobil sejati.</p>
+                </div>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4">
+                    <div class="custom-card p-4 text-center h-100">
+                        <i class="fa-solid fa-warehouse fa-3x text-danger mb-3"></i>
+                        <h5 class="fw-bold brand-font">Virtual Garage</h5>
+                        <p class="text-muted small">Pajang mobil koleksi atau hasil modifikasi Anda lengkap dengan detail spesifikasi custom.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="custom-card p-4 text-center h-100">
+                        <i class="fa-solid fa-file-pdf fa-3x text-danger mb-3"></i>
+                        <h5 class="fw-bold brand-font">Download Katalog PDF</h5>
+                        <p class="text-muted small">Unduh brosur dan lembar spesifikasi resmi mobil beresolusi tinggi langsung dalam format PDF.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="custom-card p-4 text-center h-100">
+                        <i class="fa-solid fa-chart-line fa-3x text-danger mb-3"></i>
+                        <h5 class="fw-bold brand-font">Advanced Analytics</h5>
+                        <p class="text-muted small">Analisis kurva tenaga, dyno graph, dan komparasi tanpa batas antar varian mobil.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tombol Floating Back to Top -->
+    <a href="#top" class="btn-scroll-top" title="Kembali ke atas">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
+
+@endsection

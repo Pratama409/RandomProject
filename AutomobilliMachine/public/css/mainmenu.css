@@ -1,0 +1,444 @@
+/* =======================================================
+   AUTOMOBILLI MACHINE - MAINMENU STYLING (UNIFIED)
+   ======================================================= */
+
+:root {
+    --primary-accent: #e50914;      /* Racing Red */
+    --primary-hover: #b80710;
+    --bg-dark: #0a0a0c;
+    --card-bg: #141418;
+    --card-border: #26262e;
+    --text-muted: #8e8e9c;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+.brand-font {
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1.5px;
+}
+
+.tracking-wide {
+    letter-spacing: 2px;
+}
+
+/* =======================================================
+   1. HERO SECTION: FULLSCREEN ANGLED GALLERY
+   ======================================================= */
+.hero-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    background-color: #0b0c10;
+}
+
+.hero-visual-fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hero-backdrop-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 25% 50%, rgba(11, 12, 16, 0.92) 0%, rgba(11, 12, 16, 0.65) 50%, rgba(11, 12, 16, 0.4) 100%);
+    z-index: 2;
+}
+
+.angled-gallery {
+    position: absolute;
+    top: -55%;
+    left: 10%;
+    width: 160vw;
+    height: 220vh;
+    transform: rotate(-30deg);
+    display: flex;
+    gap: 2rem;
+    pointer-events: auto;
+    z-index: 1;
+}
+
+.gallery-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    will-change: transform;
+    transition: transform 0.1s ease-out;
+}
+
+.col-offset-1 { margin-top: -12rem; }
+.col-offset-2 { margin-top: 4rem; }
+.col-offset-3 { margin-top: -8rem; }
+.col-offset-4 { margin-top: 8rem; }
+
+.showcase-card {
+    width: 300px;
+    height: 420px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.85);
+    flex-shrink: 0;
+    background-color: #15171e;
+    transition: transform 0.3s ease;
+}
+
+.showcase-card:hover {
+    transform: scale(1.03);
+}
+
+.showcase-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 5;
+    min-height: 100vh;
+    max-width: 780px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 7rem 4rem 6rem 6rem;
+    background: transparent;
+}
+
+.hero-title {
+    font-size: 3.8rem;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+}
+
+.hero-title span {
+    display: block;
+    font-weight: 300;
+    color: #e2e8f0;
+}
+
+.hero-desc {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: #cbd5e1;
+    max-width: 540px;
+    margin-bottom: 2.5rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 3.5rem;
+}
+
+.btn-primary {
+    background-color: var(--primary-accent);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 0.95rem 2.2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    display: inline-block;
+    border: none;
+    box-shadow: 0 4px 20px rgba(229, 9, 20, 0.4);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(229, 9, 20, 0.6);
+}
+
+.btn-outline {
+    background-color: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.9rem 2.2rem;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    display: inline-block;
+}
+
+.btn-outline:hover {
+    border-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.scroll-indicator {
+    width: 24px;
+    height: 40px;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.scroll-indicator:hover {
+    border-color: var(--primary-accent);
+}
+
+.scroll-indicator::after {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 7px;
+    background-color: #ffffff;
+    border-radius: 2px;
+    animation: scrollAnim 1.6s infinite ease-in-out;
+}
+
+@keyframes scrollAnim {
+    0% { opacity: 1; transform: translate(-50%, 0); }
+    50% { opacity: 0.3; transform: translate(-50%, 12px); }
+    100% { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* =======================================================
+   2. SEKSI TRANSISI: ENGINEERED FOR PASSION
+   ======================================================= */
+.transition-banner {
+    position: relative;
+    z-index: 10;
+    background: linear-gradient(180deg, #0c0d12 0%, #08090b 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 85px 0 75px;
+    box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.85);
+}
+
+.transition-desc {
+    max-width: 680px;
+    line-height: 1.7;
+}
+
+.transition-feature {
+    background-color: rgba(20, 22, 31, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #e2e8f0;
+    transition: all 0.25s ease;
+}
+
+.transition-feature:hover {
+    border-color: var(--primary-accent);
+    transform: translateY(-2px);
+    background-color: #161822;
+}
+
+/* =======================================================
+   3. NAVBAR & BUTTONS UMUM
+   ======================================================= */
+.navbar-custom {
+    background-color: rgba(10, 10, 12, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--card-border);
+    transition: all 0.3s ease;
+}
+
+.navbar-custom.scrolled {
+    background-color: rgba(10, 10, 12, 0.98);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+}
+
+.btn-racing {
+    background-color: var(--primary-accent);
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 6px;
+    padding: 12px 28px;
+    transition: all 0.3s ease;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-racing:hover {
+    background-color: var(--primary-hover);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(229, 9, 20, 0.4);
+}
+
+.btn-outline-custom {
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 6px;
+    padding: 12px 28px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-outline-custom:hover {
+    border-color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+}
+
+/* =======================================================
+   4. SEKSI KONTEN: BRANDS, ICONIC, COMPARE, MEMBERSHIP
+   ======================================================= */
+#brands, #iconic, #compare, #membership, footer {
+    position: relative;
+    z-index: 10;
+    background-color: var(--bg-dark);
+}
+
+.custom-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    overflow: hidden;
+}
+
+.custom-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--primary-accent);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+}
+
+.spec-box {
+    background-color: #1a1a22;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+}
+
+.spec-label {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.spec-val {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.compare-teaser {
+    background: linear-gradient(135deg, #181822 0%, #111116 100%);
+    border: 1px dashed #3a3a46;
+    border-radius: 16px;
+    padding: 40px;
+}
+
+/* Floating Back-to-Top Button */
+.btn-scroll-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 48px;
+    height: 48px;
+    background-color: var(--primary-accent);
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.btn-scroll-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.btn-scroll-top:hover {
+    transform: translateY(-4px);
+    background-color: #ffffff;
+    color: var(--primary-accent);
+}
+
+/* Responsif Mobile & Tablet */
+@media (max-width: 1024px) {
+    .hero-content {
+        padding: 6rem 2rem 3rem;
+    }
+    .hero-title {
+        font-size: 2.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .angled-gallery {
+        top: -20%;
+        left: 0;
+        width: 200vw;
+    }
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+/* Navbar Custom (Sekarang Sticky & Berada di Antara Hero dan Transisi) */
+.navbar-custom {
+    background-color: rgba(12, 13, 18, 0.95);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 1000; /* Selalu di atas konten saat di-scroll */
+    transition: all 0.3s ease;
+}
+
+.navbar-custom.scrolled {
+    background-color: rgba(10, 10, 12, 0.98);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
