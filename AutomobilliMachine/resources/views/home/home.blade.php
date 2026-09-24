@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Beranda - AutomobilliMachine')
+@section('title', 'Home - AutomobilliMachine')
 
 @section('content')
 
@@ -8,12 +8,12 @@
     <!-- 1. HERO SECTION: FULLSCREEN ANGLED GALLERY                           -->
     <!-- ==================================================================== -->
     <main class="hero-wrapper" id="top">
-        <!-- Visual Gambar Miring Latar Belakang Penuh -->
+        <!-- Fullscreen Angled Visual Gallery -->
         <aside class="hero-visual-fullscreen">
             <div class="hero-backdrop-overlay"></div>
 
             <div class="angled-gallery">
-                <!-- Kolom 1 -->
+                <!-- Column 1 -->
                 <div class="gallery-col col-offset-1">
                     <div class="showcase-card">
                         <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=700&auto=format&fit=crop&q=80" alt="Porsche 911 GT3">
@@ -32,7 +32,7 @@
                     </div>
                 </div>
 
-                <!-- Kolom 2 -->
+                <!-- Column 2 -->
                 <div class="gallery-col col-offset-2">
                     <div class="showcase-card">
                         <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=700&auto=format&fit=crop&q=80" alt="Lamborghini Aventador">
@@ -51,7 +51,7 @@
                     </div>
                 </div>
 
-                <!-- Kolom 3 -->
+                <!-- Column 3 -->
                 <div class="gallery-col col-offset-3">
                     <div class="showcase-card">
                         <img src="https://images.unsplash.com/photo-1607853202273-797f1c22a38e?w=700&auto=format&fit=crop&q=80" alt="BMW M2">
@@ -70,7 +70,7 @@
                     </div>
                 </div>
 
-                <!-- Kolom 4 -->
+                <!-- Column 4 -->
                 <div class="gallery-col col-offset-4">
                     <div class="showcase-card">
                         <img src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?w=700&auto=format&fit=crop&q=80" alt="Ferrari 812">
@@ -91,7 +91,7 @@
             </div>
         </aside>
 
-        <!-- Teks Mengambang di Atas Gambar -->
+        <!-- Floating Hero Copy -->
         <section class="hero-content">
             <h1 class="hero-title">
                 Automotive Excellence
@@ -99,28 +99,27 @@
             </h1>
 
             <p class="hero-desc">
-                Jelajahi filosofi, sejarah, dan performa brand mobil legendaris dunia. Bandingkan spesifikasi mesin dan temukan mahakarya otomotif pilihan Anda.
+                Explore the heritage, philosophy, and engineering of legendary automotive marques. Compare technical specifications and uncover your ultimate driving machine.
             </p>
 
             <div class="hero-actions">
-                <a href="#brands" class="btn-primary">Eksplor Brand</a>
-                <a href="#compare" class="btn-outline">Bandingkan Mobil</a>
+                <a href="#brands" class="btn-primary">Explore Brands</a>
+                <a href="#compare" class="btn-outline">Compare Cars</a>
             </div>
 
-            <div class="scroll-indicator" title="Scroll ke bawah"></div>
+            <div class="scroll-indicator" title="Scroll down"></div>
         </section>
     </main>
 
     <!-- ==================================================================== -->
-    <!--                              NAVBAR                                  -->
+    <!-- NAVBAR (POSITIONED EXACTLY AT THE TRANSITION BOUNDARY)               -->
     <!-- ==================================================================== -->
-
     @include('partials.navbar')
-    
+
     <!-- ==================================================================== -->
-    <!-- 2. SEKSI TRANSISI: ENGINEERED FOR PASSION                            -->
+    <!-- 2. TRANSITION BANNER: ENGINEERED FOR PASSION                         -->
     <!-- ==================================================================== -->
-    <section id="beranda" class="transition-banner text-center">
+    <section class="transition-banner text-center">
         <div class="container py-4">
             <span class="badge bg-danger px-3 py-2 text-uppercase mb-3 tracking-wide">
                 The Ultimate Performance Hub
@@ -131,7 +130,7 @@
             </h2>
 
             <p class="text-secondary mx-auto fs-5 mb-4 transition-desc">
-                Eksplorasi filosofi, warisan sejarah, dan inovasi mahakarya otomotif dunia dalam satu platform.
+                Uncompromising engineering, racing heritage, and world-class automotive masterpieces united in one platform.
             </p>
 
             <div class="row g-3 justify-content-center mt-2">
@@ -144,7 +143,7 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="transition-feature">
                         <i class="fa-solid fa-microchip text-danger me-2"></i>
-                        <span>Technical Specs Murni</span>
+                        <span>Pure Technical Specs</span>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6">
@@ -157,81 +156,238 @@
 
             <div class="mt-4">
                 <a href="#brands" class="text-danger text-decoration-none fw-semibold small tracking-wide">
-                    PILIH BRAND MOBIL <i class="fa-solid fa-chevron-down ms-1"></i>
+                    EXPLORE ALL BRANDS <i class="fa-solid fa-chevron-down ms-1"></i>
                 </a>
             </div>
         </div>
     </section>
 
     <!-- ==================================================================== -->
-    <!-- 3. BRAND SELECTOR SECTION (PILIH BRAND MOBIL)                         -->
+    <!-- 3. BRAND SPOTLIGHT SECTION (CLEAN & TOUCH-SWIPE READY)              -->
     <!-- ==================================================================== -->
-    <section id="brands" class="py-5">
+    <section id="brands" class="py-5 brand-slider-section position-relative">
+        
+        <!-- Tombol Panah Tepi Layar Kiri (<) -->
+        <button class="carousel-control-prev screen-edge-nav nav-prev" type="button" data-bs-target="#brandCarousel" data-bs-slide="prev" title="Previous Brand">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <!-- Tombol Panah Tepi Layar Kanan (>) -->
+        <button class="carousel-control-next screen-edge-nav nav-next" type="button" data-bs-target="#brandCarousel" data-bs-slide="next" title="Next Brand">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
         <div class="container py-4">
+            <!-- Header Judul Bersih -->
             <div class="text-center mb-5">
-                <h6 class="text-danger fw-bold text-uppercase" style="letter-spacing: 2px;">Brand Showcase</h6>
-                <h2 class="fw-bold brand-font">PILIH BRAND MOBIL</h2>
-                <p class="text-muted">Masuk ke setiap brand untuk menelusuri sejarah, filosofi, dan katalog mobil.</p>
+                <span class="badge bg-danger-subtle text-danger border border-danger-subtle px-3 py-1 text-uppercase mb-2 tracking-wide fw-bold">
+                    Marque Spotlight
+                </span>
+                <h2 class="display-5 fw-bold brand-font text-white mb-2">FEATURED MARQUES</h2>
+                <p class="text-secondary mx-auto mb-0" style="max-width: 600px;">
+                    Geser atau usap layar untuk menjelajahi sejarah, filosofi, dan markas besar brand legendaris dunia.
+                </p>
             </div>
 
-            <div class="row g-4 justify-content-center">
-                <!-- Ferrari -->
-                <div class="col-md-4">
-                    <div class="custom-card h-100 p-4 d-flex flex-column justify-content-between text-center">
-                        <div>
-                            <div class="mb-3 overflow-hidden rounded">
-                                <img src="{{ asset('image/Ferrari SF90 Spider.jpg') }}" alt="Ferrari" class="img-fluid" style="height: 180px; width: 100%; object-fit: cover;">
-                            </div>
-                            <span class="badge bg-danger mb-2">ITALIA</span>
-                            <h3 class="fw-bold brand-font mb-2">FERRARI</h3>
-                            <p class="text-muted small">
-                                "Essence of Italian Passion & Racing Heritage" — Dedikasi performa sirkuit F1 yang dibawa ke jalan raya.
-                            </p>
-                        </div>
-                        <a href="{{ url('/ferrari') }}" class="btn btn-racing w-100 mt-3">
-                            Masuk Brand Ferrari <i class="fa-solid fa-arrow-right ms-2"></i>
-                        </a>
-                    </div>
-                </div>
+            <!-- Carousel Geser Horizontal dengan Touch Gesture Aktif -->
+            <div id="brandCarousel" class="carousel slide" data-bs-ride="false" data-bs-touch="true">
+                <div class="carousel-inner">
 
-                <!-- Lamborghini -->
-                <div class="col-md-4">
-                    <div class="custom-card h-100 p-4 d-flex flex-column justify-content-between text-center">
-                        <div>
-                            <div class="mb-3 overflow-hidden rounded">
-                                <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?w=600&auto=format&fit=crop&q=80" alt="Lamborghini" class="img-fluid" style="height: 180px; width: 100%; object-fit: cover;">
-                            </div>
-                            <span class="badge bg-warning text-dark mb-2">ITALIA</span>
-                            <h3 class="fw-bold brand-font mb-2">LAMBORGHINI</h3>
-                            <p class="text-muted small">
-                                "Expect the Unexpected" — Desain tajam, aerodinamika radikal, dan raungan mesin V12 sang banteng tempur.
-                            </p>
-                        </div>
-                        <a href="#" class="btn btn-outline-custom w-100 mt-3">
-                            Masuk Brand Lamborghini <i class="fa-solid fa-arrow-right ms-2"></i>
-                        </a>
-                    </div>
-                </div>
+                    <!-- ==================== SLIDE 1: FERRARI ==================== -->
+                    <div class="carousel-item active">
+                        <div class="brand-spotlight-box glass-panel">
+                            <div class="row g-4 align-items-stretch">
+                                
+                                <!-- Kolom Kiri: Logo & Quick Facts -->
+                                <div class="col-lg-3 col-md-4 d-flex flex-column justify-content-between">
+                                    <div class="brand-logo-card text-center p-4">
+                                        <div class="logo-glow-wrapper mb-2">
+                                            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/d/d1/Ferrari-Logo.svg/300px-Ferrari-Logo.svg.png" alt="Ferrari Logo" class="img-fluid brand-logo-img">
+                                        </div>
+                                        <h4 class="fw-bold brand-font text-white mb-0">FERRARI</h4>
+                                        <span class="badge bg-danger mt-1 tracking-wide">SCUDERIA</span>
+                                    </div>
 
-                <!-- Mercedes-Benz -->
-                <div class="col-md-4">
-                    <div class="custom-card h-100 p-4 d-flex flex-column justify-content-between text-center">
-                        <div>
-                            <div class="mb-3 overflow-hidden rounded">
-                                <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=600&auto=format&fit=crop&q=80" alt="Mercedes-Benz" class="img-fluid" style="height: 180px; width: 100%; object-fit: cover;">
+                                    <div class="brand-fact-stack d-flex flex-column gap-2 mt-3">
+                                        <div class="fact-box">
+                                            <small class="text-muted d-block">Founded</small>
+                                            <span class="fw-bold text-white">1939 &bull; Maranello</span>
+                                        </div>
+                                        <div class="fact-box">
+                                            <small class="text-muted d-block">Founder</small>
+                                            <span class="fw-bold text-white">Enzo Ferrari</span>
+                                        </div>
+                                        <div class="fact-box">
+                                            <small class="text-muted d-block">Racing DNA</small>
+                                            <span class="fw-bold text-danger">Scuderia Ferrari F1</span>
+                                        </div>
+                                        <div class="fact-box">
+                                            <small class="text-muted d-block">Signature Color</small>
+                                            <span class="fw-bold text-white"><i class="fa-solid fa-circle text-danger me-1"></i> Rosso Corsa</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Kolom Tengah: Sejarah & Arsip -->
+                                <div class="col-lg-5 col-md-8 d-flex flex-column justify-content-between">
+                                    <div class="brand-history-card p-4 h-100 d-flex flex-column justify-content-between">
+                                        <div>
+                                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                                <div>
+                                                    <h3 class="fw-bold brand-font text-white mb-0">Ferrari N.V.</h3>
+                                                    <small class="text-danger fw-semibold">Il Cavallino Rampante</small>
+                                                </div>
+                                                <span class="badge bg-black border border-secondary px-3 py-2 brand-font">EST. 1939</span>
+                                            </div>
+
+                                            <blockquote class="brand-quote text-secondary small fst-italic mb-3 ps-3 border-start border-danger border-2">
+                                                "I have never been a mere constructor of cars. I build dreams that are capable of evoking emotion."
+                                                <footer class="blockquote-footer text-muted mt-1">Enzo Ferrari</footer>
+                                            </blockquote>
+
+                                            <div class="d-flex gap-3 align-items-start mb-3 archive-story-box p-2 rounded">
+                                                <div class="overflow-hidden rounded flex-shrink-0" style="width: 110px; height: 95px;">
+                                                    <img src="{{ asset('image/Ferrari F40.jpg') }}" alt="Ferrari Heritage" class="img-fluid w-100 h-100 object-fit-cover zoom-on-hover">
+                                                </div>
+                                                <p class="text-light small mb-0" style="line-height: 1.6;">
+                                                    Berakar dari tim balap Scuderia Ferrari pada tahun 1929, pabrikan berlambang kuda jingkrak ini memproduksi mobil jalan raya pertamanya pada tahun 1947 dengan model 125 S. Setiap model dirancang dengan filosofi aerodinamika murni dan performa sirkuit.
+                                                </p>
+                                            </div>
+
+                                            <p class="text-muted small mb-4">
+                                                Lini produksinya terus menetapkan tolok ukur mesin supercar dunia, dari mahakarya V8 twin-turbo hingga sistem hibrida bertenaga 1.000 HP pada SF90 Stradale.
+                                            </p>
+                                        </div>
+
+                                        <a href="{{ url('/ferrari') }}" class="btn btn-racing w-100 py-2 d-flex justify-content-center align-items-center gap-2">
+                                            <span>Explore Complete Ferrari Lineup</span>
+                                            <i class="fa-solid fa-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Kolom Kanan: Headquarters & Museum -->
+                                <div class="col-lg-4 col-md-12 d-flex flex-column justify-content-between">
+                                    <div class="brand-hq-card h-100 d-flex flex-column justify-content-between p-3">
+                                        <div>
+                                            <div class="hq-image-wrapper rounded overflow-hidden mb-3 position-relative">
+                                                <img src="{{ asset('image/Ferrari SF90 Spider.jpg') }}" alt="Ferrari Maranello Headquarters" class="img-fluid w-100 h-100 object-fit-cover" style="height: 220px;">
+                                                <span class="hq-badge"><i class="fa-solid fa-building me-1"></i> Global Headquarters</span>
+                                            </div>
+
+                                            <h5 class="fw-bold brand-font text-white mb-2">Maranello Factory & Museum</h5>
+                                            <p class="text-muted small mb-2">
+                                                <i class="fa-solid fa-location-dot text-danger me-2"></i>
+                                                Via Abetone Inferiore n. 4, 41053 Maranello (MO), Italy.
+                                            </p>
+                                            <p class="text-secondary small">
+                                                Pusat riset teknologi F1, terowongan angin perancangan aerodinamika, dan jalur perakitan mesin legendaris V6, V8, serta V12 murni.
+                                            </p>
+                                        </div>
+
+                                        <div class="hq-footer-note p-2 rounded text-center small text-secondary border border-secondary border-opacity-25 bg-black bg-opacity-50">
+                                            <i class="fa-solid fa-circle-check text-success me-1"></i> Official Heritage & Factory Certified
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
-                            <span class="badge bg-secondary mb-2">JERMAN</span>
-                            <h3 class="fw-bold brand-font mb-2">MERCEDES-BENZ</h3>
-                            <p class="text-muted small">
-                                "The Best or Nothing" — Harmonisasi kemewahan kelas atas dan tenaga monster dari divisi AMG.
-                            </p>
                         </div>
-                        <a href="#" class="btn btn-outline-custom w-100 mt-3">
-                            Masuk Brand Mercedes <i class="fa-solid fa-arrow-right ms-2"></i>
-                        </a>
                     </div>
+
+                    <!-- ==================== SLIDE 2: LAMBORGHINI ==================== -->
+                    <div class="carousel-item">
+                        <div class="brand-spotlight-box glass-panel">
+                            <div class="row g-4 align-items-stretch">
+                                
+                                <!-- Kolom Kiri -->
+                                <div class="col-lg-3 col-md-4 d-flex flex-column justify-content-between">
+                                    <div class="brand-logo-card text-center p-4">
+                                        <div class="logo-glow-wrapper mb-2">
+                                            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/d/df/Lamborghini_Logo.svg/300px-Lamborghini_Logo.svg.png" alt="Lamborghini Logo" class="img-fluid brand-logo-img">
+                                        </div>
+                                        <h4 class="fw-bold brand-font text-white mb-0">LAMBORGHINI</h4>
+                                        <span class="badge bg-warning text-dark mt-1 tracking-wide">RAGING BULL</span>
+                                    </div>
+
+                                    <div class="brand-fact-stack d-flex flex-column gap-2 mt-3">
+                                        <div class="fact-box"><small class="text-muted d-block">Founded</small><span class="fw-bold text-white">1963 &bull; Sant'Agata</span></div>
+                                        <div class="fact-box"><small class="text-muted d-block">Founder</small><span class="fw-bold text-white">Ferruccio Lamborghini</span></div>
+                                        <div class="fact-box"><small class="text-muted d-block">Hallmark</small><span class="fw-bold text-warning">Naturally Aspirated V12</span></div>
+                                        <div class="fact-box"><small class="text-muted d-block">Signature Color</small><span class="fw-bold text-white"><i class="fa-solid fa-circle text-warning me-1"></i> Giallo Auge</span></div>
+                                    </div>
+                                </div>
+
+                                <!-- Kolom Tengah -->
+                                <div class="col-lg-5 col-md-8 d-flex flex-column justify-content-between">
+                                    <div class="brand-history-card p-4 h-100 d-flex flex-column justify-content-between">
+                                        <div>
+                                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                                <div>
+                                                    <h3 class="fw-bold brand-font text-white mb-0">Automobili Lamborghini</h3>
+                                                    <small class="text-warning fw-semibold">Toro Scatenato</small>
+                                                </div>
+                                                <span class="badge bg-black border border-secondary px-3 py-2 brand-font">EST. 1963</span>
+                                            </div>
+
+                                            <blockquote class="brand-quote text-secondary small fst-italic mb-3 ps-3 border-start border-warning border-2">
+                                                "When you enter a Lamborghini, you are entering an unapologetic piece of moving art."
+                                                <footer class="blockquote-footer text-muted mt-1">Ferruccio Lamborghini</footer>
+                                            </blockquote>
+
+                                            <div class="d-flex gap-3 align-items-start mb-3 archive-story-box p-2 rounded">
+                                                <div class="overflow-hidden rounded flex-shrink-0" style="width: 110px; height: 95px;">
+                                                    <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?w=300&auto=format&fit=crop&q=80" alt="Lamborghini Heritage" class="img-fluid w-100 h-100 object-fit-cover zoom-on-hover">
+                                                </div>
+                                                <p class="text-light small mb-0" style="line-height: 1.6;">
+                                                    Lahir dari tekad menantang batasan mobil sport Italia, Lamborghini menciptakan Miura pada tahun 1966—pelopor supercar bermesin tengah pertama di dunia yang mengubah lanskap desain otomotif selamanya.
+                                                </p>
+                                            </div>
+
+                                            <p class="text-muted small mb-4">
+                                                Dikenal dengan geometri tajam, pintu gunting ikonik, dan raungan mesin naturally-aspirated V12 legendaris dari Countach, Diablo, Aventador hingga Revuelto.
+                                            </p>
+                                        </div>
+
+                                        <a href="#" class="btn btn-outline-custom w-100 py-2 d-flex justify-content-center align-items-center gap-2">
+                                            <span>Explore Lamborghini Lineup</span>
+                                            <i class="fa-solid fa-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Kolom Kanan -->
+                                <div class="col-lg-4 col-md-12 d-flex flex-column justify-content-between">
+                                    <div class="brand-hq-card h-100 d-flex flex-column justify-content-between p-3">
+                                        <div>
+                                            <div class="hq-image-wrapper rounded overflow-hidden mb-3 position-relative">
+                                                <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=600&auto=format&fit=crop&q=80" alt="Lamborghini HQ" class="img-fluid w-100 h-100 object-fit-cover" style="height: 220px;">
+                                                <span class="hq-badge"><i class="fa-solid fa-building me-1"></i> Global Headquarters</span>
+                                            </div>
+
+                                            <h5 class="fw-bold brand-font text-white mb-2">Sant'Agata Bolognese</h5>
+                                            <p class="text-muted small mb-2">
+                                                <i class="fa-solid fa-location-dot text-danger me-2"></i>
+                                                Via Modena 12, 40019 Sant'Agata Bolognese (BO), Italy.
+                                            </p>
+                                            <p class="text-secondary small">
+                                                Pabrik utama perakitan tangan serat karbon (*handcrafted carbon fiber*) dan museum resmi Museo Automobili Lamborghini.
+                                            </p>
+                                        </div>
+
+                                        <div class="hq-footer-note p-2 rounded text-center small text-secondary border border-secondary border-opacity-25 bg-black bg-opacity-50">
+                                            <i class="fa-solid fa-circle-check text-success me-1"></i> Official Heritage & Factory Certified
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -243,9 +399,9 @@
             <div class="d-flex justify-content-between align-items-end mb-4">
                 <div>
                     <h6 class="text-danger fw-bold text-uppercase" style="letter-spacing: 2px;">Hall of Fame</h6>
-                    <h2 class="fw-bold brand-font mb-0">MOBIL ICONIC PILIHAN</h2>
+                    <h2 class="fw-bold brand-font mb-0">ICONIC PICKS</h2>
                 </div>
-                <span class="text-muted small d-none d-md-block">Spesifikasi Murni & Masterpiece</span>
+                <span class="text-muted small d-none d-md-block">Pure Performance & Timeless Engineering</span>
             </div>
 
             <div class="row g-4">
@@ -260,7 +416,7 @@
                             </div>
                             <h4 class="fw-bold brand-font text-white mb-3">Ferrari F40</h4>
                             <div class="row g-2">
-                                <div class="col-4"><div class="spec-box"><div class="spec-label">Tenaga</div><div class="spec-val">471 HP</div></div></div>
+                                <div class="col-4"><div class="spec-box"><div class="spec-label">Power</div><div class="spec-val">471 HP</div></div></div>
                                 <div class="col-4"><div class="spec-box"><div class="spec-label">0-100 km/h</div><div class="spec-val">4.1 s</div></div></div>
                                 <div class="col-4"><div class="spec-box"><div class="spec-label">Top Speed</div><div class="spec-val">324 km/h</div></div></div>
                             </div>
@@ -279,7 +435,7 @@
                             </div>
                             <h4 class="fw-bold brand-font text-white mb-3">LaFerrari</h4>
                             <div class="row g-2">
-                                <div class="col-4"><div class="spec-box"><div class="spec-label">Tenaga</div><div class="spec-val">950 HP</div></div></div>
+                                <div class="col-4"><div class="spec-box"><div class="spec-label">Power</div><div class="spec-val">950 HP</div></div></div>
                                 <div class="col-4"><div class="spec-box"><div class="spec-label">0-100 km/h</div><div class="spec-val">2.4 s</div></div></div>
                                 <div class="col-4"><div class="spec-box"><div class="spec-label">Top Speed</div><div class="spec-val">350 km/h</div></div></div>
                             </div>
@@ -298,7 +454,7 @@
                             </div>
                             <h4 class="fw-bold brand-font text-white mb-3">SF90 Spider</h4>
                             <div class="row g-2">
-                                <div class="col-4"><div class="spec-box"><div class="spec-label">Tenaga</div><div class="spec-val">986 HP</div></div></div>
+                                <div class="col-4"><div class="spec-box"><div class="spec-label">Power</div><div class="spec-val">986 HP</div></div></div>
                                 <div class="col-4"><div class="spec-box"><div class="spec-label">0-100 km/h</div><div class="spec-val">2.5 s</div></div></div>
                                 <div class="col-4"><div class="spec-box"><div class="spec-label">Top Speed</div><div class="spec-val">340 km/h</div></div></div>
                             </div>
@@ -318,21 +474,21 @@
                 <div class="row align-items-center">
                     <div class="col-lg-7">
                         <span class="badge bg-danger mb-2">HEAD-TO-HEAD</span>
-                        <h2 class="fw-bold brand-font mb-3">BANDINGKAN MOBIL IMPIAN</h2>
+                        <h2 class="fw-bold brand-font mb-3">BENCHMARK YOUR DREAM CARS</h2>
                         <p class="text-muted mb-4">
-                            Bandingkan spesifikasi mobil secara berdampingan mulai dari tenaga mesin, akselerasi, bobot, hingga kecepatan maksimal.
+                            Compare technical specifications side-by-side: from powertrain output, torque, and acceleration to curb weight and top speed.
                         </p>
                         <div class="d-flex flex-wrap gap-3">
-                            <span class="text-secondary small"><i class="fa-solid fa-check text-danger me-1"></i> Perbandingan Mesin</span>
-                            <span class="text-secondary small"><i class="fa-solid fa-check text-danger me-1"></i> Akselerasi 0-100 km/h</span>
+                            <span class="text-secondary small"><i class="fa-solid fa-check text-danger me-1"></i> Powertrain & Engine Output</span>
+                            <span class="text-secondary small"><i class="fa-solid fa-check text-danger me-1"></i> 0-100 km/h Acceleration</span>
                             <span class="text-secondary small"><i class="fa-solid fa-check text-danger me-1"></i> Power-to-Weight Ratio</span>
                         </div>
                     </div>
                     <div class="col-lg-5 text-center mt-4 mt-lg-0">
                         <div class="p-4 bg-dark rounded border border-secondary">
                             <div class="display-6 brand-font fw-bold text-danger mb-3">VS</div>
-                            <p class="small text-secondary mb-3">Pilih 2 hingga 3 mobil dari berbagai brand</p>
-                            <a href="#" class="btn btn-racing w-100">Buka Tool Komparasi</a>
+                            <p class="small text-secondary mb-3">Select 2 to 3 vehicles across multiple marques</p>
+                            <a href="#" class="btn btn-racing w-100">Launch Comparison Tool</a>
                         </div>
                     </div>
                 </div>
@@ -349,7 +505,7 @@
                 <div class="col-md-8">
                     <h6 class="text-danger fw-bold text-uppercase" style="letter-spacing: 2px;">Exclusive Privilege</h6>
                     <h2 class="fw-bold brand-font">AUTOMOBILLI CLUB MEMBERSHIP</h2>
-                    <p class="text-muted">Akses fitur eksklusif untuk para antusias mobil sejati.</p>
+                    <p class="text-muted">Unlock exclusive privileges curated for true automotive purists.</p>
                 </div>
             </div>
 
@@ -358,29 +514,29 @@
                     <div class="custom-card p-4 text-center h-100">
                         <i class="fa-solid fa-warehouse fa-3x text-danger mb-3"></i>
                         <h5 class="fw-bold brand-font">Virtual Garage</h5>
-                        <p class="text-muted small">Pajang mobil koleksi atau hasil modifikasi Anda lengkap dengan detail spesifikasi custom.</p>
+                        <p class="text-muted small">Showcase your personal collection or custom builds with detailed tuning specifications.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="custom-card p-4 text-center h-100">
                         <i class="fa-solid fa-file-pdf fa-3x text-danger mb-3"></i>
-                        <h5 class="fw-bold brand-font">Download Katalog PDF</h5>
-                        <p class="text-muted small">Unduh brosur dan lembar spesifikasi resmi mobil beresolusi tinggi langsung dalam format PDF.</p>
+                        <h5 class="fw-bold brand-font">Download PDF Brochures</h5>
+                        <p class="text-muted small">Download high-resolution official spec sheets and manufacturer brochures directly in PDF format.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="custom-card p-4 text-center h-100">
                         <i class="fa-solid fa-chart-line fa-3x text-danger mb-3"></i>
                         <h5 class="fw-bold brand-font">Advanced Analytics</h5>
-                        <p class="text-muted small">Analisis kurva tenaga, dyno graph, dan komparasi tanpa batas antar varian mobil.</p>
+                        <p class="text-muted small">Analyze power delivery curves, dyno charts, and unlock unlimited multi-car comparisons.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Tombol Floating Back to Top -->
-    <a href="#top" class="btn-scroll-top" title="Kembali ke atas">
+    <!-- Floating Back to Top Button -->
+    <a href="#top" class="btn-scroll-top" title="Back to top">
         <i class="fa-solid fa-arrow-up"></i>
     </a>
 

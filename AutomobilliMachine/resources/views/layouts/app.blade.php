@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,13 +12,16 @@
     <!-- Bootstrap 5 CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- CSS Proyek Terpisah -->
+    <!-- Favicon -->
+    <link rel="icon" href="{{ asset('image/Favicon/Favicon.jpg') }}" type="image/jpg">
+
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('css/mainmenu.css') }}">
     @stack('styles')
 </head>
 <body>
 
-    {{-- Konten Dinamis --}}
+    {{-- Dynamic Content --}}
     <main>
         @yield('content')
     </main>
@@ -29,7 +32,7 @@
     <!-- Bootstrap 5 JS Bundle CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- JS Proyek Terpisah -->
+    <!-- Custom JS -->
     <script src="{{ asset('js/mainmenu.js') }}"></script>
     @stack('scripts')
 </body>

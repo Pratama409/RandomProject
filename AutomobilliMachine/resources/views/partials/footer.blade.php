@@ -3,6 +3,6 @@
         <div class="brand-font fw-bold text-white mb-2 fs-6">
             <i class="fa-solid fa-gauge-high text-danger me-2"></i>AUTOMOBILLI MACHINE
         </div>
-        <p class="mb-0 text-secondary">&copy; {{ date('Y') }} AutomobilliMachine. Dibuat untuk eksplorasi dan riset otomotif.</p>
+        <p class="mb-0 text-secondary">&copy; {{ date('Y') }} AutomobilliMachine. Engineered for automotive exploration and benchmark research.</p>
     </div>
 </footer>
