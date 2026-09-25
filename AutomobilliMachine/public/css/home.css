@@ -1117,3 +1117,202 @@ footer {
         height: 120px !important;
     }
 }
+
+
+/* =======================================================
+   9. ANDROID MOBILE - FINAL LAYOUT TUNING
+   Preserve desktop layout; compact mobile without stacking
+   the three brand panels vertically.
+   ======================================================= */
+
+@media (max-width: 767.98px) {
+
+    /* ---------- HERO: bring the angled car gallery back ---------- */
+    .hero-visual-fullscreen {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .angled-gallery {
+        top: 50%;
+        left: 68%;
+        width: 160vw;
+        height: 150svh;
+        gap: .65rem;
+        transform: translate(-50%, -50%) rotate(-20deg);
+        opacity: .82;
+    }
+
+    .gallery-col {
+        gap: .65rem;
+    }
+
+    .col-offset-1 { margin-top: -3.5rem; }
+    .col-offset-2 { margin-top: 2rem; }
+    .col-offset-3 { margin-top: -2.5rem; }
+
+    .showcase-card {
+        width: 120px;
+        height: 175px;
+        border-radius: 11px;
+        box-shadow: 0 12px 26px rgba(0, 0, 0, .72);
+    }
+
+    .hero-backdrop-overlay {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(8, 9, 13, .82) 0%,
+                rgba(8, 9, 13, .58) 52%,
+                rgba(8, 9, 13, .38) 100%
+            );
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 5;
+        background: linear-gradient(
+            90deg,
+            rgba(8, 9, 13, .35) 0%,
+            rgba(8, 9, 13, .10) 60%,
+            transparent 100%
+        );
+    }
+
+    /* ---------- FEATURED MARQUES: horizontal mobile panels ---------- */
+    .brand-spotlight-box {
+        padding: 12px;
+        overflow: hidden;
+        height: auto !important;
+    }
+
+    .brand-spotlight-box > .row {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        align-items: stretch !important;
+        gap: .75rem;
+        margin: 0 !important;
+        padding: 0 0 .35rem !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .brand-spotlight-box > .row::-webkit-scrollbar {
+        display: none;
+    }
+
+    .brand-spotlight-box > .row > [class*="col-"] {
+        flex: 0 0 88% !important;
+        width: 88% !important;
+        max-width: 88% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        scroll-snap-align: start;
+    }
+
+    /* Reset desktop equal-height behavior on mobile */
+    .brand-spotlight-box .h-100,
+    .brand-spotlight-box .brand-history-card,
+    .brand-spotlight-box .brand-hq-card,
+    .brand-spotlight-box .brand-logo-card {
+        height: auto !important;
+        min-height: 0 !important;
+    }
+
+    /* Compact first panel: logo + facts stay together */
+    .brand-logo-card {
+        height: 150px !important;
+        min-height: 150px !important;
+        margin-bottom: .6rem !important;
+    }
+
+    .brand-fact-stack {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        gap: .5rem !important;
+    }
+
+    .fact-box {
+        min-height: 60px;
+    }
+
+    /* Compact history panel */
+    .brand-history-card {
+        padding: 13px !important;
+    }
+
+    .brand-history-card .archive-story-box > div {
+        width: 105px !important;
+        height: 90px !important;
+        margin-bottom: 0 !important;
+    }
+
+    .brand-history-card .archive-story-box {
+        display: flex !important;
+        gap: .65rem !important;
+    }
+
+    .brand-history-card .archive-story-box p {
+        font-size: .71rem !important;
+        line-height: 1.48 !important;
+    }
+
+    /* Compact HQ panel */
+    .brand-hq-card {
+        padding: 13px !important;
+    }
+
+    .hq-image-wrapper img {
+        height: 145px !important;
+    }
+
+    .brand-hq-card p {
+        font-size: .69rem !important;
+        line-height: 1.48;
+    }
+
+    /* Keep the existing nav buttons visible and inside the card */
+    .brand-nav-btn {
+        width: 38px;
+        height: 38px;
+        font-size: .88rem;
+    }
+
+    .brand-nav-btn.nav-prev { left: 4px; }
+    .brand-nav-btn.nav-next { right: 4px; }
+}
+
+@media (max-width: 390px) {
+
+    .angled-gallery {
+        left: 72%;
+        width: 150vw;
+        opacity: .78;
+    }
+
+    .showcase-card {
+        width: 108px;
+        height: 158px;
+    }
+
+    .brand-spotlight-box > .row > [class*="col-"] {
+        flex-basis: 91% !important;
+        width: 91% !important;
+        max-width: 91% !important;
+    }
+
+    .brand-logo-card {
+        height: 145px !important;
+        min-height: 145px !important;
+    }
+
+    .brand-history-card .archive-story-box > div {
+        width: 95px !important;
+        height: 82px !important;
+    }
+}
