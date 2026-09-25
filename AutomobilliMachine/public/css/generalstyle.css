@@ -721,3 +721,60 @@ footer p {
     height: 230px;
   }
 }
+
+@media screen and (max-width: 480px) {
+  .model-content .specification {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    align-items: stretch;
+    margin-top: 16px;
+    padding-top: 16px;
+  }
+
+  .model-content .specification > div {
+    min-width: 0;
+    min-height: 64px;
+    padding: 9px 6px;
+    border-radius: 9px;
+    background-color: #171922;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .model-content .specification span {
+    font-size: 9px;
+    line-height: 1.2;
+    margin-bottom: 5px;
+    white-space: nowrap;
+  }
+
+  .model-content .specification strong {
+    font-size: 14px;
+    line-height: 1.15;
+    white-space: nowrap;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .model-content .specification {
+    gap: 6px;
+  }
+
+  .model-content .specification > div {
+    min-height: 62px;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
+  .model-content .specification span {
+    font-size: 8px;
+  }
+
+  .model-content .specification strong {
+    font-size: 13px;
+  }
+}
