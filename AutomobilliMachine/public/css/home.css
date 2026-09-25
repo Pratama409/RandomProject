@@ -1,578 +1,14 @@
-/* =======================================================
-   AUTOMOBILLI MACHINE - COMPLETE STYLING
-   ======================================================= */
-
-:root {
-    --primary-accent: #e50914;
-    --primary-hover: #b80710;
-    --bg-dark: #0a0a0c;
-    --card-bg: #141418;
-    --card-border: #26262e;
-    --text-muted: #8e8e9c;
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-html { scroll-behavior: smooth; }
-
-body {
-    font-family: 'Montserrat', 'Plus Jakarta Sans', sans-serif;
-    background-color: var(--bg-dark);
-    color: #ffffff;
-    min-height: 100vh;
-    overflow-x: hidden;
-}
-
-img { max-width: 100%; }
-
-.brand-font {
-    font-family: 'Orbitron', sans-serif;
-    letter-spacing: 1.5px;
-}
-
-.tracking-wide { letter-spacing: 2px; }
+undefined
 
 /* =======================================================
-   1. HERO SECTION
-   ======================================================= */
-
-.hero-wrapper {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    overflow: hidden;
-    background-color: #0b0c10;
-}
-
-.hero-visual-fullscreen {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 1;
-    pointer-events: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.hero-backdrop-overlay {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 50% 50%, rgba(11,12,16,.90) 0%, rgba(11,12,16,.70) 50%, rgba(11,12,16,.45) 100%);
-    z-index: 2;
-}
-
-.angled-gallery {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(-25deg);
-    width: 180vw;
-    height: 240vh;
-    display: flex;
-    gap: 2.2rem;
-    justify-content: center;
-    align-items: center;
-    pointer-events: auto;
-    z-index: 1;
-}
-
-.gallery-col {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    will-change: transform;
-    transition: transform .1s ease-out;
-}
-
-.col-offset-1 { margin-top: -8rem; }
-.col-offset-2 { margin-top: 4rem; }
-.col-offset-3 { margin-top: -6rem; }
-
-.showcase-card {
-    width: 300px;
-    height: 420px;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 25px 50px rgba(0,0,0,.85);
-    flex-shrink: 0;
-    background-color: #15171e;
-    transition: transform .3s ease;
-}
-
-.showcase-card:hover { transform: scale(1.03); }
-
-.showcase-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 5;
-    min-height: 100vh;
-    max-width: 780px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 7rem 4rem 6rem 6rem;
-    background: transparent;
-}
-
-.hero-title {
-    font-size: 3.8rem;
-    font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: -.02em;
-    margin-bottom: 1.5rem;
-    text-shadow: 0 4px 20px rgba(0,0,0,.7);
-}
-
-.hero-title span {
-    display: block;
-    font-weight: 300;
-    color: #e2e8f0;
-}
-
-.hero-desc {
-    font-size: 1.15rem;
-    line-height: 1.7;
-    color: #cbd5e1;
-    max-width: 540px;
-    margin-bottom: 2.5rem;
-    text-shadow: 0 2px 10px rgba(0,0,0,.8);
-}
-
-.hero-actions {
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-    margin-bottom: 3.5rem;
-}
-
-.btn-primary {
-    background-color: var(--primary-accent);
-    color: #fff;
-    font-weight: 700;
-    font-size: .95rem;
-    padding: .95rem 2.2rem;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: all .25s ease;
-    display: inline-block;
-    border: none;
-    box-shadow: 0 4px 20px rgba(229,9,20,.4);
-}
-
-.btn-primary:hover {
-    background-color: var(--primary-hover);
-    color: #fff;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(229,9,20,.6);
-}
-
-.btn-outline {
-    background-color: rgba(255,255,255,.08);
-    backdrop-filter: blur(8px);
-    color: #fff;
-    font-weight: 600;
-    font-size: .95rem;
-    padding: .9rem 2.2rem;
-    border: 1.5px solid rgba(255,255,255,.4);
-    border-radius: 8px;
-    text-decoration: none;
-    transition: all .25s ease;
-    display: inline-block;
-}
-
-.btn-outline:hover {
-    border-color: #fff;
-    background-color: rgba(255,255,255,.2);
-    color: #fff;
-    transform: translateY(-2px);
-}
-
-.scroll-indicator {
-    width: 24px;
-    height: 40px;
-    border: 2px solid rgba(255,255,255,.6);
-    border-radius: 20px;
-    position: relative;
-}
-
-.scroll-indicator::after {
-    content: '';
-    position: absolute;
-    top: 6px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 4px;
-    height: 7px;
-    background-color: #fff;
-    border-radius: 2px;
-    animation: scrollAnim 1.6s infinite ease-in-out;
-}
-
-@keyframes scrollAnim {
-    0% { opacity: 1; transform: translate(-50%,0); }
-    50% { opacity: .3; transform: translate(-50%,12px); }
-    100% { opacity: 1; transform: translate(-50%,0); }
-}
-
-/* =======================================================
-   2. NAVBAR
-   ======================================================= */
-
-.navbar-custom {
-    background-color: rgba(12,13,18,.95);
-    backdrop-filter: blur(12px);
-    border-top: 1px solid rgba(255,255,255,.08);
-    border-bottom: 1px solid rgba(255,255,255,.08);
-    z-index: 1000;
-    transition: all .3s ease;
-}
-
-.navbar-custom.scrolled {
-    background-color: rgba(10,10,12,.98);
-    box-shadow: 0 4px 20px rgba(0,0,0,.8);
-}
-
-.btn-racing {
-    background-color: var(--primary-accent);
-    color: #fff;
-    font-weight: 600;
-    border-radius: 6px;
-    padding: 12px 28px;
-    transition: all .3s ease;
-    border: none;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.btn-outline-custom {
-    border: 1px solid rgba(255,255,255,.25);
-    color: #fff;
-    font-weight: 600;
-    border-radius: 6px;
-    padding: 12px 28px;
-    transition: all .3s ease;
-    text-decoration: none;
-    display: inline-block;
-}
-
-/* =======================================================
-   3. ENGINEERED FOR PASSION
-   ======================================================= */
-
-.transition-banner {
-    position: relative;
-    z-index: 10;
-    background: linear-gradient(180deg,#0c0d12 0%,#08090b 100%);
-    border-top: 1px solid rgba(255,255,255,.08);
-    border-bottom: 1px solid rgba(255,255,255,.06);
-    padding: 85px 0 75px;
-    box-shadow: 0 -20px 40px rgba(0,0,0,.85);
-}
-
-.transition-desc {
-    max-width: 680px;
-    line-height: 1.7;
-}
-
-.transition-feature {
-    background-color: rgba(20,22,31,.7);
-    border: 1px solid rgba(255,255,255,.08);
-    border-radius: 8px;
-    padding: 12px 16px;
-    font-size: .9rem;
-    font-weight: 600;
-    color: #e2e8f0;
-    transition: all .25s ease;
-}
-
-/* =======================================================
-   4. BRAND SPOTLIGHT SLIDER
-   ======================================================= */
-
-.brand-slider-section {
-    position: relative;
-    z-index: 10;
-    background-color: var(--bg-dark);
-    border-bottom: 1px solid rgba(255,255,255,.08);
-    width: 100%;
-}
-
-.brand-slider-wrapper {
-    position: relative;
-    width: 100%;
-}
-
-.brand-swiper {
-    width: 100%;
-    overflow: hidden;
-    border-radius: 20px;
-}
-
-.brand-swiper .swiper-wrapper {
-    display: flex !important;
-    align-items: stretch !important;
-}
-
-.brand-swiper .swiper-slide {
-    width: 100% !important;
-    height: auto !important;
-    display: flex !important;
-    opacity: 1 !important;
-    transform: none !important;
-    cursor: grab;
-}
-
-.brand-spotlight-box {
-    border-radius: 20px;
-    padding: 36px 40px;
-    width: 100% !important;
-    height: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-between !important;
-}
-
-.glass-panel {
-    background: rgba(18,20,28,.9) !important;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255,255,255,.1);
-}
-
-.brand-swiper img,
-.brand-swiper a,
-.brand-swiper h3,
-.brand-swiper h4,
-.brand-swiper h5,
-.brand-swiper p {
-    -webkit-user-drag: none !important;
-    user-drag: none !important;
-    user-select: none;
-    -webkit-user-select: none;
-}
-
-.brand-nav-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 54px;
-    height: 54px;
-    background: rgba(20,24,34,.85);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1.5px solid rgba(255,255,255,.15);
-    border-radius: 50%;
-    color: #fff;
-    font-size: 1.25rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 30;
-    box-shadow: 0 10px 30px rgba(0,0,0,.7);
-}
-
-.brand-nav-btn.nav-prev { left: -27px; }
-.brand-nav-btn.nav-next { right: -27px; }
-
-.brand-logo-card {
-    height: 220px !important;
-    width: 100% !important;
-    background: rgba(14,16,22,.7);
-    border: 1px solid rgba(255,255,255,.06);
-    border-radius: 14px;
-    padding: 20px 16px 18px;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-}
-
-.logo-emblem-slot {
-    height: 110px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.logo-emblem-slot img {
-    max-height: 95px;
-    max-width: 100%;
-    width: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 6px 14px rgba(0,0,0,.7));
-}
-
-.logo-wordmark-slot {
-    height: 50px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: auto;
-    padding-top: 6px;
-}
-
-.logo-wordmark-slot img {
-    max-height: 32px;
-    max-width: 82%;
-    width: auto;
-    object-fit: contain;
-}
-
-.brand-history-card,
-.brand-hq-card {
-    background: rgba(14,16,22,.7);
-    border: 1px solid rgba(255,255,255,.06);
-    border-radius: 14px;
-    height: 100%;
-}
-
-.fact-box {
-    background-color: #14161f;
-    border: 1px solid rgba(255,255,255,.06);
-    border-radius: 8px;
-    padding: 10px 14px;
-    font-size: .85rem;
-}
-
-.archive-story-box {
-    background: rgba(255,255,255,.03);
-    border: 1px solid rgba(255,255,255,.05);
-}
-
-.hq-image-wrapper { position: relative; }
-
-.hq-badge {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    background: rgba(10,10,12,.85);
-    backdrop-filter: blur(8px);
-    color: #fff;
-    font-size: .75rem;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 6px;
-    border: 1px solid rgba(255,255,255,.15);
-}
-
-/* =======================================================
-   5. LOWER SECTIONS
-   ======================================================= */
-
-.solid-content-section {
-    position: relative;
-    z-index: 10;
-    background-color: var(--bg-dark);
-    border-bottom: 1px solid rgba(255,255,255,.06);
-}
-
-.custom-card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 12px;
-    transition: all .35s cubic-bezier(.2,.8,.2,1);
-    overflow: hidden;
-}
-
-.spec-box {
-    background-color: #1a1a22;
-    border-radius: 8px;
-    padding: 10px;
-    text-align: center;
-}
-
-.spec-label {
-    font-size: .72rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-}
-
-.spec-val {
-    font-size: .95rem;
-    font-weight: 700;
-    color: #fff;
-}
-
-.compare-teaser {
-    background: linear-gradient(135deg,#181822 0%,#111116 100%);
-    border: 1px dashed #3a3a46;
-    border-radius: 16px;
-    padding: 40px;
-}
-
-.btn-scroll-top {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    width: 48px;
-    height: 48px;
-    background-color: var(--primary-accent);
-    color: #fff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    font-size: 1.25rem;
-    font-weight: bold;
-    box-shadow: 0 4px 20px rgba(0,0,0,.5);
-    opacity: 0;
-    visibility: hidden;
-    transition: all .3s ease;
-    z-index: 100;
-}
-
-.btn-scroll-top.show {
-    opacity: 1;
-    visibility: visible;
-}
-
-footer {
-    position: relative;
-    z-index: 20;
-    background-color: #07080a !important;
-}
-
-/* =======================================================
-   6. TABLET
-   ======================================================= */
-
-@media (max-width: 991.98px) {
-    .brand-spotlight-box {
-        padding: 28px 22px;
-    }
-
-    .brand-nav-btn {
-        width: 44px;
-        height: 44px;
-        font-size: 1.05rem;
-    }
-
-    .brand-nav-btn.nav-prev { left: 8px; }
-    .brand-nav-btn.nav-next { right: 8px; }
-}
-
-/* =======================================================
-   7. ANDROID / MOBILE
-   Jangan mengubah layout desktop.
+   7. ANDROID / MOBILE OVERRIDES
+   Desktop styles above intentionally remain unchanged.
    ======================================================= */
 
 @media (max-width: 767.98px) {
-    html, body {
+
+    html,
+    body {
         width: 100%;
         max-width: 100%;
         overflow-x: hidden;
@@ -587,7 +23,7 @@ footer {
         height: 100%;
     }
 
-    /* Gallery diperkecil dan dibuat lebih transparan agar teks tetap menjadi fokus */
+    /* Keep the diagonal-gallery idea, but scale it for narrow screens. */
     .angled-gallery {
         top: 52%;
         left: 58%;
@@ -598,7 +34,9 @@ footer {
         opacity: .62;
     }
 
-    .gallery-col { gap: .9rem; }
+    .gallery-col {
+        gap: .9rem;
+    }
 
     .col-offset-1 { margin-top: -4rem; }
     .col-offset-2 { margin-top: 2rem; }
@@ -608,15 +46,15 @@ footer {
         width: 145px;
         height: 210px;
         border-radius: 13px;
-        box-shadow: 0 15px 30px rgba(0,0,0,.75);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, .75);
     }
 
     .hero-backdrop-overlay {
         background: linear-gradient(
             90deg,
-            rgba(8,9,13,.96) 0%,
-            rgba(8,9,13,.84) 45%,
-            rgba(8,9,13,.62) 100%
+            rgba(8, 9, 13, .96) 0%,
+            rgba(8, 9, 13, .84) 45%,
+            rgba(8, 9, 13, .62) 100%
         );
     }
 
@@ -739,8 +177,8 @@ footer {
     }
 
     .brand-slider-section > .container {
-        padding-left: 0.9rem;
-        padding-right: 0.9rem;
+        padding-left: .9rem;
+        padding-right: .9rem;
     }
 
     .brand-slider-section .display-5 {
@@ -752,10 +190,6 @@ footer {
         font-size: .78rem !important;
         line-height: 1.55;
         padding: 0 .45rem;
-    }
-
-    .brand-slider-wrapper {
-        padding: 0;
     }
 
     .brand-swiper {
@@ -773,7 +207,7 @@ footer {
         --bs-gutter-y: .75rem;
     }
 
-    /* Ketiga kolom desktop menjadi satu kolom di Android */
+    /* Desktop 3-column brand layout becomes a single readable column. */
     .brand-swiper .col-lg-3,
     .brand-swiper .col-lg-5,
     .brand-swiper .col-lg-4,
@@ -809,6 +243,7 @@ footer {
         max-width: 72%;
     }
 
+    /* Facts become a compact 2 x 2 grid instead of four tall rows. */
     .brand-fact-stack {
         display: grid !important;
         grid-template-columns: 1fr 1fr;
@@ -913,25 +348,24 @@ footer {
         margin-top: .8rem;
     }
 
-    /* Tombol slider tidak lagi menekan isi */
+    /* Keep slider controls inside the viewport on narrow phones. */
     .brand-nav-btn {
         width: 38px;
         height: 38px;
         font-size: .9rem;
-        background: rgba(10,12,18,.92);
+        background: rgba(10, 12, 18, .92);
     }
 
     .brand-nav-btn.nav-prev { left: 5px; }
     .brand-nav-btn.nav-next { right: 5px; }
 
-    /* Hindari content melebar karena Bootstrap row/margin atau inline elements */
+    /* Prevent Bootstrap rows/columns from creating horizontal overflow. */
     .brand-slider-section .row,
     .brand-slider-section [class*="col-"],
     .brand-slider-section .swiper-slide > * {
         max-width: 100%;
     }
 
-    /* Touch target dan floating button */
     .btn-scroll-top {
         width: 42px;
         height: 42px;
@@ -946,6 +380,7 @@ footer {
    ======================================================= */
 
 @media (max-width: 390px) {
+
     .hero-content {
         padding-left: 1rem;
         padding-right: 1rem;
