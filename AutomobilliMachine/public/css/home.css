@@ -3,7 +3,7 @@
    ======================================================= */
 
 :root {
-    --primary-accent: #e50914;      /* Racing Red */
+    --primary-accent: #e50914;
     --primary-hover: #b80710;
     --bg-dark: #0a0a0c;
     --card-bg: #141418;
@@ -11,15 +11,9 @@
     --text-muted: #8e8e9c;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-html {
-    scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
     font-family: 'Montserrat', 'Plus Jakarta Sans', sans-serif;
@@ -29,18 +23,19 @@ body {
     overflow-x: hidden;
 }
 
+img { max-width: 100%; }
+
 .brand-font {
     font-family: 'Orbitron', sans-serif;
     letter-spacing: 1.5px;
 }
 
-.tracking-wide {
-    letter-spacing: 2px;
-}
+.tracking-wide { letter-spacing: 2px; }
 
 /* =======================================================
-   1. HERO SECTION: FULL SCREEN BACKGROUND (CENTERED)
+   1. HERO SECTION
    ======================================================= */
+
 .hero-wrapper {
     position: relative;
     width: 100%;
@@ -49,11 +44,9 @@ body {
     background-color: #0b0c10;
 }
 
-/* Visual Gambar: Terkunci Rapat di Hero (Tidak Bocor ke Bawah) */
 .hero-visual-fullscreen {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -66,15 +59,13 @@ body {
 
 .hero-backdrop-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 50% 50%, rgba(11, 12, 16, 0.90) 0%, rgba(11, 12, 16, 0.70) 50%, rgba(11, 12, 16, 0.45) 100%);
+    background: radial-gradient(circle at 50% 50%, rgba(11,12,16,.90) 0%, rgba(11,12,16,.70) 50%, rgba(11,12,16,.45) 100%);
     z-index: 2;
 }
 
-/* GALERI MOBIL MIRING: TEPAT SIMETRIS DI TENGAH LAYAR */
 .angled-gallery {
     position: absolute;
     top: 50%;
@@ -95,7 +86,7 @@ body {
     flex-direction: column;
     gap: 2rem;
     will-change: transform;
-    transition: transform 0.1s ease-out;
+    transition: transform .1s ease-out;
 }
 
 .col-offset-1 { margin-top: -8rem; }
@@ -107,15 +98,13 @@ body {
     height: 420px;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.85);
+    box-shadow: 0 25px 50px rgba(0,0,0,.85);
     flex-shrink: 0;
     background-color: #15171e;
-    transition: transform 0.3s ease;
+    transition: transform .3s ease;
 }
 
-.showcase-card:hover {
-    transform: scale(1.03);
-}
+.showcase-card:hover { transform: scale(1.03); }
 
 .showcase-card img {
     width: 100%;
@@ -140,9 +129,9 @@ body {
     font-size: 3.8rem;
     font-weight: 700;
     line-height: 1.15;
-    letter-spacing: -0.02em;
+    letter-spacing: -.02em;
     margin-bottom: 1.5rem;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+    text-shadow: 0 4px 20px rgba(0,0,0,.7);
 }
 
 .hero-title span {
@@ -157,7 +146,7 @@ body {
     color: #cbd5e1;
     max-width: 540px;
     margin-bottom: 2.5rem;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    text-shadow: 0 2px 10px rgba(0,0,0,.8);
 }
 
 .hero-actions {
@@ -169,58 +158,52 @@ body {
 
 .btn-primary {
     background-color: var(--primary-accent);
-    color: #ffffff;
+    color: #fff;
     font-weight: 700;
-    font-size: 0.95rem;
-    padding: 0.95rem 2.2rem;
+    font-size: .95rem;
+    padding: .95rem 2.2rem;
     border-radius: 8px;
     text-decoration: none;
-    transition: all 0.25s ease;
+    transition: all .25s ease;
     display: inline-block;
     border: none;
-    box-shadow: 0 4px 20px rgba(229, 9, 20, 0.4);
+    box-shadow: 0 4px 20px rgba(229,9,20,.4);
 }
 
 .btn-primary:hover {
     background-color: var(--primary-hover);
-    color: #ffffff;
+    color: #fff;
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(229, 9, 20, 0.6);
+    box-shadow: 0 8px 25px rgba(229,9,20,.6);
 }
 
 .btn-outline {
-    background-color: rgba(255, 255, 255, 0.08);
+    background-color: rgba(255,255,255,.08);
     backdrop-filter: blur(8px);
-    color: #ffffff;
+    color: #fff;
     font-weight: 600;
-    font-size: 0.95rem;
-    padding: 0.9rem 2.2rem;
-    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    font-size: .95rem;
+    padding: .9rem 2.2rem;
+    border: 1.5px solid rgba(255,255,255,.4);
     border-radius: 8px;
     text-decoration: none;
-    transition: all 0.25s ease;
+    transition: all .25s ease;
     display: inline-block;
 }
 
 .btn-outline:hover {
-    border-color: #ffffff;
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #ffffff;
+    border-color: #fff;
+    background-color: rgba(255,255,255,.2);
+    color: #fff;
     transform: translateY(-2px);
 }
 
 .scroll-indicator {
     width: 24px;
     height: 40px;
-    border: 2px solid rgba(255, 255, 255, 0.6);
+    border: 2px solid rgba(255,255,255,.6);
     border-radius: 20px;
     position: relative;
-    cursor: pointer;
-    transition: border-color 0.2s ease;
-}
-
-.scroll-indicator:hover {
-    border-color: var(--primary-accent);
 }
 
 .scroll-indicator::after {
@@ -231,81 +214,70 @@ body {
     transform: translateX(-50%);
     width: 4px;
     height: 7px;
-    background-color: #ffffff;
+    background-color: #fff;
     border-radius: 2px;
     animation: scrollAnim 1.6s infinite ease-in-out;
 }
 
 @keyframes scrollAnim {
-    0% { opacity: 1; transform: translate(-50%, 0); }
-    50% { opacity: 0.3; transform: translate(-50%, 12px); }
-    100% { opacity: 1; transform: translate(-50%, 0); }
+    0% { opacity: 1; transform: translate(-50%,0); }
+    50% { opacity: .3; transform: translate(-50%,12px); }
+    100% { opacity: 1; transform: translate(-50%,0); }
 }
 
 /* =======================================================
-   2. NAVBAR CUSTOM (STICKY DI BAWAH HERO)
+   2. NAVBAR
    ======================================================= */
+
 .navbar-custom {
-    background-color: rgba(12, 13, 18, 0.95);
+    background-color: rgba(12,13,18,.95);
     backdrop-filter: blur(12px);
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(255,255,255,.08);
+    border-bottom: 1px solid rgba(255,255,255,.08);
     z-index: 1000;
-    transition: all 0.3s ease;
+    transition: all .3s ease;
 }
 
 .navbar-custom.scrolled {
-    background-color: rgba(10, 10, 12, 0.98);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+    background-color: rgba(10,10,12,.98);
+    box-shadow: 0 4px 20px rgba(0,0,0,.8);
 }
 
 .btn-racing {
     background-color: var(--primary-accent);
-    color: #ffffff;
+    color: #fff;
     font-weight: 600;
     border-radius: 6px;
     padding: 12px 28px;
-    transition: all 0.3s ease;
+    transition: all .3s ease;
     border: none;
     text-decoration: none;
     display: inline-block;
 }
 
-.btn-racing:hover {
-    background-color: var(--primary-hover);
-    color: #ffffff;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(229, 9, 20, 0.4);
-}
-
 .btn-outline-custom {
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    color: #ffffff;
+    border: 1px solid rgba(255,255,255,.25);
+    color: #fff;
     font-weight: 600;
     border-radius: 6px;
     padding: 12px 28px;
-    transition: all 0.3s ease;
+    transition: all .3s ease;
     text-decoration: none;
     display: inline-block;
 }
 
-.btn-outline-custom:hover {
-    border-color: #ffffff;
-    background: rgba(255, 255, 255, 0.08);
-    color: #ffffff;
-}
-
 /* =======================================================
-   3. SEKSI TRANSISI: ENGINEERED FOR PASSION
+   3. ENGINEERED FOR PASSION
    ======================================================= */
+
 .transition-banner {
     position: relative;
     z-index: 10;
-    background: linear-gradient(180deg, #0c0d12 0%, #08090b 100%);
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    background: linear-gradient(180deg,#0c0d12 0%,#08090b 100%);
+    border-top: 1px solid rgba(255,255,255,.08);
+    border-bottom: 1px solid rgba(255,255,255,.06);
     padding: 85px 0 75px;
-    box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.85);
+    box-shadow: 0 -20px 40px rgba(0,0,0,.85);
 }
 
 .transition-desc {
@@ -314,30 +286,25 @@ body {
 }
 
 .transition-feature {
-    background-color: rgba(20, 22, 31, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: rgba(20,22,31,.7);
+    border: 1px solid rgba(255,255,255,.08);
     border-radius: 8px;
     padding: 12px 16px;
-    font-size: 0.9rem;
+    font-size: .9rem;
     font-weight: 600;
     color: #e2e8f0;
-    transition: all 0.25s ease;
-}
-
-.transition-feature:hover {
-    border-color: var(--primary-accent);
-    transform: translateY(-2px);
-    background-color: #161822;
+    transition: all .25s ease;
 }
 
 /* =======================================================
-   4. BRAND SPOTLIGHT SLIDER (SEJAJAR PRESISI SAMA TINGGI)
+   4. BRAND SPOTLIGHT SLIDER
    ======================================================= */
+
 .brand-slider-section {
     position: relative;
     z-index: 10;
     background-color: var(--bg-dark);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255,255,255,.08);
     width: 100%;
 }
 
@@ -346,7 +313,6 @@ body {
     width: 100%;
 }
 
-/* Swiper Container: Samping Bersih & Mengunci Semua Slide Sama Tinggi */
 .brand-swiper {
     width: 100%;
     overflow: hidden;
@@ -367,10 +333,6 @@ body {
     cursor: grab;
 }
 
-.brand-swiper .swiper-slide:active {
-    cursor: grabbing;
-}
-
 .brand-spotlight-box {
     border-radius: 20px;
     padding: 36px 40px;
@@ -379,17 +341,15 @@ body {
     display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
-    margin: 0;
 }
 
 .glass-panel {
-    background: rgba(18, 20, 28, 0.9) !important;
+    background: rgba(18,20,28,.9) !important;
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255,255,255,.1);
 }
 
-/* Matikan drag bawaan gambar */
 .brand-swiper img,
 .brand-swiper a,
 .brand-swiper h3,
@@ -402,87 +362,41 @@ body {
     -webkit-user-select: none;
 }
 
-/* =======================================================
-   TOMBOL NAVIGASI SLIDER MEWAH (FLOATING GLASS BUTTONS)
-   ======================================================= */
 .brand-nav-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     width: 54px;
     height: 54px;
-    background: rgba(20, 24, 34, 0.85);
+    background: rgba(20,24,34,.85);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    border: 1.5px solid rgba(255,255,255,.15);
     border-radius: 50%;
-    color: #ffffff;
+    color: #fff;
     font-size: 1.25rem;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     z-index: 30;
-    transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 10px 30px rgba(0,0,0,.7);
 }
 
-.brand-nav-btn:hover {
-    background: var(--primary-accent);
-    border-color: var(--primary-accent);
-    color: #ffffff;
-    transform: translateY(-50%) scale(1.12);
-    box-shadow: 0 0 28px rgba(229, 9, 20, 0.75);
-}
+.brand-nav-btn.nav-prev { left: -27px; }
+.brand-nav-btn.nav-next { right: -27px; }
 
-.brand-nav-btn:active {
-    transform: translateY(-50%) scale(0.95);
-}
-
-.brand-nav-btn.nav-prev {
-    left: -27px;
-}
-
-.brand-nav-btn.nav-next {
-    right: -27px;
-}
-
-@media (min-width: 1400px) {
-    .brand-nav-btn.nav-prev { left: -68px; }
-    .brand-nav-btn.nav-next { right: -68px; }
-}
-
-@media (max-width: 991px) {
-    .brand-nav-btn {
-        width: 44px;
-        height: 44px;
-        font-size: 1.05rem;
-    }
-    .brand-nav-btn.nav-prev { left: 8px; }
-    .brand-nav-btn.nav-next { right: 8px; }
-}
-
-/* =======================================================
-   FRAME LOGO TERKUNCI (FIXED 220px & DUAL DEDICATED SLOTS)
-   ======================================================= */
 .brand-logo-card {
     height: 220px !important;
     width: 100% !important;
-    background: rgba(14, 16, 22, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(14,16,22,.7);
+    border: 1px solid rgba(255,255,255,.06);
     border-radius: 14px;
     padding: 20px 16px 18px;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: space-between !important;
-    box-sizing: border-box;
-    transition: all 0.3s ease;
-}
-
-.brand-logo-card:hover {
-    border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
 }
 
 .logo-emblem-slot {
@@ -498,8 +412,7 @@ body {
     max-width: 100%;
     width: auto;
     object-fit: contain;
-    filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.7));
-    transition: transform 0.35s ease;
+    filter: drop-shadow(0 6px 14px rgba(0,0,0,.7));
 }
 
 .logo-wordmark-slot {
@@ -517,91 +430,62 @@ body {
     max-width: 82%;
     width: auto;
     object-fit: contain;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.7));
-    transition: transform 0.35s ease;
 }
 
-.brand-logo-card:hover .logo-emblem-slot img {
-    transform: scale(1.06);
-}
-
-.brand-logo-card:hover .logo-wordmark-slot img {
-    transform: scale(1.04);
-}
-
-/* Kolom Tengah & Kanan */
-.brand-history-card, .brand-hq-card {
-    background: rgba(14, 16, 22, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+.brand-history-card,
+.brand-hq-card {
+    background: rgba(14,16,22,.7);
+    border: 1px solid rgba(255,255,255,.06);
     border-radius: 14px;
     height: 100%;
 }
 
 .fact-box {
     background-color: #14161f;
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255,255,255,.06);
     border-radius: 8px;
     padding: 10px 14px;
-    font-size: 0.85rem;
-    transition: all 0.2s ease;
-}
-
-.fact-box:hover {
-    border-color: var(--primary-accent);
-    transform: translateX(4px);
+    font-size: .85rem;
 }
 
 .archive-story-box {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.05);
 }
 
-.hq-image-wrapper {
-    position: relative;
-}
+.hq-image-wrapper { position: relative; }
 
 .hq-badge {
     position: absolute;
     bottom: 10px;
     left: 10px;
-    background: rgba(10, 10, 12, 0.85);
+    background: rgba(10,10,12,.85);
     backdrop-filter: blur(8px);
-    color: #ffffff;
-    font-size: 0.75rem;
+    color: #fff;
+    font-size: .75rem;
     font-weight: 600;
     padding: 4px 10px;
     border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-@media (max-width: 991px) {
-    .brand-spotlight-box {
-        padding: 24px 20px;
-    }
+    border: 1px solid rgba(255,255,255,.15);
 }
 
 /* =======================================================
-   5. SEKSI PADAT DI BAWAH (MENUTUP LATAR BELAKANG FIXED)
+   5. LOWER SECTIONS
    ======================================================= */
+
 .solid-content-section {
     position: relative;
     z-index: 10;
     background-color: var(--bg-dark);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255,255,255,.06);
 }
 
 .custom-card {
     background-color: var(--card-bg);
     border: 1px solid var(--card-border);
     border-radius: 12px;
-    transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition: all .35s cubic-bezier(.2,.8,.2,1);
     overflow: hidden;
-}
-
-.custom-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--primary-accent);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
 }
 
 .spec-box {
@@ -612,25 +496,24 @@ body {
 }
 
 .spec-label {
-    font-size: 0.72rem;
+    font-size: .72rem;
     color: var(--text-muted);
     text-transform: uppercase;
 }
 
 .spec-val {
-    font-size: 0.95rem;
+    font-size: .95rem;
     font-weight: 700;
-    color: #ffffff;
+    color: #fff;
 }
 
 .compare-teaser {
-    background: linear-gradient(135deg, #181822 0%, #111116 100%);
+    background: linear-gradient(135deg,#181822 0%,#111116 100%);
     border: 1px dashed #3a3a46;
     border-radius: 16px;
     padding: 40px;
 }
 
-/* Tombol Floating Back-to-Top */
 .btn-scroll-top {
     position: fixed;
     bottom: 2rem;
@@ -638,7 +521,7 @@ body {
     width: 48px;
     height: 48px;
     background-color: var(--primary-accent);
-    color: #ffffff;
+    color: #fff;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -646,10 +529,10 @@ body {
     text-decoration: none;
     font-size: 1.25rem;
     font-weight: bold;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 20px rgba(0,0,0,.5);
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease;
+    transition: all .3s ease;
     z-index: 100;
 }
 
@@ -658,36 +541,452 @@ body {
     visibility: visible;
 }
 
-.btn-scroll-top:hover {
-    transform: translateY(-4px);
-    background-color: #ffffff;
-    color: var(--primary-accent);
-}
-
-/* =======================================================
-   6. RESPONSIVE MEDIA QUERIES (MOBILE & TABLET)
-   ======================================================= */
-@media (max-width: 991px) {
-    .brand-spotlight-box {
-        padding: 20px 16px;
-    }
-}
-
-@media (max-width: 768px) {
-    .angled-gallery {
-        width: 220vw;
-    }
-    .hero-title {
-        font-size: 2.2rem;
-    }
-    .hero-actions {
-        flex-direction: column;
-        align-items: stretch;
-    }
-}
-
 footer {
     position: relative;
     z-index: 20;
     background-color: #07080a !important;
+}
+
+/* =======================================================
+   6. TABLET
+   ======================================================= */
+
+@media (max-width: 991.98px) {
+    .brand-spotlight-box {
+        padding: 28px 22px;
+    }
+
+    .brand-nav-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 1.05rem;
+    }
+
+    .brand-nav-btn.nav-prev { left: 8px; }
+    .brand-nav-btn.nav-next { right: 8px; }
+}
+
+/* =======================================================
+   7. ANDROID / MOBILE
+   Jangan mengubah layout desktop.
+   ======================================================= */
+
+@media (max-width: 767.98px) {
+    html, body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .hero-wrapper {
+        min-height: 100svh;
+        height: auto;
+    }
+
+    .hero-visual-fullscreen {
+        height: 100%;
+    }
+
+    /* Gallery diperkecil dan dibuat lebih transparan agar teks tetap menjadi fokus */
+    .angled-gallery {
+        top: 52%;
+        left: 58%;
+        width: 185vw;
+        height: 175svh;
+        gap: .9rem;
+        transform: translate(-50%, -50%) rotate(-25deg);
+        opacity: .62;
+    }
+
+    .gallery-col { gap: .9rem; }
+
+    .col-offset-1 { margin-top: -4rem; }
+    .col-offset-2 { margin-top: 2rem; }
+    .col-offset-3 { margin-top: -3rem; }
+
+    .showcase-card {
+        width: 145px;
+        height: 210px;
+        border-radius: 13px;
+        box-shadow: 0 15px 30px rgba(0,0,0,.75);
+    }
+
+    .hero-backdrop-overlay {
+        background: linear-gradient(
+            90deg,
+            rgba(8,9,13,.96) 0%,
+            rgba(8,9,13,.84) 45%,
+            rgba(8,9,13,.62) 100%
+        );
+    }
+
+    .hero-content {
+        min-height: 100svh;
+        width: 100%;
+        max-width: none;
+        padding: 7.5rem 1.25rem 4rem;
+        justify-content: center;
+    }
+
+    .hero-title {
+        max-width: 100%;
+        font-size: clamp(2rem, 9vw, 2.7rem);
+        line-height: 1.08;
+        margin-bottom: 1rem;
+    }
+
+    .hero-title span {
+        margin-top: .3rem;
+        font-size: .92em;
+    }
+
+    .hero-desc {
+        max-width: 100%;
+        font-size: .95rem;
+        line-height: 1.6;
+        margin-bottom: 1.6rem;
+    }
+
+    .hero-actions {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: .7rem;
+        margin-bottom: 2.2rem;
+    }
+
+    .hero-actions a {
+        width: 100%;
+        text-align: center;
+        padding: .85rem 1rem;
+    }
+
+    .scroll-indicator {
+        width: 22px;
+        height: 36px;
+    }
+
+    /* Navbar */
+    .navbar-custom {
+        padding-top: .75rem !important;
+        padding-bottom: .75rem !important;
+    }
+
+    .navbar-custom .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .navbar-brand {
+        font-size: .92rem;
+    }
+
+    .navbar-collapse {
+        padding-top: .75rem;
+    }
+
+    .navbar-nav {
+        gap: .15rem !important;
+    }
+
+    .navbar-nav .nav-link {
+        padding: .55rem .25rem;
+    }
+
+    .navbar-custom .d-flex {
+        width: 100%;
+        margin-top: .5rem;
+    }
+
+    .navbar-custom .d-flex > a {
+        flex: 1 1 0;
+        text-align: center;
+    }
+
+    /* Engineered For Passion */
+    .transition-banner {
+        padding: 58px 0 48px;
+    }
+
+    .transition-banner .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .transition-banner .display-4 {
+        font-size: clamp(1.75rem, 8vw, 2.3rem);
+        line-height: 1.15;
+    }
+
+    .transition-desc {
+        font-size: .95rem !important;
+        line-height: 1.6;
+    }
+
+    .transition-feature {
+        padding: 11px 12px;
+        font-size: .8rem;
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Featured Marques */
+    .brand-slider-section {
+        padding-top: 2.5rem !important;
+        padding-bottom: 2.5rem !important;
+    }
+
+    .brand-slider-section > .container {
+        padding-left: 0.9rem;
+        padding-right: 0.9rem;
+    }
+
+    .brand-slider-section .display-5 {
+        font-size: clamp(1.7rem, 8vw, 2.25rem);
+        line-height: 1.15;
+    }
+
+    .brand-slider-section .text-center > p {
+        font-size: .78rem !important;
+        line-height: 1.55;
+        padding: 0 .45rem;
+    }
+
+    .brand-slider-wrapper {
+        padding: 0;
+    }
+
+    .brand-swiper {
+        border-radius: 15px;
+        overflow: hidden;
+    }
+
+    .brand-spotlight-box {
+        padding: 16px;
+        border-radius: 15px;
+    }
+
+    .brand-swiper .row {
+        --bs-gutter-x: .75rem;
+        --bs-gutter-y: .75rem;
+    }
+
+    /* Ketiga kolom desktop menjadi satu kolom di Android */
+    .brand-swiper .col-lg-3,
+    .brand-swiper .col-lg-5,
+    .brand-swiper .col-lg-4,
+    .brand-swiper .col-md-4,
+    .brand-swiper .col-md-8,
+    .brand-swiper .col-md-12 {
+        width: 100%;
+    }
+
+    .brand-logo-card {
+        height: 165px !important;
+        min-height: 165px;
+        padding: 14px 12px;
+        margin-bottom: .5rem !important;
+    }
+
+    .logo-emblem-slot {
+        height: 82px;
+    }
+
+    .logo-emblem-slot img {
+        max-height: 72px;
+        max-width: 80%;
+    }
+
+    .logo-wordmark-slot {
+        height: 38px;
+        padding-top: 4px;
+    }
+
+    .logo-wordmark-slot img {
+        max-height: 25px;
+        max-width: 72%;
+    }
+
+    .brand-fact-stack {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        gap: .5rem !important;
+    }
+
+    .fact-box {
+        min-height: 62px;
+        padding: 8px 9px;
+        font-size: .72rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .fact-box small {
+        font-size: .63rem !important;
+    }
+
+    .fact-box span {
+        font-size: .68rem;
+        line-height: 1.3;
+    }
+
+    .brand-history-card,
+    .brand-hq-card {
+        height: auto !important;
+        min-height: 0;
+        padding: 14px !important;
+    }
+
+    .brand-history-card h3 {
+        font-size: 1rem;
+        line-height: 1.25;
+        padding-right: .4rem;
+    }
+
+    .brand-history-card .badge {
+        font-size: .58rem;
+        padding: .35rem .45rem !important;
+        white-space: nowrap;
+    }
+
+    .brand-quote {
+        font-size: .72rem !important;
+        line-height: 1.45;
+    }
+
+    .brand-history-card .archive-story-box {
+        display: block !important;
+    }
+
+    .brand-history-card .archive-story-box > div {
+        width: 100% !important;
+        height: 135px !important;
+        margin-bottom: .7rem;
+    }
+
+    .brand-history-card .archive-story-box p {
+        font-size: .73rem !important;
+        line-height: 1.55 !important;
+    }
+
+    .brand-history-card > div > p.text-muted {
+        font-size: .7rem !important;
+        line-height: 1.55;
+        margin-bottom: 1rem !important;
+    }
+
+    .btn-racing {
+        padding: 10px 14px;
+        font-size: .78rem;
+        line-height: 1.25;
+    }
+
+    .hq-image-wrapper {
+        margin-bottom: .7rem !important;
+    }
+
+    .hq-image-wrapper img {
+        height: 165px !important;
+    }
+
+    .hq-badge {
+        left: 7px;
+        bottom: 7px;
+        font-size: .6rem;
+        padding: 4px 7px;
+    }
+
+    .brand-hq-card h5 {
+        font-size: .9rem;
+    }
+
+    .brand-hq-card p {
+        font-size: .68rem !important;
+        line-height: 1.5;
+    }
+
+    .hq-footer-note {
+        font-size: .65rem !important;
+        margin-top: .8rem;
+    }
+
+    /* Tombol slider tidak lagi menekan isi */
+    .brand-nav-btn {
+        width: 38px;
+        height: 38px;
+        font-size: .9rem;
+        background: rgba(10,12,18,.92);
+    }
+
+    .brand-nav-btn.nav-prev { left: 5px; }
+    .brand-nav-btn.nav-next { right: 5px; }
+
+    /* Hindari content melebar karena Bootstrap row/margin atau inline elements */
+    .brand-slider-section .row,
+    .brand-slider-section [class*="col-"],
+    .brand-slider-section .swiper-slide > * {
+        max-width: 100%;
+    }
+
+    /* Touch target dan floating button */
+    .btn-scroll-top {
+        width: 42px;
+        height: 42px;
+        right: 1rem;
+        bottom: 1rem;
+        font-size: 1rem;
+    }
+}
+
+/* =======================================================
+   8. SMALL ANDROID (<= 390px)
+   ======================================================= */
+
+@media (max-width: 390px) {
+    .hero-content {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .hero-title {
+        font-size: 1.9rem;
+    }
+
+    .hero-desc {
+        font-size: .88rem;
+    }
+
+    .showcase-card {
+        width: 128px;
+        height: 190px;
+    }
+
+    .brand-slider-section > .container {
+        padding-left: .7rem;
+        padding-right: .7rem;
+    }
+
+    .brand-spotlight-box {
+        padding: 12px;
+    }
+
+    .brand-fact-stack {
+        grid-template-columns: 1fr;
+    }
+
+    .brand-logo-card {
+        height: 150px !important;
+        min-height: 150px;
+    }
+
+    .brand-history-card h3 {
+        font-size: .9rem;
+    }
+
+    .brand-history-card .archive-story-box > div {
+        height: 120px !important;
+    }
 }
