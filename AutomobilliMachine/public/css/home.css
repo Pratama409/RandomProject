@@ -1248,3 +1248,186 @@ footer {
         font-size: .65rem;
     }
 }
+
+
+/* =======================================================
+   11. COLOR SYSTEM / CONTRAST POLISH
+   Consistent dark automotive palette with improved readability.
+   No layout or functionality changes.
+   ======================================================= */
+
+:root {
+    --bg-dark: #090b0f;
+    --card-bg: #141820;
+    --card-border: #2a303a;
+    --text-muted: #9aa4b2;
+
+    --text-main: #f5f7fa;
+    --text-secondary: #c4cbd5;
+    --text-soft: #e1e6ed;
+
+    --primary-accent: #e50914;
+    --primary-hover: #ff2b35;
+    --accent-soft: #ffb8bd;
+}
+
+/* Main text hierarchy */
+body {
+    color: var(--text-main);
+}
+
+.text-secondary {
+    color: var(--text-secondary) !important;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+/* Keep danger/red branding consistent across Bootstrap components. */
+.text-danger {
+    color: var(--primary-accent) !important;
+}
+
+.bg-danger {
+    background-color: var(--primary-accent) !important;
+}
+
+.text-warning {
+    color: #f3c65b !important;
+}
+
+/* Subtle but visible borders */
+.border-secondary {
+    border-color: rgba(255, 255, 255, .16) !important;
+}
+
+/* Transition section */
+.transition-banner .text-secondary {
+    color: #c0c8d3 !important;
+}
+
+.transition-feature {
+    color: #e8ecf2;
+    background: rgba(20, 24, 32, .82);
+    border-color: rgba(255, 255, 255, .10);
+}
+
+.transition-feature i {
+    filter: drop-shadow(0 0 7px rgba(229, 9, 20, .25));
+}
+
+/* Featured Marques */
+.brand-slider-section .text-secondary,
+.brand-slider-section .text-light {
+    color: #c8ced8 !important;
+}
+
+.brand-slider-section .text-muted {
+    color: #99a3b1 !important;
+}
+
+.brand-slider-section .blockquote-footer {
+    color: #8d97a5 !important;
+}
+
+.brand-slider-section .brand-quote {
+    color: #aeb7c4 !important;
+}
+
+.brand-slider-section .brand-quote footer {
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+.brand-slider-section .fact-box {
+    background: #171b24;
+    border-color: rgba(255, 255, 255, .09);
+}
+
+.brand-slider-section .fact-box small {
+    color: #929cab !important;
+}
+
+.brand-slider-section .fact-box span {
+    color: #f0f3f7 !important;
+}
+
+.brand-slider-section .fact-box .text-danger {
+    color: #ff4a52 !important;
+}
+
+.brand-slider-section .fact-box .text-warning {
+    color: #f3c65b !important;
+}
+
+.brand-slider-section .archive-story-box {
+    background: rgba(255, 255, 255, .045);
+    border-color: rgba(255, 255, 255, .08);
+}
+
+.brand-slider-section .brand-history-card > div > p.text-muted {
+    color: #a5aebc !important;
+}
+
+.brand-slider-section .brand-hq-card p {
+    color: #adb6c3 !important;
+}
+
+.brand-slider-section .hq-footer-note {
+    color: #a6afbc !important;
+}
+
+/* Buttons: stronger contrast without changing their shape. */
+.btn-outline-custom,
+.btn-outline {
+    color: #f5f7fa;
+    border-color: rgba(255, 255, 255, .28);
+}
+
+.btn-outline-custom:hover,
+.btn-outline:hover {
+    border-color: rgba(255, 255, 255, .58);
+}
+
+/* Iconic Picks */
+#iconic .text-muted {
+    color: #98a2b0 !important;
+}
+
+#iconic .spec-box {
+    background: #181c25;
+    border: 1px solid rgba(255, 255, 255, .055);
+}
+
+#iconic .spec-label {
+    color: #98a2b0 !important;
+}
+
+#iconic .spec-val {
+    color: #f4f6f8 !important;
+}
+
+#iconic .badge.bg-danger {
+    background-color: var(--primary-accent) !important;
+}
+
+/* Better contrast for small labels across the home page. */
+.small {
+    color: inherit;
+}
+
+.brand-slider-section .small {
+    color: inherit;
+}
+
+/* Red accent stays elegant rather than overly bright. */
+.btn-primary,
+.btn-racing {
+    background-color: var(--primary-accent);
+}
+
+.btn-primary:hover,
+.btn-racing:hover {
+    background-color: var(--primary-hover);
+}
