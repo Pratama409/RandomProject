@@ -282,9 +282,9 @@
                                         </div>
                                         <div class="brand-fact-stack d-flex flex-column gap-2">
                                             <div class="fact-box"><small class="text-muted d-block">Founded</small><span class="fw-bold text-white">1926 &bull; Stuttgart</span></div>
-                                            <div class="fact-box"><small class="text-muted d-block">Pioneers</small><span class="fw-bold text-white">Karl Benz & Daimler</span></div>
-                                            <div class="fact-box"><small class="text-muted d-block">Performance Division</small><span class="fw-bold text-info">Mercedes-AMG</span></div>
-                                            <div class="fact-box"><small class="text-muted d-block">Motto</small><span class="fw-bold text-white">The Best or Nothing</span></div>
+                                            <div class="fact-box"><small class="text-muted d-block">Founder</small><span class="fw-bold text-white">Karl Benz &amp; Gottlieb Daimler</span></div>
+                                            <div class="fact-box"><small class="text-muted d-block">Country</small><span class="fw-bold text-white">Germany</span></div>
+                                            <div class="fact-box"><small class="text-muted d-block">Vehicle Lineup</small><span class="fw-bold text-white">Luxury Cars, SUVs &amp; Performance</span></div>
                                         </div>
                                     </div>
                                     <!-- Kolom Tengah -->
