@@ -228,7 +228,7 @@
                                                     <footer class="blockquote-footer text-muted mt-1">Ferruccio Lamborghini</footer>
                                                 </blockquote>
                                                 <div class="d-flex gap-3 align-items-start mb-3 archive-story-box p-2 rounded">
-                                                    <div class="overflow-hidden rounded flex-shrink-0" class="archive-story-media">
+                                                    <div class="archive-story-media overflow-hidden rounded flex-shrink-0">
                                                         <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?w=300&auto=format&fit=crop&q=80" alt="Lamborghini Heritage" class="img-fluid w-100 h-100 object-fit-cover">
                                                     </div>
                                                     <p class="text-light small mb-0 archive-story-copy">
@@ -250,7 +250,7 @@
                                         <div class="brand-hq-card h-100 d-flex flex-column justify-content-between p-3">
                                             <div>
                                                 <div class="hq-image-wrapper rounded overflow-hidden mb-3">
-                                                    <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=600&auto=format&fit=crop&q=80" alt="Lamborghini HQ" class="img-fluid w-100" class="img-fluid w-100 hq-image" loading="lazy" decoding="async">
+                                                    <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=600&auto=format&fit=crop&q=80" alt="Lamborghini HQ" class="img-fluid w-100 hq-image" loading="lazy" decoding="async">
                                                     <span class="hq-badge"><i class="fa-solid fa-building me-1"></i> Global Headquarters</span>
                                                 </div>
                                                 <h5 class="fw-bold brand-font text-white mb-2">Sant'Agata Bolognese</h5>
@@ -303,7 +303,7 @@
                                                     <footer class="blockquote-footer text-muted mt-1">Karl Benz</footer>
                                                 </blockquote>
                                                 <div class="d-flex gap-3 align-items-start mb-3 archive-story-box p-2 rounded">
-                                                    <div class="overflow-hidden rounded flex-shrink-0" class="archive-story-media">
+                                                    <div class="archive-story-media overflow-hidden rounded flex-shrink-0">
                                                         <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=300&auto=format&fit=crop&q=80" alt="Mercedes Heritage" class="img-fluid w-100 h-100 object-fit-cover">
                                                     </div>
                                                     <p class="text-light small mb-0 archive-story-copy">
@@ -325,7 +325,7 @@
                                         <div class="brand-hq-card h-100 d-flex flex-column justify-content-between p-3">
                                             <div>
                                                 <div class="hq-image-wrapper rounded overflow-hidden mb-3">
-                                                    <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=600&auto=format&fit=crop&q=80" alt="Mercedes HQ" class="img-fluid w-100" class="img-fluid w-100 hq-image" loading="lazy" decoding="async">
+                                                    <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=600&auto=format&fit=crop&q=80" alt="Mercedes HQ" class="img-fluid w-100 hq-image" loading="lazy" decoding="async">
                                                     <span class="hq-badge"><i class="fa-solid fa-building me-1"></i> Global Headquarters</span>
                                                 </div>
                                                 <h5 class="fw-bold brand-font text-white mb-2">Affalterbach & Stuttgart</h5>
@@ -466,7 +466,7 @@
         <div class="container py-4">
             <div class="row justify-content-center text-center mb-4">
                 <div class="col-md-8">
-                    <h6 class="text-danger fw-bold text-uppercase" class="section-kicker-spacing">Exclusive Privilege</h6>
+                    <h6 class="text-danger fw-bold text-uppercase section-kicker">Exclusive Privilege</h6>
                     <h2 class="fw-bold brand-font text-white">AUTOMOBILLI CLUB MEMBERSHIP</h2>
                     <p class="text-muted">Unlock exclusive privileges curated for true automotive purists.</p>
                 </div>
