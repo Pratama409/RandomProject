@@ -66,30 +66,44 @@
         </section>
 
         @if ($brand->history || $brand->philosophy || $brand->known_for)
-            <section class="brand-story-grid">
-                @if ($brand->history)
-                    <article class="brand-story-card">
-                        <span class="brand-section-label">HERITAGE</span>
-                        <h2>Brand History</h2>
-                        <p>{{ $brand->history }}</p>
-                    </article>
-                @endif
+            <section class="brand-history-section">
+                <div class="brand-history-media">
+                    @if ($brand->history_image_path)
+                        <img
+                            src="{{ $brand->history_image_path }}"
+                            alt="{{ $brand->name }} heritage"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    @endif
+                    <div class="brand-history-media-overlay"></div>
+                    <span class="brand-history-media-label">
+                        {{ $brand->name }} Heritage
+                    </span>
+                </div>
 
-                @if ($brand->philosophy)
-                    <article class="brand-story-card">
-                        <span class="brand-section-label">IDENTITY</span>
-                        <h2>Brand Philosophy</h2>
-                        <p>{{ $brand->philosophy }}</p>
-                    </article>
-                @endif
+                <div class="brand-history-content">
+                    <span class="brand-section-label">HERITAGE</span>
 
-                @if ($brand->known_for)
-                    <article class="brand-story-card">
-                        <span class="brand-section-label">SIGNATURE</span>
-                        <h2>What It Is Known For</h2>
-                        <p>{{ $brand->known_for }}</p>
-                    </article>
-                @endif
+                    @if ($brand->history)
+                        <h2>A Legacy of Passion &amp; Performance</h2>
+                        <p class="brand-history-lead">{{ $brand->history }}</p>
+                    @endif
+
+                    @if ($brand->philosophy)
+                        <div class="brand-history-subsection">
+                            <span class="brand-history-subtitle">Brand Philosophy</span>
+                            <p>{{ $brand->philosophy }}</p>
+                        </div>
+                    @endif
+
+                    @if ($brand->known_for)
+                        <div class="brand-history-subsection brand-history-known-for">
+                            <span class="brand-history-subtitle">Known For</span>
+                            <p>{{ $brand->known_for }}</p>
+                        </div>
+                    @endif
+                </div>
             </section>
         @endif
 
