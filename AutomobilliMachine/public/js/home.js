@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', () => {
         const scrollY = window.pageYOffset || document.documentElement.scrollTop;
 
-        // Efek blur pada navbar saat scroll
         if (navbar) {
             if (scrollY > 50) {
                 navbar.classList.add('scrolled');
@@ -21,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Efek gerak dinamis berlawanan kolom galeri miring
         if (!ticking) {
             window.requestAnimationFrame(() => {
                 if (window.innerWidth > 768 && columns.length > 0) {
@@ -44,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             ticking = true;
         }
-    });
+    }, { passive: true });
 
     if (scrollIndicator) {
         scrollIndicator.addEventListener('click', () => {
@@ -63,27 +61,40 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ====================================================
-    // 2. SWIPER BRAND SLIDER (DENGAN TOMBOL NAVIGASI & MOUSE DRAG)
+    // 2. SWIPER BRAND SLIDER
+    //    Tuned for smoother mouse/touch dragging.
     // ====================================================
     if (typeof Swiper !== 'undefined' && document.querySelector('.brand-swiper')) {
-        const swiper = new Swiper('.brand-swiper', {
-            slidesPerView: 1,      // 1 kartu utuh pas sejajar
-            spaceBetween: 30,
+        new Swiper('.brand-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
             loop: true,
-            speed: 650,
-            grabCursor: true,      // Kursor otomatis tangan (grab)
-            simulateTouch: true,   // Mendukung mouse drag di desktop 100%
-            navigation: {
-                nextEl: '#brandNextBtn',
-                prevEl: '#brandPrevBtn',
-            },
+            speed: 360,
+            grabCursor: true,
+            simulateTouch: true,
+            followFinger: true,
+            threshold: 4,
+            touchRatio: 0.9,
+            longSwipes: true,
+            longSwipesRatio: 0.08,
+            longSwipesMs: 120,
+            resistance: true,
+            resistanceRatio: 0.65,
+            preventClicks: true,
             keyboard: {
                 enabled: true,
                 onlyInViewport: true,
             },
+            navigation: {
+                nextEl: '#brandNextBtn',
+                prevEl: '#brandPrevBtn',
+            },
+            autoHeight: false,
+            watchOverflow: true,
+            observer: true,
+            observeParents: true,
+            observeSlideChildren: false,
         });
-
-        console.log('Automobilli Swiper with luxury navigation buttons active.');
     }
 
     // ====================================================
@@ -92,8 +103,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
+
             if (targetId && targetId.length > 1) {
                 const targetElement = document.querySelector(targetId);
+
                 if (targetElement) {
                     e.preventDefault();
                     targetElement.scrollIntoView({
