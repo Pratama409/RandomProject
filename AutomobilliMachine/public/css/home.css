@@ -877,6 +877,8 @@ body {
 
 
 
+
+
 /* =======================================================
    12. FINAL VISUAL POLISH
    Refined automotive dark theme, clearer hierarchy,
@@ -1967,133 +1969,184 @@ body {
 }
 
 
+
+
+
+
 /* =======================================================
-   13. DESKTOP FEATURED MARQUES - LAYOUT REPAIR
-   Keep mobile overrides separate.
+   10. MOBILE BRAND PANEL - CLEAN SINGLE-PANEL VIEW
    ======================================================= */
 
-@media (min-width: 768px) {
+@media (max-width: 767.98px) {
 
-    .brand-swiper .swiper-slide {
-        height: auto !important;
-        align-items: flex-start !important;
-    }
-
-    .brand-spotlight-box {
-        height: auto !important;
-        min-height: 0 !important;
-        padding: 30px 32px !important;
-    }
-
-    .brand-spotlight-box > .row {
-        height: auto !important;
-        min-height: 0 !important;
-        align-items: stretch !important;
-        flex-grow: 0 !important;
-    }
-
+    /* One complete internal panel per swipe. */
     .brand-spotlight-box > .row > [class*="col-"] {
-        height: auto !important;
-        min-height: 0 !important;
-        align-self: stretch !important;
+        flex: 0 0 100% !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
     }
 
-    /* Left column should follow its content instead of pushing facts to the bottom. */
-    .brand-spotlight-box > .row > .col-lg-3 {
-        justify-content: flex-start !important;
+    /* More breathing room around each panel. */
+    .brand-spotlight-box {
+        padding: 11px !important;
     }
 
-    .brand-spotlight-box > .row > .col-lg-3 .brand-logo-card {
-        margin-bottom: 14px !important;
-        height: 220px !important;
-        min-height: 220px !important;
+    /* Logo/facts panel */
+    .brand-logo-card {
+        width: 100% !important;
+        height: 145px !important;
+        min-height: 145px !important;
+        margin-bottom: .55rem !important;
     }
 
     .brand-fact-stack {
-        gap: 10px !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: .45rem !important;
     }
 
     .fact-box {
-        padding: 11px 13px;
+        min-height: 56px;
+        padding: 7px 8px;
     }
 
-    /* Middle column gets the visual priority and a comfortable reading width. */
-    .brand-spotlight-box > .row > .col-lg-5 {
-        min-width: 0;
+    .fact-box span {
+        font-size: .67rem;
+        line-height: 1.25;
     }
 
+    /* History panel */
     .brand-history-card {
-        height: auto !important;
-        min-height: 0 !important;
-        padding: 26px !important;
+        width: 100% !important;
+        padding: 14px !important;
+        border-radius: 12px;
     }
 
-    .brand-history-card > div:first-child {
+    .brand-history-card .d-flex.justify-content-between.align-items-center {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: .55rem;
+        align-items: start !important;
+        margin-bottom: .8rem !important;
+    }
+
+    .brand-history-card .d-flex.justify-content-between.align-items-center > div {
         min-width: 0;
+    }
+
+    .brand-history-card h3 {
+        font-size: 1.12rem !important;
+        line-height: 1.08 !important;
+        overflow-wrap: anywhere;
+    }
+
+    .brand-history-card .d-flex.justify-content-between.align-items-center .badge {
+        font-size: .52rem !important;
+        padding: .38rem .45rem !important;
+        line-height: 1 !important;
+        white-space: nowrap !important;
+        margin-top: .05rem;
+    }
+
+    .brand-quote {
+        font-size: .69rem !important;
+        line-height: 1.42 !important;
+        padding-left: .7rem !important;
+        margin-bottom: .75rem !important;
     }
 
     .brand-history-card .archive-story-box {
         display: flex !important;
         align-items: flex-start !important;
-        gap: 14px !important;
-        width: 100%;
+        gap: .65rem !important;
+        padding: .55rem !important;
+        margin-bottom: .75rem !important;
     }
 
-    .brand-history-card .archive-story-media {
-        flex: 0 0 150px;
-        width: 150px;
-        height: 120px;
+    .brand-history-card .archive-story-box > div {
+        flex: 0 0 82px !important;
+        width: 82px !important;
+        height: 74px !important;
+        margin: 0 !important;
     }
 
-    .brand-history-card .archive-story-copy {
-        flex: 1 1 auto;
+    .brand-history-card .archive-story-box p {
+        flex: 1 1 auto !important;
         min-width: 0;
-        font-size: .85rem;
-        line-height: 1.62;
+        font-size: .68rem !important;
+        line-height: 1.42 !important;
     }
 
-    /* Right panel stays balanced with the middle panel. */
-    .brand-spotlight-box > .row > .col-lg-4 {
-        min-width: 0;
+    .brand-history-card > div > p.text-muted {
+        font-size: .67rem !important;
+        line-height: 1.45 !important;
+        margin-bottom: .85rem !important;
     }
 
+    .brand-history-card .btn-outline-custom {
+        min-height: 46px;
+        padding: .55rem .8rem !important;
+        font-size: .72rem;
+        line-height: 1.2;
+        text-align: center;
+    }
+
+    .brand-history-card .btn-outline-custom span {
+        max-width: 210px;
+    }
+
+    /* HQ panel */
     .brand-hq-card {
-        height: auto !important;
-        min-height: 0 !important;
-        padding: 16px !important;
+        width: 100% !important;
+        padding: 13px !important;
     }
 
-    .brand-hq-card .hq-image {
-        height: 220px;
+    .hq-image-wrapper img {
+        height: 150px !important;
     }
 
     .brand-hq-card h5 {
-        font-size: 1.2rem;
+        font-size: .95rem !important;
+        line-height: 1.15 !important;
     }
 
     .brand-hq-card p {
-        line-height: 1.6;
+        font-size: .68rem !important;
+        line-height: 1.45 !important;
     }
 
-    /* Prevent accidental vertical stretching of the whole slide. */
-    .brand-swiper .swiper-wrapper {
-        align-items: flex-start !important;
+    /* Smaller nav buttons, kept at the outer edges. */
+    .brand-nav-btn {
+        width: 34px !important;
+        height: 34px !important;
+        font-size: .78rem !important;
+    }
+
+    .brand-nav-btn.nav-prev { left: 3px !important; }
+    .brand-nav-btn.nav-next { right: 3px !important; }
+}
+
+@media (max-width: 390px) {
+
+    .brand-history-card h3 {
+        font-size: 1.04rem !important;
+    }
+
+    .brand-history-card .archive-story-box > div {
+        flex-basis: 76px !important;
+        width: 76px !important;
+        height: 70px !important;
+    }
+
+    .brand-history-card .archive-story-box p {
+        font-size: .66rem !important;
+    }
+
+    .fact-box span {
+        font-size: .65rem;
     }
 }
 
-/* Large desktop: give the center column a little more breathing room. */
-@media (min-width: 1200px) {
-    .brand-spotlight-box {
-        padding: 32px 36px !important;
-    }
 
-    .brand-history-card {
-        padding: 28px !important;
-    }
-
-    .brand-history-card .archive-story-media {
-        flex-basis: 165px;
-        width: 165px;
-        height: 125px;
-    }
-}
