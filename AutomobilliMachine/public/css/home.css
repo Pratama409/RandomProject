@@ -1431,3 +1431,366 @@ body {
 .btn-racing:hover {
     background-color: var(--primary-hover);
 }
+
+
+/* =======================================================
+   12. FINAL VISUAL POLISH
+   Refined automotive dark theme, clearer hierarchy,
+   reusable classes, and better mobile balance.
+   ======================================================= */
+
+/* Reusable elements moved out of Blade inline styles */
+.brand-slider-intro {
+    max-width: 600px;
+}
+
+.section-kicker {
+    letter-spacing: 2px;
+}
+
+.archive-story-media {
+    width: 110px;
+    height: 95px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.archive-story-copy {
+    line-height: 1.6;
+}
+
+.hq-image {
+    height: 200px;
+    object-fit: cover;
+}
+
+.iconic-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Core page atmosphere */
+body {
+    background:
+        radial-gradient(circle at 8% 12%, rgba(229, 9, 20, .045), transparent 24%),
+        radial-gradient(circle at 92% 74%, rgba(88, 104, 145, .045), transparent 22%),
+        var(--bg-dark);
+}
+
+/* Hero */
+.hero-wrapper {
+    background:
+        radial-gradient(circle at 78% 45%, rgba(229, 9, 20, .08), transparent 24%),
+        #0b0d12;
+}
+
+.hero-title {
+    text-wrap: balance;
+}
+
+.hero-desc {
+    color: #d4dae3;
+}
+
+.hero-actions .btn-primary,
+.hero-actions .btn-outline {
+    min-height: 52px;
+}
+
+.hero-actions .btn-primary {
+    box-shadow: 0 10px 28px rgba(229, 9, 20, .20);
+}
+
+/* Transition banner */
+.transition-banner {
+    padding-top: 78px;
+    padding-bottom: 68px;
+}
+
+.transition-banner .badge {
+    border-radius: 999px;
+    letter-spacing: .14em;
+    font-size: .68rem;
+}
+
+.transition-banner .display-4 {
+    text-wrap: balance;
+}
+
+.transition-feature {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Featured Marques */
+.brand-slider-section {
+    background:
+        radial-gradient(circle at 20% 12%, rgba(229, 9, 20, .055), transparent 24%),
+        linear-gradient(180deg, #0a0c10 0%, #0d1016 100%);
+}
+
+.brand-slider-section > .container {
+    position: relative;
+}
+
+.brand-slider-intro {
+    color: #b8c0cc !important;
+    line-height: 1.65;
+}
+
+.brand-swiper {
+    box-shadow: 0 24px 70px rgba(0, 0, 0, .36);
+}
+
+.brand-spotlight-box {
+    background:
+        linear-gradient(145deg, rgba(24, 28, 37, .96), rgba(12, 15, 21, .98)) !important;
+    border-color: rgba(255, 255, 255, .095);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .035),
+        0 18px 45px rgba(0, 0, 0, .28);
+}
+
+.brand-logo-card,
+.brand-history-card,
+.brand-hq-card {
+    background:
+        linear-gradient(160deg, rgba(20, 24, 32, .96), rgba(14, 17, 23, .96));
+    border-color: rgba(255, 255, 255, .085);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .025);
+}
+
+.brand-logo-card {
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.025),
+        0 12px 28px rgba(0,0,0,.16);
+}
+
+.brand-logo-card:hover,
+.brand-history-card:hover,
+.brand-hq-card:hover {
+    border-color: rgba(255, 255, 255, .16);
+}
+
+.fact-box {
+    background: rgba(24, 28, 37, .92);
+    border-color: rgba(255, 255, 255, .075);
+}
+
+.fact-box small {
+    color: #8f99a8 !important;
+}
+
+.fact-box span {
+    color: #f1f4f7 !important;
+}
+
+.brand-history-card h3,
+.brand-hq-card h5 {
+    color: #f7f8fa !important;
+}
+
+.brand-history-card .text-muted,
+.brand-hq-card .text-muted {
+    color: #a7b0bd !important;
+}
+
+.archive-story-media {
+    border: 1px solid rgba(255, 255, 255, .06);
+}
+
+.archive-story-copy {
+    color: #d6dce4 !important;
+}
+
+.hq-image-wrapper {
+    border: 1px solid rgba(255, 255, 255, .055);
+}
+
+.hq-badge {
+    background: rgba(8, 10, 14, .86);
+    border-color: rgba(255,255,255,.18);
+}
+
+.hq-footer-note {
+    background: rgba(7, 9, 12, .58) !important;
+}
+
+/* Iconic Picks */
+#iconic {
+    background:
+        linear-gradient(180deg, #0b0e13 0%, #090b0f 100%);
+}
+
+#iconic .container > .d-flex {
+    padding-bottom: 4px;
+}
+
+#iconic .container > .d-flex h6 {
+    font-size: .72rem;
+    letter-spacing: .18em !important;
+}
+
+#iconic .custom-card {
+    background:
+        linear-gradient(150deg, #171b23 0%, #10131a 100%);
+    border-color: rgba(255,255,255,.08);
+    box-shadow: 0 16px 36px rgba(0,0,0,.20);
+}
+
+#iconic .custom-card:hover {
+    box-shadow: 0 22px 48px rgba(0,0,0,.30);
+}
+
+#iconic .iconic-image {
+    filter: saturate(.94) contrast(1.03);
+}
+
+#iconic .p-4 {
+    padding: 1.15rem !important;
+}
+
+#iconic h4 {
+    font-size: 1.2rem;
+    letter-spacing: .04em;
+}
+
+#iconic .spec-box {
+    min-height: 66px;
+    background: #1b2029;
+    border: 1px solid rgba(255,255,255,.05);
+}
+
+#iconic .spec-label {
+    color: #8f99a8 !important;
+}
+
+#iconic .spec-val {
+    color: #f6f7f8 !important;
+}
+
+/* Compare */
+#compare {
+    background: #0a0d12;
+}
+
+#compare .compare-teaser {
+    background:
+        radial-gradient(circle at 85% 50%, rgba(229, 9, 20, .08), transparent 26%),
+        linear-gradient(145deg, #171b23 0%, #10131a 100%);
+    border-color: rgba(255,255,255,.09);
+    box-shadow: 0 18px 45px rgba(0,0,0,.18);
+}
+
+#compare .text-muted {
+    color: #a7b0bd !important;
+}
+
+#compare .text-secondary {
+    color: #c1c8d2 !important;
+}
+
+#compare .bg-dark {
+    background: rgba(9, 12, 17, .78) !important;
+}
+
+/* Membership */
+.membership-section {
+    background:
+        radial-gradient(circle at 50% 0%, rgba(229, 9, 20, .055), transparent 30%),
+        #080a0e !important;
+}
+
+.membership-section .custom-card {
+    background: linear-gradient(150deg, #151a22, #10141b);
+}
+
+.membership-section .text-muted {
+    color: #a7b0bd !important;
+}
+
+.membership-section .text-danger {
+    color: #ff4a52 !important;
+}
+
+/* Global button polish */
+.btn-racing,
+.btn-primary {
+    border-radius: 9px;
+}
+
+.btn-racing {
+    box-shadow: 0 10px 26px rgba(229, 9, 20, .18);
+}
+
+.btn-outline-custom {
+    background: rgba(255,255,255,.025);
+}
+
+/* Mobile: keep spacing deliberate and compact */
+@media (max-width: 767.98px) {
+
+    .transition-banner {
+        padding-top: 52px;
+        padding-bottom: 44px;
+    }
+
+    .brand-slider-intro {
+        max-width: 330px;
+    }
+
+    .archive-story-media {
+        width: 82px;
+        height: 74px;
+        border-radius: 9px;
+    }
+
+    .archive-story-copy {
+        line-height: 1.45;
+    }
+
+    .hq-image {
+        height: 150px;
+    }
+
+    .iconic-image {
+        height: 205px;
+    }
+
+    #iconic .custom-card {
+        border-radius: 15px;
+    }
+
+    #iconic .p-4 {
+        padding: 1rem !important;
+    }
+
+    #iconic h4 {
+        font-size: 1.08rem;
+    }
+
+    #compare .compare-teaser {
+        padding: 24px 20px;
+        border-radius: 16px;
+    }
+
+    .membership-section .custom-card {
+        border-radius: 15px;
+    }
+}
+
+@media (max-width: 390px) {
+    .iconic-image {
+        height: 195px;
+    }
+
+    .archive-story-media {
+        width: 76px;
+        height: 70px;
+    }
+}
