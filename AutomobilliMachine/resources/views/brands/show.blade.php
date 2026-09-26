@@ -7,6 +7,8 @@
 @endpush
 
 @section('content')
+@include('partials.navbar')
+
 <div
     class="brand-page"
     data-brand-slug="{{ $brand->slug }}"
