@@ -86,7 +86,7 @@
    ========================================================= */
 
 .brand-content {
-    padding-top: 42px;
+    padding-top: 0;
     padding-bottom: 90px;
 }
 
@@ -239,6 +239,21 @@
 
 .brand-history-known-for {
     margin-top: 20px;
+}
+
+.brand-history-facts {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 28px;
+    padding-top: 28px;
+    border-top: 1px solid #2a303a;
+}
+
+.brand-history-facts .brand-fact-card {
+    padding: 18px;
+    box-shadow: none;
 }
 
 /* =========================================================
@@ -507,6 +522,12 @@
         padding: 32px;
         border-left: 1px solid #2a303a;
         border-radius: 18px;
+    }
+
+    .brand-history-facts {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin-top: 16px;
+        padding-top: 22px;
     }
 
     .brand-section-heading {
