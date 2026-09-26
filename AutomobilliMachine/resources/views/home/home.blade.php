@@ -143,7 +143,7 @@
                                             <div>
                                                 <div class="d-flex justify-content-between align-items-center mb-3">
                                                     <div>
-                                                        <h3 class="fw-bold brand-font text-white mb-0">Ferrari N.V.</h3>
+                                                        <h3 class="fw-bold brand-font text-white mb-0">Ferrari</h3>
                                                         <small class="text-danger fw-semibold">Il Cavallino Rampante</small>
                                                     </div>
                                                     <span class="badge bg-black border border-secondary px-3 py-2 brand-font">EST. 1939</span>
@@ -293,7 +293,7 @@
                                             <div>
                                                 <div class="d-flex justify-content-between align-items-center mb-3">
                                                     <div>
-                                                        <h3 class="fw-bold brand-font text-white mb-0">Mercedes-AMG GmbH</h3>
+                                                        <h3 class="fw-bold brand-font text-white mb-0">Mercedes-AMG</h3>
                                                         <small class="text-secondary fw-semibold">Silver Arrows</small>
                                                     </div>
                                                     <span class="badge bg-black border border-secondary px-3 py-2 brand-font">EST. 1926</span>
