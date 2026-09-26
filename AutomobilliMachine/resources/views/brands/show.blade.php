@@ -37,7 +37,7 @@
     @include('partials.navbar')
 
     <main class="container brand-content">
- $brand->philosophy || $brand->known_for)
+        @if ($brand->history || $brand->philosophy || $brand->known_for)
             <section class="brand-history-section">
                 <div class="brand-history-media">
                     @if ($brand->history_image_path)
