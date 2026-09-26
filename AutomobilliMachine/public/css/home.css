@@ -1794,3 +1794,135 @@ body {
         height: 70px;
     }
 }
+
+
+/* =======================================================
+   13. DESKTOP FEATURED MARQUES - LAYOUT REPAIR
+   Keep mobile overrides separate.
+   ======================================================= */
+
+@media (min-width: 768px) {
+
+    .brand-swiper .swiper-slide {
+        height: auto !important;
+        align-items: flex-start !important;
+    }
+
+    .brand-spotlight-box {
+        height: auto !important;
+        min-height: 0 !important;
+        padding: 30px 32px !important;
+    }
+
+    .brand-spotlight-box > .row {
+        height: auto !important;
+        min-height: 0 !important;
+        align-items: stretch !important;
+        flex-grow: 0 !important;
+    }
+
+    .brand-spotlight-box > .row > [class*="col-"] {
+        height: auto !important;
+        min-height: 0 !important;
+        align-self: stretch !important;
+    }
+
+    /* Left column should follow its content instead of pushing facts to the bottom. */
+    .brand-spotlight-box > .row > .col-lg-3 {
+        justify-content: flex-start !important;
+    }
+
+    .brand-spotlight-box > .row > .col-lg-3 .brand-logo-card {
+        margin-bottom: 14px !important;
+        height: 220px !important;
+        min-height: 220px !important;
+    }
+
+    .brand-fact-stack {
+        gap: 10px !important;
+    }
+
+    .fact-box {
+        padding: 11px 13px;
+    }
+
+    /* Middle column gets the visual priority and a comfortable reading width. */
+    .brand-spotlight-box > .row > .col-lg-5 {
+        min-width: 0;
+    }
+
+    .brand-history-card {
+        height: auto !important;
+        min-height: 0 !important;
+        padding: 26px !important;
+    }
+
+    .brand-history-card > div:first-child {
+        min-width: 0;
+    }
+
+    .brand-history-card .archive-story-box {
+        display: flex !important;
+        align-items: flex-start !important;
+        gap: 14px !important;
+        width: 100%;
+    }
+
+    .brand-history-card .archive-story-media {
+        flex: 0 0 150px;
+        width: 150px;
+        height: 120px;
+    }
+
+    .brand-history-card .archive-story-copy {
+        flex: 1 1 auto;
+        min-width: 0;
+        font-size: .85rem;
+        line-height: 1.62;
+    }
+
+    /* Right panel stays balanced with the middle panel. */
+    .brand-spotlight-box > .row > .col-lg-4 {
+        min-width: 0;
+    }
+
+    .brand-hq-card {
+        height: auto !important;
+        min-height: 0 !important;
+        padding: 16px !important;
+    }
+
+    .brand-hq-card .hq-image {
+        height: 220px;
+    }
+
+    .brand-hq-card h5 {
+        font-size: 1.2rem;
+    }
+
+    .brand-hq-card p {
+        line-height: 1.6;
+    }
+
+    /* Prevent accidental vertical stretching of the whole slide. */
+    .brand-swiper .swiper-wrapper {
+        align-items: flex-start !important;
+    }
+}
+
+/* Large desktop: give the center column a little more breathing room. */
+@media (min-width: 1200px) {
+    .brand-spotlight-box {
+        padding: 32px 36px !important;
+    }
+
+    .brand-history-card {
+        padding: 28px !important;
+    }
+
+    .brand-history-card .archive-story-media {
+        flex-basis: 165px;
+        width: 165px;
+        height: 125px;
+    }
+}
