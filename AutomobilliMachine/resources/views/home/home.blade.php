@@ -100,7 +100,7 @@
                 </span>
                 <h2 class="display-5 fw-bold brand-font text-white mb-2">FEATURED MARQUES</h2>
                 <p class="text-secondary mx-auto mb-0 brand-slider-intro">
-                    Gunakan tombol panah atau klik tahan dan geser dengan mouse untuk menjelajahi brand.
+                    Use the arrow buttons or click and drag with your mouse to explore each brand.
                 </p>
             </div>
 
@@ -108,7 +108,7 @@
             <div class="brand-slider-wrapper position-relative">
                 
                 <!-- Tombol Navigasi Kiri (<) -->
-                <button type="button" class="brand-nav-btn nav-prev" id="brandPrevBtn" aria-label="Previous Brand" title="Brand Sebelumnya">
+                <button type="button" class="brand-nav-btn nav-prev" id="brandPrevBtn" aria-label="Previous Brand" title="Previous Brand">
                     <i class="fa-solid fa-chevron-left"></i>
                 </button>
 
@@ -157,11 +157,11 @@
                                                         <img src="{{ asset('image/Ferrari F40.jpg') }}" alt="Ferrari Heritage" class="img-fluid w-100 h-100 object-fit-cover">
                                                     </div>
                                                     <p class="text-light small mb-0 archive-story-copy">
-                                                        Berakar dari tim balap Scuderia Ferrari pada tahun 1929, pabrikan berlambang kuda jingkrak ini memproduksi mobil jalan raya pertamanya pada tahun 1947 dengan model 125 S. Setiap model dirancang dengan filosofi aerodinamika murni dan performa sirkuit.
+                                                        Rooted in the Scuderia Ferrari racing team founded in 1929, the marque produced its first road car in 1947 with the 125 S. Every model is shaped by a philosophy of pure aerodynamics and circuit-focused performance.
                                                     </p>
                                                 </div>
                                                 <p class="text-muted small mb-4">
-                                                    Lini produksinya terus menetapkan tolok ukur mesin supercar dunia, dari mahakarya V8 twin-turbo hingga sistem hibrida bertenaga 1.000 HP pada SF90 Stradale.
+                                                    Its lineup continues to set the benchmark for supercar power, from twin-turbo V8 masterpieces to the 1,000 HP hybrid system of the SF90 Stradale.
                                                 </p>
                                             </div>
                                             <a href="{{ url('/ferrari') }}" class="btn btn-racing w-100 py-2 d-flex justify-content-center align-items-center gap-2">
@@ -180,7 +180,7 @@
                                                 </div>
                                                 <h5 class="fw-bold brand-font text-white mb-2">Maranello Factory & Museum</h5>
                                                 <p class="text-muted small mb-2"><i class="fa-solid fa-location-dot text-danger me-2"></i>Via Abetone Inferiore n. 4, 41053 Maranello (MO), Italy.</p>
-                                                <p class="text-secondary small">Pusat riset teknologi F1, terowongan angin perancangan aerodinamika, dan jalur perakitan mesin legendaris V6, V8, serta V12 murni.</p>
+                                                <p class="text-secondary small">A center for Formula 1 technology research, aerodynamic wind-tunnel development, and the assembly of legendary pure V6, V8, and V12 engines.</p>
                                             </div>
                                             <div class="hq-footer-note p-2 rounded text-center small text-secondary border border-secondary border-opacity-25 bg-black bg-opacity-50">
                                                 <i class="fa-solid fa-circle-check text-success me-1"></i> Official Heritage Certified
@@ -232,11 +232,11 @@
                                                         <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?w=300&auto=format&fit=crop&q=80" alt="Lamborghini Heritage" class="img-fluid w-100 h-100 object-fit-cover">
                                                     </div>
                                                     <p class="text-light small mb-0 archive-story-copy">
-                                                        Lahir dari tekad menantang batasan sportscar Italia, Lamborghini menciptakan Miura pada tahun 1966—pelopor supercar bermesin tengah pertama di dunia yang mengubah lanskap desain otomotif selamanya.
+                                                        Born from a determination to challenge the limits of Italian sports cars, Lamborghini created the Miura in 1966—an early mid-engine supercar that transformed automotive design forever.
                                                     </p>
                                                 </div>
                                                 <p class="text-muted small mb-4">
-                                                    Dikenal dengan geometri tajam, pintu gunting ikonik, dan raungan mesin naturally-aspirated V12 legendaris dari Countach, Diablo, Aventador hingga Revuelto.
+                                                    Known for sharp geometry, iconic scissor doors, and the legendary naturally aspirated V12 roar carried from the Countach and Diablo to the Aventador and Revuelto.
                                                 </p>
                                             </div>
                                             <a href="#" class="btn btn-outline-custom w-100 py-2 d-flex justify-content-center align-items-center gap-2">
@@ -255,7 +255,7 @@
                                                 </div>
                                                 <h5 class="fw-bold brand-font text-white mb-2">Sant'Agata Bolognese</h5>
                                                 <p class="text-muted small mb-2"><i class="fa-solid fa-location-dot text-danger me-2"></i>Via Modena 12, 40019 Sant'Agata Bolognese (BO), Italy.</p>
-                                                <p class="text-secondary small">Pabrik utama perakitan tangan serat karbon dan museum resmi Museo Automobili Lamborghini.</p>
+                                                <p class="text-secondary small">The main facility for hand-assembled carbon-fiber components and the official Museo Automobili Lamborghini museum.</p>
                                             </div>
                                             <div class="hq-footer-note p-2 rounded text-center small text-secondary border border-secondary border-opacity-25 bg-black bg-opacity-50">
                                                 <i class="fa-solid fa-circle-check text-success me-1"></i> Official Heritage Certified
@@ -307,11 +307,11 @@
                                                         <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=300&auto=format&fit=crop&q=80" alt="Mercedes Heritage" class="img-fluid w-100 h-100 object-fit-cover">
                                                     </div>
                                                     <p class="text-light small mb-0 archive-story-copy">
-                                                        Sebagai pionir mobil pertama berbahan bakar bensin di dunia sejak 1886, divisi performa tinggi AMG menghadirkan filosofi 'One Man, One Engine' dengan dominasi kejuaraan balap dunia Formula 1.
+                                                        As a pioneer of the world's first gasoline-powered automobile in 1886, AMG's high-performance division brings its 'One Man, One Engine' philosophy to the world of Formula 1 racing.
                                                     </p>
                                                 </div>
                                                 <p class="text-muted small mb-4">
-                                                    Dari 300 SL Gullwing legendaris hingga hypercar Mercedes-AMG ONE bertenaga F1, merajai puncak teknologi dan kemewahan Jerman.
+                                                    From the legendary 300 SL Gullwing to the Formula 1-powered Mercedes-AMG ONE, the brand represents the pinnacle of German technology and luxury.
                                                 </p>
                                             </div>
                                             <a href="#" class="btn btn-outline-custom w-100 py-2 d-flex justify-content-center align-items-center gap-2">
@@ -330,7 +330,7 @@
                                                 </div>
                                                 <h5 class="fw-bold brand-font text-white mb-2">Affalterbach & Stuttgart</h5>
                                                 <p class="text-muted small mb-2"><i class="fa-solid fa-location-dot text-danger me-2"></i>Daimlerstraße 1, 71563 Affalterbach, Germany.</p>
-                                                <p class="text-secondary small">Fasilitas perakitan tangan mesin AMG dan Mercedes-Benz Museum yang memuat lebih dari 130 tahun sejarah otomotif dunia.</p>
+                                                <p class="text-secondary small">Home to hand-assembled AMG engines and the Mercedes-Benz Museum, which chronicles more than 130 years of automotive history.</p>
                                             </div>
                                             <div class="hq-footer-note p-2 rounded text-center small text-secondary border border-secondary border-opacity-25 bg-black bg-opacity-50">
                                                 <i class="fa-solid fa-circle-check text-success me-1"></i> Official Heritage Certified
@@ -345,7 +345,7 @@
                 </div>
 
                 <!-- Tombol Navigasi Kanan (>) -->
-                <button type="button" class="brand-nav-btn nav-next" id="brandNextBtn" aria-label="Next Brand" title="Brand Selanjutnya">
+                <button type="button" class="brand-nav-btn nav-next" id="brandNextBtn" aria-label="Next Brand" title="Next Brand">
                     <i class="fa-solid fa-chevron-right"></i>
                 </button>
 
