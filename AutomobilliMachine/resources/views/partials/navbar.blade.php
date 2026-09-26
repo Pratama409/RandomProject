@@ -11,16 +11,16 @@
         <div class="collapse navbar-collapse" id="navMenu">
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-3">
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{ route('home') }}">Home</a>
+                    <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/#brands') }}">Brands</a>
+                    <a class="nav-link {{ request()->routeIs('brands.show', 'brands.cars', 'brand.ferrari') ? 'active' : '' }}" href="{{ url('/#brands') }}">Brands</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/#iconic') }}">Iconic Cars</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('compare.index') }}">Compare</a>
+                    <a class="nav-link {{ request()->routeIs('compare.index') ? 'active' : '' }}" href="{{ route('compare.index') }}">Compare</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/#membership') }}">Membership</a>
