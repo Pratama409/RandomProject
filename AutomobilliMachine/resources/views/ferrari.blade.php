@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="id">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -145,7 +145,7 @@
             <section class="model-card">
               <img
                 src="{{asset('image/Ferrari 458 Italia.jpg')}}"
-                alt="Ferrari 458 Italia berwarna merah"
+                alt="Red Ferrari 458 Italia"
                 class="model-image"/>
               <div class="model-content">
                 <span class="model-category"> SUPERCAR </span>
@@ -175,7 +175,7 @@
             <p class="section-label">ALL MODELS</p>
             <h2>All Ferrari</h2>
             <p>
-              Semua model Ferrari.
+              All Ferrari models.
             </p>
           </div>
 
@@ -261,7 +261,7 @@
             <section class="model-card">
               <img
                 src="{{asset('image/Ferrari 458 Italia.jpg')}}"
-                alt="Ferrari 458 Italia berwarna merah"
+                alt="Red Ferrari 458 Italia"
                 class="model-image"/>
               <div class="model-content">
                 <span class="model-category"> SUPERCAR </span>
