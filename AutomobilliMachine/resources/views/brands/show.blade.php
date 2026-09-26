@@ -17,15 +17,14 @@
     <section class="brand-hero">
         <div class="brand-hero-overlay"></div>
         @if ($brand->hero_image_path)
-            <img src="{{ $brand->hero_image_path }}" alt="{{ $brand->name }}" class="brand-hero-image">
+            <img
+                src="{{ str_starts_with($brand->hero_image_path, 'http') ? $brand->hero_image_path : asset($brand->hero_image_path) }}"
+                alt="{{ $brand->name }}"
+                class="brand-hero-image"
+            >
         @endif
 
         <div class="container brand-hero-content">
-            <a href="{{ route('home') }}" class="brand-back-link">
-                <i class="fa-solid fa-arrow-left"></i>
-                Back to Automobilli
-            </a>
-
             <div class="brand-hero-copy">
                 <span class="brand-kicker">MARQUE PROFILE</span>
                 <h1>{{ $brand->name }}</h1>
