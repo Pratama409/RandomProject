@@ -133,8 +133,8 @@
                                         <div class="brand-fact-stack d-flex flex-column gap-2">
                                             <div class="fact-box"><small class="text-muted d-block">Founded</small><span class="fw-bold text-white">1939 &bull; Maranello</span></div>
                                             <div class="fact-box"><small class="text-muted d-block">Founder</small><span class="fw-bold text-white">Enzo Ferrari</span></div>
-                                            <div class="fact-box"><small class="text-muted d-block">Racing DNA</small><span class="fw-bold text-danger">Scuderia Ferrari F1</span></div>
-                                            <div class="fact-box"><small class="text-muted d-block">Signature Color</small><span class="fw-bold text-white"><i class="fa-solid fa-circle text-danger me-1"></i> Rosso Corsa</span></div>
+                                            <div class="fact-box"><small class="text-muted d-block">Country</small><span class="fw-bold text-white">Italy</span></div>
+                                            <div class="fact-box"><small class="text-muted d-block">Vehicle Lineup</small><span class="fw-bold text-white">Sports Cars &amp; Grand Tourers</span></div>
                                         </div>
                                     </div>
                                     <!-- Kolom Tengah -->
@@ -208,8 +208,8 @@
                                         <div class="brand-fact-stack d-flex flex-column gap-2">
                                             <div class="fact-box"><small class="text-muted d-block">Founded</small><span class="fw-bold text-white">1963 &bull; Sant'Agata</span></div>
                                             <div class="fact-box"><small class="text-muted d-block">Founder</small><span class="fw-bold text-white">Ferruccio Lamborghini</span></div>
-                                            <div class="fact-box"><small class="text-muted d-block">Hallmark</small><span class="fw-bold text-warning">Naturally Aspirated V12</span></div>
-                                            <div class="fact-box"><small class="text-muted d-block">Signature Color</small><span class="fw-bold text-white"><i class="fa-solid fa-circle text-warning me-1"></i> Giallo Auge</span></div>
+                                            <div class="fact-box"><small class="text-muted d-block">Country</small><span class="fw-bold text-white">Italy</span></div>
+                                            <div class="fact-box"><small class="text-muted d-block">Vehicle Lineup</small><span class="fw-bold text-white">Super Sports Cars &amp; SUVs</span></div>
                                         </div>
                                     </div>
                                     <!-- Kolom Tengah -->
