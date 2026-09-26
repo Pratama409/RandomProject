@@ -3,7 +3,7 @@
    ======================================================= */
 
 :root {
-    --primary-accent: #e50914;
+    --primary-accent: #e50914;      /* Racing Red */
     --primary-hover: #b80710;
     --bg-dark: #0a0a0c;
     --card-bg: #141418;
@@ -49,6 +49,7 @@ body {
     background-color: #0b0c10;
 }
 
+/* Visual Gambar: Terkunci Rapat di Hero (Tidak Bocor ke Bawah) */
 .hero-visual-fullscreen {
     position: absolute;
     top: 0;
@@ -73,6 +74,7 @@ body {
     z-index: 2;
 }
 
+/* GALERI MOBIL MIRING: TEPAT SIMETRIS DI TENGAH LAYAR */
 .angled-gallery {
     position: absolute;
     top: 50%;
@@ -329,7 +331,7 @@ body {
 }
 
 /* =======================================================
-   4. BRAND SPOTLIGHT SLIDER
+   4. BRAND SPOTLIGHT SLIDER (SEJAJAR PRESISI SAMA TINGGI)
    ======================================================= */
 .brand-slider-section {
     position: relative;
@@ -344,6 +346,7 @@ body {
     width: 100%;
 }
 
+/* Swiper Container: Samping Bersih & Mengunci Semua Slide Sama Tinggi */
 .brand-swiper {
     width: 100%;
     overflow: hidden;
@@ -386,6 +389,7 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Matikan drag bawaan gambar */
 .brand-swiper img,
 .brand-swiper a,
 .brand-swiper h3,
@@ -398,6 +402,9 @@ body {
     -webkit-user-select: none;
 }
 
+/* =======================================================
+   TOMBOL NAVIGASI SLIDER MEWAH (FLOATING GLASS BUTTONS)
+   ======================================================= */
 .brand-nav-btn {
     position: absolute;
     top: 50%;
@@ -432,8 +439,13 @@ body {
     transform: translateY(-50%) scale(0.95);
 }
 
-.brand-nav-btn.nav-prev { left: -27px; }
-.brand-nav-btn.nav-next { right: -27px; }
+.brand-nav-btn.nav-prev {
+    left: -27px;
+}
+
+.brand-nav-btn.nav-next {
+    right: -27px;
+}
 
 @media (min-width: 1400px) {
     .brand-nav-btn.nav-prev { left: -68px; }
@@ -450,6 +462,9 @@ body {
     .brand-nav-btn.nav-next { right: 8px; }
 }
 
+/* =======================================================
+   FRAME LOGO TERKUNCI (FIXED 220px & DUAL DEDICATED SLOTS)
+   ======================================================= */
 .brand-logo-card {
     height: 220px !important;
     width: 100% !important;
@@ -514,8 +529,8 @@ body {
     transform: scale(1.04);
 }
 
-.brand-history-card,
-.brand-hq-card {
+/* Kolom Tengah & Kanan */
+.brand-history-card, .brand-hq-card {
     background: rgba(14, 16, 22, 0.7);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 14px;
@@ -559,6 +574,15 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
+@media (max-width: 991px) {
+    .brand-spotlight-box {
+        padding: 24px 20px;
+    }
+}
+
+/* =======================================================
+   5. SEKSI PADAT DI BAWAH (MENUTUP LATAR BELAKANG FIXED)
+   ======================================================= */
 .solid-content-section {
     position: relative;
     z-index: 10;
@@ -606,6 +630,7 @@ body {
     padding: 40px;
 }
 
+/* Tombol Floating Back-to-Top */
 .btn-scroll-top {
     position: fixed;
     bottom: 2rem;
@@ -633,444 +658,590 @@ body {
     visibility: visible;
 }
 
+.btn-scroll-top:hover {
+    transform: translateY(-4px);
+    background-color: #ffffff;
+    color: var(--primary-accent);
+}
+
+/* =======================================================
+   6. RESPONSIVE MEDIA QUERIES (MOBILE & TABLET)
+   ======================================================= */
+@media (max-width: 991px) {
+    .brand-spotlight-box {
+        padding: 20px 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .angled-gallery {
+        width: 220vw;
+    }
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
 footer {
     position: relative;
     z-index: 20;
     background-color: #07080a !important;
 }
 
-/* Existing responsive rules */
-@media (max-width: 991px) {
-    .brand-spotlight-box { padding: 20px 16px; }
-}
-
-@media (max-width: 768px) {
-    .angled-gallery { width: 220vw; }
-    .hero-title { font-size: 2.2rem; }
-    .hero-actions {
-        flex-direction: column;
-        align-items: stretch;
-    }
-}
-
 /* =======================================================
-   7-9. ANDROID / MOBILE
+   11. COLOR SYSTEM / CONTRAST POLISH
+   Consistent dark automotive palette with improved readability.
+   No layout or functionality changes.
    ======================================================= */
 
+:root {
+    --bg-dark: #090b0f;
+    --card-bg: #141820;
+    --card-border: #2a303a;
+    --text-muted: #9aa4b2;
+
+    --text-main: #f5f7fa;
+    --text-secondary: #c4cbd5;
+    --text-soft: #e1e6ed;
+
+    --primary-accent: #e50914;
+    --primary-hover: #ff2b35;
+    --accent-soft: #ffb8bd;
+}
+
+/* Main text hierarchy */
+body {
+    color: var(--text-main);
+}
+
+.text-secondary {
+    color: var(--text-secondary) !important;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+/* Keep danger/red branding consistent across Bootstrap components. */
+.text-danger {
+    color: var(--primary-accent) !important;
+}
+
+.bg-danger {
+    background-color: var(--primary-accent) !important;
+}
+
+.text-warning {
+    color: #f3c65b !important;
+}
+
+/* Subtle but visible borders */
+.border-secondary {
+    border-color: rgba(255, 255, 255, .16) !important;
+}
+
+/* Transition section */
+.transition-banner .text-secondary {
+    color: #c0c8d3 !important;
+}
+
+.transition-feature {
+    color: #e8ecf2;
+    background: rgba(20, 24, 32, .82);
+    border-color: rgba(255, 255, 255, .10);
+}
+
+.transition-feature i {
+    filter: drop-shadow(0 0 7px rgba(229, 9, 20, .25));
+}
+
+/* Featured Marques */
+.brand-slider-section .text-secondary,
+.brand-slider-section .text-light {
+    color: #c8ced8 !important;
+}
+
+.brand-slider-section .text-muted {
+    color: #99a3b1 !important;
+}
+
+.brand-slider-section .blockquote-footer {
+    color: #8d97a5 !important;
+}
+
+.brand-slider-section .brand-quote {
+    color: #aeb7c4 !important;
+}
+
+.brand-slider-section .brand-quote footer {
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+.brand-slider-section .fact-box {
+    background: #171b24;
+    border-color: rgba(255, 255, 255, .09);
+}
+
+.brand-slider-section .fact-box small {
+    color: #929cab !important;
+}
+
+.brand-slider-section .fact-box span {
+    color: #f0f3f7 !important;
+}
+
+.brand-slider-section .fact-box .text-danger {
+    color: #ff4a52 !important;
+}
+
+.brand-slider-section .fact-box .text-warning {
+    color: #f3c65b !important;
+}
+
+.brand-slider-section .archive-story-box {
+    background: rgba(255, 255, 255, .045);
+    border-color: rgba(255, 255, 255, .08);
+}
+
+.brand-slider-section .brand-history-card > div > p.text-muted {
+    color: #a5aebc !important;
+}
+
+.brand-slider-section .brand-hq-card p {
+    color: #adb6c3 !important;
+}
+
+.brand-slider-section .hq-footer-note {
+    color: #a6afbc !important;
+}
+
+/* Buttons: stronger contrast without changing their shape. */
+.btn-outline-custom,
+.btn-outline {
+    color: #f5f7fa;
+    border-color: rgba(255, 255, 255, .28);
+}
+
+.btn-outline-custom:hover,
+.btn-outline:hover {
+    border-color: rgba(255, 255, 255, .58);
+}
+
+/* Iconic Picks */
+#iconic .text-muted {
+    color: #98a2b0 !important;
+}
+
+#iconic .spec-box {
+    background: #181c25;
+    border: 1px solid rgba(255, 255, 255, .055);
+}
+
+#iconic .spec-label {
+    color: #98a2b0 !important;
+}
+
+#iconic .spec-val {
+    color: #f4f6f8 !important;
+}
+
+#iconic .badge.bg-danger {
+    background-color: var(--primary-accent) !important;
+}
+
+/* Better contrast for small labels across the home page. */
+.small {
+    color: inherit;
+}
+
+.brand-slider-section .small {
+    color: inherit;
+}
+
+/* Red accent stays elegant rather than overly bright. */
+.btn-primary,
+.btn-racing {
+    background-color: var(--primary-accent);
+}
+
+.btn-primary:hover,
+.btn-racing:hover {
+    background-color: var(--primary-hover);
+}
+
+
+
+
+/* =======================================================
+   12. FINAL VISUAL POLISH
+   Refined automotive dark theme, clearer hierarchy,
+   reusable classes, and better mobile balance.
+   ======================================================= */
+
+/* Reusable elements moved out of Blade inline styles */
+.brand-slider-intro {
+    max-width: 600px;
+}
+
+.section-kicker {
+    letter-spacing: 2px;
+}
+
+.archive-story-media {
+    width: 110px;
+    height: 95px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.archive-story-copy {
+    line-height: 1.6;
+}
+
+.hq-image {
+    height: 200px;
+    object-fit: cover;
+}
+
+.iconic-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Core page atmosphere */
+body {
+    background:
+        radial-gradient(circle at 8% 12%, rgba(229, 9, 20, .045), transparent 24%),
+        radial-gradient(circle at 92% 74%, rgba(88, 104, 145, .045), transparent 22%),
+        var(--bg-dark);
+}
+
+/* Hero */
+.hero-wrapper {
+    background:
+        radial-gradient(circle at 78% 45%, rgba(229, 9, 20, .08), transparent 24%),
+        #0b0d12;
+}
+
+.hero-title {
+    text-wrap: balance;
+}
+
+.hero-desc {
+    color: #d4dae3;
+}
+
+.hero-actions .btn-primary,
+.hero-actions .btn-outline {
+    min-height: 52px;
+}
+
+.hero-actions .btn-primary {
+    box-shadow: 0 10px 28px rgba(229, 9, 20, .20);
+}
+
+/* Transition banner */
+.transition-banner {
+    padding-top: 78px;
+    padding-bottom: 68px;
+}
+
+.transition-banner .badge {
+    border-radius: 999px;
+    letter-spacing: .14em;
+    font-size: .68rem;
+}
+
+.transition-banner .display-4 {
+    text-wrap: balance;
+}
+
+.transition-feature {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Featured Marques */
+.brand-slider-section {
+    background:
+        radial-gradient(circle at 20% 12%, rgba(229, 9, 20, .055), transparent 24%),
+        linear-gradient(180deg, #0a0c10 0%, #0d1016 100%);
+}
+
+.brand-slider-section > .container {
+    position: relative;
+}
+
+.brand-slider-intro {
+    color: #b8c0cc !important;
+    line-height: 1.65;
+}
+
+.brand-swiper {
+    box-shadow: 0 24px 70px rgba(0, 0, 0, .36);
+}
+
+.brand-spotlight-box {
+    background:
+        linear-gradient(145deg, rgba(24, 28, 37, .96), rgba(12, 15, 21, .98)) !important;
+    border-color: rgba(255, 255, 255, .095);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .035),
+        0 18px 45px rgba(0, 0, 0, .28);
+}
+
+.brand-logo-card,
+.brand-history-card,
+.brand-hq-card {
+    background:
+        linear-gradient(160deg, rgba(20, 24, 32, .96), rgba(14, 17, 23, .96));
+    border-color: rgba(255, 255, 255, .085);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .025);
+}
+
+.brand-logo-card {
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.025),
+        0 12px 28px rgba(0,0,0,.16);
+}
+
+.brand-logo-card:hover,
+.brand-history-card:hover,
+.brand-hq-card:hover {
+    border-color: rgba(255, 255, 255, .16);
+}
+
+.fact-box {
+    background: rgba(24, 28, 37, .92);
+    border-color: rgba(255, 255, 255, .075);
+}
+
+.fact-box small {
+    color: #8f99a8 !important;
+}
+
+.fact-box span {
+    color: #f1f4f7 !important;
+}
+
+.brand-history-card h3,
+.brand-hq-card h5 {
+    color: #f7f8fa !important;
+}
+
+.brand-history-card .text-muted,
+.brand-hq-card .text-muted {
+    color: #a7b0bd !important;
+}
+
+.archive-story-media {
+    border: 1px solid rgba(255, 255, 255, .06);
+}
+
+.archive-story-copy {
+    color: #d6dce4 !important;
+}
+
+.hq-image-wrapper {
+    border: 1px solid rgba(255, 255, 255, .055);
+}
+
+.hq-badge {
+    background: rgba(8, 10, 14, .86);
+    border-color: rgba(255,255,255,.18);
+}
+
+.hq-footer-note {
+    background: rgba(7, 9, 12, .58) !important;
+}
+
+/* Iconic Picks */
+#iconic {
+    background:
+        linear-gradient(180deg, #0b0e13 0%, #090b0f 100%);
+}
+
+#iconic .container > .d-flex {
+    padding-bottom: 4px;
+}
+
+#iconic .container > .d-flex h6 {
+    font-size: .72rem;
+    letter-spacing: .18em !important;
+}
+
+#iconic .custom-card {
+    background:
+        linear-gradient(150deg, #171b23 0%, #10131a 100%);
+    border-color: rgba(255,255,255,.08);
+    box-shadow: 0 16px 36px rgba(0,0,0,.20);
+}
+
+#iconic .custom-card:hover {
+    box-shadow: 0 22px 48px rgba(0,0,0,.30);
+}
+
+#iconic .iconic-image {
+    filter: saturate(.94) contrast(1.03);
+}
+
+#iconic .p-4 {
+    padding: 1.15rem !important;
+}
+
+#iconic h4 {
+    font-size: 1.2rem;
+    letter-spacing: .04em;
+}
+
+#iconic .spec-box {
+    min-height: 66px;
+    background: #1b2029;
+    border: 1px solid rgba(255,255,255,.05);
+}
+
+#iconic .spec-label {
+    color: #8f99a8 !important;
+}
+
+#iconic .spec-val {
+    color: #f6f7f8 !important;
+}
+
+/* Compare */
+#compare {
+    background: #0a0d12;
+}
+
+#compare .compare-teaser {
+    background:
+        radial-gradient(circle at 85% 50%, rgba(229, 9, 20, .08), transparent 26%),
+        linear-gradient(145deg, #171b23 0%, #10131a 100%);
+    border-color: rgba(255,255,255,.09);
+    box-shadow: 0 18px 45px rgba(0,0,0,.18);
+}
+
+#compare .text-muted {
+    color: #a7b0bd !important;
+}
+
+#compare .text-secondary {
+    color: #c1c8d2 !important;
+}
+
+#compare .bg-dark {
+    background: rgba(9, 12, 17, .78) !important;
+}
+
+/* Membership */
+.membership-section {
+    background:
+        radial-gradient(circle at 50% 0%, rgba(229, 9, 20, .055), transparent 30%),
+        #080a0e !important;
+}
+
+.membership-section .custom-card {
+    background: linear-gradient(150deg, #151a22, #10141b);
+}
+
+.membership-section .text-muted {
+    color: #a7b0bd !important;
+}
+
+.membership-section .text-danger {
+    color: #ff4a52 !important;
+}
+
+/* Global button polish */
+.btn-racing,
+.btn-primary {
+    border-radius: 9px;
+}
+
+.btn-racing {
+    box-shadow: 0 10px 26px rgba(229, 9, 20, .18);
+}
+
+.btn-outline-custom {
+    background: rgba(255,255,255,.025);
+}
+
+/* Mobile: keep spacing deliberate and compact */
 @media (max-width: 767.98px) {
-    html, body {
-        width: 100%;
-        max-width: 100%;
-        overflow-x: hidden;
+
+    .transition-banner {
+        padding-top: 52px;
+        padding-bottom: 44px;
     }
 
-    .hero-wrapper {
-        min-height: 100svh;
-        height: auto;
+    .brand-slider-intro {
+        max-width: 330px;
     }
 
-    .hero-visual-fullscreen {
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
+    .archive-story-media {
+        width: 82px;
+        height: 74px;
+        border-radius: 9px;
     }
 
-    .angled-gallery {
-        top: 50%;
-        left: 68%;
-        width: 160vw;
-        height: 150svh;
-        gap: .65rem;
-        transform: translate(-50%, -50%) rotate(-20deg);
-        opacity: .82;
+    .archive-story-copy {
+        line-height: 1.45;
     }
 
-    .gallery-col { gap: .65rem; }
-    .col-offset-1 { margin-top: -3.5rem; }
-    .col-offset-2 { margin-top: 2rem; }
-    .col-offset-3 { margin-top: -2.5rem; }
-
-    .showcase-card {
-        width: 120px;
-        height: 175px;
-        border-radius: 11px;
-        box-shadow: 0 12px 26px rgba(0, 0, 0, .72);
+    .hq-image {
+        height: 150px;
     }
 
-    .hero-backdrop-overlay {
-        background: linear-gradient(
-            90deg,
-            rgba(8, 9, 13, .82) 0%,
-            rgba(8, 9, 13, .58) 52%,
-            rgba(8, 9, 13, .38) 100%
-        );
+    .iconic-image {
+        height: 205px;
     }
 
-    .hero-content {
-        min-height: 100svh;
-        width: 100%;
-        max-width: none;
-        padding: 7.5rem 1.25rem 4rem;
-        justify-content: center;
-        position: relative;
-        z-index: 5;
-        background: linear-gradient(
-            90deg,
-            rgba(8, 9, 13, .35) 0%,
-            rgba(8, 9, 13, .10) 60%,
-            transparent 100%
-        );
-    }
-
-    .hero-title {
-        max-width: 100%;
-        font-size: clamp(2rem, 9vw, 2.7rem);
-        line-height: 1.08;
-        margin-bottom: 1rem;
-    }
-
-    .hero-title span {
-        margin-top: .3rem;
-        font-size: .92em;
-    }
-
-    .hero-desc {
-        max-width: 100%;
-        font-size: .95rem;
-        line-height: 1.6;
-        margin-bottom: 1.6rem;
-    }
-
-    .hero-actions {
-        width: 100%;
-        flex-direction: column;
-        align-items: stretch;
-        gap: .7rem;
-        margin-bottom: 2.2rem;
-    }
-
-    .hero-actions a {
-        width: 100%;
-        text-align: center;
-        padding: .85rem 1rem;
-    }
-
-    .scroll-indicator {
-        width: 22px;
-        height: 36px;
-    }
-
-    .navbar-custom {
-        padding-top: .75rem !important;
-        padding-bottom: .75rem !important;
-    }
-
-    .navbar-custom .container {
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-
-    .navbar-brand { font-size: .92rem; }
-    .navbar-collapse { padding-top: .75rem; }
-    .navbar-nav { gap: .15rem !important; }
-    .navbar-nav .nav-link { padding: .55rem .25rem; }
-
-    .navbar-custom .d-flex {
-        width: 100%;
-        margin-top: .5rem;
-    }
-
-    .navbar-custom .d-flex > a {
-        flex: 1 1 0;
-        text-align: center;
-    }
-
-    .transition-banner { padding: 58px 0 48px; }
-
-    .transition-banner .container {
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-
-    .transition-banner .display-4 {
-        font-size: clamp(1.75rem, 8vw, 2.3rem);
-        line-height: 1.15;
-    }
-
-    .transition-desc {
-        font-size: .95rem !important;
-        line-height: 1.6;
-    }
-
-    .transition-feature {
-        padding: 11px 12px;
-        font-size: .8rem;
-        min-height: 48px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .brand-slider-section {
-        padding-top: 2.5rem !important;
-        padding-bottom: 2.5rem !important;
-    }
-
-    .brand-slider-section > .container {
-        padding-left: .9rem;
-        padding-right: .9rem;
-    }
-
-    .brand-slider-section .display-5 {
-        font-size: clamp(1.7rem, 8vw, 2.25rem);
-        line-height: 1.15;
-    }
-
-    .brand-slider-section .text-center > p {
-        font-size: .78rem !important;
-        line-height: 1.55;
-        padding: 0 .45rem;
-    }
-
-    .brand-swiper {
+    #iconic .custom-card {
         border-radius: 15px;
-        overflow: hidden;
     }
 
-    .brand-spotlight-box {
-        padding: 12px;
+    #iconic .p-4 {
+        padding: 1rem !important;
+    }
+
+    #iconic h4 {
+        font-size: 1.08rem;
+    }
+
+    #compare .compare-teaser {
+        padding: 24px 20px;
+        border-radius: 16px;
+    }
+
+    .membership-section .custom-card {
         border-radius: 15px;
-        overflow: hidden;
-        height: auto !important;
-    }
-
-    .brand-swiper .row {
-        --bs-gutter-x: .75rem;
-        --bs-gutter-y: .75rem;
-    }
-
-    .brand-spotlight-box > .row {
-        display: flex !important;
-        flex-wrap: nowrap !important;
-        align-items: flex-start !important;
-        gap: .75rem;
-        margin: 0 !important;
-        padding: 0 0 .35rem !important;
-        overflow-x: auto !important;
-        overflow-y: hidden !important;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-    }
-
-    .brand-spotlight-box > .row::-webkit-scrollbar {
-        display: none;
-    }
-
-    .brand-spotlight-box > .row > [class*="col-"] {
-        flex: 0 0 88% !important;
-        width: 88% !important;
-        max-width: 88% !important;
-        min-width: 88% !important;
-        height: auto !important;
-        align-self: flex-start !important;
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        scroll-snap-align: start;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: flex-start !important;
-    }
-
-    .brand-spotlight-box .h-100,
-    .brand-spotlight-box .brand-history-card,
-    .brand-spotlight-box .brand-hq-card {
-        height: auto !important;
-        min-height: 0 !important;
-    }
-
-    .brand-spotlight-box > .row > [class*="col-"] > .d-flex {
-        justify-content: flex-start !important;
-        height: auto !important;
-    }
-
-    .brand-logo-card {
-        height: 150px !important;
-        min-height: 150px !important;
-        margin-bottom: .6rem !important;
-        padding: 14px 12px;
-        flex-shrink: 0;
-        justify-content: space-between !important;
-    }
-
-    .logo-emblem-slot { height: 82px; }
-
-    .logo-emblem-slot img {
-        max-height: 72px;
-        max-width: 80%;
-    }
-
-    .logo-wordmark-slot {
-        height: 38px;
-        padding-top: 4px;
-    }
-
-    .logo-wordmark-slot img {
-        max-height: 25px;
-        max-width: 72%;
-    }
-
-    .brand-fact-stack {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr;
-        gap: .5rem !important;
-    }
-
-    .fact-box {
-        min-height: 60px;
-        padding: 8px 9px;
-        font-size: .72rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .fact-box small { font-size: .63rem !important; }
-
-    .fact-box span {
-        font-size: .68rem;
-        line-height: 1.3;
-    }
-
-    .brand-history-card { padding: 13px !important; }
-
-    .brand-history-card .archive-story-box {
-        display: flex !important;
-        gap: .65rem !important;
-    }
-
-    .brand-history-card .archive-story-box > div {
-        width: 105px !important;
-        height: 90px !important;
-        margin-bottom: 0 !important;
-    }
-
-    .brand-history-card .archive-story-box p {
-        font-size: .71rem !important;
-        line-height: 1.48 !important;
-    }
-
-    .brand-hq-card { padding: 13px !important; }
-
-    .hq-image-wrapper img { height: 145px !important; }
-
-    .brand-hq-card p {
-        font-size: .69rem !important;
-        line-height: 1.48;
-    }
-
-    .brand-nav-btn {
-        width: 38px;
-        height: 38px;
-        font-size: .88rem;
-        background: rgba(10, 12, 18, .92);
-    }
-
-    .brand-nav-btn.nav-prev { left: 4px; }
-    .brand-nav-btn.nav-next { right: 4px; }
-
-    /* ---------- ICONIC PICKS ---------- */
-    #iconic .container > .d-flex.justify-content-between.align-items-end {
-        justify-content: center !important;
-        align-items: center !important;
-        text-align: center !important;
-    }
-
-    #iconic .container > .d-flex.justify-content-between.align-items-end > div {
-        width: 100%;
-    }
-
-    #iconic .container > .d-flex.justify-content-between.align-items-end h6,
-    #iconic .container > .d-flex.justify-content-between.align-items-end h2 {
-        text-align: center !important;
-        width: 100%;
-    }
-
-    #iconic .row.g-4 {
-        --bs-gutter-x: .6rem;
-    }
-
-    #iconic .spec-box {
-        min-height: 64px;
-        padding: 8px 5px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    #iconic .spec-label {
-        font-size: .62rem;
-        line-height: 1.2;
-        margin-bottom: 4px;
-        white-space: nowrap;
-    }
-
-    #iconic .spec-val {
-        font-size: .86rem;
-        line-height: 1.15;
-        white-space: nowrap;
     }
 }
 
 @media (max-width: 390px) {
-    .angled-gallery {
-        left: 72%;
-        width: 150vw;
-        opacity: .78;
+    .iconic-image {
+        height: 195px;
     }
 
-    .showcase-card {
-        width: 108px;
-        height: 158px;
-    }
-
-    .brand-spotlight-box > .row > [class*="col-"] {
-        flex-basis: 91% !important;
-        width: 91% !important;
-        max-width: 91% !important;
-        min-width: 91% !important;
-    }
-
-    .brand-logo-card {
-        height: 145px !important;
-        min-height: 145px !important;
-    }
-
-    .brand-history-card .archive-story-box > div {
-        width: 95px !important;
-        height: 82px !important;
-    }
-
-    #iconic .spec-box {
-        min-height: 62px;
-        padding-left: 4px;
-        padding-right: 4px;
-    }
-
-    #iconic .spec-label { font-size: .58rem; }
-    #iconic .spec-val { font-size: .82rem; }
-}
-
-
-/* Mobile hero background: subtle zoom */
-@media (max-width: 767.98px) {
-    .angled-gallery {
-        transform: translate(-50%, -50%) rotate(-20deg) scale(1.08);
+    .archive-story-media {
+        width: 76px;
+        height: 70px;
     }
 }
+
+
+
+
 
 
 /* =======================================================
