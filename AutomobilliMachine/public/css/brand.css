@@ -1,0 +1,310 @@
+.brand-page {
+    min-height: 100vh;
+    background: #090b0f;
+    color: #f5f7fa;
+}
+
+.brand-hero {
+    position: relative;
+    min-height: 520px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+}
+
+.brand-hero-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: .62;
+}
+
+.brand-hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        linear-gradient(180deg, rgba(9,11,15,.15), rgba(9,11,15,.96)),
+        linear-gradient(90deg, rgba(9,11,15,.96), rgba(9,11,15,.2));
+}
+
+.brand-hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 58px 16px 70px;
+}
+
+.brand-back-link {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    color: #d7dce3;
+    text-decoration: none;
+    margin-bottom: 80px;
+}
+
+.brand-back-link:hover {
+    color: #fff;
+}
+
+.brand-kicker,
+.brand-section-label {
+    color: #e50914;
+    font-size: .74rem;
+    font-weight: 800;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+}
+
+.brand-hero-copy h1 {
+    margin: 0 0 16px;
+    font-size: clamp(3.2rem, 8vw, 7rem);
+    line-height: .95;
+    font-weight: 800;
+    letter-spacing: -.04em;
+}
+
+.brand-hero-copy p {
+    max-width: 720px;
+    margin: 0;
+    color: #cdd3db;
+    font-size: 1.1rem;
+}
+
+.brand-content {
+    padding-top: 42px;
+    padding-bottom: 90px;
+}
+
+.brand-fact-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 42px;
+}
+
+.brand-fact-card,
+.brand-story-card {
+    background: linear-gradient(145deg, rgba(20,24,32,.96), rgba(12,14,19,.96));
+    border: 1px solid #2a303a;
+    border-radius: 18px;
+    box-shadow: 0 18px 44px rgba(0,0,0,.18);
+}
+
+.brand-fact-card {
+    padding: 22px;
+}
+
+.brand-fact-card span {
+    display: block;
+    color: #9aa4b2;
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.brand-fact-card strong {
+    display: block;
+    color: #fff;
+    line-height: 1.45;
+}
+
+.brand-story-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 56px;
+}
+
+.brand-story-card {
+    padding: 28px;
+}
+
+.brand-story-card h2,
+.brand-section-heading h2 {
+    margin: 8px 0 12px;
+    font-size: clamp(1.7rem, 2vw, 2.5rem);
+    font-weight: 800;
+}
+
+.brand-story-card p,
+.brand-section-heading p {
+    margin: 0;
+    color: #b9c1cc;
+    line-height: 1.8;
+}
+
+.brand-section-heading {
+    display: flex;
+    gap: 24px;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 24px;
+}
+
+.brand-model-tools input {
+    width: min(340px, 100%);
+    min-width: 260px;
+    border-radius: 999px;
+    border: 1px solid #2a303a;
+    background: #10131a;
+    color: #fff;
+    padding: 12px 16px;
+    outline: none;
+}
+
+.brand-model-tools input:focus {
+    border-color: rgba(229,9,20,.6);
+    box-shadow: 0 0 0 4px rgba(229,9,20,.08);
+}
+
+.brand-car-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    min-height: 160px;
+}
+
+.brand-car-card {
+    overflow: hidden;
+    background: #141820;
+    border: 1px solid #2a303a;
+    border-radius: 18px;
+    transition: transform .2s ease, border-color .2s ease;
+}
+
+.brand-car-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(229,9,20,.45);
+}
+
+.brand-car-card img,
+.brand-car-placeholder {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    background: #10131a;
+}
+
+.brand-car-placeholder {
+    display: grid;
+    place-items: center;
+    color: #555d69;
+    font-size: 2rem;
+}
+
+.brand-car-body {
+    padding: 18px;
+}
+
+.brand-car-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    color: #9aa4b2;
+    font-size: .76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+}
+
+.brand-icon-badge {
+    color: #fff;
+    background: #e50914;
+    padding: 3px 8px;
+    border-radius: 999px;
+    font-size: .65rem;
+}
+
+.brand-car-body h3 {
+    margin: 8px 0;
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+
+.brand-car-body p {
+    color: #aab2be;
+    line-height: 1.65;
+    min-height: 52px;
+    margin-bottom: 14px;
+}
+
+.brand-spec-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    color: #cdd3db;
+    font-size: .8rem;
+}
+
+.brand-load-more-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 28px;
+}
+
+.brand-load-more {
+    border: 1px solid #2a303a;
+    background: #131720;
+    color: #fff;
+    border-radius: 999px;
+    padding: 11px 18px;
+    font-weight: 700;
+}
+
+.brand-loading-state,
+.brand-empty-state {
+    grid-column: 1 / -1;
+    min-height: 150px;
+    display: grid;
+    place-items: center;
+    color: #9aa4b2;
+    border: 1px dashed #343b46;
+    border-radius: 18px;
+    background: rgba(20,24,32,.5);
+}
+
+@media (max-width: 991px) {
+    .brand-fact-grid,
+    .brand-story-grid,
+    .brand-car-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .brand-section-heading {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .brand-model-tools input {
+        width: 100%;
+    }
+}
+
+@media (max-width: 575px) {
+    .brand-hero {
+        min-height: 460px;
+    }
+
+    .brand-hero-content {
+        padding-bottom: 48px;
+    }
+
+    .brand-back-link {
+        margin-bottom: 58px;
+    }
+
+    .brand-fact-grid,
+    .brand-story-grid,
+    .brand-car-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .brand-content {
+        padding-top: 24px;
+    }
+}
