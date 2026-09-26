@@ -7,8 +7,6 @@
 @endpush
 
 @section('content')
-@include('partials.navbar')
-
 <div
     class="brand-page"
     data-brand-slug="{{ $brand->slug }}"
@@ -36,40 +34,15 @@
         </div>
     </section>
 
+    @include('partials.navbar')
+
     <main class="container brand-content">
-        <section class="brand-fact-grid">
-            <article class="brand-fact-card">
-                <span>Founded</span>
-                <strong>
-                    {{ $brand->founded_year ?: '—' }}
-                    @if ($brand->founded_location)
-                        • {{ $brand->founded_location }}
-                    @endif
-                </strong>
-            </article>
-
-            <article class="brand-fact-card">
-                <span>Founder</span>
-                <strong>{{ $brand->founder ?: '—' }}</strong>
-            </article>
-
-            <article class="brand-fact-card">
-                <span>Country</span>
-                <strong>{{ $brand->country }}</strong>
-            </article>
-
-            <article class="brand-fact-card">
-                <span>Vehicle Lineup</span>
-                <strong>{{ $brand->vehicle_lineup ?: '—' }}</strong>
-            </article>
-        </section>
-
-        @if ($brand->history || $brand->philosophy || $brand->known_for)
+ $brand->philosophy || $brand->known_for)
             <section class="brand-history-section">
                 <div class="brand-history-media">
                     @if ($brand->history_image_path)
                         <img
-                            src="{{ $brand->history_image_path }}"
+                            src="{{ str_starts_with($brand->history_image_path, 'http') ? $brand->history_image_path : asset($brand->history_image_path) }}"
                             alt="{{ $brand->name }} heritage"
                             loading="lazy"
                             decoding="async"
@@ -102,6 +75,33 @@
                             <p>{{ $brand->known_for }}</p>
                         </div>
                     @endif
+                </div>
+
+                <div class="brand-history-facts">
+                    <article class="brand-fact-card">
+                        <span>Founded</span>
+                        <strong>
+                            {{ $brand->founded_year ?: '—' }}
+                            @if ($brand->founded_location)
+                                • {{ $brand->founded_location }}
+                            @endif
+                        </strong>
+                    </article>
+
+                    <article class="brand-fact-card">
+                        <span>Founder</span>
+                        <strong>{{ $brand->founder ?: '—' }}</strong>
+                    </article>
+
+                    <article class="brand-fact-card">
+                        <span>Country</span>
+                        <strong>{{ $brand->country }}</strong>
+                    </article>
+
+                    <article class="brand-fact-card">
+                        <span>Vehicle Lineup</span>
+                        <strong>{{ $brand->vehicle_lineup ?: '—' }}</strong>
+                    </article>
                 </div>
             </section>
         @endif
