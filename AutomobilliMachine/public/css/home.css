@@ -1785,3 +1785,16 @@ body {
         height: 205px !important;
     }
 }
+
+
+/* =======================================================
+   ANCHOR OFFSET FOR STICKY NAVBAR
+   Prevent section headings from hiding underneath the navbar.
+   ======================================================= */
+
+#brands,
+#iconic,
+#compare,
+#membership {
+    scroll-margin-top: 92px;
+}
