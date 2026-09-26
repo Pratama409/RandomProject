@@ -58,8 +58,8 @@
             <p class="section-label">ICONIC MACHINES</p>
             <h2>Ferrari Models</h2>
             <p>
-              Beberapa model Ferrari yang menjadi simbol performa, desain, dan
-              karakter mobil sport Italia.
+              Several Ferrari models that symbolize the performance, design, and
+              character of Italian sports cars.
             </p>
           </div>
 
@@ -73,9 +73,9 @@
                 <span class="model-category"> ICON </span>
                 <h3>Ferrari F40</h3>
                 <p>
-                  Ferrari F40 merupakan salah satu mobil paling ikonik dalam
-                  sejarah Ferrari. Desainnya menampilkan karakter agresif dengan
-                  fokus pada performa dan pengalaman berkendara.
+                  The Ferrari F40 is one of the most iconic cars in Ferrari
+                  history. Its design features an aggressive character focused on
+                  performance and driving experience.
                 </p>
                 <div class="specification">
                   <div>
@@ -99,9 +99,8 @@
                 <span class="model-category"> GRAND TOURER </span>
                 <h3>Ferrari F12 Berlinetta</h3>
                 <p>
-                  Ferrari F12 Berlinetta memadukan mesin V12, desain
-                  aerodinamis, dan kenyamanan sebuah grand tourer dalam satu
-                  mobil berperforma tinggi.
+                  The Ferrari F12 Berlinetta combines a V12 engine, aerodynamic
+                  design, and grand-tourer comfort in a high-performance car.
                 </p>
                 <div class="specification">
                   <div>
@@ -125,9 +124,8 @@
                 <span class="model-category"> HYBRID </span>
                 <h3>Ferrari SF90 Spider</h3>
                 <p>
-                  SF90 Spider menunjukkan perkembangan Ferrari menuju era
-                  elektrifikasi dengan menggabungkan mesin konvensional dan
-                  motor listrik.
+                  The SF90 Spider represents Ferrari's move toward electrification
+                  by combining a conventional engine with electric motors.
                 </p>
                 <div class="specification">
                   <div>
@@ -151,9 +149,9 @@
                 <span class="model-category"> SUPERCAR </span>
                 <h3>Ferrari 458 Italia</h3>
                 <p>
-                  Ferrari 458 Italia dikenal dengan mesin V8 naturally aspirated
-                  serta desain yang menggabungkan aerodinamika dan keindahan
-                  khas Ferrari.
+                  The Ferrari 458 Italia is known for its naturally aspirated V8
+                  and a design that combines aerodynamic efficiency with Ferrari's
+                  distinctive character.
                 </p>
                 <div class="specification">
                   <div>
@@ -189,9 +187,9 @@
                 <span class="model-category"> ICON </span>
                 <h3>Ferrari F40</h3>
                 <p>
-                  Ferrari F40 merupakan salah satu mobil paling ikonik dalam
-                  sejarah Ferrari. Desainnya menampilkan karakter agresif dengan
-                  fokus pada performa dan pengalaman berkendara.
+                  The Ferrari F40 is one of the most iconic cars in Ferrari
+                  history. Its design features an aggressive character focused on
+                  performance and driving experience.
                 </p>
                 <div class="specification">
                   <div>
@@ -215,9 +213,8 @@
                 <span class="model-category"> GRAND TOURER </span>
                 <h3>Ferrari F12 Berlinetta</h3>
                 <p>
-                  Ferrari F12 Berlinetta memadukan mesin V12, desain
-                  aerodinamis, dan kenyamanan sebuah grand tourer dalam satu
-                  mobil berperforma tinggi.
+                  The Ferrari F12 Berlinetta combines a V12 engine, aerodynamic
+                  design, and grand-tourer comfort in a high-performance car.
                 </p>
                 <div class="specification">
                   <div>
@@ -241,9 +238,8 @@
                 <span class="model-category"> HYBRID </span>
                 <h3>Ferrari SF90 Spider</h3>
                 <p>
-                  SF90 Spider menunjukkan perkembangan Ferrari menuju era
-                  elektrifikasi dengan menggabungkan mesin konvensional dan
-                  motor listrik.
+                  The SF90 Spider represents Ferrari's move toward electrification
+                  by combining a conventional engine with electric motors.
                 </p>
                 <div class="specification">
                   <div>
@@ -267,9 +263,9 @@
                 <span class="model-category"> SUPERCAR </span>
                 <h3>Ferrari 458 Italia</h3>
                 <p>
-                  Ferrari 458 Italia dikenal dengan mesin V8 naturally aspirated
-                  serta desain yang menggabungkan aerodinamika dan keindahan
-                  khas Ferrari.
+                  The Ferrari 458 Italia is known for its naturally aspirated V8
+                  and a design that combines aerodynamic efficiency with Ferrari's
+                  distinctive character.
                 </p>
                 <div class="specification">
                   <div>
@@ -296,22 +292,21 @@
             alt="Foto Ferrari"
             class="feature-image"/>
           <p>
-            Ferrari dikenal sebagai salah satu nama paling berpengaruh dalam
-            dunia otomotif. Identitasnya dibangun melalui perpaduan motorsport,
-            engineering, desain, dan karakter mobil berperforma tinggi.
+            Ferrari is one of the most influential names in the automotive world.
+            Its identity is built on a combination of motorsport, engineering,
+            design, and high-performance automotive character.
           </p>
           <p>
-            Seiring perkembangan teknologi, Ferrari terus mengembangkan
-            kendaraan dengan pendekatan baru, mulai dari penggunaan mesin V8 dan
-            V12 hingga teknologi hybrid pada generasi modern.
+            As technology evolves, Ferrari continues to develop vehicles through
+            new approaches, from V8 and V12 engines to hybrid technology in
+            modern generations.
           </p>
           <section class="heritage-section">
             <h3>From Racing to Road Cars</h3>
             <p>
-              Pengalaman Ferrari di dunia balap memberikan pengaruh besar
-              terhadap pengembangan mobil jalan raya. Teknologi aerodinamika,
-              material, mesin, serta pengendalian kendaraan terus berkembang
-              dari generasi ke generasi.
+              Ferrari's racing experience has strongly influenced the development
+              of its road cars. Aerodynamic technology, materials, engines, and
+              vehicle control continue to evolve from one generation to the next.
             </p>
           </section>
         </article>
@@ -321,8 +316,8 @@
             <p class="section-label">ENGINEERING</p>
             <h2>Performance Philosophy</h2>
             <p>
-              Sebuah Ferrari bukan hanya mengenai kecepatan, tetapi juga
-              keseimbangan antara mesin, aerodinamika, handling, dan desain.
+              A Ferrari is not only about speed, but also about the balance between
+              the engine, aerodynamics, handling, and design.
             </p>
           </div>
           <div class="performance-container">
@@ -330,8 +325,8 @@
               <span class="performance-number"> 01 </span>
               <h3>Engine</h3>
               <p>
-                Mesin menjadi salah satu bagian utama dalam karakter Ferrari,
-                mulai dari V8 hingga V12 dan sistem hybrid generasi modern.
+                The engine is one of the defining elements of Ferrari's character,
+                ranging from V8 and V12 power to modern hybrid systems.
               </p>
             </section>
 
@@ -339,8 +334,8 @@
               <span class="performance-number"> 02 </span>
               <h3>Aerodynamics</h3>
               <p>
-                Bentuk bodi dirancang tidak hanya untuk estetika, tetapi juga
-                membantu mengatur aliran udara dan kestabilan kendaraan.
+                The body is designed not only for aesthetics, but also to manage
+                airflow and vehicle stability.
               </p>
             </section>
 
@@ -348,16 +343,16 @@
               <span class="performance-number"> 03 </span>
               <h3>Handling</h3>
               <p>
-                Sistem suspensi, kemudi, dan distribusi bobot dikembangkan untuk
-                memberikan respons kendaraan yang presisi.
+                The suspension, steering, and weight distribution systems are
+                developed to deliver precise vehicle responses.
               </p>
             </section>
             <section class="performance-item">
               <span class="performance-number"> 04 </span>
               <h3>Design</h3>
               <p>
-                Setiap model memadukan fungsi aerodinamika dengan bahasa desain
-                yang memiliki identitas khas Ferrari.
+                Every model combines aerodynamic function with a distinctive
+                Ferrari design language.
               </p>
             </section>
           </div>
@@ -411,9 +406,8 @@
           <section class="featured-description">
             <h3>Why It's Special</h3>
             <p>
-              F40 dikenal karena desain yang sangat berorientasi pada performa
-              dan menjadi salah satu mobil Ferrari yang paling mudah dikenali
-              hingga saat ini.
+              The F40 is known for its performance-focused design and remains one
+              of the most recognizable Ferrari cars to this day.
             </p>
           </section>
         </article>
