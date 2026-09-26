@@ -13,7 +13,15 @@ class BrandController extends Controller
     {
         abort_unless($brand->is_active, 404);
 
-        return view('brands.show', compact('brand'));
+        $iconicCars = $brand->cars()
+            ->with('category:id,name,slug')
+            ->where('is_active', true)
+            ->where('is_iconic', true)
+            ->orderByDesc('production_year_start')
+            ->limit(4)
+            ->get();
+
+        return view('brands.show', compact('brand', 'iconicCars'));
     }
 
     public function cars(Request $request, Brand $brand): JsonResponse
