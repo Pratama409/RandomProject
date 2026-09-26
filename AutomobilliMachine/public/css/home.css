@@ -1798,3 +1798,135 @@ body {
 #membership {
     scroll-margin-top: 92px;
 }
+
+
+/* =======================================================
+   FINAL DESKTOP SLIDER HEIGHT CONSISTENCY
+   Keep every brand slide aligned at the same bottom edge.
+   ======================================================= */
+
+@media (min-width: 768px) {
+
+    .brand-swiper,
+    .brand-swiper .swiper-wrapper,
+    .brand-swiper .swiper-slide {
+        height: 590px !important;
+    }
+
+    .brand-swiper .swiper-slide {
+        display: flex !important;
+        align-items: stretch !important;
+    }
+
+    .brand-spotlight-box {
+        height: 100% !important;
+        min-height: 590px !important;
+        padding: 28px !important;
+        display: block !important;
+    }
+
+    .brand-spotlight-box > .row {
+        height: 100% !important;
+        min-height: 0 !important;
+        display: grid !important;
+        grid-template-columns:
+            minmax(230px, .82fr)
+            minmax(0, 1.42fr)
+            minmax(300px, .98fr) !important;
+        gap: 20px !important;
+        align-items: stretch !important;
+        margin: 0 !important;
+    }
+
+    .brand-spotlight-box > .row > [class*="col-"] {
+        height: 100% !important;
+        min-height: 0 !important;
+        align-self: stretch !important;
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 0 !important;
+    }
+
+    /* Left column: logo + facts occupy the full same height. */
+    .brand-spotlight-box > .row > .col-lg-3 {
+        justify-content: flex-start !important;
+    }
+
+    .brand-spotlight-box > .row > .col-lg-3 > .brand-logo-card {
+        flex: 0 0 205px !important;
+        height: 205px !important;
+        min-height: 205px !important;
+        margin-bottom: 12px !important;
+    }
+
+    .brand-spotlight-box > .row > .col-lg-3 > .brand-fact-stack {
+        flex: 1 1 auto !important;
+        min-height: 0 !important;
+        display: grid !important;
+        grid-template-rows: repeat(4, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+    }
+
+    .brand-spotlight-box > .row > .col-lg-3 .fact-box {
+        height: 100% !important;
+        min-height: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+    }
+
+    /* Center and right panels fill the exact same vertical space. */
+    .brand-spotlight-box > .row > .col-lg-5 > .brand-history-card,
+    .brand-spotlight-box > .row > .col-lg-4 > .brand-hq-card {
+        height: 100% !important;
+        min-height: 0 !important;
+        flex: 1 1 auto !important;
+    }
+
+    .brand-history-card {
+        padding: 22px !important;
+    }
+
+    .brand-history-card .archive-story-media {
+        width: 128px !important;
+        height: 96px !important;
+    }
+
+    .brand-hq-card .hq-image {
+        height: 190px !important;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    .brand-swiper,
+    .brand-swiper .swiper-wrapper,
+    .brand-swiper .swiper-slide,
+    .brand-spotlight-box {
+        height: 600px !important;
+        min-height: 600px !important;
+    }
+
+    .brand-spotlight-box > .row > [class*="col-"] {
+        height: 100% !important;
+    }
+
+    .brand-spotlight-box > .row > .col-lg-3 > .brand-logo-card {
+        flex-basis: 215px !important;
+        height: 215px !important;
+        min-height: 215px !important;
+    }
+
+    .brand-history-card {
+        padding: 24px !important;
+    }
+
+    .brand-history-card .archive-story-media {
+        width: 145px !important;
+        height: 108px !important;
+    }
+
+    .brand-hq-card .hq-image {
+        height: 205px !important;
+    }
+}
