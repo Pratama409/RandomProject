@@ -107,6 +107,59 @@
             </section>
         @endif
 
+        @if ($iconicCars->isNotEmpty())
+            <section class="brand-iconic-section">
+                <div class="brand-section-heading">
+                    <div>
+                        <span class="brand-section-label">ICONIC CARS</span>
+                        <h2>Legendary Models</h2>
+                        <p>Models that represent the character and heritage of {{ $brand->name }}.</p>
+                    </div>
+
+                    <a href="#models" class="brand-inline-link">
+                        View All Cars
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="brand-iconic-grid">
+                    @foreach ($iconicCars as $car)
+                        <article class="brand-iconic-card">
+                            @if ($car->image_path)
+                                <img
+                                    src="{{ asset($car->image_path) }}"
+                                    alt="{{ $car->name }}"
+                                    loading="lazy"
+                                    decoding="async"
+                                >
+                            @else
+                                <div class="brand-car-placeholder">
+                                    <i class="fa-solid fa-car-side"></i>
+                                </div>
+                            @endif
+
+                            <div class="brand-iconic-body">
+                                <div class="brand-car-meta">
+                                    <span>{{ $car->category?->name ?: 'Model' }}</span>
+                                    <span class="brand-card-arrow">
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                    </span>
+                                </div>
+
+                                <h3>{{ $car->name }}</h3>
+
+                                @if ($car->production_year_start)
+                                    <span class="brand-iconic-year">
+                                        {{ $car->production_year_start }}{{ $car->production_year_end ? ' – ' . $car->production_year_end : ' – Present' }}
+                                    </span>
+                                @endif
+                            </div>
+                        </article>
+                    @endforeach
+                </div>
+            </section>
+        @endif
+
         <section class="brand-models-section" id="models">
             <div class="brand-section-heading">
                 <div>
