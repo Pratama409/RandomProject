@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\BrandController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\FerrariController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +17,14 @@ Route::get('/home', function () {
     return view('home.home');
 });
 
-// Route to Ferrari Brand page
-Route::get('/ferrari', [FerrariController::class, 'index'])->name('brand.ferrari');
+Route::get('/brands/{brand:slug}', [BrandController::class, 'show'])->name('brands.show');
+Route::get('/brands/{brand:slug}/cars', [BrandController::class, 'cars'])->name('brands.cars');
 
-// Comparison placeholder route
+// Legacy-friendly entry point while the brand pages move to slug-based routing.
+Route::get('/ferrari', function () {
+    return redirect()->route('brands.show', ['brand' => 'ferrari']);
+})->name('brand.ferrari');
+
 Route::get('/compare', function () {
-    return "Car Comparison Tool (Under Construction)";
+    return view('compare.index');
 })->name('compare.index');
