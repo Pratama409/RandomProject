@@ -1071,3 +1071,180 @@ footer {
         transform: translate(-50%, -50%) rotate(-20deg) scale(1.08);
     }
 }
+
+
+/* =======================================================
+   10. MOBILE BRAND PANEL - CLEAN SINGLE-PANEL VIEW
+   ======================================================= */
+
+@media (max-width: 767.98px) {
+
+    /* One complete internal panel per swipe. */
+    .brand-spotlight-box > .row > [class*="col-"] {
+        flex: 0 0 100% !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    /* More breathing room around each panel. */
+    .brand-spotlight-box {
+        padding: 11px !important;
+    }
+
+    /* Logo/facts panel */
+    .brand-logo-card {
+        width: 100% !important;
+        height: 145px !important;
+        min-height: 145px !important;
+        margin-bottom: .55rem !important;
+    }
+
+    .brand-fact-stack {
+        grid-template-columns: 1fr 1fr !important;
+        gap: .45rem !important;
+    }
+
+    .fact-box {
+        min-height: 56px;
+        padding: 7px 8px;
+    }
+
+    .fact-box span {
+        font-size: .67rem;
+        line-height: 1.25;
+    }
+
+    /* History panel */
+    .brand-history-card {
+        width: 100% !important;
+        padding: 14px !important;
+        border-radius: 12px;
+    }
+
+    .brand-history-card .d-flex.justify-content-between.align-items-center {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: .55rem;
+        align-items: start !important;
+        margin-bottom: .8rem !important;
+    }
+
+    .brand-history-card .d-flex.justify-content-between.align-items-center > div {
+        min-width: 0;
+    }
+
+    .brand-history-card h3 {
+        font-size: 1.12rem !important;
+        line-height: 1.08 !important;
+        overflow-wrap: anywhere;
+    }
+
+    .brand-history-card .d-flex.justify-content-between.align-items-center .badge {
+        font-size: .52rem !important;
+        padding: .38rem .45rem !important;
+        line-height: 1 !important;
+        white-space: nowrap !important;
+        margin-top: .05rem;
+    }
+
+    .brand-quote {
+        font-size: .69rem !important;
+        line-height: 1.42 !important;
+        padding-left: .7rem !important;
+        margin-bottom: .75rem !important;
+    }
+
+    .brand-history-card .archive-story-box {
+        display: flex !important;
+        align-items: flex-start !important;
+        gap: .65rem !important;
+        padding: .55rem !important;
+        margin-bottom: .75rem !important;
+    }
+
+    .brand-history-card .archive-story-box > div {
+        flex: 0 0 82px !important;
+        width: 82px !important;
+        height: 74px !important;
+        margin: 0 !important;
+    }
+
+    .brand-history-card .archive-story-box p {
+        flex: 1 1 auto !important;
+        min-width: 0;
+        font-size: .68rem !important;
+        line-height: 1.42 !important;
+    }
+
+    .brand-history-card > div > p.text-muted {
+        font-size: .67rem !important;
+        line-height: 1.45 !important;
+        margin-bottom: .85rem !important;
+    }
+
+    .brand-history-card .btn-outline-custom {
+        min-height: 46px;
+        padding: .55rem .8rem !important;
+        font-size: .72rem;
+        line-height: 1.2;
+        text-align: center;
+    }
+
+    .brand-history-card .btn-outline-custom span {
+        max-width: 210px;
+    }
+
+    /* HQ panel */
+    .brand-hq-card {
+        width: 100% !important;
+        padding: 13px !important;
+    }
+
+    .hq-image-wrapper img {
+        height: 150px !important;
+    }
+
+    .brand-hq-card h5 {
+        font-size: .95rem !important;
+        line-height: 1.15 !important;
+    }
+
+    .brand-hq-card p {
+        font-size: .68rem !important;
+        line-height: 1.45 !important;
+    }
+
+    /* Smaller nav buttons, kept at the outer edges. */
+    .brand-nav-btn {
+        width: 34px !important;
+        height: 34px !important;
+        font-size: .78rem !important;
+    }
+
+    .brand-nav-btn.nav-prev { left: 3px !important; }
+    .brand-nav-btn.nav-next { right: 3px !important; }
+}
+
+@media (max-width: 390px) {
+
+    .brand-history-card h3 {
+        font-size: 1.04rem !important;
+    }
+
+    .brand-history-card .archive-story-box > div {
+        flex-basis: 76px !important;
+        width: 76px !important;
+        height: 70px !important;
+    }
+
+    .brand-history-card .archive-story-box p {
+        font-size: .66rem !important;
+    }
+
+    .fact-box span {
+        font-size: .65rem;
+    }
+}
