@@ -1063,3 +1063,11 @@ footer {
     #iconic .spec-label { font-size: .58rem; }
     #iconic .spec-val { font-size: .82rem; }
 }
+
+
+/* Mobile hero background: subtle zoom */
+@media (max-width: 767.98px) {
+    .angled-gallery {
+        transform: translate(-50%, -50%) rotate(-20deg) scale(1.08);
+    }
+}
