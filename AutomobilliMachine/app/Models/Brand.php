@@ -24,6 +24,7 @@ class Brand extends Model
         'known_for',
         'logo_path',
         'hero_image_path',
+        'history_image_path',
         'headquarters',
         'headquarters_address',
         'is_active',
