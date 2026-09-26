@@ -879,731 +879,6 @@ body {
 
 
 
-/* =======================================================
-   12. FINAL VISUAL POLISH
-   Refined automotive dark theme, clearer hierarchy,
-   reusable classes, and better mobile balance.
-   ======================================================= */
-
-/* Reusable elements moved out of Blade inline styles */
-.brand-slider-intro {
-    max-width: 600px;
-}
-
-.section-kicker {
-    letter-spacing: 2px;
-}
-
-.archive-story-media {
-    width: 110px;
-    height: 95px;
-    flex-shrink: 0;
-    overflow: hidden;
-    border-radius: 10px;
-}
-
-.archive-story-copy {
-    line-height: 1.6;
-}
-
-.hq-image {
-    height: 200px;
-    object-fit: cover;
-}
-
-.iconic-image {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    display: block;
-}
-
-/* Core page atmosphere */
-body {
-    background:
-        radial-gradient(circle at 8% 12%, rgba(229, 9, 20, .045), transparent 24%),
-        radial-gradient(circle at 92% 74%, rgba(88, 104, 145, .045), transparent 22%),
-        var(--bg-dark);
-}
-
-/* Hero */
-.hero-wrapper {
-    background:
-        radial-gradient(circle at 78% 45%, rgba(229, 9, 20, .08), transparent 24%),
-        #0b0d12;
-}
-
-.hero-title {
-    text-wrap: balance;
-}
-
-.hero-desc {
-    color: #d4dae3;
-}
-
-.hero-actions .btn-primary,
-.hero-actions .btn-outline {
-    min-height: 52px;
-}
-
-.hero-actions .btn-primary {
-    box-shadow: 0 10px 28px rgba(229, 9, 20, .20);
-}
-
-/* Transition banner */
-.transition-banner {
-    padding-top: 78px;
-    padding-bottom: 68px;
-}
-
-.transition-banner .badge {
-    border-radius: 999px;
-    letter-spacing: .14em;
-    font-size: .68rem;
-}
-
-.transition-banner .display-4 {
-    text-wrap: balance;
-}
-
-.transition-feature {
-    min-height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Featured Marques */
-.brand-slider-section {
-    background:
-        radial-gradient(circle at 20% 12%, rgba(229, 9, 20, .055), transparent 24%),
-        linear-gradient(180deg, #0a0c10 0%, #0d1016 100%);
-}
-
-.brand-slider-section > .container {
-    position: relative;
-}
-
-.brand-slider-intro {
-    color: #b8c0cc !important;
-    line-height: 1.65;
-}
-
-.brand-swiper {
-    box-shadow: 0 24px 70px rgba(0, 0, 0, .36);
-}
-
-.brand-spotlight-box {
-    background:
-        linear-gradient(145deg, rgba(24, 28, 37, .96), rgba(12, 15, 21, .98)) !important;
-    border-color: rgba(255, 255, 255, .095);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, .035),
-        0 18px 45px rgba(0, 0, 0, .28);
-}
-
-.brand-logo-card,
-.brand-history-card,
-.brand-hq-card {
-    background:
-        linear-gradient(160deg, rgba(20, 24, 32, .96), rgba(14, 17, 23, .96));
-    border-color: rgba(255, 255, 255, .085);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .025);
-}
-
-.brand-logo-card {
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.025),
-        0 12px 28px rgba(0,0,0,.16);
-}
-
-.brand-logo-card:hover,
-.brand-history-card:hover,
-.brand-hq-card:hover {
-    border-color: rgba(255, 255, 255, .16);
-}
-
-.fact-box {
-    background: rgba(24, 28, 37, .92);
-    border-color: rgba(255, 255, 255, .075);
-}
-
-.fact-box small {
-    color: #8f99a8 !important;
-}
-
-.fact-box span {
-    color: #f1f4f7 !important;
-}
-
-.brand-history-card h3,
-.brand-hq-card h5 {
-    color: #f7f8fa !important;
-}
-
-.brand-history-card .text-muted,
-.brand-hq-card .text-muted {
-    color: #a7b0bd !important;
-}
-
-.archive-story-media {
-    border: 1px solid rgba(255, 255, 255, .06);
-}
-
-.archive-story-copy {
-    color: #d6dce4 !important;
-}
-
-.hq-image-wrapper {
-    border: 1px solid rgba(255, 255, 255, .055);
-}
-
-.hq-badge {
-    background: rgba(8, 10, 14, .86);
-    border-color: rgba(255,255,255,.18);
-}
-
-.hq-footer-note {
-    background: rgba(7, 9, 12, .58) !important;
-}
-
-/* Iconic Picks */
-#iconic {
-    background:
-        linear-gradient(180deg, #0b0e13 0%, #090b0f 100%);
-}
-
-#iconic .container > .d-flex {
-    padding-bottom: 4px;
-}
-
-#iconic .container > .d-flex h6 {
-    font-size: .72rem;
-    letter-spacing: .18em !important;
-}
-
-#iconic .custom-card {
-    background:
-        linear-gradient(150deg, #171b23 0%, #10131a 100%);
-    border-color: rgba(255,255,255,.08);
-    box-shadow: 0 16px 36px rgba(0,0,0,.20);
-}
-
-#iconic .custom-card:hover {
-    box-shadow: 0 22px 48px rgba(0,0,0,.30);
-}
-
-#iconic .iconic-image {
-    filter: saturate(.94) contrast(1.03);
-}
-
-#iconic .p-4 {
-    padding: 1.15rem !important;
-}
-
-#iconic h4 {
-    font-size: 1.2rem;
-    letter-spacing: .04em;
-}
-
-#iconic .spec-box {
-    min-height: 66px;
-    background: #1b2029;
-    border: 1px solid rgba(255,255,255,.05);
-}
-
-#iconic .spec-label {
-    color: #8f99a8 !important;
-}
-
-#iconic .spec-val {
-    color: #f6f7f8 !important;
-}
-
-/* Compare */
-#compare {
-    background: #0a0d12;
-}
-
-#compare .compare-teaser {
-    background:
-        radial-gradient(circle at 85% 50%, rgba(229, 9, 20, .08), transparent 26%),
-        linear-gradient(145deg, #171b23 0%, #10131a 100%);
-    border-color: rgba(255,255,255,.09);
-    box-shadow: 0 18px 45px rgba(0,0,0,.18);
-}
-
-#compare .text-muted {
-    color: #a7b0bd !important;
-}
-
-#compare .text-secondary {
-    color: #c1c8d2 !important;
-}
-
-#compare .bg-dark {
-    background: rgba(9, 12, 17, .78) !important;
-}
-
-/* Membership */
-.membership-section {
-    background:
-        radial-gradient(circle at 50% 0%, rgba(229, 9, 20, .055), transparent 30%),
-        #080a0e !important;
-}
-
-.membership-section .custom-card {
-    background: linear-gradient(150deg, #151a22, #10141b);
-}
-
-.membership-section .text-muted {
-    color: #a7b0bd !important;
-}
-
-.membership-section .text-danger {
-    color: #ff4a52 !important;
-}
-
-/* Global button polish */
-.btn-racing,
-.btn-primary {
-    border-radius: 9px;
-}
-
-.btn-racing {
-    box-shadow: 0 10px 26px rgba(229, 9, 20, .18);
-}
-
-.btn-outline-custom {
-    background: rgba(255,255,255,.025);
-}
-
-/* Mobile: keep spacing deliberate and compact */
-@media (max-width: 767.98px) {
-
-    .transition-banner {
-        padding-top: 52px;
-        padding-bottom: 44px;
-    }
-
-    .brand-slider-intro {
-        max-width: 330px;
-    }
-
-    .archive-story-media {
-        width: 82px;
-        height: 74px;
-        border-radius: 9px;
-    }
-
-    .archive-story-copy {
-        line-height: 1.45;
-    }
-
-    .hq-image {
-        height: 150px;
-    }
-
-    .iconic-image {
-        height: 205px;
-    }
-
-    #iconic .custom-card {
-        border-radius: 15px;
-    }
-
-    #iconic .p-4 {
-        padding: 1rem !important;
-    }
-
-    #iconic h4 {
-        font-size: 1.08rem;
-    }
-
-    #compare .compare-teaser {
-        padding: 24px 20px;
-        border-radius: 16px;
-    }
-
-    .membership-section .custom-card {
-        border-radius: 15px;
-    }
-}
-
-@media (max-width: 390px) {
-    .iconic-image {
-        height: 195px;
-    }
-
-    .archive-story-media {
-        width: 76px;
-        height: 70px;
-    }
-}
-
-
-
-
-
-
-/* =======================================================
-   10. MOBILE BRAND PANEL - CLEAN SINGLE-PANEL VIEW
-   ======================================================= */
-
-@media (max-width: 767.98px) {
-
-    /* One complete internal panel per swipe. */
-    .brand-spotlight-box > .row > [class*="col-"] {
-        flex: 0 0 100% !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 100% !important;
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-    }
-
-    /* More breathing room around each panel. */
-    .brand-spotlight-box {
-        padding: 11px !important;
-    }
-
-    /* Logo/facts panel */
-    .brand-logo-card {
-        width: 100% !important;
-        height: 145px !important;
-        min-height: 145px !important;
-        margin-bottom: .55rem !important;
-    }
-
-    .brand-fact-stack {
-        grid-template-columns: 1fr 1fr !important;
-        gap: .45rem !important;
-    }
-
-    .fact-box {
-        min-height: 56px;
-        padding: 7px 8px;
-    }
-
-    .fact-box span {
-        font-size: .67rem;
-        line-height: 1.25;
-    }
-
-    /* History panel */
-    .brand-history-card {
-        width: 100% !important;
-        padding: 14px !important;
-        border-radius: 12px;
-    }
-
-    .brand-history-card .d-flex.justify-content-between.align-items-center {
-        display: grid !important;
-        grid-template-columns: minmax(0, 1fr) auto;
-        gap: .55rem;
-        align-items: start !important;
-        margin-bottom: .8rem !important;
-    }
-
-    .brand-history-card .d-flex.justify-content-between.align-items-center > div {
-        min-width: 0;
-    }
-
-    .brand-history-card h3 {
-        font-size: 1.12rem !important;
-        line-height: 1.08 !important;
-        overflow-wrap: anywhere;
-    }
-
-    .brand-history-card .d-flex.justify-content-between.align-items-center .badge {
-        font-size: .52rem !important;
-        padding: .38rem .45rem !important;
-        line-height: 1 !important;
-        white-space: nowrap !important;
-        margin-top: .05rem;
-    }
-
-    .brand-quote {
-        font-size: .69rem !important;
-        line-height: 1.42 !important;
-        padding-left: .7rem !important;
-        margin-bottom: .75rem !important;
-    }
-
-    .brand-history-card .archive-story-box {
-        display: flex !important;
-        align-items: flex-start !important;
-        gap: .65rem !important;
-        padding: .55rem !important;
-        margin-bottom: .75rem !important;
-    }
-
-    .brand-history-card .archive-story-box > div {
-        flex: 0 0 82px !important;
-        width: 82px !important;
-        height: 74px !important;
-        margin: 0 !important;
-    }
-
-    .brand-history-card .archive-story-box p {
-        flex: 1 1 auto !important;
-        min-width: 0;
-        font-size: .68rem !important;
-        line-height: 1.42 !important;
-    }
-
-    .brand-history-card > div > p.text-muted {
-        font-size: .67rem !important;
-        line-height: 1.45 !important;
-        margin-bottom: .85rem !important;
-    }
-
-    .brand-history-card .btn-outline-custom {
-        min-height: 46px;
-        padding: .55rem .8rem !important;
-        font-size: .72rem;
-        line-height: 1.2;
-        text-align: center;
-    }
-
-    .brand-history-card .btn-outline-custom span {
-        max-width: 210px;
-    }
-
-    /* HQ panel */
-    .brand-hq-card {
-        width: 100% !important;
-        padding: 13px !important;
-    }
-
-    .hq-image-wrapper img {
-        height: 150px !important;
-    }
-
-    .brand-hq-card h5 {
-        font-size: .95rem !important;
-        line-height: 1.15 !important;
-    }
-
-    .brand-hq-card p {
-        font-size: .68rem !important;
-        line-height: 1.45 !important;
-    }
-
-    /* Smaller nav buttons, kept at the outer edges. */
-    .brand-nav-btn {
-        width: 34px !important;
-        height: 34px !important;
-        font-size: .78rem !important;
-    }
-
-    .brand-nav-btn.nav-prev { left: 3px !important; }
-    .brand-nav-btn.nav-next { right: 3px !important; }
-}
-
-@media (max-width: 390px) {
-
-    .brand-history-card h3 {
-        font-size: 1.04rem !important;
-    }
-
-    .brand-history-card .archive-story-box > div {
-        flex-basis: 76px !important;
-        width: 76px !important;
-        height: 70px !important;
-    }
-
-    .brand-history-card .archive-story-box p {
-        font-size: .66rem !important;
-    }
-
-    .fact-box span {
-        font-size: .65rem;
-    }
-}
-
-
-/* =======================================================
-   11. COLOR SYSTEM / CONTRAST POLISH
-   Consistent dark automotive palette with improved readability.
-   No layout or functionality changes.
-   ======================================================= */
-
-:root {
-    --bg-dark: #090b0f;
-    --card-bg: #141820;
-    --card-border: #2a303a;
-    --text-muted: #9aa4b2;
-
-    --text-main: #f5f7fa;
-    --text-secondary: #c4cbd5;
-    --text-soft: #e1e6ed;
-
-    --primary-accent: #e50914;
-    --primary-hover: #ff2b35;
-    --accent-soft: #ffb8bd;
-}
-
-/* Main text hierarchy */
-body {
-    color: var(--text-main);
-}
-
-.text-secondary {
-    color: var(--text-secondary) !important;
-}
-
-.text-muted {
-    color: var(--text-muted) !important;
-}
-
-/* Keep danger/red branding consistent across Bootstrap components. */
-.text-danger {
-    color: var(--primary-accent) !important;
-}
-
-.bg-danger {
-    background-color: var(--primary-accent) !important;
-}
-
-.text-warning {
-    color: #f3c65b !important;
-}
-
-/* Subtle but visible borders */
-.border-secondary {
-    border-color: rgba(255, 255, 255, .16) !important;
-}
-
-/* Transition section */
-.transition-banner .text-secondary {
-    color: #c0c8d3 !important;
-}
-
-.transition-feature {
-    color: #e8ecf2;
-    background: rgba(20, 24, 32, .82);
-    border-color: rgba(255, 255, 255, .10);
-}
-
-.transition-feature i {
-    filter: drop-shadow(0 0 7px rgba(229, 9, 20, .25));
-}
-
-/* Featured Marques */
-.brand-slider-section .text-secondary,
-.brand-slider-section .text-light {
-    color: #c8ced8 !important;
-}
-
-.brand-slider-section .text-muted {
-    color: #99a3b1 !important;
-}
-
-.brand-slider-section .blockquote-footer {
-    color: #8d97a5 !important;
-}
-
-.brand-slider-section .brand-quote {
-    color: #aeb7c4 !important;
-}
-
-.brand-slider-section .brand-quote footer {
-    background: transparent !important;
-    padding: 0 !important;
-}
-
-.brand-slider-section .fact-box {
-    background: #171b24;
-    border-color: rgba(255, 255, 255, .09);
-}
-
-.brand-slider-section .fact-box small {
-    color: #929cab !important;
-}
-
-.brand-slider-section .fact-box span {
-    color: #f0f3f7 !important;
-}
-
-.brand-slider-section .fact-box .text-danger {
-    color: #ff4a52 !important;
-}
-
-.brand-slider-section .fact-box .text-warning {
-    color: #f3c65b !important;
-}
-
-.brand-slider-section .archive-story-box {
-    background: rgba(255, 255, 255, .045);
-    border-color: rgba(255, 255, 255, .08);
-}
-
-.brand-slider-section .brand-history-card > div > p.text-muted {
-    color: #a5aebc !important;
-}
-
-.brand-slider-section .brand-hq-card p {
-    color: #adb6c3 !important;
-}
-
-.brand-slider-section .hq-footer-note {
-    color: #a6afbc !important;
-}
-
-/* Buttons: stronger contrast without changing their shape. */
-.btn-outline-custom,
-.btn-outline {
-    color: #f5f7fa;
-    border-color: rgba(255, 255, 255, .28);
-}
-
-.btn-outline-custom:hover,
-.btn-outline:hover {
-    border-color: rgba(255, 255, 255, .58);
-}
-
-/* Iconic Picks */
-#iconic .text-muted {
-    color: #98a2b0 !important;
-}
-
-#iconic .spec-box {
-    background: #181c25;
-    border: 1px solid rgba(255, 255, 255, .055);
-}
-
-#iconic .spec-label {
-    color: #98a2b0 !important;
-}
-
-#iconic .spec-val {
-    color: #f4f6f8 !important;
-}
-
-#iconic .badge.bg-danger {
-    background-color: var(--primary-accent) !important;
-}
-
-/* Better contrast for small labels across the home page. */
-.small {
-    color: inherit;
-}
-
-.brand-slider-section .small {
-    color: inherit;
-}
-
-/* Red accent stays elegant rather than overly bright. */
-.btn-primary,
-.btn-racing {
-    background-color: var(--primary-accent);
-}
-
-.btn-primary:hover,
-.btn-racing:hover {
-    background-color: var(--primary-hover);
-}
 
 
 /* =======================================================
@@ -1973,37 +1248,202 @@ body {
 
 
 
+
+
+
 /* =======================================================
-   10. MOBILE BRAND PANEL - CLEAN SINGLE-PANEL VIEW
+   FINAL MOBILE / ANDROID
+   Single clean override block.
    ======================================================= */
 
 @media (max-width: 767.98px) {
 
-    /* One complete internal panel per swipe. */
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* Hero: retain the diagonal gallery, slightly zoomed. */
+    .hero-wrapper {
+        min-height: 100svh;
+    }
+
+    .hero-visual-fullscreen {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .angled-gallery {
+        top: 50%;
+        left: 68%;
+        width: 160vw;
+        height: 150svh;
+        gap: .65rem;
+        transform: translate(-50%, -50%) rotate(-20deg) scale(1.08);
+        opacity: .82;
+    }
+
+    .gallery-col {
+        gap: .65rem;
+    }
+
+    .col-offset-1 { margin-top: -3.5rem; }
+    .col-offset-2 { margin-top: 2rem; }
+    .col-offset-3 { margin-top: -2.5rem; }
+
+    .showcase-card {
+        width: 120px;
+        height: 175px;
+        border-radius: 11px;
+        box-shadow: 0 12px 26px rgba(0, 0, 0, .72);
+    }
+
+    .hero-backdrop-overlay {
+        background: linear-gradient(
+            90deg,
+            rgba(8, 9, 13, .80) 0%,
+            rgba(8, 9, 13, .56) 52%,
+            rgba(8, 9, 13, .35) 100%
+        );
+    }
+
+    .hero-content {
+        min-height: 100svh;
+        width: 100%;
+        max-width: none;
+        padding: 7.5rem 1.25rem 4rem;
+    }
+
+    .hero-title {
+        max-width: 100%;
+        font-size: clamp(2rem, 9vw, 2.7rem);
+        line-height: 1.08;
+    }
+
+    .hero-desc {
+        max-width: 100%;
+        font-size: .95rem;
+        line-height: 1.6;
+    }
+
+    .hero-actions {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: .7rem;
+    }
+
+    .hero-actions a {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Header/transition */
+    .navbar-custom .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .transition-banner {
+        padding: 52px 0 44px;
+    }
+
+    /* Featured Marques: one complete panel per swipe. */
+    .brand-slider-section > .container {
+        padding-left: .85rem;
+        padding-right: .85rem;
+    }
+
+    .brand-slider-intro {
+        max-width: 330px;
+    }
+
+    .brand-swiper {
+        border-radius: 15px;
+    }
+
+    .brand-spotlight-box {
+        width: 100% !important;
+        height: auto !important;
+        padding: 11px !important;
+        border-radius: 15px;
+        overflow: hidden;
+    }
+
+    .brand-spotlight-box > .row {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        align-items: flex-start !important;
+        gap: .7rem;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .brand-spotlight-box > .row::-webkit-scrollbar {
+        display: none;
+    }
+
     .brand-spotlight-box > .row > [class*="col-"] {
         flex: 0 0 100% !important;
         width: 100% !important;
         max-width: 100% !important;
         min-width: 100% !important;
+        height: auto !important;
         padding-left: 0 !important;
         padding-right: 0 !important;
+        align-self: flex-start !important;
+        scroll-snap-align: start;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
     }
 
-    /* More breathing room around each panel. */
-    .brand-spotlight-box {
-        padding: 11px !important;
+    .brand-spotlight-box .h-100,
+    .brand-spotlight-box .brand-history-card,
+    .brand-spotlight-box .brand-hq-card,
+    .brand-spotlight-box .brand-logo-card {
+        height: auto !important;
+        min-height: 0 !important;
     }
 
-    /* Logo/facts panel */
     .brand-logo-card {
-        width: 100% !important;
         height: 145px !important;
         min-height: 145px !important;
         margin-bottom: .55rem !important;
+        padding: 14px 12px !important;
+    }
+
+    .logo-emblem-slot {
+        height: 78px;
+    }
+
+    .logo-emblem-slot img {
+        max-height: 68px;
+        max-width: 78%;
+    }
+
+    .logo-wordmark-slot {
+        height: 36px;
+    }
+
+    .logo-wordmark-slot img {
+        max-height: 24px;
+        max-width: 70%;
     }
 
     .brand-fact-stack {
-        grid-template-columns: 1fr 1fr !important;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
         gap: .45rem !important;
     }
 
@@ -2013,11 +1453,10 @@ body {
     }
 
     .fact-box span {
-        font-size: .67rem;
+        font-size: .66rem;
         line-height: 1.25;
     }
 
-    /* History panel */
     .brand-history-card {
         width: 100% !important;
         padding: 14px !important;
@@ -2027,89 +1466,68 @@ body {
     .brand-history-card .d-flex.justify-content-between.align-items-center {
         display: grid !important;
         grid-template-columns: minmax(0, 1fr) auto;
-        gap: .55rem;
+        gap: .5rem;
         align-items: start !important;
-        margin-bottom: .8rem !important;
-    }
-
-    .brand-history-card .d-flex.justify-content-between.align-items-center > div {
-        min-width: 0;
     }
 
     .brand-history-card h3 {
-        font-size: 1.12rem !important;
+        font-size: 1.08rem !important;
         line-height: 1.08 !important;
         overflow-wrap: anywhere;
     }
 
-    .brand-history-card .d-flex.justify-content-between.align-items-center .badge {
-        font-size: .52rem !important;
-        padding: .38rem .45rem !important;
-        line-height: 1 !important;
+    .brand-history-card .badge {
+        font-size: .51rem !important;
+        padding: .36rem .42rem !important;
         white-space: nowrap !important;
-        margin-top: .05rem;
     }
 
     .brand-quote {
         font-size: .69rem !important;
         line-height: 1.42 !important;
-        padding-left: .7rem !important;
-        margin-bottom: .75rem !important;
     }
 
     .brand-history-card .archive-story-box {
         display: flex !important;
         align-items: flex-start !important;
-        gap: .65rem !important;
-        padding: .55rem !important;
-        margin-bottom: .75rem !important;
+        gap: .6rem !important;
+        padding: .5rem !important;
     }
 
-    .brand-history-card .archive-story-box > div {
-        flex: 0 0 82px !important;
-        width: 82px !important;
-        height: 74px !important;
-        margin: 0 !important;
+    .brand-history-card .archive-story-media {
+        width: 82px;
+        height: 74px;
+        flex: 0 0 82px;
     }
 
-    .brand-history-card .archive-story-box p {
-        flex: 1 1 auto !important;
-        min-width: 0;
-        font-size: .68rem !important;
+    .brand-history-card .archive-story-copy {
+        font-size: .67rem !important;
         line-height: 1.42 !important;
+        min-width: 0;
     }
 
     .brand-history-card > div > p.text-muted {
-        font-size: .67rem !important;
+        font-size: .66rem !important;
         line-height: 1.45 !important;
-        margin-bottom: .85rem !important;
     }
 
     .brand-history-card .btn-outline-custom {
         min-height: 46px;
-        padding: .55rem .8rem !important;
-        font-size: .72rem;
-        line-height: 1.2;
-        text-align: center;
+        padding: .55rem .7rem !important;
+        font-size: .71rem;
     }
 
-    .brand-history-card .btn-outline-custom span {
-        max-width: 210px;
-    }
-
-    /* HQ panel */
     .brand-hq-card {
         width: 100% !important;
         padding: 13px !important;
     }
 
-    .hq-image-wrapper img {
-        height: 150px !important;
+    .hq-image {
+        height: 150px;
     }
 
     .brand-hq-card h5 {
-        font-size: .95rem !important;
-        line-height: 1.15 !important;
+        font-size: .94rem !important;
     }
 
     .brand-hq-card p {
@@ -2117,7 +1535,6 @@ body {
         line-height: 1.45 !important;
     }
 
-    /* Smaller nav buttons, kept at the outer edges. */
     .brand-nav-btn {
         width: 34px !important;
         height: 34px !important;
@@ -2126,27 +1543,86 @@ body {
 
     .brand-nav-btn.nav-prev { left: 3px !important; }
     .brand-nav-btn.nav-next { right: 3px !important; }
+
+    /* Iconic Picks */
+    #iconic .container > .d-flex.justify-content-between.align-items-end {
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    #iconic .container > .d-flex.justify-content-between.align-items-end > div {
+        width: 100%;
+    }
+
+    #iconic .container > .d-flex.justify-content-between.align-items-end h6,
+    #iconic .container > .d-flex.justify-content-between.align-items-end h2 {
+        text-align: center !important;
+        width: 100%;
+    }
+
+    #iconic .iconic-image {
+        height: 205px;
+    }
+
+    #iconic .spec-box {
+        min-height: 62px;
+        padding: 8px 4px;
+    }
+
+    #iconic .spec-label {
+        font-size: .58rem;
+        line-height: 1.2;
+        margin-bottom: 4px;
+    }
+
+    #iconic .spec-val {
+        font-size: .82rem;
+        line-height: 1.15;
+    }
+
+    #compare .compare-teaser {
+        padding: 24px 20px;
+        border-radius: 16px;
+    }
+
+    .membership-section .custom-card {
+        border-radius: 15px;
+    }
 }
 
 @media (max-width: 390px) {
 
+    .angled-gallery {
+        left: 72%;
+        width: 150vw;
+        opacity: .78;
+    }
+
+    .showcase-card {
+        width: 108px;
+        height: 158px;
+    }
+
     .brand-history-card h3 {
-        font-size: 1.04rem !important;
+        font-size: 1.03rem !important;
     }
 
-    .brand-history-card .archive-story-box > div {
-        flex-basis: 76px !important;
-        width: 76px !important;
-        height: 70px !important;
+    .brand-history-card .archive-story-media {
+        width: 76px;
+        height: 70px;
+        flex-basis: 76px;
     }
 
-    .brand-history-card .archive-story-box p {
-        font-size: .66rem !important;
+    .brand-history-card .archive-story-copy {
+        font-size: .65rem !important;
     }
 
     .fact-box span {
-        font-size: .65rem;
+        font-size: .64rem;
+    }
+
+    #iconic .iconic-image {
+        height: 195px;
     }
 }
-
-
