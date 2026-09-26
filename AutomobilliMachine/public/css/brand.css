@@ -1,8 +1,16 @@
+/* =========================================================
+   AUTOMOBILLI — BRAND DETAIL PAGE
+   ========================================================= */
+
 .brand-page {
     min-height: 100vh;
     background: #090b0f;
     color: #f5f7fa;
 }
+
+/* =========================================================
+   HERO
+   ========================================================= */
 
 .brand-hero {
     position: relative;
@@ -73,38 +81,42 @@
     font-size: 1.1rem;
 }
 
+/* =========================================================
+   PAGE CONTENT
+   ========================================================= */
+
 .brand-content {
     padding-top: 42px;
     padding-bottom: 90px;
 }
 
+/* =========================================================
+   BRAND FACTS
+   ========================================================= */
+
 .brand-fact-grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 14px;
-    margin-bottom: 42px;
+    margin-bottom: 0;
 }
 
-.brand-fact-card,
-.brand-story-card {
+.brand-fact-card {
+    padding: 22px;
     background: linear-gradient(145deg, rgba(20,24,32,.96), rgba(12,14,19,.96));
     border: 1px solid #2a303a;
     border-radius: 18px;
     box-shadow: 0 18px 44px rgba(0,0,0,.18);
 }
 
-.brand-fact-card {
-    padding: 22px;
-}
-
 .brand-fact-card span {
     display: block;
+    margin-bottom: 8px;
     color: #9aa4b2;
     font-size: .75rem;
     font-weight: 700;
     letter-spacing: .08em;
     text-transform: uppercase;
-    margin-bottom: 8px;
 }
 
 .brand-fact-card strong {
@@ -113,29 +125,129 @@
     line-height: 1.45;
 }
 
-.brand-story-grid {
+/* =========================================================
+   HISTORY SECTION
+   IMPORTANT: This is a separate section from the facts.
+   The top and bottom borders act as visual dividers.
+   ========================================================= */
+
+.brand-history-section {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
-    margin-bottom: 56px;
+    grid-template-columns: minmax(280px, .88fr) minmax(0, 1.42fr);
+    gap: 0;
+    min-height: 470px;
+    margin-top: 42px;
+    padding: 52px 0;
+    border-top: 1px solid #2a303a;
+    border-bottom: 1px solid #2a303a;
+    background: linear-gradient(180deg, rgba(12,14,19,.35), rgba(9,11,15,.02));
 }
 
-.brand-story-card {
-    padding: 28px;
+.brand-history-media {
+    position: relative;
+    min-height: 420px;
+    overflow: hidden;
+    border: 1px solid #2a303a;
+    border-radius: 18px 0 0 18px;
+    background: #10131a;
 }
 
-.brand-story-card h2,
-.brand-section-heading h2 {
-    margin: 8px 0 12px;
-    font-size: clamp(1.7rem, 2vw, 2.5rem);
+.brand-history-media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 420px;
+    object-fit: cover;
+}
+
+.brand-history-media-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg, rgba(9,11,15,.05), rgba(9,11,15,.48)),
+        linear-gradient(180deg, rgba(9,11,15,.02), rgba(9,11,15,.52));
+}
+
+.brand-history-media-label {
+    position: absolute;
+    left: 22px;
+    bottom: 18px;
+    padding: 8px 12px;
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 999px;
+    background: rgba(9,11,15,.72);
+    color: #fff;
+    font-size: .72rem;
     font-weight: 800;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    backdrop-filter: blur(8px);
 }
 
-.brand-story-card p,
-.brand-section-heading p {
+.brand-history-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 34px 48px;
+    border: 1px solid #2a303a;
+    border-left: 0;
+    border-radius: 0 18px 18px 0;
+    background: linear-gradient(145deg, rgba(20,24,32,.92), rgba(12,14,19,.96));
+}
+
+.brand-history-content h2 {
+    max-width: 760px;
+    margin: 10px 0 18px;
+    color: #fff;
+    font-size: clamp(2rem, 4vw, 3.8rem);
+    line-height: 1.04;
+    font-weight: 800;
+    letter-spacing: -.03em;
+}
+
+.brand-history-lead {
+    max-width: 790px;
+    margin: 0;
+    color: #b9c1cc;
+    font-size: 1.02rem;
+    line-height: 1.85;
+}
+
+.brand-history-subsection {
+    margin-top: 28px;
+    padding-top: 22px;
+    border-top: 1px solid #2a303a;
+}
+
+.brand-history-subtitle {
+    display: block;
+    margin-bottom: 8px;
+    color: #fff;
+    font-size: .75rem;
+    font-weight: 800;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+
+.brand-history-subsection p {
+    max-width: 790px;
     margin: 0;
     color: #b9c1cc;
     line-height: 1.8;
+}
+
+.brand-history-known-for {
+    margin-top: 20px;
+}
+
+/* =========================================================
+   MODELS
+   ========================================================= */
+
+.brand-models-section {
+    padding-top: 56px;
+    margin-top: 0;
 }
 
 .brand-section-heading {
@@ -146,15 +258,27 @@
     margin-bottom: 24px;
 }
 
+.brand-section-heading h2 {
+    margin: 8px 0 12px;
+    font-size: clamp(1.7rem, 2vw, 2.5rem);
+    font-weight: 800;
+}
+
+.brand-section-heading p {
+    margin: 0;
+    color: #b9c1cc;
+    line-height: 1.8;
+}
+
 .brand-model-tools input {
     width: min(340px, 100%);
     min-width: 260px;
-    border-radius: 999px;
+    padding: 12px 16px;
     border: 1px solid #2a303a;
+    border-radius: 999px;
+    outline: none;
     background: #10131a;
     color: #fff;
-    padding: 12px 16px;
-    outline: none;
 }
 
 .brand-model-tools input:focus {
@@ -208,15 +332,15 @@
     color: #9aa4b2;
     font-size: .76rem;
     font-weight: 700;
-    text-transform: uppercase;
     letter-spacing: .06em;
+    text-transform: uppercase;
 }
 
 .brand-icon-badge {
-    color: #fff;
-    background: #e50914;
     padding: 3px 8px;
     border-radius: 999px;
+    background: #e50914;
+    color: #fff;
     font-size: .65rem;
 }
 
@@ -227,10 +351,10 @@
 }
 
 .brand-car-body p {
-    color: #aab2be;
-    line-height: 1.65;
     min-height: 52px;
     margin-bottom: 14px;
+    color: #aab2be;
+    line-height: 1.65;
 }
 
 .brand-spec-row {
@@ -248,11 +372,11 @@
 }
 
 .brand-load-more {
+    padding: 11px 18px;
     border: 1px solid #2a303a;
+    border-radius: 999px;
     background: #131720;
     color: #fff;
-    border-radius: 999px;
-    padding: 11px 18px;
     font-weight: 700;
 }
 
@@ -262,17 +386,41 @@
     min-height: 150px;
     display: grid;
     place-items: center;
-    color: #9aa4b2;
     border: 1px dashed #343b46;
     border-radius: 18px;
     background: rgba(20,24,32,.5);
+    color: #9aa4b2;
 }
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
 
 @media (max-width: 991px) {
     .brand-fact-grid,
-    .brand-story-grid,
     .brand-car-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .brand-history-section {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 40px 0;
+    }
+
+    .brand-history-media {
+        min-height: 300px;
+        border-radius: 18px;
+    }
+
+    .brand-history-media img {
+        min-height: 300px;
+    }
+
+    .brand-history-content {
+        padding: 32px;
+        border-left: 1px solid #2a303a;
+        border-radius: 18px;
     }
 
     .brand-section-heading {
@@ -299,12 +447,29 @@
     }
 
     .brand-fact-grid,
-    .brand-story-grid,
     .brand-car-grid {
         grid-template-columns: 1fr;
     }
 
     .brand-content {
         padding-top: 24px;
+    }
+
+    .brand-history-section {
+        margin-top: 28px;
+        padding: 32px 0;
+    }
+
+    .brand-history-content {
+        padding: 26px 22px;
+    }
+
+    .brand-history-content h2 {
+        font-size: clamp(1.9rem, 10vw, 3rem);
+    }
+
+    .brand-history-media,
+    .brand-history-media img {
+        min-height: 240px;
     }
 }
