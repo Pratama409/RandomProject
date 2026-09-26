@@ -1626,3 +1626,162 @@ body {
         height: 195px;
     }
 }
+
+
+/* =======================================================
+   FINAL DESKTOP FEATURED MARQUES LAYOUT
+   Stable 3-column grid; no flex stretching.
+   ======================================================= */
+
+@media (min-width: 768px) {
+
+    .brand-swiper .swiper-wrapper {
+        align-items: flex-start !important;
+        will-change: transform;
+    }
+
+    .brand-swiper .swiper-slide {
+        display: block !important;
+        height: auto !important;
+        width: 100% !important;
+        flex: 0 0 100% !important;
+    }
+
+    .brand-spotlight-box {
+        height: auto !important;
+        min-height: 0 !important;
+        padding: 28px !important;
+        display: block !important;
+    }
+
+    .brand-spotlight-box > .row {
+        display: grid !important;
+        grid-template-columns: minmax(220px, .82fr) minmax(0, 1.38fr) minmax(270px, 1fr);
+        gap: 18px !important;
+        width: 100%;
+        margin: 0 !important;
+        padding: 0 !important;
+        align-items: start !important;
+    }
+
+    .brand-spotlight-box > .row > [class*="col-"] {
+        width: auto !important;
+        max-width: none !important;
+        min-width: 0 !important;
+        height: auto !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        display: block !important;
+    }
+
+    .brand-spotlight-box > .row > .col-lg-3 > .brand-logo-card {
+        width: 100% !important;
+        height: 205px !important;
+        min-height: 205px !important;
+        margin-bottom: 12px !important;
+    }
+
+    .brand-fact-stack {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 8px !important;
+    }
+
+    .fact-box {
+        min-height: 55px;
+        padding: 9px 11px;
+    }
+
+    .brand-history-card {
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        padding: 22px !important;
+    }
+
+    .brand-history-card .archive-story-box {
+        width: 100%;
+        display: flex !important;
+        gap: 14px !important;
+        align-items: flex-start !important;
+    }
+
+    .brand-history-card .archive-story-media {
+        flex: 0 0 128px !important;
+        width: 128px !important;
+        height: 96px !important;
+        overflow: hidden;
+        border-radius: 9px;
+    }
+
+    .brand-history-card .archive-story-media img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+
+    .brand-history-card .archive-story-copy {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+        font-size: .83rem;
+        line-height: 1.55;
+        margin: 0;
+    }
+
+    .brand-history-card > div > p.text-muted {
+        margin-bottom: 18px !important;
+        line-height: 1.55;
+    }
+
+    .brand-hq-card {
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        padding: 13px !important;
+    }
+
+    .brand-hq-card .hq-image {
+        width: 100% !important;
+        height: 190px !important;
+        object-fit: cover !important;
+    }
+
+    .brand-hq-card h5 {
+        font-size: 1.05rem;
+        line-height: 1.2;
+    }
+
+    .brand-hq-card p {
+        line-height: 1.5;
+    }
+
+    .brand-history-card .btn-racing,
+    .brand-history-card .btn-outline-custom {
+        min-height: 44px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .brand-spotlight-box {
+        padding: 30px !important;
+    }
+
+    .brand-spotlight-box > .row {
+        grid-template-columns: minmax(230px, .8fr) minmax(0, 1.42fr) minmax(300px, .98fr);
+        gap: 20px !important;
+    }
+
+    .brand-history-card {
+        padding: 24px !important;
+    }
+
+    .brand-history-card .archive-story-media {
+        flex-basis: 145px !important;
+        width: 145px !important;
+        height: 108px !important;
+    }
+
+    .brand-hq-card .hq-image {
+        height: 205px !important;
+    }
+}
