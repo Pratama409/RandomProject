@@ -656,3 +656,25 @@
         aspect-ratio: 16 / 9;
     }
 }
+
+
+/* Final iconic card image sizing */
+@media (min-width: 576px) {
+    .brand-iconic-card > img,
+    .brand-iconic-card > .brand-car-placeholder {
+        width: 100% !important;
+        height: 160px !important;
+        aspect-ratio: auto !important;
+        object-fit: cover !important;
+    }
+}
+
+@media (max-width: 575px) {
+    .brand-iconic-card > img,
+    .brand-iconic-card > .brand-car-placeholder {
+        width: 100% !important;
+        height: 190px !important;
+        aspect-ratio: auto !important;
+        object-fit: cover !important;
+    }
+}
