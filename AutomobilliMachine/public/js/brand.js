@@ -117,15 +117,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     </button>
                 </div>`;
 
+            const iconicBadge = car.is_iconic
+                ? '<span class="brand-icon-badge brand-icon-badge-overlay">Iconic</span>'
+                : '';
+
             return '<article class="brand-car-card" data-car-name="' + escapeHtml(car.name) + '">'
-                + image
+                + '<div class="brand-car-image-wrap">' + image + iconicBadge + '</div>'
                 + '<div class="brand-car-body">'
                 + '<div class="brand-car-meta">'
                 + '<span>' + escapeHtml(car.category?.name || 'Model') + '</span>'
-                + '<div class="brand-card-actions">'
-                + (car.is_iconic ? '<span class="brand-icon-badge">Iconic</span>' : '')
                 + saveButtons
-                + '</div>'
                 + '</div>'
                 + (badgeHtml ? '<div class="brand-catalog-badges">' + badgeHtml + '</div>' : '')
                 + '<h3>' + escapeHtml(car.name) + '</h3>'
