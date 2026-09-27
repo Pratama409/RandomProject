@@ -3,7 +3,7 @@
 @section('title', $brand->name . ' - AutomobilliMachine')
 
 @push('styles')
-<link rel="stylesheet" href="{{ asset('css/brand.css') }}">
+<link rel="stylesheet" href="{{ asset('css/brand.css') }}?v=20260927-1">
 @endpush
 
 @section('content')
