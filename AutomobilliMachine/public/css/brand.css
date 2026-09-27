@@ -1777,3 +1777,35 @@
         font-size: .48rem;
     }
 }
+
+
+/* Final stats balance */
+.brand-spec-row {
+    gap: 8px;
+}
+
+.brand-stat {
+    font-size: .68rem;
+}
+
+.brand-stats-status {
+    padding: 3px 6px;
+    font-size: .54rem;
+    letter-spacing: .04em;
+}
+
+@media (max-width: 575px) {
+    .brand-spec-row {
+        gap: 3px;
+    }
+
+    .brand-stat {
+        font-size: .52rem;
+    }
+
+    .brand-stats-status {
+        padding: 3px 5px;
+        font-size: .44rem;
+        letter-spacing: .035em;
+    }
+}
