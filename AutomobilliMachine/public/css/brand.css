@@ -190,6 +190,7 @@
 .brand-history-chapter {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: minmax(315px, 1fr);
     gap: 0;
     align-items: stretch;
     max-width: 1120px;
@@ -212,6 +213,7 @@
 .brand-history-media {
     position: relative;
     min-width: 0;
+    height: 100%;
     aspect-ratio: 16 / 9;
     overflow: hidden;
     background: #10131a;
