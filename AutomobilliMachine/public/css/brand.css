@@ -183,128 +183,82 @@
 
 .brand-history-narrative {
     display: grid;
-    gap: 0;
-    margin-top: 28px;
+    gap: 28px;
+    margin-top: 34px;
 }
 
 .brand-history-chapter {
-    padding: 22px 0;
-    border-top: 1px solid #2a303a;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 0;
+    align-items: stretch;
+    overflow: hidden;
+    border: 1px solid #2a303a;
+    border-radius: 18px;
+    background: #11151c;
+    box-shadow: 0 16px 40px rgba(0,0,0,.14);
 }
 
-.brand-history-chapter:first-child {
-    padding-top: 0;
-    border-top: 0;
+.brand-history-chapter.is-reversed .brand-history-media {
+    order: 2;
+}
+
+.brand-history-chapter.is-reversed .brand-history-copy {
+    order: 1;
+}
+
+.brand-history-media {
+    position: relative;
+    min-width: 0;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #10131a;
+}
+
+.brand-history-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(9,11,15,.05), rgba(9,11,15,.28));
+    pointer-events: none;
+}
+
+.brand-history-media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.brand-history-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    padding: 34px 38px;
+    border-left: 1px solid #2a303a;
+}
+
+.brand-history-chapter.is-reversed .brand-history-copy {
+    border-left: 0;
+    border-right: 1px solid #2a303a;
 }
 
 .brand-history-chapter-label {
     display: block;
-    margin-bottom: 8px;
-    color: #fff;
-    font-size: .78rem;
-    font-weight: 800;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-}
-
-.brand-history-chapter p {
-    max-width: 800px;
-    margin: 0;
-    color: #b9c1cc;
-    font-size: .96rem;
-    line-height: 1.85;
-}
-
-.brand-history-timeline {
-    position: relative;
-    display: grid;
-    gap: 0;
-    margin-top: 34px;
-    padding-left: 26px;
-}
-
-.brand-history-timeline::before {
-    content: "";
-    position: absolute;
-    top: 8px;
-    bottom: 8px;
-    left: 4px;
-    width: 1px;
-    background: linear-gradient(180deg, #e50914, #3a424e);
-}
-
-.brand-history-event {
-    position: relative;
-    display: grid;
-    grid-template-columns: 68px 1fr;
-    gap: 18px;
-    padding: 0 0 24px;
-}
-
-.brand-history-event:last-child {
-    padding-bottom: 0;
-}
-
-.brand-history-event::before {
-    content: "";
-    position: absolute;
-    top: 5px;
-    left: -26px;
-    width: 9px;
-    height: 9px;
-    border: 2px solid #e50914;
-    border-radius: 50%;
-    background: #141820;
-    box-shadow: 0 0 0 4px rgba(229,9,20,.07);
-}
-
-.brand-history-year {
+    margin-bottom: 10px;
     color: #e50914;
-    font-size: .8rem;
+    font-size: .76rem;
     font-weight: 800;
-    letter-spacing: .12em;
-    line-height: 1.45;
-}
-
-.brand-history-event h3 {
-    margin: 0 0 5px;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 800;
-}
-
-.brand-history-event p {
-    margin: 0;
-    color: #aeb7c4;
-    line-height: 1.65;
-    font-size: .9rem;
-}
-
-.brand-history-subsection {
-    margin-top: 28px;
-    padding-top: 22px;
-    border-top: 1px solid #2a303a;
-}
-
-.brand-history-subtitle {
-    display: block;
-    margin-bottom: 8px;
-    color: #fff;
-    font-size: .75rem;
-    font-weight: 800;
-    letter-spacing: .14em;
+    letter-spacing: .13em;
     text-transform: uppercase;
 }
 
-.brand-history-subsection p {
-    max-width: 790px;
+.brand-history-copy p {
     margin: 0;
-    color: #b9c1cc;
-    line-height: 1.8;
-}
-
-.brand-history-known-for {
-    margin-top: 20px;
+    color: #c2cbd6;
+    font-size: .98rem;
+    line-height: 1.82;
 }
 
 .brand-history-facts {
@@ -657,6 +611,28 @@
 
     .brand-history-content {
         padding: 0 4px;
+    }
+
+    .brand-history-narrative {
+        gap: 18px;
+    }
+
+    .brand-history-chapter {
+        border-radius: 14px;
+    }
+
+    .brand-history-chapter .brand-history-copy,
+    .brand-history-chapter.is-reversed .brand-history-copy {
+        padding: 24px 20px;
+    }
+
+    .brand-history-chapter-label {
+        margin-bottom: 8px;
+    }
+
+    .brand-history-copy p {
+        font-size: .92rem;
+        line-height: 1.72;
     }
 
     .brand-history-timeline {
