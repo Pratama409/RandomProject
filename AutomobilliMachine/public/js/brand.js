@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 + '<span>' + escapeHtml(car.category?.name || 'Model') + '</span>'
                 + saveButtons
                 + '</div>'
-                + (badgeHtml ? '<div class="brand-catalog-badges">' + badgeHtml + '</div>' : '')
+                + '<div class="brand-catalog-badges">' + badgeHtml + '</div>'
                 + '<h3>' + escapeHtml(car.name) + '</h3>'
                 + '<span class="brand-catalog-years">' + yearRange + '</span>'
                 + (car.short_description ? '<p>' + escapeHtml(car.short_description) + '</p>' : '')
