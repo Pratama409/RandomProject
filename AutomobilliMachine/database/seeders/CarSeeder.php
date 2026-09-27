@@ -88,6 +88,121 @@ class CarSeeder extends Seeder
                 'category_id' => $sportsCar->id,
                 'production_year_start' => 2020,
                 'short_description' => 'A hybrid Ferrari combining a conventional engine with electric motors.',
+                'detail_sections' => [
+                    [
+                        'label' => 'DESIGN',
+                        'title' => 'Aerodynamics & Design',
+                        'paragraphs' => [
+                            'The SF90 Stradale was developed around a close collaboration between Ferrari's Styling Centre and its engineering teams, with the body designed to manage airflow, cooling, and hybrid-system requirements.',
+                            'Ferrari states that the car can generate 390 kg of downforce at 250 km/h. Its rear aero system uses a movable section to balance aerodynamic load and drag.'
+                        ],
+                        'specs' => [
+                            ['label' => 'Design Centre', 'value' => 'Ferrari Styling Centre'],
+                            ['label' => 'Design Direction', 'value' => 'Flavio Manzoni'],
+                            ['label' => 'Downforce', 'value' => '390 kg at 250 km/h'],
+                            ['label' => 'Layout', 'value' => 'Mid-engine, all-wheel drive']
+                        ]
+                    ],
+                    [
+                        'label' => 'POWERTRAIN',
+                        'title' => 'V8 + Three Electric Motors',
+                        'paragraphs' => [
+                            'The powertrain combines a 90-degree twin-turbo V8 with three electric motors: one positioned between the engine and gearbox and two on the front axle.',
+                            'The combustion engine produces 780 CV while the electric system contributes 220 CV, giving a combined system output of 1,000 CV (986 hp).'
+                        ],
+                        'specs' => [
+                            ['label' => 'Engine', 'value' => '3.99 L 90° twin-turbo V8'],
+                            ['label' => 'Engine Output', 'value' => '780 CV'],
+                            ['label' => 'Electric Motors', 'value' => '3'],
+                            ['label' => 'Electric Output', 'value' => '220 CV'],
+                            ['label' => 'Combined Output', 'value' => '1,000 CV / 986 hp'],
+                            ['label' => 'Battery', 'value' => '7.9 kWh lithium-ion'],
+                            ['label' => 'Electric Range', 'value' => '26 km']
+                        ]
+                    ],
+                    [
+                        'label' => 'DRIVING',
+                        'title' => 'Four Power Unit Modes',
+                        'paragraphs' => [
+                            'The eManettino control provides four operating modes that change how the petrol engine, electric motors, battery, and control systems work together.'
+                        ],
+                        'items' => [
+                            'eDrive — electric-only operation.',
+                            'Hybrid — automatic management of the combustion engine and electric system.',
+                            'Performance — keeps the engine active while prioritising responsiveness and battery charging.',
+                            'Qualify — unlocks the maximum performance potential of the powertrain.'
+                        ]
+                    ],
+                    [
+                        'label' => 'TRANSMISSION',
+                        'title' => 'Eight-Speed Dual-Clutch',
+                        'paragraphs' => [
+                            'Power is delivered through an eight-speed F1 dual-clutch gearbox. The front electric motors provide the all-wheel-drive system used by the SF90 Stradale.'
+                        ],
+                        'specs' => [
+                            ['label' => 'Gearbox', 'value' => '8-speed F1 dual-clutch'],
+                            ['label' => 'Drivetrain', 'value' => 'All-wheel drive'],
+                            ['label' => 'Transmission', 'value' => 'Dual-clutch automatic']
+                        ]
+                    ],
+                    [
+                        'label' => 'DIMENSIONS',
+                        'title' => 'Size & Weight',
+                        'specs' => [
+                            ['label' => 'Length', 'value' => '4,710 mm'],
+                            ['label' => 'Width', 'value' => '1,972 mm'],
+                            ['label' => 'Height', 'value' => '1,186 mm'],
+                            ['label' => 'Wheelbase', 'value' => '2,650 mm'],
+                            ['label' => 'Dry Weight', 'value' => '1,600 kg base'],
+                            ['label' => 'Dry Weight', 'value' => '1,570 kg Assetto Fiorano']
+                        ]
+                    ],
+                    [
+                        'label' => 'PERFORMANCE',
+                        'title' => 'Factory Performance Figures',
+                        'paragraphs' => [
+                            'The figures below are manufacturer specifications. They remain marked Not Tested in AutomobilliMachine until an independently verified test record is added to the catalog.'
+                        ],
+                        'specs' => [
+                            ['label' => 'Top Speed', 'value' => '340 km/h'],
+                            ['label' => '0–100 km/h', 'value' => '2.5 s'],
+                            ['label' => '0–200 km/h', 'value' => '6.7 s'],
+                            ['label' => '100–0 km/h', 'value' => '<29.5 m'],
+                            ['label' => 'Fiorano Lap', 'value' => '79 s'],
+                            ['label' => 'Weight / Power', 'value' => '1.57 kg/CV']
+                        ]
+                    ]
+                ],
+                'variants' => [
+                    [
+                        'type' => 'Open-top derivative',
+                        'name' => 'SF90 Spider',
+                        'years' => '2021–2024',
+                        'description' => 'A retractable-hardtop convertible derivative built around the same SF90 hybrid architecture.'
+                    ],
+                    [
+                        'type' => 'Performance package',
+                        'name' => 'Assetto Fiorano',
+                        'years' => 'SF90 Stradale option package',
+                        'description' => 'A lighter, more track-focused configuration using specialised equipment and weight-saving measures.'
+                    ],
+                    [
+                        'type' => 'Track-focused derivative',
+                        'name' => 'SF90 XX Stradale',
+                        'years' => '2023–2025',
+                        'description' => 'A more extreme road-legal derivative developed from Ferrari's XX programme.'
+                    ]
+                ],
+                'source_links' => [
+                    [
+                        'label' => 'Ferrari technical release',
+                        'url' => 'https://cdn.ferrari.com/cms/network/media/pdf/pr_ferrari_sf90_stradale_gbr.pdf'
+                    ],
+                    [
+                        'label' => 'Wikipedia — Ferrari SF90 Stradale',
+                        'url' => 'https://en.wikipedia.org/wiki/Ferrari_SF90_Stradale'
+                    ]
+                ],
                 'image_path' => 'image/Ferrari SF90 Spider.jpg',
                 'engine' => 'V8 Hybrid',
                 'horsepower' => 986,
