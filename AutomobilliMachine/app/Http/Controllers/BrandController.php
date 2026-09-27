@@ -222,7 +222,7 @@ class BrandController extends Controller
         $relatedCars = $brand->cars()
             ->with('category:id,name,slug')
             ->where('cars.is_active', true)
-            ->whereKeyNot($vehicle->id)
+            ->where('cars.id', '!=', $vehicle->id)
             ->orderByDesc('is_iconic')
             ->orderByDesc('production_year_start')
             ->limit(4)
