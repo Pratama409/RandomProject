@@ -2012,3 +2012,25 @@
         background-attachment: scroll;
     }
 }
+
+
+/* =========================================================
+   MODEL TITLE ALIGNMENT
+   Keep every card title on the same vertical baseline.
+   ========================================================= */
+
+.brand-car-body h3 {
+    min-height: 2.9rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    line-height: 1.22;
+}
+
+@media (max-width: 575px) {
+    .brand-car-body h3 {
+        min-height: 2.3rem;
+        line-height: 1.18;
+    }
+}
