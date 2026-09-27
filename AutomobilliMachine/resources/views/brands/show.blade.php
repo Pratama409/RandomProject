@@ -3,7 +3,7 @@
 @section('title', $brand->name . ' - AutomobilliMachine')
 
 @push('styles')
-<link rel="stylesheet" href="{{ asset('css/brand.css') }}?v=20260927-1">
+<link rel="stylesheet" href="{{ asset('css/brand.css') }}?v=20260927-2">
 @endpush
 
 @section('content')
@@ -167,15 +167,66 @@
         <section class="brand-models-section" id="models">
             <div class="brand-section-heading">
                 <div>
-                    <span class="brand-section-label">DATABASE-DRIVEN MODELS</span>
-                    <h2>Cars & Models</h2>
-                    <p>Models are requested from the server as needed instead of loading the entire collection at once.</p>
+                    <span class="brand-section-label">ALL {{ strtoupper($brand->name) }} MODELS</span>
+                    <h2>{{ $brand->name }} Model Lineup</h2>
+                    <p>Explore the complete {{ $brand->name }} lineup and discover each model's key specifications.</p>
                 </div>
+            </div>
 
-                <div class="brand-model-tools">
+            <div class="brand-model-filters" role="search" aria-label="Filter {{ $brand->name }} models">
+                <div class="brand-model-search">
                     <label for="carSearch" class="visually-hidden">Search models</label>
+                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
                     <input id="carSearch" type="search" placeholder="Search models..." autocomplete="off">
                 </div>
+
+                <label class="brand-model-select">
+                    <span class="visually-hidden">Year</span>
+                    <select id="carYear">
+                        <option value="">Year</option>
+                        @foreach ($years as $year)
+                            <option value="{{ $year }}">{{ $year }}</option>
+                        @endforeach
+                    </select>
+                </label>
+
+                <label class="brand-model-select">
+                    <span class="visually-hidden">Category</span>
+                    <select id="carCategory">
+                        <option value="">Category</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                </label>
+
+                <label class="brand-model-select">
+                    <span class="visually-hidden">Drivetrain</span>
+                    <select id="carDrivetrain">
+                        <option value="">Drivetrain</option>
+                        @foreach ($drivetrains as $drivetrain)
+                            <option value="{{ $drivetrain }}">{{ $drivetrain }}</option>
+                        @endforeach
+                    </select>
+                </label>
+
+                <label class="brand-model-select">
+                    <span class="visually-hidden">Fuel Type</span>
+                    <select id="carFuelType">
+                        <option value="">Fuel Type</option>
+                        @foreach ($fuelTypes as $fuelType)
+                            <option value="{{ $fuelType }}">{{ $fuelType }}</option>
+                        @endforeach
+                    </select>
+                </label>
+
+                <button id="clearCarFilters" class="brand-clear-filters" type="button">
+                    Clear
+                </button>
+            </div>
+
+            <div class="brand-model-results">
+                <span id="carResultCount">Loading models...</span>
             </div>
 
             <div id="carGrid" class="brand-car-grid" aria-live="polite">
@@ -193,5 +244,5 @@
 @endsection
 
 @push('scripts')
-<script src="{{ asset('js/brand.js') }}"></script>
+<script src="{{ asset('js/brand.js') }}?v=20260927-2"></script>
 @endpush
