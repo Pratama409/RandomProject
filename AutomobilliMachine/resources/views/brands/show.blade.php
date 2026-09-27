@@ -3,7 +3,7 @@
 @section('title', $brand->name . ' - AutomobilliMachine')
 
 @push('styles')
-<link rel="stylesheet" href="{{ asset('css/brand.css') }}?v=20260927-8">
+<link rel="stylesheet" href="{{ asset('css/brand.css') }}?v=20260927-9">
 @endpush
 
 @section('content')
@@ -145,9 +145,31 @@
                             <div class="brand-iconic-body">
                                 <div class="brand-car-meta">
                                     <span>{{ $car->category?->name ?: 'Model' }}</span>
-                                    <span class="brand-card-arrow">
-                                        <i class="fa-solid fa-arrow-right"></i>
-                                    </span>
+                                    <div class="brand-card-actions">
+                                        <button
+                                            type="button"
+                                            class="brand-save-button js-favorite-button {{ in_array($car->id, $favoriteCarIds, true) ? 'is-active' : '' }}"
+                                            data-car-id="{{ $car->id }}"
+                                            aria-label="{{ in_array($car->id, $favoriteCarIds, true) ? 'Remove ' . $car->name . ' from favorites' : 'Add ' . $car->name . ' to favorites' }}"
+                                            aria-pressed="{{ in_array($car->id, $favoriteCarIds, true) ? 'true' : 'false' }}"
+                                            title="Favorite"
+                                        >
+                                            <i class="{{ in_array($car->id, $favoriteCarIds, true) ? 'fa-solid' : 'fa-regular' }} fa-heart"></i>
+                                        </button>
+                                        <button
+                                            type="button"
+                                            class="brand-save-button js-wishlist-button {{ in_array($car->id, $wishlistCarIds, true) ? 'is-active' : '' }}"
+                                            data-car-id="{{ $car->id }}"
+                                            aria-label="{{ in_array($car->id, $wishlistCarIds, true) ? 'Remove ' . $car->name . ' from wishlist' : 'Add ' . $car->name . ' to wishlist' }}"
+                                            aria-pressed="{{ in_array($car->id, $wishlistCarIds, true) ? 'true' : 'false' }}"
+                                            title="Wishlist"
+                                        >
+                                            <i class="{{ in_array($car->id, $wishlistCarIds, true) ? 'fa-solid' : 'fa-regular' }} fa-bookmark"></i>
+                                        </button>
+                                        <span class="brand-card-arrow" aria-hidden="true">
+                                            <i class="fa-solid fa-arrow-right"></i>
+                                        </span>
+                                    </div>
                                 </div>
 
                                 <h3>{{ $car->name }}</h3>
