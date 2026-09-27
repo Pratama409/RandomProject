@@ -98,6 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         type="button"
                         class="brand-save-button js-favorite-button ${car.is_favorited ? 'is-active' : ''}"
                         data-car-id="${escapeHtml(car.id)}"
+                        data-car-name="${escapeHtml(car.name)}"
                         aria-label="${car.is_favorited ? 'Remove ' + escapeHtml(car.name) + ' from favorites' : 'Add ' + escapeHtml(car.name) + ' to favorites'}"
                         aria-pressed="${car.is_favorited ? 'true' : 'false'}"
                         title="Favorite"
@@ -201,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
         button.setAttribute('aria-pressed', active ? 'true' : 'false');
 
         const isFavorite = button.classList.contains('js-favorite-button');
-        const label = button.closest('[data-car-name]')?.dataset.carName || 'this car';
+        const label = button.dataset.carName || button.closest('[data-car-name]')?.dataset.carName || 'this car';
 
         button.setAttribute(
             'aria-label',
