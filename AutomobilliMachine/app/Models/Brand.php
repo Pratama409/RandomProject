@@ -20,6 +20,7 @@ class Brand extends Model
         'vehicle_lineup',
         'tagline',
         'history',
+        'history_timeline',
         'philosophy',
         'known_for',
         'logo_path',
@@ -34,6 +35,7 @@ class Brand extends Model
     {
         return [
             'founded_year' => 'integer',
+            'history_timeline' => 'array',
             'is_active' => 'boolean',
         ];
     }
