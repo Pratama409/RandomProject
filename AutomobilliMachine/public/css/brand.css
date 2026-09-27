@@ -244,12 +244,9 @@
     min-height: 100%;
     min-width: 0;
     padding: 34px 38px;
-    border-left: 1px solid #2a303a;
 }
 
 .brand-history-chapter.is-reversed .brand-history-copy {
-    border-left: 0;
-    border-right: 1px solid #2a303a;
 }
 
 .brand-history-chapter-label {
