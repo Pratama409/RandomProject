@@ -1955,3 +1955,60 @@
         background-attachment: scroll;
     }
 }
+
+
+/* =========================================================
+   FINAL HERO — FULLSCREEN + FIXED PHOTO
+   ========================================================= */
+
+.brand-hero {
+    min-height: 100svh;
+    height: 100svh;
+    background-image: var(--brand-hero-bg, none);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+.brand-hero-image {
+    display: none !important;
+}
+
+.brand-hero-overlay {
+    z-index: 1;
+}
+
+.brand-hero-content {
+    min-height: 100svh;
+    display: flex;
+    align-items: flex-end;
+    padding-top: 90px;
+    padding-bottom: 112px;
+}
+
+@media (min-width: 1200px) {
+    .brand-hero-content {
+        padding-bottom: 124px;
+    }
+}
+
+@media (max-width: 767px) {
+    .brand-hero {
+        min-height: 100svh;
+        height: 100svh;
+        background-attachment: scroll;
+    }
+
+    .brand-hero-content {
+        min-height: 100svh;
+        padding-bottom: 62px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .brand-hero {
+        background-attachment: scroll;
+    }
+}
