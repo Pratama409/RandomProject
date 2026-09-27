@@ -1216,3 +1216,20 @@
         height: 34px;
     }
 }
+
+
+/* Final All Models action placement */
+.brand-car-card .brand-car-meta > .brand-card-actions {
+    margin-left: auto;
+}
+
+.brand-car-card .brand-car-meta > .brand-card-actions .brand-save-button {
+    width: 30px;
+    height: 30px;
+    background: transparent;
+}
+
+.brand-car-card .brand-car-meta > .brand-card-actions .brand-save-button:hover,
+.brand-car-card .brand-car-meta > .brand-card-actions .brand-save-button.is-active {
+    background: rgba(229,9,20,.08);
+}
