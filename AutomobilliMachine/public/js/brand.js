@@ -133,7 +133,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (categorySelect?.value) params.set('category', categorySelect.value);
         if (drivetrainSelect?.value) params.set('drivetrain', drivetrainSelect.value);
         if (fuelTypeSelect?.value) params.set('fuel_type', fuelTypeSelect.value);
-        if (productionTypeSelect?.value) params.set('production_type', productionTypeSelect.value);
+        if (productionTypeSelect?.value) {
+            params.set('production_type', productionTypeSelect.value);
+        }
         if (vehicleTypeSelect?.value) params.set('vehicle_type', vehicleTypeSelect.value);
 
         try {
