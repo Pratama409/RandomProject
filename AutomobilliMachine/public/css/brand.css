@@ -1633,3 +1633,50 @@
         letter-spacing: .025em;
     }
 }
+
+
+/* =========================================================
+   ALL MODELS — NORMALIZE IMAGE FRAMES
+   The image wrapper is fixed so every mobile card has
+   exactly the same media height regardless of source ratio.
+   ========================================================= */
+
+.brand-car-image-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    height: auto;
+    overflow: hidden;
+    background: #10131a;
+}
+
+.brand-car-image-wrap > img,
+.brand-car-image-wrap > .brand-car-placeholder {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+    object-fit: cover;
+    object-position: center center;
+}
+
+@media (min-width: 576px) {
+    .brand-car-image-wrap {
+        aspect-ratio: 16 / 10;
+    }
+}
+
+@media (max-width: 575px) {
+    .brand-car-image-wrap {
+        aspect-ratio: 16 / 10;
+    }
+
+    .brand-car-image-wrap > img,
+    .brand-car-image-wrap > .brand-car-placeholder {
+        height: 100% !important;
+    }
+
+    .brand-icon-badge-overlay {
+        left: 7px;
+        bottom: 7px;
+    }
+}
