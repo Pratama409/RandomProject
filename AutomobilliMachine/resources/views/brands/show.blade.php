@@ -3,7 +3,7 @@
 @section('title', $brand->name . ' - AutomobilliMachine')
 
 @push('styles')
-<link rel="stylesheet" href="{{ asset('css/brand.css') }}?v=20260927-2">
+<link rel="stylesheet" href="{{ asset('css/brand.css') }}?v=20260927-3">
 @endpush
 
 @section('content')
@@ -216,6 +216,26 @@
                         <option value="">Fuel Type</option>
                         @foreach ($fuelTypes as $fuelType)
                             <option value="{{ $fuelType }}">{{ $fuelType }}</option>
+                        @endforeach
+                    </select>
+                </label>
+
+                <label class="brand-model-select">
+                    <span class="visually-hidden">Production Type</span>
+                    <select id="carProductionType">
+                        <option value="">Production Type</option>
+                        @foreach ($productionTypes as $productionType)
+                            <option value="{{ $productionType }}">{{ $productionType }}</option>
+                        @endforeach
+                    </select>
+                </label>
+
+                <label class="brand-model-select">
+                    <span class="visually-hidden">Vehicle Type</span>
+                    <select id="carVehicleType">
+                        <option value="">Vehicle Type</option>
+                        @foreach ($vehicleTypes as $vehicleType)
+                            <option value="{{ $vehicleType }}">{{ $vehicleType }}</option>
                         @endforeach
                     </select>
                 </label>
