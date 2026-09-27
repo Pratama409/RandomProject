@@ -149,7 +149,21 @@ class BrandController extends Controller
                 $query->where('fuel_type', $request->string('fuel_type'));
             })
             ->when($request->filled('production_type'), function ($query) use ($request) {
-                $query->where('production_type', $request->string('production_type'));
+                $productionType = (string) $request->string('production_type');
+
+                $query->where('production_type', $productionType);
+
+                // "Production" is reserved for regular road-going models
+                // commercially offered for public sale.
+                if ($productionType === 'Production') {
+                    $query->where('publicly_sold', true)
+                        ->where('road_legal', true)
+                        ->where('is_limited', false)
+                        ->where('is_one_off', false)
+                        ->where('is_concept', false)
+                        ->where('is_track_only', false)
+                        ->where('is_racing', false);
+                }
             })
             ->when($request->filled('vehicle_type'), function ($query) use ($request) {
                 $query->where('vehicle_type', $request->string('vehicle_type'));
