@@ -5,6 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const endpoint = page.dataset.carsEndpoint;
     const grid = document.querySelector('#carGrid');
     const searchInput = document.querySelector('#carSearch');
+    const yearSelect = document.querySelector('#carYear');
+    const categorySelect = document.querySelector('#carCategory');
+    const drivetrainSelect = document.querySelector('#carDrivetrain');
+    const fuelTypeSelect = document.querySelector('#carFuelType');
+    const clearFiltersButton = document.querySelector('#clearCarFilters');
+    const resultCount = document.querySelector('#carResultCount');
     const loadMoreButton = document.querySelector('#loadMoreCars');
 
     if (!endpoint || !grid) return;
@@ -12,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let pageNumber = 1;
     let lastPage = 1;
     let searchTimer = null;
+    let requestController = null;
 
     const escapeHtml = (value) => String(value ?? '')
         .replaceAll('&', '&amp;')
@@ -20,17 +27,35 @@ document.addEventListener('DOMContentLoaded', () => {
         .replaceAll('"', '&quot;')
         .replaceAll("'", '&#039;');
 
+    const getImageUrl = (imagePath) => {
+        if (!imagePath) return '';
+        return imagePath.startsWith('http') ? imagePath : '/' + imagePath;
+    };
+
+    const updateResultCount = (data) => {
+        if (!resultCount) return;
+
+        if (!data.total) {
+            resultCount.textContent = 'No models found';
+            return;
+        }
+
+        const from = data.from ?? 1;
+        const to = data.to ?? data.data?.length ?? 0;
+        resultCount.textContent = `Showing ${from}–${to} of ${data.total} models`;
+    };
+
     const renderCars = (items, append = false) => {
         if (!append) grid.innerHTML = '';
 
         if (!items.length && !append) {
-            grid.innerHTML = '<div class="brand-empty-state">No models matched your search.</div>';
+            grid.innerHTML = '<div class="brand-empty-state">No models matched your filters.</div>';
             return;
         }
 
         const html = items.map((car) => {
             const image = car.image_path
-                ? '<img src="' + escapeHtml(car.image_path.startsWith('http') ? car.image_path : '/' + car.image_path) + '" alt="' + escapeHtml(car.name) + '" loading="lazy">'
+                ? '<img src="' + escapeHtml(getImageUrl(car.image_path)) + '" alt="' + escapeHtml(car.name) + '" loading="lazy">'
                 : '<div class="brand-car-placeholder"><i class="fa-solid fa-car-side"></i></div>';
 
             const iconic = car.is_iconic
@@ -66,6 +91,9 @@ document.addEventListener('DOMContentLoaded', () => {
             grid.innerHTML = '<div class="brand-loading-state">Loading models...</div>';
         }
 
+        requestController?.abort();
+        requestController = new AbortController();
+
         const params = new URLSearchParams({
             page: String(pageNumber),
             per_page: '8',
@@ -74,8 +102,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const search = searchInput?.value.trim();
         if (search) params.set('search', search);
 
+        if (yearSelect?.value) params.set('year', yearSelect.value);
+        if (categorySelect?.value) params.set('category', categorySelect.value);
+        if (drivetrainSelect?.value) params.set('drivetrain', drivetrainSelect.value);
+        if (fuelTypeSelect?.value) params.set('fuel_type', fuelTypeSelect.value);
+
         try {
             const response = await fetch(endpoint + '?' + params.toString(), {
+                signal: requestController.signal,
                 headers: {
                     Accept: 'application/json',
                     'X-Requested-With': 'XMLHttpRequest',
@@ -90,20 +124,38 @@ document.addEventListener('DOMContentLoaded', () => {
             lastPage = data.last_page;
 
             renderCars(data.data, !reset && pageNumber > 1);
+            updateResultCount(data);
             loadMoreButton.hidden = data.current_page >= data.last_page;
         } catch (error) {
+            if (error.name === 'AbortError') return;
+
             if (reset) {
                 grid.innerHTML = '<div class="brand-empty-state">Unable to load models right now.</div>';
             }
 
+            resultCount.textContent = 'Unable to load models';
             loadMoreButton.hidden = true;
             console.error('Failed to load brand models:', error);
         }
     };
 
+    const resetAndLoad = () => loadCars({ reset: true });
+
     searchInput?.addEventListener('input', () => {
         window.clearTimeout(searchTimer);
-        searchTimer = window.setTimeout(() => loadCars({ reset: true }), 300);
+        searchTimer = window.setTimeout(resetAndLoad, 300);
+    });
+
+    [yearSelect, categorySelect, drivetrainSelect, fuelTypeSelect].forEach((select) => {
+        select?.addEventListener('change', resetAndLoad);
+    });
+
+    clearFiltersButton?.addEventListener('click', () => {
+        if (searchInput) searchInput.value = '';
+        [yearSelect, categorySelect, drivetrainSelect, fuelTypeSelect].forEach((select) => {
+            if (select) select.value = '';
+        });
+        resetAndLoad();
     });
 
     loadMoreButton?.addEventListener('click', () => {
