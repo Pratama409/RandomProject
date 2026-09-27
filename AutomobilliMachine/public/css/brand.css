@@ -949,3 +949,19 @@
         grid-template-columns: 1fr;
     }
 }
+
+
+/* Final compact catalog sizing */
+@media (min-width: 576px) {
+    .brand-car-card img,
+    .brand-car-card .brand-car-placeholder {
+        height: 200px;
+    }
+}
+
+@media (max-width: 575px) {
+    .brand-car-card img,
+    .brand-car-card .brand-car-placeholder {
+        height: 190px;
+    }
+}
