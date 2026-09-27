@@ -23,7 +23,7 @@
         @endif
 
         <div class="container brand-hero-content">
-            <div class="brand-hero-copy">
+            <div class="brand-hero-identity">
                 @if ($brand->logo_path)
                     <div class="brand-hero-logo">
                         <img
@@ -35,12 +35,14 @@
                     </div>
                 @endif
 
-                <span class="brand-kicker">MARQUE PROFILE</span>
-                <h1>{{ $brand->name }}</h1>
+                <div class="brand-hero-copy">
+                    <span class="brand-kicker">MARQUE PROFILE</span>
+                    <h1>{{ $brand->name }}</h1>
 
-                @if ($brand->tagline)
-                    <p>{{ $brand->tagline }}</p>
-                @endif
+                    @if ($brand->tagline)
+                        <p>{{ $brand->tagline }}</p>
+                    @endif
+                </div>
             </div>
         </div>
     </section>
