@@ -391,20 +391,80 @@
     line-height: 1.8;
 }
 
-.brand-model-tools input {
-    width: min(340px, 100%);
-    min-width: 260px;
-    padding: 12px 16px;
+.brand-model-filters {
+    display: grid;
+    grid-template-columns: minmax(260px, 2fr) repeat(4, minmax(130px, 1fr)) auto;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.brand-model-search {
+    position: relative;
+}
+
+.brand-model-search i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6f7886;
+    pointer-events: none;
+}
+
+.brand-model-search input,
+.brand-model-select select {
+    width: 100%;
+    min-width: 0;
+    height: 46px;
     border: 1px solid #2a303a;
-    border-radius: 999px;
+    border-radius: 12px;
     outline: none;
     background: #10131a;
     color: #fff;
+    font: inherit;
 }
 
-.brand-model-tools input:focus {
+.brand-model-search input {
+    padding: 0 16px 0 42px;
+}
+
+.brand-model-select select {
+    padding: 0 34px 0 13px;
+    appearance: auto;
+}
+
+.brand-model-search input:focus,
+.brand-model-select select:focus {
     border-color: rgba(229,9,20,.6);
     box-shadow: 0 0 0 4px rgba(229,9,20,.08);
+}
+
+.brand-clear-filters {
+    height: 46px;
+    padding: 0 16px;
+    border: 1px solid #2a303a;
+    border-radius: 12px;
+    background: transparent;
+    color: #c4cbd5;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: border-color .2s ease, color .2s ease, background .2s ease;
+}
+
+.brand-clear-filters:hover {
+    border-color: rgba(229,9,20,.45);
+    background: rgba(229,9,20,.06);
+    color: #fff;
+}
+
+.brand-model-results {
+    min-height: 24px;
+    margin-bottom: 16px;
+    color: #8f99a7;
+    font-size: .82rem;
+    font-weight: 700;
+    letter-spacing: .03em;
 }
 
 .brand-car-grid {
@@ -546,7 +606,15 @@
         flex-direction: column;
     }
 
-    .brand-model-tools input {
+    .brand-model-filters {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .brand-model-search {
+        grid-column: 1 / -1;
+    }
+
+    .brand-clear-filters {
         width: 100%;
     }
 }
@@ -594,6 +662,14 @@
     .brand-car-grid,
     .brand-iconic-grid {
         grid-template-columns: 1fr;
+    }
+
+    .brand-model-filters {
+        grid-template-columns: 1fr;
+    }
+
+    .brand-model-search {
+        grid-column: auto;
     }
 
     .brand-iconic-section {
