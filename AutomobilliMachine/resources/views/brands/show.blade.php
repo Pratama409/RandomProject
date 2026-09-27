@@ -3,7 +3,7 @@
 @section('title', $brand->name . ' - AutomobilliMachine')
 
 @push('styles')
-<link rel="stylesheet" href="{{ asset('css/brand.css') }}?v=20260927-7">
+<link rel="stylesheet" href="{{ asset('css/brand.css') }}?v=20260927-8">
 @endpush
 
 @section('content')
@@ -173,7 +173,13 @@
                 </div>
             </div>
 
-            <div class="brand-model-filter-trigger-row">
+            <div class="brand-model-toolbar">
+                <div class="brand-model-search">
+                    <label for="carSearch" class="visually-hidden">Search models</label>
+                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                    <input id="carSearch" type="search" placeholder="Search models..." autocomplete="off">
+                </div>
+
                 <button
                     id="toggleAdvancedFilters"
                     class="brand-more-filters"
@@ -182,17 +188,11 @@
                     aria-controls="advancedCarFilters"
                 >
                     <i class="fa-solid fa-sliders" aria-hidden="true"></i>
-                    <span>Fiters</span>
+                    <span>Filters</span>
                 </button>
             </div>
 
             <div id="advancedCarFilters" class="brand-advanced-filters" hidden>
-                <div class="brand-model-search">
-                    <label for="carSearch" class="visually-hidden">Search models</label>
-                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                    <input id="carSearch" type="search" placeholder="Search models..." autocomplete="off">
-                </div>
-
                 <label class="brand-model-select">
                     <span class="visually-hidden">Year</span>
                     <select id="carYear">
