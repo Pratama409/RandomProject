@@ -39,6 +39,7 @@ class Car extends Model
         'horsepower',
         'torque_nm',
         'acceleration_0_100',
+        'stats_tested',
         'top_speed_kmh',
         'drivetrain',
         'transmission',
