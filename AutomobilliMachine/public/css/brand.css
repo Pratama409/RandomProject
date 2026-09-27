@@ -230,6 +230,40 @@
     line-height: 1.85;
 }
 
+.brand-history-narrative {
+    display: grid;
+    gap: 0;
+    margin-top: 28px;
+}
+
+.brand-history-chapter {
+    padding: 22px 0;
+    border-top: 1px solid #2a303a;
+}
+
+.brand-history-chapter:first-child {
+    padding-top: 0;
+    border-top: 0;
+}
+
+.brand-history-chapter-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #fff;
+    font-size: .78rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.brand-history-chapter p {
+    max-width: 800px;
+    margin: 0;
+    color: #b9c1cc;
+    font-size: .96rem;
+    line-height: 1.85;
+}
+
 .brand-history-timeline {
     position: relative;
     display: grid;
