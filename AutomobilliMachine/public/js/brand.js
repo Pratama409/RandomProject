@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!page) return;
 
     const endpoint = page.dataset.carsEndpoint;
+    const carDetailBase = page.dataset.carDetailBase || '';
     const grid = document.querySelector('#carGrid');
     const searchInput = document.querySelector('#carSearch');
     const yearSelect = document.querySelector('#carYear');
@@ -140,7 +141,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 ? '<span class="brand-icon-badge brand-icon-badge-overlay">Iconic</span>'
                 : '';
 
-            return '<article class="brand-car-card" data-car-name="' + escapeHtml(car.name) + '">'
+            const detailUrl = carDetailBase
+                ? carDetailBase + '/' + encodeURIComponent(car.slug)
+                : '#';
+
+            return '<a class="brand-car-card" href="' + detailUrl + '" data-car-name="' + escapeHtml(car.name) + '">'
                 + '<div class="brand-car-image-wrap">' + image + iconicBadge + '</div>'
                 + '<div class="brand-car-body">'
                 + '<div class="brand-car-meta">'
@@ -153,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 + (car.short_description ? '<p>' + escapeHtml(car.short_description) + '</p>' : '')
                 + '<div class="brand-spec-row">' + specs + statsStatus + '</div>'
                 + '</div>'
-                + '</article>';
+                + '</a>';
         }).join('');
 
         grid.insertAdjacentHTML('beforeend', html);
@@ -280,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    grid.addEventListener('click', (event) => {
+    document.addEventListener('click', (event) => {
         const button = event.target.closest('.js-favorite-button, .js-wishlist-button');
         if (!button) return;
 
