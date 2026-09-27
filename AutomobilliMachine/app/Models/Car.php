@@ -31,6 +31,7 @@ class Car extends Model
         'fuel_type',
         'body_type',
         'is_iconic',
+        'iconic_order',
         'is_active',
     ];
 
@@ -44,6 +45,7 @@ class Car extends Model
             'acceleration_0_100' => 'decimal:2',
             'top_speed_kmh' => 'integer',
             'is_iconic' => 'boolean',
+            'iconic_order' => 'integer',
             'is_active' => 'boolean',
         ];
     }
