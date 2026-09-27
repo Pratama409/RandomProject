@@ -658,3 +658,41 @@
         font-size: .75rem;
     }
 }
+
+
+.car-sources-section {
+    padding: 20px 0 72px;
+}
+
+.car-sources-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.car-source-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 10px 13px;
+    border: 1px solid #2a303a;
+    border-radius: 11px;
+    background: #11151c;
+    color: #cfd5dd;
+    text-decoration: none;
+    font-size: .78rem;
+    font-weight: 700;
+    transition: border-color .2s ease, color .2s ease, background .2s ease;
+}
+
+.car-source-link:hover {
+    color: #fff;
+    border-color: rgba(229,9,20,.45);
+    background: rgba(229,9,20,.06);
+}
+
+.car-source-link i {
+    color: #e50914;
+    font-size: .7rem;
+}
