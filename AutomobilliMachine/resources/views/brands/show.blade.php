@@ -124,10 +124,6 @@
                         <p>Models that represent the character and heritage of {{ $brand->name }}.</p>
                     </div>
 
-                    <a href="#models" class="brand-inline-link">
-                        View All Cars
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
                 </div>
 
                 <div class="brand-iconic-grid">
