@@ -50,7 +50,7 @@
     @include('partials.navbar')
 
     <main class="container brand-content">
-        @if ($brand->history || $brand->philosophy || $brand->known_for)
+        @if ($brand->history || !empty($brand->history_timeline))
             <section class="brand-history-section">
                 <div class="brand-history-media">
                     @if ($brand->history_image_path)
@@ -89,19 +89,6 @@
                         </div>
                     @endif
 
-                    @if ($brand->philosophy)
-                        <div class="brand-history-subsection">
-                            <span class="brand-history-subtitle">Brand Philosophy</span>
-                            <p>{{ $brand->philosophy }}</p>
-                        </div>
-                    @endif
-
-                    @if ($brand->known_for)
-                        <div class="brand-history-subsection brand-history-known-for">
-                            <span class="brand-history-subtitle">Known For</span>
-                            <p>{{ $brand->known_for }}</p>
-                        </div>
-                    @endif
                 </div>
 
                 <div class="brand-history-facts">
