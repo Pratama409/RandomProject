@@ -3,7 +3,7 @@
 @section('title', $brand->name . ' - AutomobilliMachine')
 
 @push('styles')
-<link rel="stylesheet" href="{{ asset('css/brand.css') }}?v=20260927-17">
+<link rel="stylesheet" href="{{ asset('css/brand.css') }}?v=20260927-18">
 @endpush
 
 @section('content')
@@ -130,19 +130,21 @@
 
                 <div class="brand-iconic-grid">
                     @foreach ($iconicCars as $car)
-                        <article class="brand-iconic-card">
-                            @if ($car->image_path)
-                                <img
-                                    src="{{ asset($car->image_path) }}"
-                                    alt="{{ $car->name }}"
-                                    loading="lazy"
-                                    decoding="async"
-                                >
-                            @else
-                                <div class="brand-car-placeholder">
-                                    <i class="fa-solid fa-car-side"></i>
-                                </div>
-                            @endif
+                        <a class="brand-iconic-card" href="{{ route('cars.show', ['brand' => $brand->slug, 'car' => $car->slug]) }}">
+                            <div class="brand-iconic-media">
+                                @if ($car->image_path)
+                                    <img
+                                        src="{{ str_starts_with($car->image_path, 'http') ? $car->image_path : asset($car->image_path) }}"
+                                        alt="{{ $car->name }}"
+                                        loading="lazy"
+                                        decoding="async"
+                                    >
+                                @else
+                                    <div class="brand-car-placeholder">
+                                        <i class="fa-solid fa-car-side"></i>
+                                    </div>
+                                @endif
+                            </div>
 
                             <div class="brand-iconic-body">
                                 <div class="brand-car-meta">
@@ -184,7 +186,7 @@
                                     </span>
                                 @endif
                             </div>
-                        </article>
+                        </a>
                     @endforeach
                 </div>
             </section>
