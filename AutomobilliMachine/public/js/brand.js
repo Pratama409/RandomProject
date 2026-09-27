@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 + '<div class="brand-car-body">'
                 + '<div class="brand-car-meta">'
                 + '<span>' + escapeHtml(car.category?.name || 'Model') + '</span>'
-                + '<span class="brand-icon-badge">' + (car.is_iconic ? 'Iconic' : '') + '</span>'
+                + (car.is_iconic ? '<span class="brand-icon-badge">Iconic</span>' : '')
                 + '</div>'
                 + '<div class="brand-catalog-badges">' + badgeHtml + '</div>'
                 + '<h3>' + escapeHtml(car.name) + '</h3>'
