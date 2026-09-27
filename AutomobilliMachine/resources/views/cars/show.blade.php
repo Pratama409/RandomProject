@@ -3,7 +3,7 @@
 @section('title', $vehicle->name . ' - AutomobilliMachine')
 
 @push('styles')
-<link rel="stylesheet" href="{{ asset('css/car.css') }}?v=20260928-2">
+<link rel="stylesheet" href="{{ asset('css/car.css') }}?v=20260928-3">
 @endpush
 
 @section('content')
@@ -260,6 +260,31 @@
                 </aside>
             </div>
         </section>
+
+        @if (!empty($vehicle->source_links))
+            <section class="car-sources-section">
+                <div class="container">
+                    <div class="car-detail-section-heading">
+                        <span class="car-detail-section-label">SOURCES</span>
+                        <h2>Reference Material</h2>
+                    </div>
+
+                    <div class="car-sources-list">
+                        @foreach ($vehicle->source_links as $source)
+                            <a
+                                href="{{ $source['url'] ?? '#' }}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="car-source-link"
+                            >
+                                <span>{{ $source['label'] ?? 'Source' }}</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
+            </section>
+        @endif
 
         @if ($relatedCars->isNotEmpty())
             <section class="car-related-section">
