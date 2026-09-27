@@ -3,7 +3,7 @@
 @section('title', $vehicle->name . ' - AutomobilliMachine')
 
 @push('styles')
-<link rel="stylesheet" href="{{ asset('css/car.css') }}?v=20260928-1">
+<link rel="stylesheet" href="{{ asset('css/car.css') }}?v=20260928-2">
 @endpush
 
 @section('content')
@@ -123,6 +123,85 @@
                 </div>
             </div>
         </section>
+
+        @if (!empty($vehicle->detail_sections))
+            <section class="car-deep-details">
+                <div class="container">
+                    <div class="car-detail-section-heading">
+                        <span class="car-detail-section-label">DETAILED SPECIFICATIONS</span>
+                        <h2>Inside the {{ $vehicle->name }}</h2>
+                        <p>Technical, design, performance, and production information recorded for this model.</p>
+                    </div>
+
+                    <div class="car-deep-grid">
+                        @foreach ($vehicle->detail_sections as $section)
+                            <article class="car-deep-section">
+                                @if (!empty($section['label']))
+                                    <span class="car-detail-section-label">{{ $section['label'] }}</span>
+                                @endif
+
+                                @if (!empty($section['title']))
+                                    <h3>{{ $section['title'] }}</h3>
+                                @endif
+
+                                @if (!empty($section['paragraphs']))
+                                    <div class="car-deep-copy">
+                                        @foreach ($section['paragraphs'] as $paragraph)
+                                            <p>{{ $paragraph }}</p>
+                                        @endforeach
+                                    </div>
+                                @endif
+
+                                @if (!empty($section['specs']))
+                                    <dl class="car-spec-list car-deep-specs">
+                                        @foreach ($section['specs'] as $spec)
+                                            <div>
+                                                <dt>{{ $spec['label'] ?? 'Specification' }}</dt>
+                                                <dd>{{ $spec['value'] ?? '—' }}</dd>
+                                            </div>
+                                        @endforeach
+                                    </dl>
+                                @endif
+
+                                @if (!empty($section['items']))
+                                    <ul class="car-deep-list">
+                                        @foreach ($section['items'] as $item)
+                                            <li>{{ $item }}</li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            </article>
+                        @endforeach
+                    </div>
+                </div>
+            </section>
+        @endif
+
+        @if (!empty($vehicle->variants))
+            <section class="car-variants-section">
+                <div class="container">
+                    <div class="car-detail-section-heading">
+                        <span class="car-detail-section-label">VARIANTS</span>
+                        <h2>Versions & Related Derivatives</h2>
+                    </div>
+
+                    <div class="car-variants-grid">
+                        @foreach ($vehicle->variants as $variant)
+                            <div class="car-variant-card">
+                                <span>{{ $variant['type'] ?? 'Variant' }}</span>
+                                <h3>{{ $variant['name'] ?? 'Unnamed variant' }}</h3>
+                                @if (!empty($variant['years']))
+                                    <small>{{ $variant['years'] }}</small>
+                                @endif
+                                @if (!empty($variant['description']))
+                                    <p>{{ $variant['description'] }}</p>
+                                @endif
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </section>
+        @endif
 
         <section class="car-detail-content">
             <div class="container car-detail-content-grid">
