@@ -19,7 +19,7 @@ class BrandSeeder extends Seeder
                 'founder' => 'Enzo Ferrari',
                 'vehicle_lineup' => 'Sports Cars & Grand Tourers',
                 'tagline' => 'Il Cavallino Rampante',
-                'history' => 'Ferrari began with Enzo Ferrari\'s passion for motorsport. He founded Scuderia Ferrari in Modena in 1929, established his own company in 1939, moved the headquarters to Maranello in 1943, built the 125 S in 1947, and produced the first Ferrari road car, the 166 Inter, in 1948.',
+                'history' => 'Ferrari\'s story began with Enzo Ferrari\'s racing career and his ambition to create a team of his own. The company grew from a racing operation into a manufacturer of road and competition cars, with Maranello becoming the centre of the Ferrari story.',
                 'history_timeline' => [
                     [
                         'year' => '1929',
@@ -47,7 +47,33 @@ class BrandSeeder extends Seeder
                         'description' => 'The Ferrari 166 Inter became the company\'s first road car.',
                     ],
                 ],
-                'philosophy' => 'Ferrari combines performance, design, aerodynamics, and driving emotion across its road-car portfolio.',
+
+                'history_sections' => [
+                    [
+                        'title' => 'The Beginning',
+                        'text' => 'Enzo Ferrari began working in motorsport before founding Scuderia Ferrari in 1929 in Modena. The team initially supported gentleman drivers and competed with Alfa Romeo machinery, but it soon became a major force in Grand Prix racing during the 1930s.',
+                    ],
+                    [
+                        'title' => 'From Scuderia to Ferrari',
+                        'text' => 'After Scuderia Ferrari was absorbed into Alfa Romeo in 1937, Enzo Ferrari left the company in 1939 and founded Auto Avio Costruzioni. Because of an agreement with Alfa Romeo, he could not immediately use the Ferrari name. During the Second World War, the company produced aircraft engines and machine tools, and in 1943 its factory was moved from Modena to Maranello.',
+                    ],
+                    [
+                        'title' => 'The First Ferrari Cars',
+                        'text' => 'In 1945 the company adopted the Ferrari name and began work on a new V12 engine. The 125 S became Ferrari\'s first car and made its racing debut in 1947. That same year, it scored Ferrari\'s first victory at the Rome Grand Prix, establishing an important foundation for the company\'s future in motorsport.',
+                    ],
+                    [
+                        'title' => 'Building the Road-Car Legacy',
+                        'text' => 'Ferrari\'s success on the track quickly supported its road-car business. During the 1950s, models such as the 250 series helped establish Ferrari among an international audience, while the company continued developing cars that connected racing experience with road use. Ferrari was reorganized as a public company in 1960 and later entered a manufacturing partnership with Fiat.',
+                    ],
+                    [
+                        'title' => 'A Ferrari That Kept Evolving',
+                        'text' => 'From the 1970s onward, Ferrari expanded beyond its traditional front-engined V12 formula, introducing mid-engined V6 and V8 road cars. Enzo Ferrari died in 1988, and the F40, which he personally approved, became the final Ferrari introduced during his lifetime.',
+                    ],
+                    [
+                        'title' => 'The Modern Era',
+                        'text' => 'Under Luca di Montezemolo in the 1990s and 2000s, Ferrari expanded its road-car range and strengthened its Formula One programme. The company later completed its separation from Fiat Chrysler Automobiles and became an independent publicly traded company in 2016, while continuing to develop sports cars, grand tourers, and newer vehicle segments.',
+                    ],
+                ],                'philosophy' => 'Ferrari combines performance, design, aerodynamics, and driving emotion across its road-car portfolio.',
                 'known_for' => 'High-performance sports cars and grand tourers.',
                 'logo_path' => 'image/CarLogo/FerrariLogo.png',
                 'hero_image_path' => 'image/Ferrari SF90 Spider.jpg',
