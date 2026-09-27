@@ -169,7 +169,7 @@
                 <div>
                     <span class="brand-section-label">ALL {{ strtoupper($brand->name) }} MODELS</span>
                     <h2>{{ $brand->name }} Model Lineup</h2>
-                    <p>Explore the complete {{ $brand->name }} lineup and discover each model's key specifications.</p>
+                    <p>Explore the complete {{ $brand->name }} catalog, including production cars, limited series, special models, One-Offs, and track-focused cars.</p>
                 </div>
             </div>
 
