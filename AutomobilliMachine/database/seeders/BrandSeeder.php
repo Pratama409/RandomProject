@@ -19,7 +19,34 @@ class BrandSeeder extends Seeder
                 'founder' => 'Enzo Ferrari',
                 'vehicle_lineup' => 'Sports Cars & Grand Tourers',
                 'tagline' => 'Il Cavallino Rampante',
-                'history' => 'Rooted in the Scuderia Ferrari racing team founded in 1929, the marque produced its first road car in 1947 with the 125 S.',
+                'history' => 'Ferrari began with Enzo Ferrari\'s passion for motorsport. He founded Scuderia Ferrari in Modena in 1929, established his own company in 1939, moved the headquarters to Maranello in 1943, built the 125 S in 1947, and produced the first Ferrari road car, the 166 Inter, in 1948.',
+                'history_timeline' => [
+                    [
+                        'year' => '1929',
+                        'title' => 'Scuderia Ferrari',
+                        'description' => 'Enzo Ferrari founded Scuderia Ferrari in Modena as a racing team, initially competing with Alfa Romeo cars.',
+                    ],
+                    [
+                        'year' => '1939',
+                        'title' => 'A New Company',
+                        'description' => 'Enzo Ferrari established his own company, initially named Auto Avio Costruzioni.',
+                    ],
+                    [
+                        'year' => '1943',
+                        'title' => 'Maranello',
+                        'description' => 'Ferrari moved its headquarters from Modena to Maranello, which remains the company\'s home.',
+                    ],
+                    [
+                        'year' => '1947',
+                        'title' => 'The 125 S',
+                        'description' => 'Ferrari produced the 125 S, its first racing car, powered by a 12-cylinder engine.',
+                    ],
+                    [
+                        'year' => '1948',
+                        'title' => 'First Road Car',
+                        'description' => 'The Ferrari 166 Inter became the company\'s first road car.',
+                    ],
+                ],
                 'philosophy' => 'Ferrari combines performance, design, aerodynamics, and driving emotion across its road-car portfolio.',
                 'known_for' => 'High-performance sports cars and grand tourers.',
                 'logo_path' => 'image/CarLogo/FerrariLogo.png',
