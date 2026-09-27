@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brand;
+use App\Models\Car;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -96,6 +97,14 @@ class BrandController extends Controller
             ->pluck('vehicle_type')
             ->values();
 
+        $favoriteCarIds = auth()->check()
+            ? auth()->user()->favoriteCars()->pluck('cars.id')->all()
+            : [];
+
+        $wishlistCarIds = auth()->check()
+            ? auth()->user()->wishlistCars()->pluck('cars.id')->all()
+            : [];
+
         return view('brands.show', compact(
             'brand',
             'iconicCars',
@@ -104,7 +113,9 @@ class BrandController extends Controller
             'drivetrains',
             'fuelTypes',
             'productionTypes',
-            'vehicleTypes'
+            'vehicleTypes',
+            'favoriteCarIds',
+            'wishlistCarIds'
         ));
     }
 
@@ -173,6 +184,82 @@ class BrandController extends Controller
             ->orderBy('name')
             ->paginate($perPage);
 
+        if (auth()->check()) {
+            $favoriteIds = auth()->user()->favoriteCars()
+                ->whereIn('cars.id', collect($cars->items())->pluck('id'))
+                ->pluck('cars.id')
+                ->flip();
+
+            $wishlistIds = auth()->user()->wishlistCars()
+                ->whereIn('cars.id', collect($cars->items())->pluck('id'))
+                ->pluck('cars.id')
+                ->flip();
+
+            $cars->getCollection()->each(function ($car) use ($favoriteIds, $wishlistIds) {
+                $car->setAttribute('is_favorited', $favoriteIds->has($car->id));
+                $car->setAttribute('is_wishlisted', $wishlistIds->has($car->id));
+            });
+        } else {
+            $cars->getCollection()->each(function ($car) {
+                $car->setAttribute('is_favorited', false);
+                $car->setAttribute('is_wishlisted', false);
+            });
+        }
+
         return response()->json($cars);
+    }
+
+    public function toggleFavorite(Car $car): JsonResponse
+    {
+        if (!auth()->check()) {
+            return response()->json([
+                'message' => 'Please sign in to save favorites.',
+                'requires_auth' => true,
+            ], 401);
+        }
+
+        abort_unless($car->is_active, 404);
+
+        $user = auth()->user();
+        $exists = $user->favoriteCars()->whereKey($car->id)->exists();
+
+        if ($exists) {
+            $user->favoriteCars()->detach($car->id);
+        } else {
+            $user->favoriteCars()->attach($car->id);
+        }
+
+        return response()->json([
+            'active' => !$exists,
+            'type' => 'favorite',
+            'message' => !$exists ? 'Added to favorites.' : 'Removed from favorites.',
+        ]);
+    }
+
+    public function toggleWishlist(Car $car): JsonResponse
+    {
+        if (!auth()->check()) {
+            return response()->json([
+                'message' => 'Please sign in to save your wishlist.',
+                'requires_auth' => true,
+            ], 401);
+        }
+
+        abort_unless($car->is_active, 404);
+
+        $user = auth()->user();
+        $exists = $user->wishlistCars()->whereKey($car->id)->exists();
+
+        if ($exists) {
+            $user->wishlistCars()->detach($car->id);
+        } else {
+            $user->wishlistCars()->attach($car->id);
+        }
+
+        return response()->json([
+            'active' => !$exists,
+            'type' => 'wishlist',
+            'message' => !$exists ? 'Added to wishlist.' : 'Removed from wishlist.',
+        ]);
     }
 }
