@@ -150,6 +150,7 @@
                                             type="button"
                                             class="brand-save-button js-favorite-button {{ in_array($car->id, $favoriteCarIds, true) ? 'is-active' : '' }}"
                                             data-car-id="{{ $car->id }}"
+                                            data-car-name="{{ $car->name }}"
                                             aria-label="{{ in_array($car->id, $favoriteCarIds, true) ? 'Remove ' . $car->name . ' from favorites' : 'Add ' . $car->name . ' to favorites' }}"
                                             aria-pressed="{{ in_array($car->id, $favoriteCarIds, true) ? 'true' : 'false' }}"
                                             title="Favorite"
@@ -160,6 +161,7 @@
                                             type="button"
                                             class="brand-save-button js-wishlist-button {{ in_array($car->id, $wishlistCarIds, true) ? 'is-active' : '' }}"
                                             data-car-id="{{ $car->id }}"
+                                            data-car-name="{{ $car->name }}"
                                             aria-label="{{ in_array($car->id, $wishlistCarIds, true) ? 'Remove ' . $car->name . ' from wishlist' : 'Add ' . $car->name . ' to wishlist' }}"
                                             aria-pressed="{{ in_array($car->id, $wishlistCarIds, true) ? 'true' : 'false' }}"
                                             title="Wishlist"
@@ -301,5 +303,5 @@
 @endsection
 
 @push('scripts')
-<script src="{{ asset('js/brand.js') }}?v=20260927-3"></script>
+<script src="{{ asset('js/brand.js') }}?v=20260927-10"></script>
 @endpush
