@@ -1140,3 +1140,79 @@
         width: 100%;
     }
 }
+
+
+/* =========================================================
+   FAVORITE & WISHLIST ACTIONS
+   ========================================================= */
+
+.brand-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.brand-save-button {
+    width: 32px;
+    height: 32px;
+    display: inline-grid;
+    place-items: center;
+    padding: 0;
+    border: 1px solid #343b46;
+    border-radius: 50%;
+    background: rgba(9,11,15,.72);
+    color: #aab3c0;
+    font-size: .76rem;
+    cursor: pointer;
+    transition: color .18s ease, border-color .18s ease, background .18s ease, transform .18s ease;
+}
+
+.brand-save-button:hover {
+    color: #fff;
+    border-color: #5a6471;
+    transform: translateY(-1px);
+}
+
+.brand-save-button.is-active {
+    border-color: rgba(229,9,20,.55);
+    background: rgba(229,9,20,.12);
+    color: #ff4650;
+}
+
+.brand-save-button:disabled {
+    opacity: .55;
+    cursor: wait;
+}
+
+.brand-card-actions-overlay {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+}
+
+.brand-car-image-wrap {
+    position: relative;
+    overflow: hidden;
+    background: #10131a;
+}
+
+.brand-car-image-wrap img,
+.brand-car-image-wrap .brand-car-placeholder {
+    display: block;
+}
+
+.brand-iconic-body .brand-card-actions {
+    margin-left: auto;
+}
+
+.brand-iconic-body .brand-car-meta {
+    width: 100%;
+}
+
+@media (max-width: 575px) {
+    .brand-save-button {
+        width: 34px;
+        height: 34px;
+    }
+}
