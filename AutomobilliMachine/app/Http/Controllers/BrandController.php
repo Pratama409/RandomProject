@@ -209,6 +209,42 @@ class BrandController extends Controller
         return response()->json($cars);
     }
 
+    public function car(Brand $brand, string $car): View
+    {
+        abort_unless($brand->is_active, 404);
+
+        $vehicle = $brand->cars()
+            ->with('category:id,name,slug')
+            ->where('cars.slug', $car)
+            ->where('cars.is_active', true)
+            ->firstOrFail();
+
+        $relatedCars = $brand->cars()
+            ->with('category:id,name,slug')
+            ->where('cars.is_active', true)
+            ->whereKeyNot($vehicle->id)
+            ->orderByDesc('is_iconic')
+            ->orderByDesc('production_year_start')
+            ->limit(4)
+            ->get();
+
+        $isFavorited = auth()->check()
+            ? auth()->user()->favoriteCars()->whereKey($vehicle->id)->exists()
+            : false;
+
+        $isWishlisted = auth()->check()
+            ? auth()->user()->wishlistCars()->whereKey($vehicle->id)->exists()
+            : false;
+
+        return view('cars.show', compact(
+            'brand',
+            'vehicle',
+            'relatedCars',
+            'isFavorited',
+            'isWishlisted'
+        ));
+    }
+
     public function toggleFavorite(Car $car): JsonResponse
     {
         if (!auth()->check()) {
