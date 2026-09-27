@@ -1318,3 +1318,76 @@
         padding: 18px 16px 20px;
     }
 }
+
+
+/* =========================================================
+   MOBILE — TWO-COLUMN LEGENDARY MODELS
+   ========================================================= */
+
+@media (max-width: 575px) {
+    .brand-iconic-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .brand-iconic-card {
+        border-radius: 13px;
+    }
+
+    .brand-iconic-card > img,
+    .brand-iconic-card > .brand-car-placeholder {
+        height: 108px !important;
+        border-radius: 0;
+        object-fit: cover !important;
+    }
+
+    .brand-iconic-body {
+        padding: 10px;
+    }
+
+    .brand-iconic-body .brand-car-meta {
+        gap: 6px;
+        align-items: center;
+    }
+
+    .brand-iconic-body .brand-car-meta > span:first-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: .62rem;
+    }
+
+    .brand-iconic-body h3 {
+        margin: 8px 0 4px;
+        font-size: .9rem;
+        line-height: 1.2;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .brand-iconic-year {
+        font-size: .66rem;
+    }
+
+    .brand-iconic-body .brand-card-actions {
+        gap: 4px;
+    }
+
+    .brand-iconic-body .brand-save-button {
+        width: 24px;
+        height: 24px;
+        font-size: .62rem;
+    }
+
+    .brand-iconic-body .brand-card-arrow {
+        width: 24px;
+        height: 24px;
+        font-size: .6rem;
+    }
+
+    .brand-iconic-card:hover {
+        transform: none;
+    }
+}
