@@ -50,23 +50,8 @@
     @include('partials.navbar')
 
     <main class="container brand-content">
-        @if ($brand->history || !empty($brand->history_timeline))
+        @if ($brand->history || !empty($brand->history_sections))
             <section class="brand-history-section">
-                <div class="brand-history-media">
-                    @if ($brand->history_image_path)
-                        <img
-                            src="{{ str_starts_with($brand->history_image_path, 'http') ? $brand->history_image_path : asset($brand->history_image_path) }}"
-                            alt="{{ $brand->name }} heritage"
-                            loading="lazy"
-                            decoding="async"
-                        >
-                    @endif
-                    <div class="brand-history-media-overlay"></div>
-                    <span class="brand-history-media-label">
-                        {{ $brand->name }} Heritage
-                    </span>
-                </div>
-
                 <div class="brand-history-content">
                     <span class="brand-section-label">HERITAGE</span>
 
