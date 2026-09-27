@@ -3,7 +3,7 @@
 @section('title', $brand->name . ' - AutomobilliMachine')
 
 @push('styles')
-<link rel="stylesheet" href="{{ asset('css/brand.css') }}?v=20260927-4">
+<link rel="stylesheet" href="{{ asset('css/brand.css') }}?v=20260927-5">
 @endpush
 
 @section('content')
@@ -201,6 +201,33 @@
                 </label>
 
                 <label class="brand-model-select">
+                    <span class="visually-hidden">Production Type</span>
+                    <select id="carProductionType">
+                        <option value="">All Types</option>
+                        @foreach ($productionTypes as $productionType)
+                            <option value="{{ $productionType }}">{{ $productionType }}</option>
+                        @endforeach
+                    </select>
+                </label>
+
+                <button
+                    id="toggleAdvancedFilters"
+                    class="brand-more-filters"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="advancedCarFilters"
+                >
+                    <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+                    <span>More filters</span>
+                </button>
+
+                <button id="clearCarFilters" class="brand-clear-filters" type="button">
+                    Clear
+                </button>
+            </div>
+
+            <div id="advancedCarFilters" class="brand-advanced-filters" hidden>
+                <label class="brand-model-select">
                     <span class="visually-hidden">Drivetrain</span>
                     <select id="carDrivetrain">
                         <option value="">Drivetrain</option>
@@ -221,16 +248,6 @@
                 </label>
 
                 <label class="brand-model-select">
-                    <span class="visually-hidden">Production Type</span>
-                    <select id="carProductionType">
-                        <option value="">All Types</option>
-                        @foreach ($productionTypes as $productionType)
-                            <option value="{{ $productionType }}">{{ $productionType }}</option>
-                        @endforeach
-                    </select>
-                </label>
-
-                <label class="brand-model-select">
                     <span class="visually-hidden">Vehicle Type</span>
                     <select id="carVehicleType">
                         <option value="">Vehicle Type</option>
@@ -239,10 +256,6 @@
                         @endforeach
                     </select>
                 </label>
-
-                <button id="clearCarFilters" class="brand-clear-filters" type="button">
-                    Clear
-                </button>
             </div>
 
             <div class="brand-model-results">
