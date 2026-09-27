@@ -62,10 +62,23 @@
 
                     @if (!empty($brand->history_sections))
                         <div class="brand-history-narrative">
-                            @foreach ($brand->history_sections as $section)
-                                <article class="brand-history-chapter">
-                                    <span class="brand-history-chapter-label">{{ $section['title'] ?? '' }}</span>
-                                    <p>{{ $section['text'] ?? '' }}</p>
+                            @foreach ($brand->history_sections as $index => $section)
+                                <article class="brand-history-chapter {{ $index % 2 ? 'is-reversed' : '' }}">
+                                    <div class="brand-history-media">
+                                        @if (!empty($section['image']))
+                                            <img
+                                                src="{{ str_starts_with($section['image'], 'http') ? $section['image'] : asset($section['image']) }}"
+                                                alt="{{ $section['image_alt'] ?? ($section['title'] ?? $brand->name) }}"
+                                                loading="{{ $index > 1 ? 'lazy' : 'eager' }}"
+                                                decoding="async"
+                                            >
+                                        @endif
+                                    </div>
+
+                                    <div class="brand-history-copy">
+                                        <span class="brand-history-chapter-label">{{ $section['title'] ?? '' }}</span>
+                                        <p>{{ $section['text'] ?? '' }}</p>
+                                    </div>
                                 </article>
                             @endforeach
                         </div>
