@@ -36,7 +36,7 @@
                 @endif
 
                 <div class="brand-hero-copy">
-                    <span class="brand-kicker">MARQUE PROFILE</span>
+                    <span class="brand-kicker">BRAND PROFILE</span>
                     <h1>{{ $brand->name }}</h1>
 
                     @if ($brand->tagline)
