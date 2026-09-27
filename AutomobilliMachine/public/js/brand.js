@@ -173,9 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const isOpen = toggleAdvancedFilters.getAttribute('aria-expanded') === 'true';
         toggleAdvancedFilters.setAttribute('aria-expanded', String(!isOpen));
         advancedFilters.hidden = isOpen;
-        toggleAdvancedFilters.querySelector('span').textContent = isOpen
-            ? 'More filters'
-            : 'Less filters';
+        toggleAdvancedFilters.querySelector('span').textContent = 'Fiters';
     });
 
     searchInput?.addEventListener('input', () => {
