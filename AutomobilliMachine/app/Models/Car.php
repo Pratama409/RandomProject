@@ -65,6 +65,7 @@ class Car extends Model
             'horsepower' => 'integer',
             'torque_nm' => 'integer',
             'acceleration_0_100' => 'decimal:2',
+            'stats_tested' => 'boolean',
             'top_speed_kmh' => 'integer',
             'is_iconic' => 'boolean',
             'iconic_order' => 'integer',
