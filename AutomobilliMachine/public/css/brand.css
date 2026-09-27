@@ -193,8 +193,7 @@
     grid-template-rows: minmax(315px, 1fr);
     gap: 0;
     align-items: stretch;
-    max-width: 1120px;
-    margin-inline: auto;
+    width: 100%;
     overflow: hidden;
     border: 1px solid #2a303a;
     border-radius: 18px;
