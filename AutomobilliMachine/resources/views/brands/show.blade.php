@@ -3,7 +3,7 @@
 @section('title', $brand->name . ' - AutomobilliMachine')
 
 @push('styles')
-<link rel="stylesheet" href="{{ asset('css/brand.css') }}?v=20260927-16">
+<link rel="stylesheet" href="{{ asset('css/brand.css') }}?v=20260927-17">
 @endpush
 
 @section('content')
@@ -11,6 +11,7 @@
     class="brand-page"
     data-brand-slug="{{ $brand->slug }}"
     data-cars-endpoint="{{ route('brands.cars', $brand) }}"
+    data-car-detail-base="{{ url('/brands/' . $brand->slug . '/cars') }}"
     data-hero-image="{{ $brand->hero_image_path ? (str_starts_with($brand->hero_image_path, 'http') ? $brand->hero_image_path : asset($brand->hero_image_path)) : '' }}"
 >
     <section class="brand-hero">
