@@ -1537,3 +1537,53 @@
         letter-spacing: .035em;
     }
 }
+
+
+/* =========================================================
+   MOBILE — COMPACT CARD META & BADGES
+   ========================================================= */
+
+@media (max-width: 575px) {
+    .brand-iconic-body .brand-car-meta,
+    .brand-car-card .brand-car-meta {
+        min-width: 0;
+        align-items: center;
+    }
+
+    .brand-iconic-body .brand-car-meta > span:first-child,
+    .brand-car-card .brand-car-meta > span:first-child {
+        max-width: 58px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: .52rem;
+        line-height: 1.1;
+        letter-spacing: .035em;
+    }
+
+    .brand-iconic-body .brand-icon-badge,
+    .brand-car-card .brand-icon-badge {
+        flex: 0 0 auto;
+        padding: 2px 5px;
+        border-radius: 999px;
+        font-size: .5rem;
+        line-height: 1.2;
+        letter-spacing: .02em;
+    }
+
+    .brand-iconic-body .brand-catalog-badges,
+    .brand-car-card .brand-catalog-badges {
+        margin-top: 5px;
+        gap: 3px;
+    }
+
+    .brand-iconic-body .brand-catalog-badge,
+    .brand-car-card .brand-catalog-badge {
+        min-height: 17px;
+        padding: 2px 5px;
+        border-radius: 999px;
+        font-size: .48rem;
+        line-height: 1.1;
+        letter-spacing: .025em;
+    }
+}
