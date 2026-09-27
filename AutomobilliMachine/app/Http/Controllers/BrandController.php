@@ -35,13 +35,30 @@ class BrandController extends Controller
             ->sortBy('name')
             ->values();
 
-        $years = $activeCars
+        // A year represents a period in which a model was produced/available,
+        // not only the year in which a model was first introduced.
+        $years = collect();
+
+        $activeCars
             ->clone()
             ->whereNotNull('production_year_start')
-            ->pluck('production_year_start')
-            ->unique()
-            ->sortDesc()
-            ->values();
+            ->get(['production_year_start', 'production_year_end'])
+            ->each(function ($car) use ($years) {
+                $start = (int) $car->production_year_start;
+                $end = $car->production_year_end
+                    ? (int) $car->production_year_end
+                    : now()->year;
+
+                if ($end < $start) {
+                    $end = $start;
+                }
+
+                for ($year = $start; $year <= $end; $year++) {
+                    $years->push($year);
+                }
+            });
+
+        $years = $years->unique()->sortDesc()->values();
 
         $drivetrains = $activeCars
             ->clone()
@@ -61,13 +78,33 @@ class BrandController extends Controller
             ->pluck('fuel_type')
             ->values();
 
+        $productionTypes = $activeCars
+            ->clone()
+            ->whereNotNull('production_type')
+            ->where('production_type', '!=', '')
+            ->distinct()
+            ->orderBy('production_type')
+            ->pluck('production_type')
+            ->values();
+
+        $vehicleTypes = $activeCars
+            ->clone()
+            ->whereNotNull('vehicle_type')
+            ->where('vehicle_type', '!=', '')
+            ->distinct()
+            ->orderBy('vehicle_type')
+            ->pluck('vehicle_type')
+            ->values();
+
         return view('brands.show', compact(
             'brand',
             'iconicCars',
             'categories',
             'years',
             'drivetrains',
-            'fuelTypes'
+            'fuelTypes',
+            'productionTypes',
+            'vehicleTypes'
         ));
     }
 
@@ -86,6 +123,9 @@ class BrandController extends Controller
                 $query->where(function ($builder) use ($search) {
                     $builder
                         ->where('name', 'like', '%' . $search . '%')
+                        ->orWhere('model_family', 'like', '%' . $search . '%')
+                        ->orWhere('generation', 'like', '%' . $search . '%')
+                        ->orWhere('variant', 'like', '%' . $search . '%')
                         ->orWhere('short_description', 'like', '%' . $search . '%');
                 });
             })
@@ -108,8 +148,15 @@ class BrandController extends Controller
             ->when($request->filled('fuel_type'), function ($query) use ($request) {
                 $query->where('fuel_type', $request->string('fuel_type'));
             })
+            ->when($request->filled('production_type'), function ($query) use ($request) {
+                $query->where('production_type', $request->string('production_type'));
+            })
+            ->when($request->filled('vehicle_type'), function ($query) use ($request) {
+                $query->where('vehicle_type', $request->string('vehicle_type'));
+            })
             ->orderByDesc('is_iconic')
             ->orderByDesc('production_year_start')
+            ->orderBy('name')
             ->paginate($perPage);
 
         return response()->json($cars);
