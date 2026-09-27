@@ -1233,3 +1233,88 @@
 .brand-car-card .brand-car-meta > .brand-card-actions .brand-save-button.is-active {
     background: rgba(229,9,20,.08);
 }
+
+
+/* =========================================================
+   MOBILE HISTORY FIX
+   Stack every history chapter vertically on narrow screens.
+   ========================================================= */
+
+@media (max-width: 575px) {
+    .brand-history-narrative {
+        gap: 16px;
+        margin-top: 24px;
+    }
+
+    .brand-history-chapter,
+    .brand-history-chapter.is-reversed {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        width: 100%;
+        min-height: 0;
+    }
+
+    .brand-history-chapter .brand-history-media,
+    .brand-history-chapter.is-reversed .brand-history-media {
+        order: 1;
+        width: 100%;
+        min-width: 0;
+        min-height: 0;
+        height: auto;
+        padding: 10px;
+        aspect-ratio: auto;
+    }
+
+    .brand-history-chapter .brand-history-media img {
+        width: 100%;
+        height: auto;
+        max-height: none;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        border-radius: 12px;
+    }
+
+    .brand-history-chapter .brand-history-copy,
+    .brand-history-chapter.is-reversed .brand-history-copy {
+        order: 2;
+        width: 100%;
+        min-height: 0;
+        padding: 20px 18px 22px;
+    }
+
+    .brand-history-chapter-label {
+        margin-bottom: 9px;
+        font-size: .7rem;
+        line-height: 1.45;
+    }
+
+    .brand-history-copy p {
+        font-size: .88rem;
+        line-height: 1.68;
+    }
+}
+
+/* Small-phone refinement */
+@media (max-width: 390px) {
+    .brand-history-content {
+        padding: 0 2px;
+    }
+
+    .brand-history-chapter {
+        border-radius: 13px;
+    }
+
+    .brand-history-chapter .brand-history-media {
+        padding: 9px;
+    }
+
+    .brand-history-chapter .brand-history-media img {
+        border-radius: 11px;
+    }
+
+    .brand-history-chapter .brand-history-copy,
+    .brand-history-chapter.is-reversed .brand-history-copy {
+        padding: 18px 16px 20px;
+    }
+}
