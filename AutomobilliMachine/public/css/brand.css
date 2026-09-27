@@ -1048,3 +1048,54 @@
         width: 100%;
     }
 }
+
+
+/* =========================================================
+   CATALOG TOOLBAR — SEARCH + FILTERS
+   ========================================================= */
+
+.brand-model-toolbar {
+    display: grid;
+    grid-template-columns: minmax(280px, 1fr) auto;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.brand-model-toolbar .brand-model-search {
+    min-width: 0;
+}
+
+.brand-model-toolbar .brand-more-filters {
+    min-width: 112px;
+    width: auto;
+}
+
+.brand-advanced-filters {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-bottom: 16px;
+}
+
+.brand-advanced-filters .brand-model-search {
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 767px) {
+    .brand-model-toolbar {
+        grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    .brand-model-toolbar .brand-more-filters {
+        width: auto;
+    }
+}
+
+@media (max-width: 575px) {
+    .brand-model-toolbar {
+        grid-template-columns: 1fr;
+    }
+
+    .brand-model-toolbar .brand-more-filters {
+        width: 100%;
+    }
+}
