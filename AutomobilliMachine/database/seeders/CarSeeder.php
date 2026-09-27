@@ -15,6 +15,8 @@ class CarSeeder extends Seeder
         $supercar = Category::where('slug', 'supercar')->firstOrFail();
         $grandTourer = Category::where('slug', 'grand-tourer')->firstOrFail();
         $sportsCar = Category::where('slug', 'sports-car')->firstOrFail();
+        $trackCar = Category::where('slug', 'track-car')->firstOrFail();
+        $raceCar = Category::where('slug', 'race-car')->firstOrFail();
 
         $cars = [
             [
@@ -199,7 +201,7 @@ class CarSeeder extends Seeder
                 'name' => 'Ferrari 250 GTO',
                 'slug' => '250-gto',
                 'model_family' => '250',
-                'category_id' => $supercar->id,
+                'category_id' => $raceCar->id,
                 'production_year_start' => 1962,
                 'production_year_end' => 1964,
                 'production_count' => 36,
@@ -242,7 +244,7 @@ class CarSeeder extends Seeder
                 'name' => 'Ferrari FXX-K',
                 'slug' => 'fxx-k',
                 'model_family' => 'FXX',
-                'category_id' => $supercar->id,
+                'category_id' => $trackCar->id,
                 'production_year_start' => 2015,
                 'production_year_end' => 2016,
                 'production_type' => 'Track Series',
