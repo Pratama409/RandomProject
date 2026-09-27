@@ -230,6 +230,71 @@
     line-height: 1.85;
 }
 
+.brand-history-timeline {
+    position: relative;
+    display: grid;
+    gap: 0;
+    margin-top: 34px;
+    padding-left: 26px;
+}
+
+.brand-history-timeline::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    left: 4px;
+    width: 1px;
+    background: linear-gradient(180deg, #e50914, #3a424e);
+}
+
+.brand-history-event {
+    position: relative;
+    display: grid;
+    grid-template-columns: 68px 1fr;
+    gap: 18px;
+    padding: 0 0 24px;
+}
+
+.brand-history-event:last-child {
+    padding-bottom: 0;
+}
+
+.brand-history-event::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: -26px;
+    width: 9px;
+    height: 9px;
+    border: 2px solid #e50914;
+    border-radius: 50%;
+    background: #141820;
+    box-shadow: 0 0 0 4px rgba(229,9,20,.07);
+}
+
+.brand-history-year {
+    color: #e50914;
+    font-size: .8rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+    line-height: 1.45;
+}
+
+.brand-history-event h3 {
+    margin: 0 0 5px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.brand-history-event p {
+    margin: 0;
+    color: #aeb7c4;
+    line-height: 1.65;
+    font-size: .9rem;
+}
+
 .brand-history-subsection {
     margin-top: 28px;
     padding-top: 22px;
@@ -621,6 +686,19 @@
 
     .brand-history-content {
         padding: 26px 22px;
+    }
+
+    .brand-history-timeline {
+        padding-left: 20px;
+    }
+
+    .brand-history-event {
+        grid-template-columns: 54px 1fr;
+        gap: 12px;
+    }
+
+    .brand-history-event::before {
+        left: -20px;
     }
 
     .brand-history-content h2 {
