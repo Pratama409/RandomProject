@@ -71,19 +71,16 @@
                     <span class="brand-section-label">HERITAGE</span>
 
                     @if ($brand->history)
-                        <h2>How {{ $brand->name }} Began</h2>
+                        <h2>The Story of {{ $brand->name }}</h2>
                         <p class="brand-history-lead">{{ $brand->history }}</p>
                     @endif
 
-                    @if (!empty($brand->history_timeline))
-                        <div class="brand-history-timeline" aria-label="{{ $brand->name }} history timeline">
-                            @foreach ($brand->history_timeline as $event)
-                                <article class="brand-history-event">
-                                    <span class="brand-history-year">{{ $event['year'] ?? '' }}</span>
-                                    <div>
-                                        <h3>{{ $event['title'] ?? '' }}</h3>
-                                        <p>{{ $event['description'] ?? '' }}</p>
-                                    </div>
+                    @if (!empty($brand->history_sections))
+                        <div class="brand-history-narrative">
+                            @foreach ($brand->history_sections as $section)
+                                <article class="brand-history-chapter">
+                                    <span class="brand-history-chapter-label">{{ $section['title'] ?? '' }}</span>
+                                    <p>{{ $section['text'] ?? '' }}</p>
                                 </article>
                             @endforeach
                         </div>
