@@ -2034,3 +2034,52 @@
         line-height: 1.18;
     }
 }
+
+
+/* =========================================================
+   FINAL ALL-MODEL ALIGNMENT
+   Reserve the same metadata space so names, years,
+   descriptions and stats line up across the grid.
+   ========================================================= */
+
+.brand-car-meta {
+    min-height: 32px;
+}
+
+.brand-catalog-badges {
+    min-height: 28px;
+    display: flex;
+    align-items: flex-start;
+    margin: 7px 0 9px;
+}
+
+.brand-car-body h3 {
+    margin-top: 0;
+}
+
+.brand-car-body .brand-catalog-years {
+    min-height: 20px;
+}
+
+.brand-car-body p {
+    min-height: 52px;
+}
+
+@media (max-width: 575px) {
+    .brand-car-meta {
+        min-height: 27px;
+    }
+
+    .brand-catalog-badges {
+        min-height: 22px;
+        margin: 5px 0 6px;
+    }
+
+    .brand-car-body .brand-catalog-years {
+        min-height: 16px;
+    }
+
+    .brand-car-body p {
+        min-height: 42px;
+    }
+}
