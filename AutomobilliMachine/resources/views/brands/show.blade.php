@@ -24,6 +24,17 @@
 
         <div class="container brand-hero-content">
             <div class="brand-hero-copy">
+                @if ($brand->logo_path)
+                    <div class="brand-hero-logo">
+                        <img
+                            src="{{ str_starts_with($brand->logo_path, 'http') ? $brand->logo_path : asset($brand->logo_path) }}"
+                            alt="{{ $brand->name }} logo"
+                            loading="eager"
+                            decoding="async"
+                        >
+                    </div>
+                @endif
+
                 <span class="brand-kicker">MARQUE PROFILE</span>
                 <h1>{{ $brand->name }}</h1>
 
