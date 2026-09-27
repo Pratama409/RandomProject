@@ -303,5 +303,5 @@
 @endsection
 
 @push('scripts')
-<script src="{{ asset('js/brand.js') }}?v=20260927-13"></script>
+<script src="{{ asset('js/brand.js') }}?v=20260927-14"></script>
 @endpush
