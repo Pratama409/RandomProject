@@ -17,8 +17,9 @@ class BrandController extends Controller
             ->with('category:id,name,slug')
             ->where('is_active', true)
             ->where('is_iconic', true)
+            ->orderByRaw('COALESCE(iconic_order, 255)')
             ->orderByDesc('production_year_start')
-            ->limit(4)
+            ->limit(8)
             ->get();
 
         return view('brands.show', compact('brand', 'iconicCars'));
