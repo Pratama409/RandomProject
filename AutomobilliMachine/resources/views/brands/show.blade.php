@@ -3,7 +3,7 @@
 @section('title', $brand->name . ' - AutomobilliMachine')
 
 @push('styles')
-<link rel="stylesheet" href="{{ asset('css/brand.css') }}?v=20260927-5">
+<link rel="stylesheet" href="{{ asset('css/brand.css') }}?v=20260927-6">
 @endpush
 
 @section('content')
@@ -169,7 +169,7 @@
                 <div>
                     <span class="brand-section-label">ALL {{ strtoupper($brand->name) }} MODELS</span>
                     <h2>{{ $brand->name }} Model Lineup</h2>
-                    <p>Explore the complete {{ $brand->name }} catalog, including production cars, limited series, special models, One-Offs, and track-focused cars.</p>
+                    <p>Browse the {{ $brand->name }} catalog by year, category, production type, and specifications.</p>
                 </div>
             </div>
 
