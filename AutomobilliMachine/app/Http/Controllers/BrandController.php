@@ -22,7 +22,53 @@ class BrandController extends Controller
             ->limit(8)
             ->get();
 
-        return view('brands.show', compact('brand', 'iconicCars'));
+        $activeCars = $brand->cars()
+            ->where('is_active', true);
+
+        $categories = $activeCars
+            ->clone()
+            ->with('category:id,name,slug')
+            ->get(['category_id'])
+            ->pluck('category')
+            ->filter()
+            ->unique('id')
+            ->sortBy('name')
+            ->values();
+
+        $years = $activeCars
+            ->clone()
+            ->whereNotNull('production_year_start')
+            ->pluck('production_year_start')
+            ->unique()
+            ->sortDesc()
+            ->values();
+
+        $drivetrains = $activeCars
+            ->clone()
+            ->whereNotNull('drivetrain')
+            ->where('drivetrain', '!=', '')
+            ->distinct()
+            ->orderBy('drivetrain')
+            ->pluck('drivetrain')
+            ->values();
+
+        $fuelTypes = $activeCars
+            ->clone()
+            ->whereNotNull('fuel_type')
+            ->where('fuel_type', '!=', '')
+            ->distinct()
+            ->orderBy('fuel_type')
+            ->pluck('fuel_type')
+            ->values();
+
+        return view('brands.show', compact(
+            'brand',
+            'iconicCars',
+            'categories',
+            'years',
+            'drivetrains',
+            'fuelTypes'
+        ));
     }
 
     public function cars(Request $request, Brand $brand): JsonResponse
@@ -42,6 +88,25 @@ class BrandController extends Controller
                         ->where('name', 'like', '%' . $search . '%')
                         ->orWhere('short_description', 'like', '%' . $search . '%');
                 });
+            })
+            ->when($request->filled('year'), function ($query) use ($request) {
+                $year = (int) $request->integer('year');
+
+                $query->where('production_year_start', '<=', $year)
+                    ->where(function ($builder) use ($year) {
+                        $builder
+                            ->whereNull('production_year_end')
+                            ->orWhere('production_year_end', '>=', $year);
+                    });
+            })
+            ->when($request->filled('category'), function ($query) use ($request) {
+                $query->where('category_id', $request->integer('category'));
+            })
+            ->when($request->filled('drivetrain'), function ($query) use ($request) {
+                $query->where('drivetrain', $request->string('drivetrain'));
+            })
+            ->when($request->filled('fuel_type'), function ($query) use ($request) {
+                $query->where('fuel_type', $request->string('fuel_type'));
             })
             ->orderByDesc('is_iconic')
             ->orderByDesc('production_year_start')
