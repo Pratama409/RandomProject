@@ -19,6 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!endpoint || !grid) return;
 
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
+    const favoriteEndpoint = (carId) => '/cars/' + carId + '/favorite';
+    const wishlistEndpoint = (carId) => '/cars/' + carId + '/wishlist';
+
     let pageNumber = 1;
     let lastPage = 1;
     let searchTimer = null;
@@ -88,8 +92,32 @@ document.addEventListener('DOMContentLoaded', () => {
                         : ' – Present')
                 : 'Year not specified';
 
-            return '<article class="brand-car-card">'
-                + image
+            const saveButtons = `
+                <div class="brand-card-actions brand-card-actions-overlay">
+                    <button
+                        type="button"
+                        class="brand-save-button js-favorite-button ${car.is_favorited ? 'is-active' : ''}"
+                        data-car-id="${escapeHtml(car.id)}"
+                        aria-label="${car.is_favorited ? 'Remove ' + escapeHtml(car.name) + ' from favorites' : 'Add ' + escapeHtml(car.name) + ' to favorites'}"
+                        aria-pressed="${car.is_favorited ? 'true' : 'false'}"
+                        title="Favorite"
+                    >
+                        <i class="${car.is_favorited ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
+                    </button>
+                    <button
+                        type="button"
+                        class="brand-save-button js-wishlist-button ${car.is_wishlisted ? 'is-active' : ''}"
+                        data-car-id="${escapeHtml(car.id)}"
+                        aria-label="${car.is_wishlisted ? 'Remove ' + escapeHtml(car.name) + ' from wishlist' : 'Add ' + escapeHtml(car.name) + ' to wishlist'}"
+                        aria-pressed="${car.is_wishlisted ? 'true' : 'false'}"
+                        title="Wishlist"
+                    >
+                        <i class="${car.is_wishlisted ? 'fa-solid' : 'fa-regular'} fa-bookmark"></i>
+                    </button>
+                </div>`;
+
+            return '<article class="brand-car-card" data-car-name="' + escapeHtml(car.name) + '">'
+                + '<div class="brand-car-image-wrap">' + image + saveButtons + '</div>'
                 + '<div class="brand-car-body">'
                 + '<div class="brand-car-meta">'
                 + '<span>' + escapeHtml(car.category?.name || 'Model') + '</span>'
@@ -164,6 +192,82 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Failed to load brand models:', error);
         }
     };
+
+    const setSaveButtonState = (button, active) => {
+        if (!button) return;
+
+        const icon = button.querySelector('i');
+        button.classList.toggle('is-active', active);
+        button.setAttribute('aria-pressed', active ? 'true' : 'false');
+
+        const isFavorite = button.classList.contains('js-favorite-button');
+        const label = button.closest('[data-car-name]')?.dataset.carName || 'this car';
+
+        button.setAttribute(
+            'aria-label',
+            active
+                ? `Remove ${label} from ${isFavorite ? 'favorites' : 'wishlist'}`
+                : `Add ${label} to ${isFavorite ? 'favorites' : 'wishlist'}`
+        );
+
+        if (icon) {
+            icon.classList.toggle('fa-solid', active);
+            icon.classList.toggle('fa-regular', !active);
+        }
+    };
+
+    const toggleSavedState = async (button, type) => {
+        const carId = button?.dataset.carId;
+        if (!carId) return;
+
+        button.disabled = true;
+
+        try {
+            const response = await fetch(
+                type === 'favorite' ? favoriteEndpoint(carId) : wishlistEndpoint(carId),
+                {
+                    method: 'POST',
+                    headers: {
+                        Accept: 'application/json',
+                        'X-CSRF-TOKEN': csrfToken,
+                        'X-Requested-With': 'XMLHttpRequest',
+                    },
+                }
+            );
+
+            const data = await response.json();
+
+            if (response.status === 401 && data.requires_auth) {
+                window.alert(type === 'favorite'
+                    ? 'Please sign in to save favorites.'
+                    : 'Please sign in to save your wishlist.');
+                return;
+            }
+
+            if (!response.ok) {
+                throw new Error(data.message || 'Request failed');
+            }
+
+            setSaveButtonState(button, data.active);
+        } catch (error) {
+            console.error('Failed to update saved car state:', error);
+        } finally {
+            button.disabled = false;
+        }
+    };
+
+    grid.addEventListener('click', (event) => {
+        const button = event.target.closest('.js-favorite-button, .js-wishlist-button');
+        if (!button) return;
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        toggleSavedState(
+            button,
+            button.classList.contains('js-favorite-button') ? 'favorite' : 'wishlist'
+        );
+    });
 
     const resetAndLoad = () => loadCars({ reset: true });
 
