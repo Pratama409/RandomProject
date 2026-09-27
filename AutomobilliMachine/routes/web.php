@@ -19,6 +19,7 @@ Route::get('/home', function () {
 
 Route::get('/brands/{brand:slug}', [BrandController::class, 'show'])->name('brands.show');
 Route::get('/brands/{brand:slug}/cars', [BrandController::class, 'cars'])->name('brands.cars');
+Route::get('/brands/{brand:slug}/cars/{car}', [BrandController::class, 'car'])->name('cars.show');
 Route::post('/cars/{car}/favorite', [BrandController::class, 'toggleFavorite'])->name('cars.favorite');
 Route::post('/cars/{car}/wishlist', [BrandController::class, 'toggleWishlist'])->name('cars.wishlist');
 
