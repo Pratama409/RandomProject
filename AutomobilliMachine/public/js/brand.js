@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 : 'Year not specified';
 
             const saveButtons = `
-                <div class="brand-card-actions brand-card-actions-overlay">
+                <div class="brand-card-actions">
                     <button
                         type="button"
                         class="brand-save-button js-favorite-button ${car.is_favorited ? 'is-active' : ''}"
@@ -118,11 +118,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>`;
 
             return '<article class="brand-car-card" data-car-name="' + escapeHtml(car.name) + '">'
-                + '<div class="brand-car-image-wrap">' + image + saveButtons + '</div>'
+                + image
                 + '<div class="brand-car-body">'
                 + '<div class="brand-car-meta">'
                 + '<span>' + escapeHtml(car.category?.name || 'Model') + '</span>'
+                + '<div class="brand-card-actions">'
                 + (car.is_iconic ? '<span class="brand-icon-badge">Iconic</span>' : '')
+                + saveButtons
+                + '</div>'
                 + '</div>'
                 + (badgeHtml ? '<div class="brand-catalog-badges">' + badgeHtml + '</div>' : '')
                 + '<h3>' + escapeHtml(car.name) + '</h3>'
