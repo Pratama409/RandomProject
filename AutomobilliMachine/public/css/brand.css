@@ -1809,3 +1809,109 @@
         letter-spacing: .035em;
     }
 }
+
+
+/* =========================================================
+   CINEMATIC BRAND HERO
+   Subtle motion inspired by the supplied video reference.
+   ========================================================= */
+
+.brand-hero-image {
+    transform: scale(1.045);
+    transform-origin: center center;
+    will-change: transform;
+    animation: brandHeroDrift 18s ease-in-out infinite alternate;
+}
+
+.brand-hero-overlay {
+    background:
+        radial-gradient(circle at 72% 48%, rgba(9,11,15,.06), rgba(9,11,15,.2) 42%, rgba(9,11,15,.48) 100%),
+        linear-gradient(180deg, rgba(9,11,15,.10), rgba(9,11,15,.66)),
+        linear-gradient(90deg, rgba(9,11,15,.78), rgba(9,11,15,.13) 72%);
+}
+
+.brand-hero-content {
+    animation: brandHeroContentIn .9s cubic-bezier(.22,1,.36,1) both;
+}
+
+.brand-hero-logo {
+    animation: brandHeroLogoIn 1s cubic-bezier(.22,1,.36,1) .08s both;
+}
+
+.brand-hero-copy {
+    animation: brandHeroCopyIn 1s cubic-bezier(.22,1,.36,1) .16s both;
+}
+
+@keyframes brandHeroDrift {
+    0% {
+        transform: scale(1.045) translate3d(-.5%, 0, 0);
+    }
+    100% {
+        transform: scale(1.085) translate3d(1.2%, -0.4%, 0);
+    }
+}
+
+@keyframes brandHeroContentIn {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 24px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes brandHeroLogoIn {
+    from {
+        opacity: 0;
+        transform: translate3d(-18px, 0, 0) scale(.92);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+}
+
+@keyframes brandHeroCopyIn {
+    from {
+        opacity: 0;
+        transform: translate3d(18px, 10px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@media (max-width: 575px) {
+    .brand-hero-image {
+        transform: scale(1.06);
+        animation-duration: 16s;
+        animation-name: brandHeroDriftMobile;
+    }
+
+    @keyframes brandHeroDriftMobile {
+        0% {
+            transform: scale(1.06) translate3d(-.5%, 0, 0);
+        }
+        100% {
+            transform: scale(1.1) translate3d(1%, -.3%, 0);
+        }
+    }
+
+    .brand-hero-content,
+    .brand-hero-logo,
+    .brand-hero-copy {
+        animation-duration: .7s;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .brand-hero-image,
+    .brand-hero-content,
+    .brand-hero-logo,
+    .brand-hero-copy {
+        animation: none;
+    }
+}
