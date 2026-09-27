@@ -78,12 +78,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 .map((badge) => '<span class="brand-catalog-badge">' + escapeHtml(badge) + '</span>')
                 .join('');
 
+            const formatStat = (value, suffix = '') => value !== null && value !== undefined && value !== ''
+                ? '<span class="brand-stat"><b>' + escapeHtml(value) + '</b>' + suffix + '</span>'
+                : '<span class="brand-stat"><b>—</b>' + suffix + '</span>';
+
             const specs = [
-                car.horsepower ? '<span><b>' + escapeHtml(car.horsepower) + '</b> HP</span>' : '',
-                car.top_speed_kmh ? '<span><b>' + escapeHtml(car.top_speed_kmh) + '</b> km/h</span>' : '',
-                car.acceleration_0_100 ? '<span><b>' + escapeHtml(car.acceleration_0_100) + 's</b> 0–100</span>' : '',
-                car.production_count ? '<span><b>' + escapeHtml(car.production_count) + '</b> built</span>' : ''
-            ].filter(Boolean).join('');
+                formatStat(car.horsepower, ' HP'),
+                formatStat(car.top_speed_kmh, ' km/h'),
+                formatStat(car.acceleration_0_100, 's 0–100')
+            ].join('');
+
+            const statsStatus = car.stats_tested
+                ? '<span class="brand-stats-status is-tested">Tested</span>'
+                : '<span class="brand-stats-status is-not-tested">Not Tested</span>';
 
             const yearRange = car.production_year_start
                 ? escapeHtml(car.production_year_start)
@@ -132,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 + '<h3>' + escapeHtml(car.name) + '</h3>'
                 + '<span class="brand-catalog-years">' + yearRange + '</span>'
                 + (car.short_description ? '<p>' + escapeHtml(car.short_description) + '</p>' : '')
-                + '<div class="brand-spec-row">' + specs + '</div>'
+                + '<div class="brand-spec-row">' + specs + statsStatus + '</div>'
                 + '</div>'
                 + '</article>';
         }).join('');
