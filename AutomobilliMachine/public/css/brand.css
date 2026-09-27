@@ -663,7 +663,7 @@
     .brand-iconic-card > img,
     .brand-iconic-card > .brand-car-placeholder {
         width: 100% !important;
-        height: 160px !important;
+        height: 145px !important;
         aspect-ratio: auto !important;
         object-fit: cover !important;
     }
