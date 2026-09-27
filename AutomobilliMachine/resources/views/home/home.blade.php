@@ -42,7 +42,7 @@
             </h1>
 
             <p class="hero-desc">
-                Explore the heritage, philosophy, and engineering of legendary automotive marques. Compare technical specifications and uncover your ultimate driving machine.
+                Explore the heritage, philosophy, and engineering of legendary automotive brands. Compare technical specifications and uncover your ultimate driving machine.
             </p>
 
             <div class="hero-actions">
@@ -96,9 +96,9 @@
             
             <div class="text-center mb-5">
                 <span class="badge bg-danger-subtle text-danger border border-danger-subtle px-3 py-1 text-uppercase mb-2 tracking-wide fw-bold">
-                    Marque Spotlight
+                    Brand Spotlight
                 </span>
-                <h2 class="display-5 fw-bold brand-font text-white mb-2">FEATURED MARQUES</h2>
+                <h2 class="display-5 fw-bold brand-font text-white mb-2">FEATURED BRANDS</h2>
                 <p class="text-secondary mx-auto mb-0 brand-slider-intro">
                     Use the arrow buttons or click and drag with your mouse to explore each brand.
                 </p>
@@ -450,7 +450,7 @@
                     <div class="col-lg-5 text-center mt-4 mt-lg-0">
                         <div class="p-4 bg-dark rounded border border-secondary">
                             <div class="display-6 brand-font fw-bold text-danger mb-3">VS</div>
-                            <p class="small text-secondary mb-3">Select 2 to 3 vehicles across multiple marques</p>
+                            <p class="small text-secondary mb-3">Select 2 to 3 vehicles across multiple brands</p>
                             <a href="#" class="btn btn-racing w-100">Launch Comparison Tool</a>
                         </div>
                     </div>
