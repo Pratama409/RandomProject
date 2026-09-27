@@ -1,31 +1,12 @@
+const brandPage = document.querySelector('.brand-page');
 const brandHero = document.querySelector('.brand-hero');
-const brandHeroImage = document.querySelector('.brand-hero-image');
 
-if (brandHero && brandHeroImage && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    let heroFrame = null;
+if (brandPage && brandHero) {
+    const heroImageSource = brandPage.dataset.heroImage;
 
-    const updateHeroParallax = () => {
-        heroFrame = null;
-
-        const rect = brandHero.getBoundingClientRect();
-        const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-
-        if (rect.bottom <= 0 || rect.top >= viewportHeight) return;
-
-        const progress = Math.max(-1, Math.min(1, (viewportHeight * 0.5 - (rect.top + rect.height * 0.5)) / viewportHeight));
-        const verticalShift = progress * 8;
-
-        brandHeroImage.style.objectPosition = `50% calc(45% + ${verticalShift}px)`;
-    };
-
-    const requestHeroParallax = () => {
-        if (heroFrame !== null) return;
-        heroFrame = requestAnimationFrame(updateHeroParallax);
-    };
-
-    window.addEventListener('scroll', requestHeroParallax, { passive: true });
-    window.addEventListener('resize', requestHeroParallax, { passive: true });
-    requestHeroParallax();
+    if (heroImageSource) {
+        brandHero.style.setProperty('--brand-hero-bg', `url("${heroImageSource.replaceAll('"', '\\"')}")`);
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
