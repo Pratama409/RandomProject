@@ -21,6 +21,7 @@ class Brand extends Model
         'tagline',
         'history',
         'history_timeline',
+        'history_sections',
         'philosophy',
         'known_for',
         'logo_path',
@@ -36,6 +37,7 @@ class Brand extends Model
         return [
             'founded_year' => 'integer',
             'history_timeline' => 'array',
+            'history_sections' => 'array',
             'is_active' => 'boolean',
         ];
     }
