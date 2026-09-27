@@ -15,6 +15,12 @@ class CategorySeeder extends Seeder
             ['name' => 'Grand Tourer', 'slug' => 'grand-tourer'],
             ['name' => 'SUV', 'slug' => 'suv'],
             ['name' => 'Sedan', 'slug' => 'sedan'],
+            ['name' => 'Hypercar', 'slug' => 'hypercar'],
+            ['name' => 'Track Car', 'slug' => 'track-car'],
+            ['name' => 'Race Car', 'slug' => 'race-car'],
+            ['name' => 'Coupe', 'slug' => 'coupe'],
+            ['name' => 'Convertible', 'slug' => 'convertible'],
+            ['name' => 'Concept', 'slug' => 'concept'],
         ];
 
         foreach ($categories as $category) {
