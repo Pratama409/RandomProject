@@ -148,68 +148,19 @@
    ========================================================= */
 
 .brand-history-section {
-    display: grid;
-    grid-template-columns: minmax(280px, .88fr) minmax(0, 1.42fr);
-    gap: 0;
-    min-height: 470px;
+    display: block;
+    min-height: auto;
     margin-top: 42px;
-    padding: 52px 0;
+    padding: 56px 0 42px;
     border-top: 1px solid #2a303a;
     border-bottom: 1px solid #2a303a;
     background: linear-gradient(180deg, rgba(12,14,19,.35), rgba(9,11,15,.02));
 }
 
-.brand-history-media {
-    position: relative;
-    min-height: 420px;
-    overflow: hidden;
-    border: 1px solid #2a303a;
-    border-radius: 18px 0 0 18px;
-    background: #10131a;
-}
-
-.brand-history-media img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    min-height: 420px;
-    object-fit: cover;
-}
-
-.brand-history-media-overlay {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-        linear-gradient(90deg, rgba(9,11,15,.05), rgba(9,11,15,.48)),
-        linear-gradient(180deg, rgba(9,11,15,.02), rgba(9,11,15,.52));
-}
-
-.brand-history-media-label {
-    position: absolute;
-    left: 22px;
-    bottom: 18px;
-    padding: 8px 12px;
-    border: 1px solid rgba(255,255,255,.14);
-    border-radius: 999px;
-    background: rgba(9,11,15,.72);
-    color: #fff;
-    font-size: .72rem;
-    font-weight: 800;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    backdrop-filter: blur(8px);
-}
-
 .brand-history-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 34px 48px;
-    border: 1px solid #2a303a;
-    border-left: 0;
-    border-radius: 0 18px 18px 0;
-    background: linear-gradient(145deg, rgba(20,24,32,.92), rgba(12,14,19,.96));
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 24px;
 }
 
 .brand-history-content h2 {
@@ -357,11 +308,10 @@
 }
 
 .brand-history-facts {
-    grid-column: 1 / -1;
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 14px;
-    margin-top: 28px;
+    margin-top: 34px;
     padding-top: 28px;
     border-top: 1px solid #2a303a;
 }
@@ -619,24 +569,11 @@
     }
 
     .brand-history-section {
-        grid-template-columns: 1fr;
-        gap: 16px;
-        padding: 40px 0;
-    }
-
-    .brand-history-media {
-        min-height: 300px;
-        border-radius: 18px;
-    }
-
-    .brand-history-media img {
-        min-height: 300px;
+        padding: 42px 0 32px;
     }
 
     .brand-history-content {
-        padding: 32px;
-        border-left: 1px solid #2a303a;
-        border-radius: 18px;
+        padding: 0 20px;
     }
 
     .brand-history-facts {
@@ -715,11 +652,11 @@
 
     .brand-history-section {
         margin-top: 28px;
-        padding: 32px 0;
+        padding: 34px 0 28px;
     }
 
     .brand-history-content {
-        padding: 26px 22px;
+        padding: 0 4px;
     }
 
     .brand-history-timeline {
