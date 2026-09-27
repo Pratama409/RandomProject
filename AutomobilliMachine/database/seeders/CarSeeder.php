@@ -80,21 +80,24 @@ class CarSeeder extends Seeder
                 'is_active' => true,
             ],
             [
-                'name' => 'Ferrari SF90 Spider',
-                'slug' => 'sf90-spider',
+                'name' => 'Ferrari SF90 Stradale',
+                'slug' => 'sf90-stradale',
                 'model_family' => 'SF90',
                 'production_type' => 'Production',
                 'vehicle_type' => 'Road Car',
+                'road_legal' => true,
+                'publicly_sold' => true,
                 'category_id' => $sportsCar->id,
-                'production_year_start' => 2020,
-                'short_description' => 'A hybrid Ferrari combining a conventional engine with electric motors.',
+                'production_year_start' => 2019,
+                'production_year_end' => 2024,
+                'short_description' => 'Ferrari’s first series-production plug-in hybrid sports car, combining a twin-turbo V8 with three electric motors.',
                 'detail_sections' => [
                     [
                         'label' => 'DESIGN',
                         'title' => 'Aerodynamics & Design',
                         'paragraphs' => [
-                            'The SF90 Stradale was developed around a close collaboration between Ferrari's Styling Centre and its engineering teams, with the body designed to manage airflow, cooling, and hybrid-system requirements.',
-                            'Ferrari states that the car can generate 390 kg of downforce at 250 km/h. Its rear aero system uses a movable section to balance aerodynamic load and drag.'
+                            'The SF90 Stradale was developed through close collaboration between Ferrari Styling Centre and its engineering teams, with the body shaped around airflow, cooling, and hybrid-system requirements.',
+                            'Ferrari states that the car can generate 390 kg of downforce at 250 km/h through its aerodynamic system.'
                         ],
                         'specs' => [
                             ['label' => 'Design Centre', 'value' => 'Ferrari Styling Centre'],
@@ -107,15 +110,16 @@ class CarSeeder extends Seeder
                         'label' => 'POWERTRAIN',
                         'title' => 'V8 + Three Electric Motors',
                         'paragraphs' => [
-                            'The powertrain combines a 90-degree twin-turbo V8 with three electric motors: one positioned between the engine and gearbox and two on the front axle.',
-                            'The combustion engine produces 780 CV while the electric system contributes 220 CV, giving a combined system output of 1,000 CV (986 hp).'
+                            'The powertrain combines a 3.99-litre twin-turbo V8 with three electric motors: one integrated with the rear transmission and two positioned on the front axle.',
+                            'The combustion engine produces 780 PS and the electric system contributes 220 PS, for a combined 1,000 PS (986 hp).'
                         ],
                         'specs' => [
-                            ['label' => 'Engine', 'value' => '3.99 L 90° twin-turbo V8'],
-                            ['label' => 'Engine Output', 'value' => '780 CV'],
+                            ['label' => 'Engine', 'value' => '3.99 L twin-turbo V8'],
+                            ['label' => 'Engine Output', 'value' => '780 PS / 769 hp'],
                             ['label' => 'Electric Motors', 'value' => '3'],
-                            ['label' => 'Electric Output', 'value' => '220 CV'],
-                            ['label' => 'Combined Output', 'value' => '1,000 CV / 986 hp'],
+                            ['label' => 'Electric Output', 'value' => '220 PS / 217 hp'],
+                            ['label' => 'Combined Output', 'value' => '1,000 PS / 986 hp'],
+                            ['label' => 'Max Torque', 'value' => '800 Nm'],
                             ['label' => 'Battery', 'value' => '7.9 kWh lithium-ion'],
                             ['label' => 'Electric Range', 'value' => '26 km']
                         ]
@@ -124,25 +128,61 @@ class CarSeeder extends Seeder
                         'label' => 'DRIVING',
                         'title' => 'Four Power Unit Modes',
                         'paragraphs' => [
-                            'The eManettino control provides four operating modes that change how the petrol engine, electric motors, battery, and control systems work together.'
+                            'The eManettino control provides four operating modes that change how the engine, motors, battery, and control systems work together.'
                         ],
                         'items' => [
                             'eDrive — electric-only operation.',
                             'Hybrid — automatic management of the combustion engine and electric system.',
                             'Performance — keeps the engine active while prioritising responsiveness and battery charging.',
-                            'Qualify — unlocks the maximum performance potential of the powertrain.'
+                            'Qualify — uses the powertrain at its maximum performance setting.'
                         ]
                     ],
                     [
                         'label' => 'TRANSMISSION',
                         'title' => 'Eight-Speed Dual-Clutch',
                         'paragraphs' => [
-                            'Power is delivered through an eight-speed F1 dual-clutch gearbox. The front electric motors provide the all-wheel-drive system used by the SF90 Stradale.'
+                            'The V8 is paired with an eight-speed dual-clutch transmission. The front electric motors provide the all-wheel-drive system and can provide reverse operation.'
                         ],
                         'specs' => [
-                            ['label' => 'Gearbox', 'value' => '8-speed F1 dual-clutch'],
+                            ['label' => 'Gearbox', 'value' => '8-speed dual-clutch'],
                             ['label' => 'Drivetrain', 'value' => 'All-wheel drive'],
-                            ['label' => 'Transmission', 'value' => 'Dual-clutch automatic']
+                            ['label' => 'Reverse', 'value' => 'Electric motors']
+                        ]
+                    ],
+                    [
+                        'label' => 'INTERIOR',
+                        'title' => 'Driver-Focused Cockpit',
+                        'paragraphs' => [
+                            'The cockpit uses a curved digital display behind the steering wheel, a reconfigurable head-up display, and a steering wheel with capacitive touch controls.'
+                        ],
+                        'specs' => [
+                            ['label' => 'Instrument Display', 'value' => '410 mm curved display'],
+                            ['label' => 'Head-up Display', 'value' => 'Reconfigurable by driving mode']
+                        ]
+                    ],
+                    [
+                        'label' => 'HANDLING',
+                        'title' => 'Electronic Chassis Control',
+                        'paragraphs' => [
+                            'The SF90 Stradale uses eSSC to manage torque distribution across the four wheels, together with electric traction control and brake-by-wire technology.'
+                        ],
+                        'items' => [
+                            'eSSC — electric Side Slip Control.',
+                            'eTC — electric traction control.',
+                            'Brake-by-wire braking with regenerative energy management.',
+                            'Front electric motors provide torque vectoring.'
+                        ]
+                    ],
+                    [
+                        'label' => 'CHASSIS',
+                        'title' => 'Aluminium & Carbon-Fibre Structure',
+                        'paragraphs' => [
+                            'The chassis combines aluminium and carbon fibre to improve structural rigidity while providing a suitable platform for the hybrid system.'
+                        ],
+                        'specs' => [
+                            ['label' => 'Construction', 'value' => 'Aluminium + carbon fibre'],
+                            ['label' => 'Dry Weight', 'value' => '1,600 kg base'],
+                            ['label' => 'Assetto Fiorano', 'value' => '1,570 kg dry']
                         ]
                     ],
                     [
@@ -152,16 +192,14 @@ class CarSeeder extends Seeder
                             ['label' => 'Length', 'value' => '4,710 mm'],
                             ['label' => 'Width', 'value' => '1,972 mm'],
                             ['label' => 'Height', 'value' => '1,186 mm'],
-                            ['label' => 'Wheelbase', 'value' => '2,650 mm'],
-                            ['label' => 'Dry Weight', 'value' => '1,600 kg base'],
-                            ['label' => 'Dry Weight', 'value' => '1,570 kg Assetto Fiorano']
+                            ['label' => 'Wheelbase', 'value' => '2,650 mm']
                         ]
                     ],
                     [
                         'label' => 'PERFORMANCE',
                         'title' => 'Factory Performance Figures',
                         'paragraphs' => [
-                            'The figures below are manufacturer specifications. They remain marked Not Tested in AutomobilliMachine until an independently verified test record is added to the catalog.'
+                            'These figures are manufacturer specifications. AutomobilliMachine keeps the status as Not Tested until independently verified test data is added.'
                         ],
                         'specs' => [
                             ['label' => 'Top Speed', 'value' => '340 km/h'],
@@ -177,20 +215,20 @@ class CarSeeder extends Seeder
                     [
                         'type' => 'Open-top derivative',
                         'name' => 'SF90 Spider',
-                        'years' => '2021–2024',
-                        'description' => 'A retractable-hardtop convertible derivative built around the same SF90 hybrid architecture.'
+                        'years' => '2020s',
+                        'description' => 'The open-top derivative uses a retractable hardtop while retaining the SF90 hybrid architecture and all-wheel-drive system.'
                     ],
                     [
                         'type' => 'Performance package',
                         'name' => 'Assetto Fiorano',
-                        'years' => 'SF90 Stradale option package',
-                        'description' => 'A lighter, more track-focused configuration using specialised equipment and weight-saving measures.'
+                        'years' => 'SF90 Stradale package',
+                        'description' => 'A track-focused configuration using lightweight and racing-derived components, reducing weight compared with the standard car.'
                     ],
                     [
-                        'type' => 'Track-focused derivative',
+                        'type' => 'Road-legal track derivative',
                         'name' => 'SF90 XX Stradale',
-                        'years' => '2023–2025',
-                        'description' => 'A more extreme road-legal derivative developed from Ferrari's XX programme.'
+                        'years' => '2023–2026',
+                        'description' => 'A more extreme road-legal derivative developed from Ferrari’s XX programme.'
                     ]
                 ],
                 'source_links' => [
@@ -201,8 +239,35 @@ class CarSeeder extends Seeder
                     [
                         'label' => 'Wikipedia — Ferrari SF90 Stradale',
                         'url' => 'https://en.wikipedia.org/wiki/Ferrari_SF90_Stradale'
+                    ],
+                    [
+                        'label' => 'Wikimedia Commons image',
+                        'url' => 'https://commons.wikimedia.org/wiki/File:2021_Ferrari_SF90_Stradale.jpg'
                     ]
                 ],
+                'image_path' => 'https://commons.wikimedia.org/wiki/Special:FilePath/2021_Ferrari_SF90_Stradale.jpg',
+                'engine' => '3.99L Twin-Turbo V8',
+                'horsepower' => 986,
+                'torque_nm' => 800,
+                'acceleration_0_100' => 2.50,
+                'top_speed_kmh' => 340,
+                'drivetrain' => 'AWD',
+                'transmission' => '8-speed Dual-Clutch',
+                'fuel_type' => 'Hybrid',
+                'body_type' => 'Berlinetta',
+                'stats_tested' => false,
+                'is_iconic' => false,
+                'is_active' => true,
+            ],
+            [
+                'name' => 'Ferrari SF90 Spider',
+                'slug' => 'sf90-spider',
+                'model_family' => 'SF90',
+                'production_type' => 'Production',
+                'vehicle_type' => 'Road Car',
+                'category_id' => $sportsCar->id,
+                'production_year_start' => 2020,
+                'short_description' => 'A hybrid Ferrari combining a conventional engine with electric motors.',
                 'image_path' => 'image/Ferrari SF90 Spider.jpg',
                 'engine' => 'V8 Hybrid',
                 'horsepower' => 986,
