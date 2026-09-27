@@ -11,7 +11,7 @@
     class="brand-page"
     data-brand-slug="{{ $brand->slug }}"
     data-cars-endpoint="{{ route('brands.cars', $brand) }}"
-    data-hero-image="{{ $brand->hero_image_path }}"
+    data-hero-image="{{ $brand->hero_image_path ? (str_starts_with($brand->hero_image_path, 'http') ? $brand->hero_image_path : asset($brand->hero_image_path)) : '' }}"
 >
     <section class="brand-hero">
         <div class="brand-hero-overlay"></div>
@@ -304,5 +304,5 @@
 @endsection
 
 @push('scripts')
-<script src="{{ asset('js/brand.js') }}?v=20260927-15"></script>
+<script src="{{ asset('js/brand.js') }}?v=20260927-16"></script>
 @endpush
