@@ -3,7 +3,7 @@
 @section('title', $brand->name . ' - AutomobilliMachine')
 
 @push('styles')
-<link rel="stylesheet" href="{{ asset('css/brand.css') }}?v=20260927-6">
+<link rel="stylesheet" href="{{ asset('css/brand.css') }}?v=20260927-7">
 @endpush
 
 @section('content')
@@ -173,7 +173,20 @@
                 </div>
             </div>
 
-            <div class="brand-model-filters" role="search" aria-label="Filter {{ $brand->name }} models">
+            <div class="brand-model-filter-trigger-row">
+                <button
+                    id="toggleAdvancedFilters"
+                    class="brand-more-filters"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="advancedCarFilters"
+                >
+                    <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+                    <span>Fiters</span>
+                </button>
+            </div>
+
+            <div id="advancedCarFilters" class="brand-advanced-filters" hidden>
                 <div class="brand-model-search">
                     <label for="carSearch" class="visually-hidden">Search models</label>
                     <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
@@ -201,33 +214,6 @@
                 </label>
 
                 <label class="brand-model-select">
-                    <span class="visually-hidden">Production Type</span>
-                    <select id="carProductionType">
-                        <option value="">All Types</option>
-                        @foreach ($productionTypes as $productionType)
-                            <option value="{{ $productionType }}">{{ $productionType }}</option>
-                        @endforeach
-                    </select>
-                </label>
-
-                <button
-                    id="toggleAdvancedFilters"
-                    class="brand-more-filters"
-                    type="button"
-                    aria-expanded="false"
-                    aria-controls="advancedCarFilters"
-                >
-                    <i class="fa-solid fa-sliders" aria-hidden="true"></i>
-                    <span>More filters</span>
-                </button>
-
-                <button id="clearCarFilters" class="brand-clear-filters" type="button">
-                    Clear
-                </button>
-            </div>
-
-            <div id="advancedCarFilters" class="brand-advanced-filters" hidden>
-                <label class="brand-model-select">
                     <span class="visually-hidden">Drivetrain</span>
                     <select id="carDrivetrain">
                         <option value="">Drivetrain</option>
@@ -248,6 +234,16 @@
                 </label>
 
                 <label class="brand-model-select">
+                    <span class="visually-hidden">Production Type</span>
+                    <select id="carProductionType">
+                        <option value="">All Types</option>
+                        @foreach ($productionTypes as $productionType)
+                            <option value="{{ $productionType }}">{{ $productionType }}</option>
+                        @endforeach
+                    </select>
+                </label>
+
+                <label class="brand-model-select">
                     <span class="visually-hidden">Vehicle Type</span>
                     <select id="carVehicleType">
                         <option value="">Vehicle Type</option>
@@ -256,6 +252,12 @@
                         @endforeach
                     </select>
                 </label>
+
+                <div class="brand-filter-actions">
+                    <button id="clearCarFilters" class="brand-clear-filters" type="button">
+                        Clear
+                    </button>
+                </div>
             </div>
 
             <div class="brand-model-results">
