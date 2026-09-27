@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const fuelTypeSelect = document.querySelector('#carFuelType');
     const productionTypeSelect = document.querySelector('#carProductionType');
     const vehicleTypeSelect = document.querySelector('#carVehicleType');
+    const toggleAdvancedFilters = document.querySelector('#toggleAdvancedFilters');
+    const advancedFilters = document.querySelector('#advancedCarFilters');
     const clearFiltersButton = document.querySelector('#clearCarFilters');
     const resultCount = document.querySelector('#carResultCount');
     const loadMoreButton = document.querySelector('#loadMoreCars');
@@ -59,18 +61,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 ? '<img src="' + escapeHtml(getImageUrl(car.image_path)) + '" alt="' + escapeHtml(car.name) + '" loading="lazy">'
                 : '<div class="brand-car-placeholder"><i class="fa-solid fa-car-side"></i></div>';
 
-            const badges = [
-                car.production_type,
-                car.vehicle_type,
+            const specialBadges = [
+                car.production_type && car.production_type !== 'Production' ? car.production_type : '',
                 car.is_one_off ? 'One-Off' : '',
-                car.is_limited ? 'Limited' : '',
+                car.is_concept ? 'Concept' : '',
                 car.is_track_only ? 'Track Only' : '',
-                car.is_racing ? 'Racing' : '',
-                car.is_concept ? 'Concept' : ''
+                car.is_racing ? 'Racing' : ''
             ].filter(Boolean);
 
-            const badgeHtml = badges
-                .slice(0, 3)
+            const badgeHtml = specialBadges
+                .slice(0, 2)
                 .map((badge) => '<span class="brand-catalog-badge">' + escapeHtml(badge) + '</span>')
                 .join('');
 
@@ -88,10 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         : ' – Present')
                 : 'Year not specified';
 
-            const family = car.model_family
-                ? '<span class="brand-catalog-family">' + escapeHtml(car.model_family) + '</span>'
-                : '';
-
             return '<article class="brand-car-card">'
                 + image
                 + '<div class="brand-car-body">'
@@ -99,9 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 + '<span>' + escapeHtml(car.category?.name || 'Model') + '</span>'
                 + (car.is_iconic ? '<span class="brand-icon-badge">Iconic</span>' : '')
                 + '</div>'
-                + '<div class="brand-catalog-badges">' + badgeHtml + '</div>'
+                + (badgeHtml ? '<div class="brand-catalog-badges">' + badgeHtml + '</div>' : '')
                 + '<h3>' + escapeHtml(car.name) + '</h3>'
-                + family
                 + '<span class="brand-catalog-years">' + yearRange + '</span>'
                 + (car.short_description ? '<p>' + escapeHtml(car.short_description) + '</p>' : '')
                 + '<div class="brand-spec-row">' + specs + '</div>'
@@ -171,6 +166,17 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const resetAndLoad = () => loadCars({ reset: true });
+
+    toggleAdvancedFilters?.addEventListener('click', () => {
+        if (!advancedFilters) return;
+
+        const isOpen = toggleAdvancedFilters.getAttribute('aria-expanded') === 'true';
+        toggleAdvancedFilters.setAttribute('aria-expanded', String(!isOpen));
+        advancedFilters.hidden = isOpen;
+        toggleAdvancedFilters.querySelector('span').textContent = isOpen
+            ? 'More filters'
+            : 'Less filters';
+    });
 
     searchInput?.addEventListener('input', () => {
         window.clearTimeout(searchTimer);
