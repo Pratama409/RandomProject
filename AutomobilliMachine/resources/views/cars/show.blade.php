@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 @section('title', $vehicle->name . ' - AutomobilliMachine')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/car.css') }}?v=20260928-13">
+    <link rel="stylesheet" href="{{ asset('css/car.css') }}?v=20260928-14">
 @endpush
 
 @section('content')
@@ -21,6 +21,7 @@ use Illuminate\Support\Str;
                     ->values();
 
                 $detailSections = collect($vehicle->detail_sections ?? []);
+                $overviewSection = $detailSections->firstWhere('label', 'OVERVIEW');
                 $performanceSection = $detailSections->firstWhere('label', 'PERFORMANCE');
                 $designSection = $detailSections->firstWhere('label', 'DESIGN');
                 $powertrainSection = $detailSections->firstWhere('label', 'POWERTRAIN');
@@ -187,9 +188,34 @@ use Illuminate\Support\Str;
                 <div class="container car-showcase-split">
                     <div class="car-showcase-text">
                         <span class="car-detail-section-label">OVERVIEW</span>
-                        <h2>A new era for {{ $brand->name }}</h2>
-                        <p>{{ $vehicle->description ?: ($vehicle->short_description ?: 'No extended description has been added yet.') }}</p>
+                        <h2>{{ $overviewSection['title'] ?? ('The story of the ' . $vehicle->name) }}</h2>
 
+                        @if (!empty($overviewSection['paragraphs']))
+                            @foreach ($overviewSection['paragraphs'] as $paragraph)
+                                <p>{{ $paragraph }}</p>
+                            @endforeach
+                        @else
+                            <p>{{ $vehicle->description ?: ($vehicle->short_description ?: 'No extended description has been added yet.') }}</p>
+                        @endif
+
+                        <div class="car-showcase-overview-facts">
+                            <div>
+                                <span>Model Type</span>
+                                <strong>{{ $vehicle->vehicle_type ?: '—' }}</strong>
+                            </div>
+                            <div>
+                                <span>Production</span>
+                                <strong>{{ $vehicle->production_year_start ?: '—' }}{{ $vehicle->production_year_end ? ' – ' . $vehicle->production_year_end : ($vehicle->production_year_start ? ' – Present' : '') }}</strong>
+                            </div>
+                            <div>
+                                <span>Powertrain</span>
+                                <strong>{{ $vehicle->engine ?: '—' }}</strong>
+                            </div>
+                            <div>
+                                <span>Drive</span>
+                                <strong>{{ $vehicle->drivetrain ?: '—' }}</strong>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="car-showcase-visual">
@@ -201,7 +227,7 @@ use Illuminate\Support\Str;
                                 alt="{{ $vehicle->name }}">
                         @endif
                         <div class="car-showcase-visual-overlay">
-                            <span>OFFICIAL VIEW</span>
+                            <span>OVERVIEW</span>
                             <i class="fa-solid fa-arrow-right"></i>
                         </div>
                     </div>
