@@ -245,7 +245,14 @@ class CarSeeder extends Seeder
                         'url' => 'https://commons.wikimedia.org/wiki/File:2021_Ferrari_SF90_Stradale.jpg'
                     ]
                 ],
-                'image_path' => 'https://commons.wikimedia.org/wiki/Special:FilePath/2021_Ferrari_SF90_Stradale.jpg',
+                'image_path' => 'https://commons.wikimedia.org/wiki/Special:FilePath/2022_Ferrari_SF90_Stradale,_red_-_front_left.jpg',
+                'gallery_images' => [
+                    'https://commons.wikimedia.org/wiki/Special:FilePath/Ferrari_SF90_Stradale_(front).jpg',
+                    'https://commons.wikimedia.org/wiki/Special:FilePath/2021_Ferrari_SF90_Stradale_1.jpg',
+                    'https://commons.wikimedia.org/wiki/Special:FilePath/2021_Ferrari_SF90_Stradale_2.jpg',
+                    'https://commons.wikimedia.org/wiki/Special:FilePath/2021_Ferrari_SF90_Stradale_3.jpg',
+                    'https://commons.wikimedia.org/wiki/Special:FilePath/Ferrari_SF90_Stradale_3.jpg',
+                ],
                 'engine' => '3.99L Twin-Turbo V8',
                 'horsepower' => 986,
                 'torque_nm' => 800,
