@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 @section('title', $vehicle->name . ' - AutomobilliMachine')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/car.css') }}?v=20260928-9">
+    <link rel="stylesheet" href="{{ asset('css/car.css') }}?v=20260928-10">
 @endpush
 
 @section('content')
@@ -95,15 +95,31 @@ use Illuminate\Support\Str;
                             Back to {{ $brand->name }}
                         </a>
 
+                        @if ($brand->logo_path)
+                            <div class="car-showcase-brand-logo">
+                                <img
+                                    src="{{ str_starts_with($brand->logo_path, 'http') ? $brand->logo_path : asset($brand->logo_path) }}"
+                                    alt="{{ $brand->name }} logo"
+                                >
+                            </div>
+                        @endif
+
                         <span class="car-showcase-brandline">
                             {{ $brand->name }}
                             <b>·</b>
                             {{ $vehicle->category?->name ?: 'Model' }}
                         </span>
 
+                        @php
+                            $familyLabel = $vehicle->model_family ?: $vehicle->name;
+                            $variantLabel = trim(Str::after($vehicle->name, $familyLabel));
+                        @endphp
+
                         <h1>
-                            <span>{{ $brand->name }}</span>
-                            <strong>{{ $vehicle->name }}</strong>
+                            <span>{{ $familyLabel }}</span>
+                            @if ($variantLabel !== '')
+                                <strong>{{ $variantLabel }}</strong>
+                            @endif
                         </h1>
 
                         <p class="car-showcase-subtitle">
