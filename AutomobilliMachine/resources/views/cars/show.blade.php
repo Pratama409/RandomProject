@@ -123,7 +123,7 @@
                 <div class="car-editorial-nav-scroll">
                     <a href="#overview">Overview</a>
                     @foreach ($detailLabels as $label)
-                        <a href="#section-{{ \\Illuminate\\Support\\Str::slug($label) }}">{{ \\Illuminate\\Support\\Str::title(strtolower($label)) }}</a>
+                        <a href="#section-{{ IlluminateSupportStr::slug($label) }}">{{ IlluminateSupportStr::title(strtolower($label)) }}</a>
                     @endforeach
                     <a href="#technical">Specifications</a>
                     @if (!empty($vehicle->variants))
@@ -170,7 +170,7 @@
         @if (!empty($vehicle->detail_sections))
             @foreach ($vehicle->detail_sections as $index => $section)
                 @php
-                    $sectionId = \\Illuminate\\Support\\Str::slug($section['label'] ?? $section['title'] ?? ('section-' . $index));
+                    $sectionId = IlluminateSupportStr::slug($section['label'] ?? $section['title'] ?? ('section-' . $index));
                     $isFeature = in_array(($section['label'] ?? ''), ['DESIGN', 'POWERTRAIN', 'PERFORMANCE']);
                 @endphp
 
