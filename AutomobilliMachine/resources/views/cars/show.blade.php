@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 @section('title', $vehicle->name . ' - AutomobilliMachine')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/car.css') }}?v=20260928-5">
+    <link rel="stylesheet" href="{{ asset('css/car.css') }}?v=20260928-6">
 @endpush
 
 @section('content')
@@ -32,6 +32,31 @@ use Illuminate\Support\Str;
                 $zeroTo200 = $performanceSpecs->firstWhere('label', '0–200 km/h');
                 $fioranoLap = $performanceSpecs->firstWhere('label', 'Fiorano Lap');
             @endphp
+
+            <header class="car-detail-header">
+                <div class="container car-detail-header-inner">
+                    <a class="car-detail-header-brand" href="{{ route('home') }}">
+                        <span class="car-detail-header-mark">
+                            <i class="fa-solid fa-gauge-high"></i>
+                        </span>
+                        <span>AUTOMOBILLI</span>
+                    </a>
+
+                    <div class="car-detail-header-context">
+                        <a href="{{ route('brands.show', $brand) }}">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            {{ $brand->name }}
+                        </a>
+                        <span>{{ $vehicle->name }}</span>
+                    </div>
+
+                    <div class="car-detail-header-actions">
+                        <a href="{{ route('brands.show', $brand) }}" aria-label="Back to brand">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
 
             <section class="car-showcase-hero">
                 <div class="car-showcase-hero-media">
