@@ -60,3 +60,39 @@ document.addEventListener('DOMContentLoaded', () => {
     favoriteButton?.addEventListener('click', () => toggle(favoriteButton, 'favorite'));
     wishlistButton?.addEventListener('click', () => toggle(wishlistButton, 'wishlist'));
 });
+
+
+/* Vehicle detail gallery */
+document.addEventListener('DOMContentLoaded', () => {
+    const heroImage = document.querySelector('#heroCarImage');
+    const gallery = document.querySelector('[data-gallery]');
+
+    if (!heroImage || !gallery) return;
+
+    gallery.addEventListener('click', (event) => {
+        const thumb = event.target.closest('.car-gallery-thumb');
+        if (!thumb) return;
+
+        const imageUrl = thumb.dataset.imageUrl;
+        if (!imageUrl) return;
+
+        heroImage.src = imageUrl;
+
+        gallery.querySelectorAll('.car-gallery-thumb').forEach((item) => {
+            item.classList.toggle('is-active', item === thumb);
+        });
+    });
+
+    document.querySelectorAll('.car-gallery-card').forEach((card) => {
+        card.addEventListener('click', () => {
+            const imageUrl = card.dataset.galleryJump;
+            if (!imageUrl || !heroImage) return;
+
+            heroImage.src = imageUrl;
+            document.querySelector('.car-showcase-hero')?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+            });
+        });
+    });
+});
