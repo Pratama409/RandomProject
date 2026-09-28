@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 @section('title', $vehicle->name . ' - AutomobilliMachine')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/car.css') }}?v=20260928-11">
+    <link rel="stylesheet" href="{{ asset('css/car.css') }}?v=20260928-12">
 @endpush
 
 @section('content')
@@ -227,10 +227,6 @@ use Illuminate\Support\Str;
                             @foreach ($designSection['paragraphs'] ?? [] as $paragraph)
                                 <p>{{ $paragraph }}</p>
                             @endforeach
-                            <a class="car-showcase-secondary-button" href="#technical">
-                                View design details
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </a>
                         </div>
 
                         <div class="car-showcase-design-collage">
