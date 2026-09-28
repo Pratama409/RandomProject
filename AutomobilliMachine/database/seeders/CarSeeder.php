@@ -93,6 +93,15 @@ class CarSeeder extends Seeder
                 'short_description' => 'Ferrari’s first series-production plug-in hybrid sports car, combining a twin-turbo V8 with three electric motors.',
                 'detail_sections' => [
                     [
+                        'label' => 'OVERVIEW',
+                        'title' => 'A new era for Ferrari',
+                        'paragraphs' => [
+                            'The SF90 Stradale is a mid-engine plug-in hybrid sports car that combines a twin-turbocharged V8 with three electric motors. It was introduced as a series-production Ferrari built around a hybrid powertrain and all-wheel drive.',
+                            'Its powertrain brings together a 3.99-litre V8 and an electric system with three motors, allowing the car to combine combustion-engine performance with electric drive and energy recovery. The architecture also supports four selectable power-unit modes for different driving priorities.',
+                            'The SF90 Stradale was produced from 2019 to 2024 and established a production-car format that Ferrari later extended through related versions such as the SF90 Spider and Assetto Fiorano configuration.'
+                        ]
+                    ],
+                    [
                         'label' => 'DESIGN',
                         'title' => 'Aerodynamics & Design',
                         'paragraphs' => [
