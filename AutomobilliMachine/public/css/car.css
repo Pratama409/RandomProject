@@ -3153,3 +3153,29 @@
         max-width: 310px;
     }
 }
+
+
+/* =========================================================
+   HERO CLEANUP — REMOVE DUPLICATE PERFORMANCE / SAVE BLOCK
+   ========================================================= */
+
+.car-showcase-hero-content {
+    grid-template-areas:
+        "copy gallery";
+}
+
+.car-showcase-copy {
+    grid-area: copy;
+}
+
+.car-showcase-gallery {
+    grid-area: gallery;
+}
+
+@media (max-width: 991px) {
+    .car-showcase-hero-content {
+        grid-template-areas:
+            "copy"
+            "gallery";
+    }
+}
