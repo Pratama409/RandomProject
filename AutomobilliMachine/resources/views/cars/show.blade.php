@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 @section('title', $vehicle->name . ' - AutomobilliMachine')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/car.css') }}?v=20260928-12">
+    <link rel="stylesheet" href="{{ asset('css/car.css') }}?v=20260928-13">
 @endpush
 
 @section('content')
@@ -190,16 +190,6 @@ use Illuminate\Support\Str;
                         <h2>A new era for {{ $brand->name }}</h2>
                         <p>{{ $vehicle->description ?: ($vehicle->short_description ?: 'No extended description has been added yet.') }}</p>
 
-                        <div class="car-showcase-overview-actions">
-                            <a class="car-showcase-primary-button" href="#gallery">
-                                <i class="fa-regular fa-images"></i>
-                                Explore Gallery
-                            </a>
-                            <a class="car-showcase-secondary-button" href="#technical">
-                                <i class="fa-solid fa-cube"></i>
-                                Explore Specs
-                            </a>
-                        </div>
                     </div>
 
                     <div class="car-showcase-visual">
@@ -255,10 +245,6 @@ use Illuminate\Support\Str;
                             @foreach ($powertrainSection['paragraphs'] ?? [] as $paragraph)
                                 <p>{{ $paragraph }}</p>
                             @endforeach
-                            <a class="car-showcase-secondary-button" href="#technical">
-                                View powertrain details
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </a>
                         </div>
 
                         <div class="car-showcase-powertrain-visual">
@@ -321,7 +307,6 @@ use Illuminate\Support\Str;
                             <span class="car-detail-section-label">INTERIOR</span>
                             <h3>{{ $interiorSection['title'] }}</h3>
                             <p>{{ $interiorSection['paragraphs'][0] ?? 'Driver-focused interior and technology.' }}</p>
-                            <a href="#interior">View Interior <i class="fa-solid fa-arrow-right"></i></a>
                         </article>
                     @endif
 
@@ -331,7 +316,6 @@ use Illuminate\Support\Str;
                             <span class="car-detail-section-label">CHASSIS & HANDLING</span>
                             <h3>{{ ($chassisSection['title'] ?? 'Chassis') }}</h3>
                             <p>{{ ($handlingSection['paragraphs'][0] ?? $chassisSection['paragraphs'][0] ?? 'Advanced chassis technology for performance and stability.') }}</p>
-                            <a href="#chassis">View Chassis <i class="fa-solid fa-arrow-right"></i></a>
                         </article>
                     @endif
 
@@ -340,7 +324,6 @@ use Illuminate\Support\Str;
                         <span class="car-detail-section-label">PRODUCTION</span>
                         <h3>{{ $vehicle->production_year_start ?: '—' }}–{{ $vehicle->production_year_end ?: 'Present' }}</h3>
                         <p>{{ $brand->name }} production and model identity information.</p>
-                        <a href="#production">View Production <i class="fa-solid fa-arrow-right"></i></a>
                     </article>
 
                     <article class="car-showcase-quick-card">
@@ -348,9 +331,6 @@ use Illuminate\Support\Str;
                         <span class="car-detail-section-label">VARIANTS</span>
                         <h3>{{ collect($vehicle->variants ?? [])->count() }} related variants</h3>
                         <p>Explore related versions, packages, and derivatives.</p>
-                        @if (!empty($vehicle->variants))
-                            <a href="#variants">View Variants <i class="fa-solid fa-arrow-right"></i></a>
-                        @endif
                     </article>
                 </div>
             </section>
