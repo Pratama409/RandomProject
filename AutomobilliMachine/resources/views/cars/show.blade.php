@@ -164,7 +164,9 @@
             @if (!empty($vehicle->detail_sections))
                 @foreach ($vehicle->detail_sections as $index => $section)
                     @php
-                        $sectionId = IlluminateSupportStr::slug($section['label'] ?? $section['title'] ?? ('section-' . $index));
+                        $sectionText = $section['label'] ?? $section['title'] ?? ('section-' . $index);
+                        $sectionId = preg_replace('/[^a-z0-9]+/i', '-', strtolower($sectionText));
+                        $sectionId = trim($sectionId, '-');
                         $isFeature = in_array(($section['label'] ?? ''), ['DESIGN', 'POWERTRAIN', 'PERFORMANCE']);
                     @endphp
 
