@@ -3534,3 +3534,9 @@
         line-height: 1.65;
     }
 }
+
+
+/* DESIGN SECTION — no secondary CTA */
+.car-showcase-feature-copy {
+    padding-bottom: 0;
+}
