@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 @section('title', $vehicle->name . ' - AutomobilliMachine')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/car.css') }}?v=20260928-10">
+    <link rel="stylesheet" href="{{ asset('css/car.css') }}?v=20260928-11">
 @endpush
 
 @section('content')
