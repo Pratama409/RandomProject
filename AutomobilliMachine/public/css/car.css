@@ -3411,3 +3411,126 @@
         font-size: .79rem;
     }
 }
+
+
+/* =========================================================
+   DESIGN SECTION — REFERENCE-STYLE EDITORIAL COLLAGE
+   ========================================================= */
+
+.car-showcase-feature {
+    padding-top: 54px;
+    padding-bottom: 54px;
+}
+
+.car-showcase-feature-grid {
+    grid-template-columns: minmax(260px,.62fr) minmax(0,1.38fr);
+    gap: 26px;
+    align-items: stretch;
+}
+
+.car-showcase-feature-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 430px;
+    padding-right: 6px;
+}
+
+.car-showcase-feature-copy h2 {
+    max-width: 390px;
+    margin: 8px 0 20px;
+    font-size: clamp(2.35rem,3.8vw,4.25rem);
+    line-height: .98;
+    letter-spacing: -.045em;
+}
+
+.car-showcase-feature-copy p {
+    max-width: 420px;
+    margin-bottom: 12px;
+    font-size: .9rem;
+    line-height: 1.75;
+}
+
+.car-showcase-feature-copy .car-showcase-secondary-button {
+    align-self: flex-start;
+    margin-top: 8px;
+}
+
+.car-showcase-design-collage {
+    display: grid;
+    grid-template-columns: minmax(0,2.55fr) minmax(140px,.82fr);
+    grid-template-rows: minmax(0,1fr) minmax(0,1fr);
+    gap: 10px;
+    min-height: 420px;
+}
+
+.car-showcase-design-collage .car-showcase-feature-media {
+    min-height: 0;
+    border-radius: 16px;
+}
+
+.car-showcase-design-collage .car-showcase-feature-media.main {
+    grid-column: 1;
+    grid-row: 1 / 3;
+}
+
+.car-showcase-design-collage .car-showcase-feature-media.mini {
+    grid-column: 2;
+}
+
+.car-showcase-design-collage .car-showcase-feature-media img {
+    min-height: 0;
+    object-fit: cover;
+}
+
+@media (max-width: 991px) {
+    .car-showcase-feature {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    .car-showcase-feature-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .car-showcase-feature-copy {
+        max-width: 720px;
+        padding-right: 0;
+    }
+
+    .car-showcase-feature-copy h2 {
+        max-width: 650px;
+    }
+
+    .car-showcase-design-collage {
+        min-height: 430px;
+    }
+}
+
+@media (max-width: 575px) {
+    .car-showcase-feature {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    .car-showcase-design-collage {
+        grid-template-columns: 1fr .68fr;
+        grid-template-rows: 150px 150px;
+        min-height: 310px;
+        gap: 7px;
+    }
+
+    .car-showcase-design-collage .car-showcase-feature-media {
+        border-radius: 12px;
+    }
+
+    .car-showcase-feature-copy h2 {
+        font-size: 2.35rem;
+    }
+
+    .car-showcase-feature-copy p {
+        font-size: .78rem;
+        line-height: 1.65;
+    }
+}
