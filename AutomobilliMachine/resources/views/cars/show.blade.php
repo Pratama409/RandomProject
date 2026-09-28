@@ -7,13 +7,11 @@ use Illuminate\Support\Str;
 @section('title', $vehicle->name . ' - AutomobilliMachine')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/car.css') }}?v=20260928-6">
+    <link rel="stylesheet" href="{{ asset('css/car.css') }}?v=20260928-7">
 @endpush
 
 @section('content')
     <div class="car-detail-page">
-        @include('partials.navbar')
-
         <main>
             @php
                 $galleryImages = collect($vehicle->gallery_images ?? [])
