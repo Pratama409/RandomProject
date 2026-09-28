@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 @section('title', $vehicle->name . ' - AutomobilliMachine')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/car.css') }}?v=20260928-8">
+    <link rel="stylesheet" href="{{ asset('css/car.css') }}?v=20260928-9">
 @endpush
 
 @section('content')
@@ -130,46 +130,6 @@ use Illuminate\Support\Str;
                         <p class="car-showcase-lead">
                             {{ $vehicle->description ?: ($vehicle->short_description ?: 'Detailed information for this model is being added to the catalog.') }}
                         </p>
-                    </div>
-
-                    <div class="car-showcase-performance">
-                        <article>
-                            <strong>{{ $vehicle->horsepower !== null ? number_format($vehicle->horsepower) : '—' }}</strong>
-                            <span>HP</span>
-                            <small>Max power</small>
-                        </article>
-                        <article>
-                            <strong>{{ $vehicle->top_speed_kmh !== null ? number_format($vehicle->top_speed_kmh) : '—' }}</strong>
-                            <span>km/h</span>
-                            <small>Top speed</small>
-                        </article>
-                        <article>
-                            <strong>{{ $vehicle->acceleration_0_100 !== null ? number_format((float) $vehicle->acceleration_0_100, 2) : '—' }}</strong>
-                            <span>s</span>
-                            <small>0–100 km/h</small>
-                        </article>
-                    </div>
-
-                    <div class="car-showcase-test-status {{ $vehicle->stats_tested ? 'is-tested' : '' }}">
-                        <span class="car-status-dot"></span>
-                        <strong>{{ $vehicle->stats_tested ? 'Tested' : 'Not Tested' }}</strong>
-                        <small>{{ $vehicle->stats_tested ? 'Verified performance data' : 'Manufacturer specification / calculation data' }}</small>
-                    </div>
-
-                    <div class="car-showcase-hero-actions">
-                        <button type="button" class="car-detail-save js-car-favorite {{ $isFavorited ? 'is-active' : '' }}"
-                            data-car-id="{{ $vehicle->id }}" data-car-name="{{ $vehicle->name }}"
-                            aria-pressed="{{ $isFavorited ? 'true' : 'false' }}">
-                            <i class="{{ $isFavorited ? 'fa-solid' : 'fa-regular' }} fa-heart"></i>
-                            <span>Favorite</span>
-                        </button>
-
-                        <button type="button" class="car-detail-save js-car-wishlist {{ $isWishlisted ? 'is-active' : '' }}"
-                            data-car-id="{{ $vehicle->id }}" data-car-name="{{ $vehicle->name }}"
-                            aria-pressed="{{ $isWishlisted ? 'true' : 'false' }}">
-                            <i class="{{ $isWishlisted ? 'fa-solid' : 'fa-regular' }} fa-bookmark"></i>
-                            <span>Wishlist</span>
-                        </button>
                     </div>
 
                     @if ($gallery->isNotEmpty())
