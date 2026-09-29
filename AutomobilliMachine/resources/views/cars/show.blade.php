@@ -7,7 +7,251 @@ use Illuminate\Support\Str;
 @section('title', $vehicle->name . ' - AutomobilliMachine')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/car.css') }}?v=20260929-3">
+    <link rel="stylesheet" href="{{ asset('css/car.css') }}?v=20260929-4">
+@endpush
+
+@section('content')
+    <div class="car-detail-page">
+        <main>
+            @php
+                $gallery = collect([$vehicle->image_path])
+                    ->merge($vehicle->gallery_images ?? [])
+                    ->filter()
+                    ->unique()
+                    ->values();
+
+                $detailSections = collect($vehicle->detail_sections ?? []);
+                $overviewSection = $detailSections->firstWhere('label', 'OVERVIEW');
+                $performanceSection = $detailSections->firstWhere('label', 'PERFORMANCE');
+                $designSection = $detailSections->firstWhere('label', 'DESIGN');
+                $powertrainSection = $detailSections->firstWhere('label', 'POWERTRAIN');
+
+                $interiorSection = $detailSections->firstWhere('label', 'INTERIOR');
+                $chassisSection = $detailSections->firstWhere('label', 'CHASSIS');
+                $handlingSection = $detailSections->firstWhere('label', 'HANDLING');
+
+                $performanceSpecs = collect($performanceSection['specs'] ?? []);
+                $zeroTo200 = $performanceSpecs->firstWhere('label', '0–200 km/h');
+                $fioranoLap = $performanceSpecs->firstWhere('label', 'Fiorano Lap');
+
+                $comparisonCars = collect([$vehicle])
+                    ->merge($relatedCars)
+                    ->unique('id')
+                    ->take(4)
+                    ->values();
+
+                $productionImage = $gallery->get(5) ?? $gallery->first();
+                $variantImage = asset('image/Ferrari SF90 Spider.jpg');
+
+                $quickInsights = collect([
+                    $interiorSection ? [
+                        'id' => 'interior',
+                        'label' => 'INTERIOR',
+                        'title' => $interiorSection['title'] ?? 'Driver-Focused Cockpit',
+                        'description' => collect($interiorSection['paragraphs'] ?? [])->implode("
+
+"),
+                        'image' => $interiorSection['detail_image'] ?? $gallery->get(2) ?? $gallery->first(),
+                        'items' => $interiorSection['specs'] ?? [],
+                        'icon' => 'fa-chair',
+                    ] : null,
+                    ($chassisSection || $handlingSection) ? [
+                        'id' => 'chassis',
+                        'label' => 'CHASSIS & HANDLING',
+                        'title' => $chassisSection['title'] ?? $handlingSection['title'] ?? 'Chassis & Handling',
+                        'description' => collect(array_merge($handlingSection['paragraphs'] ?? [], $chassisSection['paragraphs'] ?? []))->implode("
+
+"),
+                        'image' => $chassisSection['detail_image'] ?? $gallery->get(3) ?? $gallery->first(),
+                        'items' => collect($chassisSection['specs'] ?? [])->merge($handlingSection['specs'] ?? [])->values()->all(),
+                        'icon' => 'fa-road',
+                    ] : null,
+                    [
+                        'id' => 'production',
+                        'label' => 'PRODUCTION',
+                        'title' => ($vehicle->production_year_start ?: '—') . '–' . ($vehicle->production_year_end ?: 'Present'),
+                        'description' => $brand->name . ' production and model identity information.',
+                        'image' => $productionImage,
+                        'items' => [
+                            ['label' => 'Production Type', 'value' => $vehicle->production_type ?: '—'],
+                            ['label' => 'Publicly Sold', 'value' => $vehicle->publicly_sold ? 'Yes' : 'No'],
+                            ['label' => 'Road Legal', 'value' => $vehicle->road_legal ? 'Yes' : 'No'],
+                        ],
+                        'icon' => 'fa-industry',
+                    ],
+                    [
+                        'id' => 'variants',
+                        'label' => 'VARIANTS',
+                        'title' => collect($vehicle->variants ?? [])->count() . ' related variants',
+                        'description' => 'Explore related versions, packages, and derivatives associated with this model.',
+                        'image' => $variantImage,
+                        'items' => collect($vehicle->variants ?? [])->map(function ($variant) {
+                            return [
+                                'label' => $variant['type'] ?? 'Variant',
+                                'value' => $variant['name'] ?? 'Unnamed variant',
+                            ];
+                        })->values()->all(),
+                        'icon' => 'fa-layer-group',
+                    ],
+                ])->filter()->values();
+            @endphp
+
+            <script>window.AUTOMOBILLI_INSIGHTS = @json($quickInsights);</script>
+
+            <header class="car-detail-header">
+                <div class="container car-detail-header-inner">
+                    <a class="car-detail-header-brand" href="{{ route('home') }}">
+                        <span class="car-detail-header-mark">
+                            <i class="fa-solid fa-gauge-high"></i>
+                        </span>
+                        <span>AUTOMOBILLI</span>
+                    </a>
+
+                    <div class="car-detail-header-context">
+                        <a href="{{ route('brands.show', $brand) }}">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            {{ $brand->name }}
+                        </a>
+                        <span>{{ $vehicle->name }}</span>
+                    </div>
+
+                    <div class="car-detail-header-actions">
+                        <button class="car-header-action js-car-favorite {{ $isFavorited ? 'is-active' : '' }}"
+                            type="button"
+                            data-car-id="{{ $vehicle->id }}"
+                            data-car-name="{{ $vehicle->name }}"
+                            aria-label="Favorite {{ $vehicle->name }}"
+                            aria-pressed="{{ $isFavorited ? 'true' : 'false' }}">
+                            <i class="{{ $isFavorited ? 'fa-solid' : 'fa-regular' }} fa-heart"></i>
+                        </button>
+                        <button class="car-header-action js-car-wishlist {{ $isWishlisted ? 'is-active' : '' }}"
+                            type="button"
+                            data-car-id="{{ $vehicle->id }}"
+                            data-car-name="{{ $vehicle->name }}"
+                            aria-label="Wishlist {{ $vehicle->name }}"
+                            aria-pressed="{{ $isWishlisted ? 'true' : 'false' }}">
+                            <i class="{{ $isWishlisted ? 'fa-solid' : 'fa-regular' }} fa-bookmark"></i>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <section class="car-showcase-hero">
+                <div class="car-showcase-hero-media">
+                    @if ($vehicle->image_path)
+                        <img id="heroCarImage"
+                            class="js-lightbox-trigger"
+                            src="{{ str_starts_with($vehicle->image_path, 'http') ? $vehicle->image_path : asset($vehicle->image_path) }}"
+                            alt="{{ $vehicle->name }}"
+                            data-lightbox-caption="{{ $vehicle->name }}">
+                    @endif
+                </div>
+                <div class="car-showcase-hero-overlay"></div>
+
+                <div class="container car-showcase-hero-content">
+                    <div class="car-showcase-copy">
+                        <a class="car-detail-back" href="{{ route('brands.show', $brand) }}">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            Back to {{ $brand->name }}
+                        </a>
+
+                        @if ($brand->logo_path)
+                            <div class="car-showcase-brand-logo">
+                                <img
+                                    src="{{ str_starts_with($brand->logo_path, 'http') ? $brand->logo_path : asset($brand->logo_path) }}"
+                                    alt="{{ $brand->name }} logo"
+                                >
+                            </div>
+                        @endif
+
+                        <span class="car-showcase-brandline">
+                            {{ $brand->name }}
+                            <b>·</b>
+                            {{ $vehicle->category?->name ?: 'Model' }}
+                        </span>
+
+                        @php
+                            $familyLabel = $vehicle->model_family ?: $vehicle->name;
+                            $variantLabel = trim(Str::after($vehicle->name, $familyLabel));
+                        @endphp
+
+                        <h1>
+                            <span>{{ $familyLabel }}</span>
+                            @if ($variantLabel !== '')
+                                <strong>{{ $variantLabel }}</strong>
+                            @endif
+                        </h1>
+
+                        <p class="car-showcase-subtitle">
+                            {{ strtoupper($vehicle->production_type ?: 'PRODUCTION') }}
+                            ·
+                            {{ strtoupper($vehicle->vehicle_type ?: 'ROAD CAR') }}
+                        </p>
+
+                        <div class="car-showcase-badges">
+                            @if ($vehicle->production_type)
+                                <span>{{ $vehicle->production_type }}</span>
+                            @endif
+                            @if ($vehicle->vehicle_type)
+                                <span>{{ $vehicle->vehicle_type }}</span>
+                            @endif
+                            @if ($vehicle->fuel_type)
+                                <span>{{ $vehicle->fuel_type }}</span>
+                            @endif
+                            @if ($vehicle->drivetrain)
+                                <span>{{ $vehicle->drivetrain }}</span>
+                            @endif
+                        </div>
+
+                        <p class="car-showcase-lead">
+                            {{ $vehicle->description ?: ($vehicle->short_description ?: 'Detailed information for this model is being added to the catalog.') }}
+                        </p>
+                    </div>
+
+                    @if ($gallery->isNotEmpty())
+                        <div class="car-showcase-gallery" data-gallery>
+                            @foreach ($gallery->take(5) as $index => $image)
+                                <button type="button"
+                                    class="car-gallery-thumb {{ $index === 0 ? 'is-active' : '' }}"
+                                    data-image-url="{{ str_starts_with($image, 'http') ? $image : asset($image) }}"
+                                    aria-label="Show image {{ $index + 1 }}">
+                                    <img src="{{ str_starts_with($image, 'http') ? $image : asset($image) }}" alt="{{ $vehicle->name }} image {{ $index + 1 }}">
+                                </button>
+                            @endforeach
+                            @if ($gallery->count() > 5)
+                                <span class="car-gallery-more">+{{ $gallery->count() - 5 }}</span>
+                            @endif
+                        </div>
+                    @endif
+                </div>
+            </section>
+
+            <nav class="car-showcase-nav" aria-label="Vehicle sections">
+                <div class="container">
+                    <div class="car-showcase-nav-scroll">
+                        <a href="#overview">Overview</a>
+                        @if ($designSection)<a href="#design">Design</a>@endif
+                        @if ($powertrainSection)<a href="#powertrain">Powertrain</a>@endif
+                        <a href="#performance">Performance</a>
+                        <a href="#technical">Specifications</a>
+                        <a href="#insights">Insights</a>
+                        @if ($interiorSection)<a href="#interior">Interior</a>@endif
+                        @if ($chassisSection || $handlingSection)<a href="#chassis">Chassis</a>@endif
+                        <a href="#production">Production</a>
+                        @if (!empty($vehicle->variants))<a href="#variants">Variants</a>@endif
+                        <a href="#gallery">Gallery</a>
+                    </div>
+                </div>
+            </nav>.app')
+
+@php
+use Illuminate\Support\Str;
+@endphp
+
+@section('title', $vehicle->name . ' - AutomobilliMachine')
+
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/car.css') }}?v=20260929-4">
 @endpush
 
 @section('content')
@@ -388,6 +632,29 @@ use Illuminate\Support\Str;
       </nav>
 
             @if ($quickInsights->isNotEmpty())
+            <section class="car-showcase-section car-showcase-technical" id="technical">
+                <div class="container">
+                    <div class="car-showcase-heading-row">
+                        <div>
+                            <span class="car-detail-section-label">KEY SPECIFICATIONS</span>
+                            <h2>The numbers behind the {{ $vehicle->name }}</h2>
+                        </div>
+                    </div>
+
+                    <div class="car-showcase-tech-grid">
+                        <div><span>Engine</span><strong>{{ $vehicle->engine ?: '—' }}</strong></div>
+                        <div><span>Total Output</span><strong>{{ $vehicle->horsepower !== null ? number_format($vehicle->horsepower) . ' HP' : '—' }}</strong></div>
+                        <div><span>Total Torque</span><strong>{{ $vehicle->torque_nm !== null ? number_format($vehicle->torque_nm) . ' Nm' : '—' }}</strong></div>
+                        <div><span>Drivetrain</span><strong>{{ $vehicle->drivetrain ?: '—' }}</strong></div>
+                        <div><span>Transmission</span><strong>{{ $vehicle->transmission ?: '—' }}</strong></div>
+                        <div><span>Weight (Dry)</span><strong>{{ collect($chassisSection['specs'] ?? [])->firstWhere('label', 'Dry Weight')['value'] ?? '—' }}</strong></div>
+                        <div><span>Dimensions</span><strong>{{ collect($detailSections->firstWhere('label','DIMENSIONS')['specs'] ?? [])->map(fn($s) => $s['value'])->implode(' × ') ?: '—' }}</strong></div>
+                        <div><span>Fuel Type</span><strong>{{ $vehicle->fuel_type ?: '—' }}</strong></div>
+                    </div>
+                </div>
+            </section>
+
+
                 <section class="car-showcase-section car-showcase-quick-grid" id="insights">
                     <div class="container">
                         <div class="car-showcase-heading-row">
@@ -512,28 +779,6 @@ use Illuminate\Support\Str;
                     </div>
                 </section>
             @endif
-
-            <section class="car-showcase-section car-showcase-technical" id="technical">
-                <div class="container">
-                    <div class="car-showcase-heading-row">
-                        <div>
-                            <span class="car-detail-section-label">KEY SPECIFICATIONS</span>
-                            <h2>The numbers behind the {{ $vehicle->name }}</h2>
-                        </div>
-                    </div>
-
-                    <div class="car-showcase-tech-grid">
-                        <div><span>Engine</span><strong>{{ $vehicle->engine ?: '—' }}</strong></div>
-                        <div><span>Total Output</span><strong>{{ $vehicle->horsepower !== null ? number_format($vehicle->horsepower) . ' HP' : '—' }}</strong></div>
-                        <div><span>Total Torque</span><strong>{{ $vehicle->torque_nm !== null ? number_format($vehicle->torque_nm) . ' Nm' : '—' }}</strong></div>
-                        <div><span>Drivetrain</span><strong>{{ $vehicle->drivetrain ?: '—' }}</strong></div>
-                        <div><span>Transmission</span><strong>{{ $vehicle->transmission ?: '—' }}</strong></div>
-                        <div><span>Weight (Dry)</span><strong>{{ collect($chassisSection['specs'] ?? [])->firstWhere('label', 'Dry Weight')['value'] ?? '—' }}</strong></div>
-                        <div><span>Dimensions</span><strong>{{ collect($detailSections->firstWhere('label','DIMENSIONS')['specs'] ?? [])->map(fn($s) => $s['value'])->implode(' × ') ?: '—' }}</strong></div>
-                        <div><span>Fuel Type</span><strong>{{ $vehicle->fuel_type ?: '—' }}</strong></div>
-                    </div>
-                </div>
-            </section>
 
             <section class="car-showcase-section car-showcase-production" id="production">
                 <div class="container car-showcase-production-grid">
@@ -720,5 +965,5 @@ use Illuminate\Support\Str;
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('js/car.js') }}?v=20260929-3"></script>
+    <script src="{{ asset('js/car.js') }}?v=20260929-4"></script>
 @endpush
