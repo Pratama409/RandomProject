@@ -1,6 +1,19 @@
 /* AutomobilliMachine — global app interactions */
 
 document.addEventListener('DOMContentLoaded', () => {
+    /* Keep a precise return destination, including homepage section hashes. */
+    document.querySelectorAll('[data-collection-link]').forEach((link) => {
+        link.addEventListener('click', () => {
+            const target = new URL(link.href, window.location.origin);
+
+            if (window.location.pathname !== '/collection') {
+                target.searchParams.set('return_to', window.location.href);
+                link.href = target.toString();
+            }
+        });
+    });
+
+
     const overlay = document.querySelector('#automobilliSearch');
     const trigger = document.querySelector('.automobilli-search-trigger');
     const input = document.querySelector('#automobilliSearchInput');
