@@ -198,3 +198,82 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.key === 'ArrowRight') move(1);
     });
 });
+
+
+/* Vehicle insight modal */
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.querySelector('#carInsightModal');
+    const triggers = [...document.querySelectorAll('.js-detail-insight-trigger')];
+    const data = Array.isArray(window.AUTOMOBILLI_INSIGHTS) ? window.AUTOMOBILLI_INSIGHTS : [];
+
+    if (!modal || !triggers.length || !data.length) return;
+
+    const image = document.querySelector('#carInsightImage');
+    const label = document.querySelector('#carInsightLabel');
+    const title = document.querySelector('#carInsightTitle');
+    const description = document.querySelector('#carInsightDescription');
+    const specs = document.querySelector('#carInsightSpecs');
+    const counter = document.querySelector('#carInsightCounter');
+    const prev = modal.querySelector('[data-insight-prev]');
+    const next = modal.querySelector('[data-insight-next]');
+    const closeButtons = modal.querySelectorAll('[data-insight-close]');
+    let currentIndex = 0;
+
+    const render = () => {
+        const item = data[currentIndex];
+        if (!item) return;
+
+        label.textContent = item.label || 'DETAIL';
+        title.textContent = item.title || '';
+        description.textContent = item.description || '';
+        image.src = item.image || '';
+        image.alt = item.title || item.label || 'Vehicle detail';
+        counter.textContent = (currentIndex + 1) + ' / ' + data.length;
+
+        specs.innerHTML = '';
+        (item.items || []).forEach((spec) => {
+            const row = document.createElement('div');
+            row.className = 'car-detail-insight-spec';
+
+            const key = document.createElement('span');
+            key.textContent = spec.label || 'Detail';
+
+            const value = document.createElement('strong');
+            value.textContent = spec.value || '—';
+
+            row.append(key, value);
+            specs.appendChild(row);
+        });
+    };
+
+    const open = (index) => {
+        currentIndex = (index + data.length) % data.length;
+        render();
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('is-insight-modal-open');
+    };
+
+    const close = () => {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('is-insight-modal-open');
+    };
+
+    const move = (direction) => open(currentIndex + direction);
+
+    triggers.forEach((trigger) => {
+        trigger.addEventListener('click', () => open(Number(trigger.dataset.insightIndex) || 0));
+    });
+
+    prev?.addEventListener('click', () => move(-1));
+    next?.addEventListener('click', () => move(1));
+    closeButtons.forEach((button) => button.addEventListener('click', close));
+
+    document.addEventListener('keydown', (event) => {
+        if (!modal.classList.contains('is-open')) return;
+        if (event.key === 'Escape') close();
+        if (event.key === 'ArrowLeft') move(-1);
+        if (event.key === 'ArrowRight') move(1);
+    });
+});
