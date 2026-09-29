@@ -33,8 +33,8 @@
                 <h2>Sign in to build your collection</h2>
                 <p>Favorites and wishlist items are tied to your Automobilli account, so they can be available across your saved vehicles and future sessions.</p>
                 <div class="collection-auth-actions">
-                    <a href="#" class="btn btn-outline-custom btn-sm px-3">Sign In</a>
-                    <a href="#" class="btn btn-racing btn-sm px-3">Register</a>
+                    <a href="{{ route('login', ['redirect' => url()->full()]) }}" class="btn btn-outline-custom btn-sm px-3">Sign In</a>
+                    <a href="{{ route('register', ['redirect' => url()->full()]) }}" class="btn btn-racing btn-sm px-3">Register</a>
                 </div>
             </div>
         @else
