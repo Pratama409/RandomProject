@@ -21,6 +21,7 @@
 
     <!-- Custom CSS Proyek Terpisah -->
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=20260929-1">
     @stack('styles')
 </head>
 <body>
@@ -41,6 +42,7 @@
 
     <!-- Custom JS Proyek Terpisah -->
     <script src="{{ asset('js/home.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}?v=20260929-1"></script>
     @stack('scripts')
 </body>
 </html>
