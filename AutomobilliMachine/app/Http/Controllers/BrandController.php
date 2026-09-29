@@ -261,56 +261,6 @@ class BrandController extends Controller
             ? trim(substr($vehicle->name, strlen($familyLabel)))
             : '';
 
-        $productionImage = $gallery->get(4) ?? $gallery->first();
-        $variantImage = $gallery->get(2) ?? $gallery->first();
-
-        $quickInsights = collect([
-            $interiorSection ? [
-                'label' => 'INTERIOR',
-                'title' => $interiorSection['title'] ?? 'Driver-Focused Cockpit',
-                'summary' => $interiorSection['paragraphs'][0] ?? 'Explore the cabin, displays, controls, and driver-focused technology.',
-                'description' => implode("\n\n", $interiorSection['paragraphs'] ?? []),
-                'image' => $interiorSection['detail_image'] ?? $gallery->get(2) ?? $gallery->first(),
-                'items' => $interiorSection['specs'] ?? [],
-                'icon' => 'fa-chair',
-            ] : null,
-            ($chassisSection || $handlingSection) ? [
-                'label' => 'CHASSIS & HANDLING',
-                'title' => $chassisSection['title'] ?? $handlingSection['title'] ?? 'Chassis & Handling',
-                'summary' => $handlingSection['paragraphs'][0] ?? $chassisSection['paragraphs'][0] ?? 'Explore the structure, control systems, and handling technology.',
-                'description' => implode("\n\n", array_merge($handlingSection['paragraphs'] ?? [], $chassisSection['paragraphs'] ?? [])),
-                'image' => $chassisSection['detail_image'] ?? $gallery->get(3) ?? $gallery->first(),
-                'items' => collect($chassisSection['specs'] ?? [])->merge($handlingSection['specs'] ?? [])->values()->all(),
-                'icon' => 'fa-road',
-            ] : null,
-            [
-                'label' => 'PRODUCTION',
-                'title' => ($vehicle->production_year_start ?: '—') . ' – ' . ($vehicle->production_year_end ?: 'Present'),
-                'summary' => $brand->name . ' production and model identity information.',
-                'description' => $brand->name . ' production and model identity information, separated from performance data so the catalog remains easy to scan.',
-                'image' => $productionImage,
-                'items' => [
-                    ['label' => 'Production Type', 'value' => $vehicle->production_type ?: '—'],
-                    ['label' => 'Publicly Sold', 'value' => $vehicle->publicly_sold ? 'Yes' : 'No'],
-                    ['label' => 'Road Legal', 'value' => $vehicle->road_legal ? 'Yes' : 'No'],
-                    ['label' => 'Production Count', 'value' => $vehicle->production_count !== null ? number_format($vehicle->production_count) . ' units' : 'Not specified'],
-                ],
-                'icon' => 'fa-industry',
-            ],
-            [
-                'label' => 'VARIANTS',
-                'title' => collect($vehicle->variants ?? [])->count() . ' related variants',
-                'summary' => 'Explore related versions, packages, and derivatives associated with this model.',
-                'description' => 'Explore related versions, packages, and derivatives associated with this model.',
-                'image' => $variantImage,
-                'items' => collect($vehicle->variants ?? [])->map(fn ($variant) => [
-                    'label' => $variant['type'] ?? 'Variant',
-                    'value' => $variant['name'] ?? 'Unnamed variant',
-                ])->values()->all(),
-                'icon' => 'fa-layer-group',
-            ],
-        ])->filter()->values();
-
         $comparisonCars = collect([$vehicle])
             ->merge($relatedCars)
             ->unique('id')
@@ -338,8 +288,7 @@ class BrandController extends Controller
             'fioranoLap',
             'gallery',
             'familyLabel',
-            'variantLabel',
-            'quickInsights'
+            'variantLabel'
         ));
     }
 
