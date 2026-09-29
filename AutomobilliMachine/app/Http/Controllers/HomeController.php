@@ -1,9 +1,9 @@
 <?php
 
-namespace AppHttpControllers;
+namespace App\Http\Controllers;
 
-use AppModelsBrand;
-use IlluminateViewView;
+use App\Models\Brand;
+use Illuminate\View\View;
 
 class HomeController extends Controller
 {
