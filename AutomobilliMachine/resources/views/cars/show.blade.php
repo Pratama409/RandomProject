@@ -3,15 +3,11 @@
 @section('title', $vehicle->name . ' - AutomobilliMachine')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/car-detail.css') }}?v=20260929-1">
+    <link rel="stylesheet" href="{{ asset('css/car-detail.css') }}?v=20260929-2">
 @endpush
 
 @section('content')
     <div class="car-detail-page">
-        <script>
-            window.AUTOMOBILLI_INSIGHTS = @json($quickInsights);
-        </script>
-
         <header class="car-detail-header">
             <div class="container car-detail-header-inner">
                 <a class="car-detail-header-brand" href="{{ route('home') }}">
@@ -52,7 +48,6 @@
         @include('cars.partials.show.powertrain')
         @include('cars.partials.show.performance')
         @include('cars.partials.show.specifications')
-        @include('cars.partials.show.insights')
         @include('cars.partials.show.interior')
         @include('cars.partials.show.chassis')
         @include('cars.partials.show.production')
@@ -66,5 +61,5 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('js/car-detail.js') }}?v=20260929-1"></script>
+    <script src="{{ asset('js/car-detail.js') }}?v=20260929-2"></script>
 @endpush
