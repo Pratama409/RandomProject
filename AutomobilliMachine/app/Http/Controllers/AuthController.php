@@ -76,7 +76,7 @@ class AuthController extends Controller
     {
         $redirect = (string) $request->query('redirect', '');
 
-        if ($redirect === '' || str_contains($redirect, '\\\\')) {
+        if ($redirect === '' || str_contains($redirect, '\\')) {
             return;
         }
 
