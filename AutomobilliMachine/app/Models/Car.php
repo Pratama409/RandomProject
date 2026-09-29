@@ -50,6 +50,7 @@ class Car extends Model
         'fuel_type',
         'body_type',
         'is_iconic',
+        'is_featured',
         'iconic_order',
         'is_active',
     ];
@@ -77,6 +78,7 @@ class Car extends Model
             'source_links' => 'array',
             'top_speed_kmh' => 'integer',
             'is_iconic' => 'boolean',
+            'is_featured' => 'boolean',
             'iconic_order' => 'integer',
             'is_active' => 'boolean',
         ];
