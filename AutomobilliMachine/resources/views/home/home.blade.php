@@ -365,7 +365,7 @@
                     <h2 class="brand-font">ALL BRANDS</h2>
                     <p>Explore every active automotive brand currently available in the Automobilli catalog.</p>
                 </div>
-                <span class="all-brands-count">{{ $brands->count() }} {{ IlluminateSupportStr::plural('brand', $brands->count()) }}</span>
+                <span class="all-brands-count">{{ $brands->count() }} {{ $brands->count() === 1 ? 'brand' : 'brands' }}</span>
             </div>
 
             <div class="all-brands-grid" id="allBrandsGrid">
