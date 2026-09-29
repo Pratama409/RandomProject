@@ -11,6 +11,8 @@ class HomeController extends Controller
     {
         $brands = Brand::query()
             ->where('is_active', true)
+            ->orderByDesc('is_featured')
+            ->orderBy('sort_order')
             ->orderBy('name')
             ->get([
                 'id',
@@ -20,6 +22,8 @@ class HomeController extends Controller
                 'founded_year',
                 'logo_path',
                 'vehicle_lineup',
+                'is_featured',
+                'sort_order',
             ]);
 
         return view('home.home', compact('brands'));
