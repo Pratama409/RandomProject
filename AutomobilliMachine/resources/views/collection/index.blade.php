@@ -5,9 +5,9 @@
 @section('content')
 <section class="collection-page">
     <div class="container">
-        <a href="{{ route('home') }}" class="collection-back">
+        <a href="{{ $returnTo }}" class="collection-back">
             <i class="fa-solid fa-arrow-left"></i>
-            Back to Automobilli
+            Back
         </a>
 
         <div class="collection-hero">
@@ -18,10 +18,10 @@
             </div>
 
             <div class="collection-tabs" aria-label="Collection tabs">
-                <a href="{{ route('collection.index', ['tab' => 'favorites']) }}" class="{{ $tab === 'favorites' ? 'is-active' : '' }}">
+                <a href="{{ route('collection.index', ['tab' => 'favorites', 'return_to' => $returnTo]) }}" class="{{ $tab === 'favorites' ? 'is-active' : '' }}">
                     <i class="fa-regular fa-heart me-1"></i> Favorites
                 </a>
-                <a href="{{ route('collection.index', ['tab' => 'wishlist']) }}" class="{{ $tab === 'wishlist' ? 'is-active' : '' }}">
+                <a href="{{ route('collection.index', ['tab' => 'wishlist', 'return_to' => $returnTo]) }}" class="{{ $tab === 'wishlist' ? 'is-active' : '' }}">
                     <i class="fa-regular fa-bookmark me-1"></i> Wishlist
                 </a>
             </div>
