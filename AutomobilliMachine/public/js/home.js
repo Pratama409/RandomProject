@@ -98,7 +98,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ====================================================
-    // 3. SMOOTH SCROLL UNTUK ANCHOR LINK (#)
+    // 3. ALL BRANDS DIRECTORY
+    // ====================================================
+    const brandCards = document.querySelectorAll('.all-brand-card');
+
+    // Keep the directory ready for future expansion without adding UI noise today.
+    brandCards.forEach((card) => {
+        card.addEventListener('mouseenter', () => {
+            card.classList.add('is-hovered');
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.classList.remove('is-hovered');
+        });
+    });
+
+    // ====================================================
+    // 4. SMOOTH SCROLL UNTUK ANCHOR LINK (#)
     // ====================================================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
