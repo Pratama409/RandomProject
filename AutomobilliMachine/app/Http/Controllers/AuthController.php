@@ -76,19 +76,22 @@ class AuthController extends Controller
     {
         $redirect = (string) $request->query('redirect', '');
 
-        if ($redirect === '') {
+        if ($redirect === '' || str_contains($redirect, '\\')) {
             return;
         }
 
         $parsed = parse_url($redirect);
         $host = $parsed['host'] ?? null;
         $scheme = $parsed['scheme'] ?? null;
+        $isRelativeInternalPath = str_starts_with($redirect, '/')
+            && !str_starts_with($redirect, '//')
+            && $host === null
+            && $scheme === null;
+        $isSameHostAbsoluteUrl = $host === $request->getHost()
+            && ($scheme === null || in_array($scheme, ['http', 'https'], true))
+            && ($scheme === null || $scheme === $request->getScheme());
 
-        if (
-            str_starts_with($redirect, '/') ||
-            ($host === $request->getHost() &&
-                ($scheme === null || $scheme === $request->getScheme()))
-        ) {
+        if ($isRelativeInternalPath || $isSameHostAbsoluteUrl) {
             $request->session()->put('url.intended', $redirect);
         }
     }

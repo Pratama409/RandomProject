@@ -37,6 +37,7 @@ class SearchController extends Controller
         $cars = Car::query()
             ->with('brand:id,name,slug')
             ->where('is_active', true)
+            ->whereHas('brand', fn ($query) => $query->where('is_active', true))
             ->where(function ($query) use ($like) {
                 $query
                     ->where('name', 'like', $like)
@@ -44,6 +45,7 @@ class SearchController extends Controller
                     ->orWhere('generation', 'like', $like)
                     ->orWhere('variant', 'like', $like);
             })
+            ->orderByDesc('is_featured')
             ->orderByDesc('is_iconic')
             ->orderBy('name')
             ->limit(8)

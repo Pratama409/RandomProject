@@ -179,6 +179,7 @@ class BrandController extends Controller
             ->when($request->filled('vehicle_type'), function ($query) use ($request) {
                 $query->where('vehicle_type', $request->string('vehicle_type'));
             })
+            ->orderByDesc('is_featured')
             ->orderByDesc('is_iconic')
             ->orderByDesc('production_year_start')
             ->orderBy('name')
@@ -223,6 +224,7 @@ class BrandController extends Controller
             ->with('category:id,name,slug')
             ->where('cars.is_active', true)
             ->where('cars.id', '!=', $vehicle->id)
+            ->orderByDesc('is_featured')
             ->orderByDesc('is_iconic')
             ->orderByDesc('production_year_start')
             ->limit(4)
