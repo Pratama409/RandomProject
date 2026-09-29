@@ -21,7 +21,8 @@
 
     <!-- Custom CSS Proyek Terpisah -->
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=20260929-1">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=20260929-2">
+    <link rel="stylesheet" href="{{ asset('css/auth-profile.css') }}?v=20260929-1">
     @stack('styles')
 </head>
 <body>
