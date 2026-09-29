@@ -118,6 +118,7 @@ class CarSeeder extends Seeder
                     [
                         'label' => 'POWERTRAIN',
                         'title' => 'V8 + Three Electric Motors',
+                        'image' => 'https://www.ferrarisiliconvalley.com/static/dealer-20428/engine.png',
                         'paragraphs' => [
                             'The powertrain combines a 3.99-litre twin-turbo V8 with three electric motors: one integrated with the rear transmission and two positioned on the front axle.',
                             'The combustion engine produces 780 PS and the electric system contributes 220 PS, for a combined 1,000 PS (986 hp).'
@@ -252,6 +253,10 @@ class CarSeeder extends Seeder
                     [
                         'label' => 'Wikimedia Commons image',
                         'url' => 'https://commons.wikimedia.org/wiki/File:2021_Ferrari_SF90_Stradale.jpg'
+                    ],
+                    [
+                        'label' => 'Engine visual reference — Ferrari Silicon Valley',
+                        'url' => 'https://www.ferrarisiliconvalley.com/ferrari-sf90-stradale.html'
                     ]
                 ],
                 'image_path' => 'https://commons.wikimedia.org/wiki/Special:FilePath/2022_Ferrari_SF90_Stradale,_red_-_front_left.jpg',
