@@ -355,6 +355,49 @@
     </section>
 
     <!-- ==================================================================== -->
+    <!-- 4. ALL BRANDS: COMPACT DIRECTORY                                    -->
+    <!-- ==================================================================== -->
+    <section id="brand-directory" class="all-brands-section">
+        <div class="container">
+            <div class="all-brands-heading">
+                <div>
+                    <span class="all-brands-kicker">BRAND DIRECTORY</span>
+                    <h2 class="brand-font">ALL BRANDS</h2>
+                    <p>Explore every active automotive brand currently available in the Automobilli catalog.</p>
+                </div>
+                <span class="all-brands-count">{{ $brands->count() }} {{ IlluminateSupportStr::plural('brand', $brands->count()) }}</span>
+            </div>
+
+            <div class="all-brands-grid" id="allBrandsGrid">
+                @foreach ($brands as $brand)
+                    <a class="all-brand-card" href="{{ route('brands.show', $brand) }}" data-brand-name="{{ strtolower($brand->name) }}" data-brand-country="{{ strtolower($brand->country) }}">
+                        <div class="all-brand-card-main">
+                            <div class="all-brand-logo">
+                                @if ($brand->logo_path)
+                                    <img src="{{ str_starts_with($brand->logo_path, 'http') ? $brand->logo_path : asset($brand->logo_path) }}"
+                                        alt="{{ $brand->name }} logo"
+                                        loading="lazy">
+                                @else
+                                    <span>{{ strtoupper(substr($brand->name, 0, 1)) }}</span>
+                                @endif
+                            </div>
+
+                            <div class="all-brand-copy">
+                                <h3>{{ $brand->name }}</h3>
+                                <span>{{ $brand->country }}{{ $brand->founded_year ? ' · Est. ' . $brand->founded_year : '' }}</span>
+                            </div>
+                        </div>
+
+                        <div class="all-brand-arrow" aria-hidden="true">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================================================================== -->
     <!-- 4. ICONIC CARS SHOWCASE SECTION                                      -->
     <!-- ==================================================================== -->
     <section id="iconic" class="py-5 solid-content-section">
