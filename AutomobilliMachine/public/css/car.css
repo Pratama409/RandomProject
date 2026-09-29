@@ -4185,3 +4185,44 @@ body.is-insight-modal-open { overflow:hidden; }
     .car-detail-insight-content h2 { font-size:2rem; }
     .car-detail-insight-specs { grid-template-columns:1fr; }
 }
+
+
+/* =========================================================
+   SECTION NAV — ACTIVE STATE + ANCHOR OFFSET
+   ========================================================= */
+
+.car-showcase-section,
+.car-showcase-quick-grid,
+.car-showcase-insight-detail {
+    scroll-margin-top: 74px;
+}
+
+.car-showcase-nav a:first-child {
+    color: #929ca9;
+}
+
+.car-showcase-nav a:first-child::after {
+    display: none;
+}
+
+.car-showcase-nav a.is-active {
+    color: #fff;
+}
+
+.car-showcase-nav a.is-active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: #e50914;
+}
+
+@media (max-width: 575px) {
+    .car-showcase-section,
+    .car-showcase-quick-grid,
+    .car-showcase-insight-detail {
+        scroll-margin-top: 62px;
+    }
+}
