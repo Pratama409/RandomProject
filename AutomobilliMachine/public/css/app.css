@@ -239,6 +239,27 @@ body.is-search-open {
     overflow: hidden;
 }
 
+.collection-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 28px;
+    color: #8f9aa7;
+    text-decoration: none;
+    font-size: .68rem;
+    font-weight: 800;
+    transition: color .2s ease, transform .2s ease;
+}
+
+.collection-back i {
+    font-size: .65rem;
+}
+
+.collection-back:hover {
+    color: #fff;
+    transform: translateX(-2px);
+}
+
 .collection-page {
     min-height: 100vh;
     padding: 52px 0 80px;
