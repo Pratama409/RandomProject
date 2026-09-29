@@ -13,8 +13,10 @@ class CollectionController extends Controller
             ? 'wishlist'
             : 'favorites';
 
-        $returnTo = (string) $request->query('return_to', '');
-        $returnTo = $this->safeReturnUrl($request, $returnTo);
+        $returnTo = $this->safeReturnUrl(
+            $request,
+            (string) $request->query('return_to', '')
+        );
 
         $favorites = collect();
         $wishlist = collect();
@@ -49,21 +51,18 @@ class CollectionController extends Controller
             return route('home');
         }
 
-        if (str_starts_with($returnTo, '/')) {
-            return url($returnTo);
-        }
-
         $parsed = parse_url($returnTo);
         $host = $parsed['host'] ?? null;
         $scheme = $parsed['scheme'] ?? null;
 
-        if ($host === $request->getHost() && ($scheme === null || $scheme === $request->getScheme())) {
+        if (
+            str_starts_with($returnTo, '/') ||
+            ($host === $request->getHost() &&
+                ($scheme === null || $scheme === $request->getScheme()))
+        ) {
             return $returnTo;
         }
 
         return route('home');
-
     }
-}
-
 }
