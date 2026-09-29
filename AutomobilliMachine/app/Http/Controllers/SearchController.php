@@ -44,6 +44,7 @@ class SearchController extends Controller
                     ->orWhere('generation', 'like', $like)
                     ->orWhere('variant', 'like', $like);
             })
+            ->orderByDesc('is_featured')
             ->orderByDesc('is_iconic')
             ->orderBy('name')
             ->limit(8)
