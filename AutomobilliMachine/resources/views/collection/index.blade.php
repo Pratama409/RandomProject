@@ -5,6 +5,11 @@
 @section('content')
 <section class="collection-page">
     <div class="container">
+        <a href="{{ route('home') }}" class="collection-back">
+            <i class="fa-solid fa-arrow-left"></i>
+            Back to Automobilli
+        </a>
+
         <div class="collection-hero">
             <div>
                 <span class="collection-kicker">YOUR AUTOMOBILLI</span>
