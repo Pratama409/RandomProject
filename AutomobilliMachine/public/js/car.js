@@ -96,3 +96,105 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+
+/* Vehicle detail lightbox */
+document.addEventListener('DOMContentLoaded', () => {
+    const lightbox = document.querySelector('#carLightbox');
+    if (!lightbox) return;
+
+    const image = document.querySelector('#carLightboxImage');
+    const caption = document.querySelector('#carLightboxCaption');
+    const counter = document.querySelector('#carLightboxCounter');
+    const thumbs = document.querySelector('#carLightboxThumbs');
+    const prev = lightbox.querySelector('[data-lightbox-prev]');
+    const next = lightbox.querySelector('[data-lightbox-next]');
+    const closeButtons = lightbox.querySelectorAll('[data-lightbox-close]');
+
+    const sourceNodes = [...document.querySelectorAll(
+        '.js-lightbox-trigger[data-lightbox-src], .js-lightbox-trigger:not([data-lightbox-src])'
+    )];
+
+    const getSource = (node) => node.dataset.lightboxSrc || node.currentSrc || node.src;
+    const items = sourceNodes
+        .map((node) => ({
+            src: getSource(node),
+            caption: node.dataset.lightboxCaption || node.alt || '{{ $vehicle->name }}',
+        }))
+        .filter((item) => item.src);
+
+    let currentIndex = 0;
+
+    const renderThumbs = () => {
+        thumbs.innerHTML = '';
+        items.forEach((item, index) => {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'car-lightbox-thumb' + (index === currentIndex ? ' is-active' : '');
+            button.setAttribute('aria-label', 'Show image ' + (index + 1));
+            button.innerHTML = '<img src="' + item.src.replaceAll('"', '&quot;') + '" alt="">';
+            button.addEventListener('click', () => {
+                currentIndex = index;
+                render();
+            });
+            thumbs.appendChild(button);
+        });
+    };
+
+    const render = () => {
+        const item = items[currentIndex];
+        if (!item) return;
+        image.src = item.src;
+        image.alt = item.caption;
+        caption.textContent = item.caption;
+        counter.textContent = (currentIndex + 1) + ' / ' + items.length;
+        thumbs.querySelectorAll('.car-lightbox-thumb').forEach((thumb, index) => {
+            thumb.classList.toggle('is-active', index === currentIndex);
+        });
+    };
+
+    const open = (node) => {
+        const src = getSource(node);
+        if (!src) return;
+
+        const exact = items.findIndex((item) => item.src === src && item.caption === (node.dataset.lightboxCaption || node.alt || '{{ $vehicle->name }}'));
+        currentIndex = exact >= 0 ? exact : 0;
+
+        render();
+        renderThumbs();
+        lightbox.classList.add('is-open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('is-lightbox-open');
+    };
+
+    const close = () => {
+        lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('is-lightbox-open');
+    };
+
+    const move = (direction) => {
+        if (!items.length) return;
+        currentIndex = (currentIndex + direction + items.length) % items.length;
+        render();
+    };
+
+    document.addEventListener('click', (event) => {
+        const trigger = event.target.closest('.js-lightbox-trigger');
+        if (!trigger || lightbox.contains(trigger)) return;
+        event.preventDefault();
+        open(trigger);
+    });
+
+    prev?.addEventListener('click', () => move(-1));
+    next?.addEventListener('click', () => move(1));
+    closeButtons.forEach((button) => button.addEventListener('click', close));
+
+    document.addEventListener('keydown', (event) => {
+        if (!lightbox.classList.contains('is-open')) return;
+
+        if (event.key === 'Escape') close();
+        if (event.key === 'ArrowLeft') move(-1);
+        if (event.key === 'ArrowRight') move(1);
+    });
+});
