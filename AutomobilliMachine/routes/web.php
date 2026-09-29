@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\CollectionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index']);
+Route::get('/search', [SearchController::class, 'index'])->name('search.index');
+Route::get('/collection', [CollectionController::class, 'index'])->name('collection.index');
 
 Route::get('/brands/{brand:slug}', [BrandController::class, 'show'])->name('brands.show');
 Route::get('/brands/{brand:slug}/cars', [BrandController::class, 'cars'])->name('brands.cars');
