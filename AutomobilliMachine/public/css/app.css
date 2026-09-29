@@ -1,0 +1,476 @@
+/* AutomobilliMachine — global application UI */
+
+.automobilli-nav-tools {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.automobilli-nav-icon {
+    width: 35px;
+    height: 35px;
+    display: grid;
+    place-items: center;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    background: transparent;
+    color: #b4bdc8;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color .2s ease, border-color .2s ease, background .2s ease, transform .2s ease;
+}
+
+.automobilli-nav-icon:hover,
+.automobilli-nav-icon.is-active {
+    color: #fff;
+    border-color: rgba(229,9,20,.36);
+    background: rgba(229,9,20,.08);
+    transform: translateY(-1px);
+}
+
+.automobilli-search-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10050;
+    display: none;
+    padding: 18px;
+}
+
+.automobilli-search-overlay.is-open {
+    display: block;
+}
+
+.automobilli-search-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(3,5,8,.88);
+    backdrop-filter: blur(14px);
+}
+
+.automobilli-search-dialog {
+    position: relative;
+    z-index: 2;
+    width: min(840px, 100%);
+    margin: 8vh auto 0;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 18px;
+    background: #0d1117;
+    box-shadow: 0 32px 100px rgba(0,0,0,.45);
+}
+
+.automobilli-search-header {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 13px;
+    border-bottom: 1px solid #252d36;
+}
+
+.automobilli-search-input-wrap {
+    min-width: 0;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 12px;
+    border: 1px solid #303944;
+    border-radius: 11px;
+    background: #11161d;
+}
+
+.automobilli-search-input-wrap > i {
+    color: #778391;
+    font-size: .78rem;
+}
+
+.automobilli-search-input-wrap input {
+    width: 100%;
+    min-width: 0;
+    height: 46px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: #fff;
+    font-size: .86rem;
+}
+
+.automobilli-search-input-wrap input::placeholder {
+    color: #697583;
+}
+
+.automobilli-search-input-wrap kbd {
+    flex: 0 0 auto;
+    padding: 3px 6px;
+    border: 1px solid #353e48;
+    border-radius: 5px;
+    background: #181e25;
+    color: #7f8b98;
+    font: 600 .55rem/1 inherit;
+}
+
+.automobilli-search-close {
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+    border: 1px solid #303944;
+    border-radius: 9px;
+    background: #11161d;
+    color: #aeb8c4;
+    cursor: pointer;
+}
+
+.automobilli-search-results {
+    max-height: min(62vh, 620px);
+    overflow-y: auto;
+    padding: 12px;
+}
+
+.automobilli-search-group + .automobilli-search-group {
+    margin-top: 16px;
+}
+
+.automobilli-search-group-title {
+    margin: 0 0 7px;
+    padding: 0 8px;
+    color: #e50914;
+    font-size: .58rem;
+    font-weight: 900;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+}
+
+.automobilli-search-result {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    min-height: 58px;
+    padding: 8px;
+    border-radius: 10px;
+    color: #fff;
+    text-decoration: none;
+    transition: background .18s ease;
+}
+
+.automobilli-search-result:hover {
+    background: #171d25;
+}
+
+.automobilli-search-result-media {
+    width: 46px;
+    height: 46px;
+    flex: 0 0 46px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border: 1px solid #2b343e;
+    border-radius: 8px;
+    background: #080b10;
+}
+
+.automobilli-search-result-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.automobilli-search-result-media.car img {
+    object-fit: cover;
+}
+
+.automobilli-search-result-copy {
+    min-width: 0;
+    flex: 1;
+}
+
+.automobilli-search-result-copy strong,
+.automobilli-search-result-copy span {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.automobilli-search-result-copy strong {
+    margin-bottom: 4px;
+    font-size: .78rem;
+}
+
+.automobilli-search-result-copy span {
+    color: #7f8b98;
+    font-size: .61rem;
+}
+
+.automobilli-search-result-arrow {
+    color: #6f7b88;
+    font-size: .65rem;
+}
+
+.automobilli-search-empty,
+.automobilli-search-loading {
+    min-height: 170px;
+    display: none;
+    place-items: center;
+    align-content: center;
+    gap: 7px;
+    padding: 30px;
+    color: #7f8b98;
+    text-align: center;
+}
+
+.automobilli-search-empty.is-visible,
+.automobilli-search-loading.is-visible {
+    display: grid;
+}
+
+.automobilli-search-empty i,
+.automobilli-search-loading i {
+    color: #e50914;
+    font-size: 1.1rem;
+}
+
+.automobilli-search-empty p,
+.automobilli-search-loading p {
+    margin: 0;
+    font-size: .73rem;
+}
+
+body.is-search-open {
+    overflow: hidden;
+}
+
+.collection-page {
+    min-height: 100vh;
+    padding: 52px 0 80px;
+    background:
+        radial-gradient(circle at 86% 4%, rgba(229,9,20,.05), transparent 23%),
+        #080b10;
+}
+
+.collection-hero {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 28px;
+    margin-bottom: 30px;
+}
+
+.collection-kicker {
+    color: #e50914;
+    font-size: .62rem;
+    font-weight: 900;
+    letter-spacing: .17em;
+    text-transform: uppercase;
+}
+
+.collection-hero h1 {
+    margin: 8px 0 0;
+    color: #fff;
+    font-size: clamp(2.7rem, 5vw, 4.8rem);
+    line-height: .92;
+    letter-spacing: -.05em;
+}
+
+.collection-hero p {
+    max-width: 660px;
+    margin: 13px 0 0;
+    color: #8f9aa7;
+    line-height: 1.7;
+}
+
+.collection-tabs {
+    display: inline-flex;
+    gap: 4px;
+    padding: 4px;
+    border: 1px solid #29313a;
+    border-radius: 11px;
+    background: #10141a;
+}
+
+.collection-tabs a {
+    padding: 9px 13px;
+    border-radius: 8px;
+    color: #8994a0;
+    font-size: .66rem;
+    font-weight: 900;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+}
+
+.collection-tabs a.is-active,
+.collection-tabs a:hover {
+    color: #fff;
+    background: #1b2129;
+}
+
+.collection-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 11px;
+}
+
+.collection-card {
+    overflow: hidden;
+    border: 1px solid #29313a;
+    border-radius: 14px;
+    background: #11161d;
+}
+
+.collection-card-media {
+    height: 168px;
+    background: #0b0f14;
+}
+
+.collection-card-media img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.collection-card-body {
+    padding: 14px;
+}
+
+.collection-card-body small {
+    color: #e50914;
+    font-size: .57rem;
+    font-weight: 900;
+    letter-spacing: .11em;
+    text-transform: uppercase;
+}
+
+.collection-card-body h3 {
+    margin: 7px 0 5px;
+    color: #fff;
+    font-size: .96rem;
+}
+
+.collection-card-body p {
+    margin: 0;
+    color: #7e8996;
+    font-size: .66rem;
+}
+
+.collection-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    padding-top: 11px;
+    border-top: 1px solid #242d36;
+}
+
+.collection-card-footer a,
+.collection-card-remove {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 0;
+    background: transparent;
+    color: #bac3cc;
+    font-size: .61rem;
+    font-weight: 900;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.collection-card-footer a:hover,
+.collection-card-remove:hover {
+    color: #fff;
+}
+
+.collection-empty,
+.collection-auth {
+    min-height: 260px;
+    display: grid;
+    place-items: center;
+    align-content: center;
+    gap: 10px;
+    padding: 40px;
+    border: 1px dashed #303944;
+    border-radius: 16px;
+    background: rgba(17,22,29,.45);
+    text-align: center;
+}
+
+.collection-empty i,
+.collection-auth i {
+    color: #e50914;
+    font-size: 1.4rem;
+}
+
+.collection-empty h2,
+.collection-auth h2 {
+    margin: 0;
+    color: #fff;
+    font-size: 1.15rem;
+}
+
+.collection-empty p,
+.collection-auth p {
+    max-width: 530px;
+    margin: 0;
+    color: #7f8b98;
+    font-size: .73rem;
+    line-height: 1.7;
+}
+
+.collection-auth .collection-auth-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+@media (max-width: 1100px) {
+    .automobilli-nav-tools {
+        justify-content: flex-end;
+        flex-wrap: wrap;
+    }
+
+    .collection-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 767px) {
+    .automobilli-nav-tools {
+        justify-content: center;
+        margin-top: 12px;
+    }
+
+    .automobilli-search-dialog {
+        margin-top: 4vh;
+    }
+
+    .collection-hero {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .collection-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 420px) {
+    .automobilli-nav-tools .btn {
+        padding-left: 9px !important;
+        padding-right: 9px !important;
+    }
+
+    .automobilli-search-overlay {
+        padding: 9px;
+    }
+
+    .automobilli-search-dialog {
+        margin-top: 2vh;
+        border-radius: 14px;
+    }
+
+    .collection-page {
+        padding-top: 36px;
+    }
+}
