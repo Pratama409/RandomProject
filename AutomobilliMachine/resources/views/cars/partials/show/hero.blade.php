@@ -12,13 +12,7 @@
     <div class="car-detail-hero-overlay"></div>
 
     <div class="container car-detail-hero-content">
-        <div class="car-detail-hero-copy">
-            <a href="{{ route('brands.show', $brand) }}" class="car-detail-back">
-                <i class="fa-solid fa-arrow-left"></i>
-                Back to {{ $brand->name }}
-            </a>
-
-            @if ($brand->logo_path)
+        <div class="car-detail-hero-copy">@if ($brand->logo_path)
                 <img class="car-detail-brand-logo"
                     src="{{ str_starts_with($brand->logo_path, 'http') ? $brand->logo_path : asset($brand->logo_path) }}"
                     alt="{{ $brand->name }} logo">
