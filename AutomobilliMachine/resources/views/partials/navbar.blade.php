@@ -4,7 +4,8 @@
             <i class="fa-solid fa-gauge-high text-danger me-2"></i>AUTOMOBILLI
         </a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+            aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -14,23 +15,65 @@
                     <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('brands.show', 'brands.cars', 'brand.ferrari') ? 'active' : '' }}" href="{{ url('/#brands') }}">Brands</a>
+                    <a class="nav-link {{ request()->routeIs('brands.*', 'brand.ferrari') ? 'active' : '' }}" href="{{ route('home') }}#brands">Brands</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/#iconic') }}">Iconic Cars</a>
+                    <a class="nav-link" href="{{ route('home') }}#iconic">Iconic Cars</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('compare.index') ? 'active' : '' }}" href="{{ route('compare.index') }}">Compare</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/#membership') }}">Membership</a>
+                    <a class="nav-link" href="{{ route('home') }}#membership">Membership</a>
                 </li>
             </ul>
 
-            <div class="d-flex gap-2">
+            <div class="automobilli-nav-tools">
+                <button type="button" class="automobilli-nav-icon automobilli-search-trigger" aria-label="Search Automobilli" title="Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+
+                <a href="{{ route('collection.index', ['tab' => 'favorites']) }}"
+                    class="automobilli-nav-icon {{ request()->routeIs('collection.index') && request('tab', 'favorites') === 'favorites' ? 'is-active' : '' }}"
+                    aria-label="Favorites" title="Favorites">
+                    <i class="fa-regular fa-heart"></i>
+                </a>
+
+                <a href="{{ route('collection.index', ['tab' => 'wishlist']) }}"
+                    class="automobilli-nav-icon {{ request()->routeIs('collection.index') && request('tab') === 'wishlist' ? 'is-active' : '' }}"
+                    aria-label="Wishlist" title="Wishlist">
+                    <i class="fa-regular fa-bookmark"></i>
+                </a>
+
                 <a href="#" class="btn btn-outline-custom btn-sm px-3">Sign In</a>
                 <a href="#" class="btn btn-racing btn-sm px-3">Register</a>
             </div>
         </div>
     </div>
 </nav>
+
+<div class="automobilli-search-overlay" id="automobilliSearch" aria-hidden="true">
+    <div class="automobilli-search-backdrop" data-search-close></div>
+    <div class="automobilli-search-dialog" role="dialog" aria-modal="true" aria-label="Search Automobilli">
+        <div class="automobilli-search-header">
+            <div class="automobilli-search-input-wrap">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input id="automobilliSearchInput" type="search"
+                    placeholder="Search cars, brands, models..."
+                    autocomplete="off"
+                    spellcheck="false">
+                <kbd>ESC</kbd>
+            </div>
+            <button type="button" class="automobilli-search-close" data-search-close aria-label="Close search">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="automobilli-search-results" id="automobilliSearchResults">
+            <div class="automobilli-search-empty is-visible">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <p>Search for a brand or vehicle model.</p>
+            </div>
+        </div>
+    </div>
+</div>
