@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 @section('title', $vehicle->name . ' - AutomobilliMachine')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/car.css') }}?v=20260928-17">
+    <link rel="stylesheet" href="{{ asset('css/car.css') }}?v=20260929-1">
 @endpush
 
 @section('content')
@@ -95,6 +95,8 @@ use Illuminate\Support\Str;
                     ],
                 ])->filter()->values();
             @endphp
+
+            <script>window.AUTOMOBILLI_INSIGHTS = @json($quickInsights);</script>
 
             <header class="car-detail-header">
                 <div class="container car-detail-header-inner">
@@ -232,7 +234,61 @@ use Illuminate\Support\Str;
                         @if ($powertrainSection)<a href="#powertrain">Powertrain</a>@endif
                         <a href="#performance">Performance</a>
                         <a href="#technical">Specifications</a>
-                        @if ($interiorSection)
+                        @if ($interiorSection)<a href="#interior">Interior</a>@endif
+                        @if ($chassisSection || $handlingSection)<a href="#chassis">Chassis</a>@endif
+                        <a href="#insights">Insights</a>
+                        <a href="#production">Production</a>
+                        @if (!empty($vehicle->variants))<a href="#variants">Variants</a>@endif
+                        <a href="#gallery">Gallery</a>
+                    </div>
+                </div>
+            </nav>
+
+            @if ($quickInsights->isNotEmpty())
+                <section class="car-showcase-section car-showcase-quick-grid" id="insights">
+                    <div class="container">
+                        <div class="car-showcase-heading-row">
+                            <div>
+                                <span class="car-detail-section-label">QUICK INSIGHTS</span>
+                                <h2>Explore the details</h2>
+                                <p>Open a section to explore its visual story, key information, and specifications.</p>
+                            </div>
+                        </div>
+
+                        <div class="car-showcase-quick-cards">
+                            @foreach ($quickInsights as $insightIndex => $insight)
+                                <button
+                                    type="button"
+                                    class="car-showcase-quick-card js-detail-insight-trigger"
+                                    data-insight-index="{{ $insightIndex }}"
+                                    aria-label="Open {{ strtolower($insight['label']) }} details"
+                                >
+                                    <div class="car-showcase-quick-media">
+                                        @if (!empty($insight['image']))
+                                            <img src="{{ str_starts_with($insight['image'], 'http') ? $insight['image'] : asset($insight['image']) }}"
+                                                alt="{{ $vehicle->name }} {{ strtolower($insight['label']) }}"
+                                                loading="lazy">
+                                        @endif
+                                        <span class="car-quick-icon">
+                                            <i class="fa-solid {{ $insight['icon'] }}"></i>
+                                        </span>
+                                    </div>
+                                    <div class="car-showcase-quick-body">
+                                        <span class="car-detail-section-label">{{ $insight['label'] }}</span>
+                                        <h3>{{ $insight['title'] }}</h3>
+                                        <p>{{ Str::limit(str_replace("\n", ' ', $insight['description']), 120) }}</p>
+                                        <span class="car-showcase-quick-open">
+                                            Explore <i class="fa-solid fa-arrow-up-right"></i>
+                                        </span>
+                                    </div>
+                                </button>
+                            @endforeach
+                        </div>
+                    </div>
+                </section>
+            @endif
+
+            @if ($interiorSection)
                 <section class="car-showcase-section car-showcase-mini-section car-showcase-insight-detail" id="interior">
                     <div class="container">
                         <div class="car-showcase-insight-header">
@@ -495,10 +551,31 @@ use Illuminate\Support\Str;
                     <div class="car-lightbox-thumbs" id="carLightboxThumbs"></div>
                 </div>
             </div>
+            <div class="car-detail-insight-modal" id="carInsightModal" aria-hidden="true">
+                <div class="car-detail-insight-modal-backdrop" data-insight-close></div>
+                <div class="car-detail-insight-dialog" role="dialog" aria-modal="true" aria-label="Vehicle detail insight">
+                    <button type="button" class="car-detail-insight-close" data-insight-close aria-label="Close detail"><i class="fa-solid fa-xmark"></i></button>
+                    <button type="button" class="car-detail-insight-prev" data-insight-prev aria-label="Previous detail"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button type="button" class="car-detail-insight-next" data-insight-next aria-label="Next detail"><i class="fa-solid fa-chevron-right"></i></button>
+                    <div class="car-detail-insight-layout-modal">
+                        <div class="car-detail-insight-visual"><img id="carInsightImage" src="" alt=""></div>
+                        <div class="car-detail-insight-content">
+                            <span class="car-detail-section-label" id="carInsightLabel">DETAIL</span>
+                            <h2 id="carInsightTitle"></h2>
+                            <p id="carInsightDescription"></p>
+                            <div class="car-detail-insight-specs" id="carInsightSpecs"></div>
+                            <div class="car-detail-insight-nav">
+                                <span>Insight <strong id="carInsightCounter">1 / 4</strong></span>
+                                <span>Use arrows to explore</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('js/car.js') }}?v=20260928-1"></script>
+    <script src="{{ asset('js/car.js') }}?v=20260929-1"></script>
 @endpush
