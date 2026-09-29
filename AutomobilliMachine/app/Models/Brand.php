@@ -30,6 +30,8 @@ class Brand extends Model
         'headquarters',
         'headquarters_address',
         'is_active',
+        'is_featured',
+        'sort_order',
     ];
 
     protected function casts(): array
@@ -39,6 +41,8 @@ class Brand extends Model
             'history_timeline' => 'array',
             'history_sections' => 'array',
             'is_active' => 'boolean',
+            'is_featured' => 'boolean',
+            'sort_order' => 'integer',
         ];
     }
 
