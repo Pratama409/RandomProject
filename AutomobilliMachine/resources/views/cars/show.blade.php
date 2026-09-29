@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 @section('title', $vehicle->name . ' - AutomobilliMachine')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/car.css') }}?v=20260929-2">
+    <link rel="stylesheet" href="{{ asset('css/car.css') }}?v=20260929-3">
 @endpush
 
 @section('content')
@@ -242,7 +242,150 @@ use Illuminate\Support\Str;
                         <a href="#gallery">Gallery</a>
                     </div>
                 </div>
-            </nav>
+      
+
+            <section class="car-showcase-section car-showcase-overview" id="overview">
+                <div class="container car-showcase-split">
+                    <div class="car-showcase-text">
+                        <span class="car-detail-section-label">OVERVIEW</span>
+                        <h2>{{ $overviewSection['title'] ?? ('The story of the ' . $vehicle->name) }}</h2>
+
+                        @if (!empty($overviewSection['paragraphs']))
+                            @foreach ($overviewSection['paragraphs'] as $paragraph)
+                                <p>{{ $paragraph }}</p>
+                            @endforeach
+                        @else
+                            <p>{{ $vehicle->description ?: ($vehicle->short_description ?: 'No extended description has been added yet.') }}</p>
+                        @endif
+
+                        @php
+                            $overviewLayout = collect($designSection['specs'] ?? [])->firstWhere('label', 'Layout')['value'] ?? null;
+                        @endphp
+
+                        <div class="car-showcase-overview-facts" aria-label="Key facts">
+                            <div>
+                                <span>Model Family</span>
+                                <strong>{{ $vehicle->model_family ?: $vehicle->name }}</strong>
+                            </div>
+                            <div>
+                                <span>Production</span>
+                                <strong>{{ $vehicle->production_year_start ?: '—' }}{{ $vehicle->production_year_end ? ' – ' . $vehicle->production_year_end : ($vehicle->production_year_start ? ' – Present' : '') }}</strong>
+                            </div>
+                            <div>
+                                <span>Powertrain</span>
+                                <strong>{{ $vehicle->engine ?: '—' }}</strong>
+                            </div>
+                            <div>
+                                <span>Layout</span>
+                                <strong>{{ $overviewLayout ?: ($vehicle->drivetrain ?: '—') }}</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="car-showcase-visual">
+                        @if ($gallery->count() > 1)
+                            <img src="{{ str_starts_with($gallery->get(1), 'http') ? $gallery->get(1) : asset($gallery->get(1)) }}"
+                                alt="{{ $vehicle->name }} rear view">
+                        @else
+                            <img src="{{ str_starts_with($vehicle->image_path, 'http') ? $vehicle->image_path : asset($vehicle->image_path) }}"
+                                alt="{{ $vehicle->name }}">
+                        @endif
+                    </div>
+                </div>
+            </section>
+
+            @if ($designSection)
+                <section class="car-showcase-section car-showcase-feature" id="design">
+                    <div class="container car-showcase-feature-grid">
+                        <div class="car-showcase-feature-copy">
+                            <span class="car-detail-section-label">{{ $designSection['label'] }}</span>
+                            <h2>Dynamics in motion</h2>
+                            @foreach ($designSection['paragraphs'] ?? [] as $paragraph)
+                                <p>{{ $paragraph }}</p>
+                            @endforeach
+                        </div>
+
+                        <div class="car-showcase-design-collage">
+                            <div class="car-showcase-feature-media main">
+                                <img src="{{ str_starts_with($gallery->get(0), 'http') ? $gallery->get(0) : asset($gallery->get(0)) }}"
+                                    alt="{{ $vehicle->name }} front three-quarter">
+                            </div>
+
+                            @foreach ($gallery->slice(2, 2) as $image)
+                                <div class="car-showcase-feature-media mini">
+                                    <img src="{{ str_starts_with($image, 'http') ? $image : asset($image) }}"
+                                        alt="{{ $vehicle->name }} detail">
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </section>
+            @endif
+
+            @if ($powertrainSection)
+                <section class="car-showcase-section car-showcase-dark-feature" id="powertrain">
+                    <div class="container car-showcase-powertrain-grid">
+                        <div class="car-showcase-feature-copy">
+                            <span class="car-detail-section-label">{{ $powertrainSection['label'] }}</span>
+                            <h2>V8 meets electrification</h2>
+                            @foreach ($powertrainSection['paragraphs'] ?? [] as $paragraph)
+                                <p>{{ $paragraph }}</p>
+                            @endforeach
+                        </div>
+
+                        <div class="car-showcase-powertrain-visual">
+                            <div class="car-powertrain-art">
+                                <span>V8</span>
+                                <strong>+ 3 ELECTRIC MOTORS</strong>
+                            </div>
+
+                            <div class="car-showcase-spec-panel">
+                                @foreach ($powertrainSection['specs'] ?? [] as $spec)
+                                    <div>
+                                        <span>{{ $spec['label'] ?? 'Specification' }}</span>
+                                        <strong>{{ $spec['value'] ?? '—' }}</strong>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            @endif
+
+            <section class="car-showcase-section car-showcase-performance-section" id="performance">
+                <div class="container">
+                    <div class="car-showcase-heading-row">
+                        <div>
+                            <span class="car-detail-section-label">PERFORMANCE</span>
+                            <h2>Extraordinary numbers</h2>
+                            <p>{{ $performanceSection['paragraphs'][0] ?? 'Key performance specifications recorded for this model.' }}</p>
+                        </div>
+
+                        <div class="car-showcase-performance-state {{ $vehicle->stats_tested ? 'is-tested' : '' }}">
+                            <span class="car-status-dot"></span>
+                            <strong>{{ $vehicle->stats_tested ? 'Tested' : 'Not Tested' }}</strong>
+                        </div>
+                    </div>
+
+                    <div class="car-showcase-metrics">
+                        <article><span>0–100 km/h</span><strong>{{ $vehicle->acceleration_0_100 !== null ? number_format((float) $vehicle->acceleration_0_100, 2) : '—' }}</strong><small>seconds</small></article>
+                        <article><span>0–200 km/h</span><strong>{{ $zeroTo200['value'] ?? '—' }}</strong><small>factory figure</small></article>
+                        <article><span>Top Speed</span><strong>{{ $vehicle->top_speed_kmh !== null ? number_format($vehicle->top_speed_kmh) : '—' }}</strong><small>km/h</small></article>
+                        <article><span>Fiorano Lap</span><strong>{{ $fioranoLap['value'] ?? '—' }}</strong><small>recorded figure</small></article>
+                    </div>
+
+                    <div class="car-showcase-inline-specs">
+                        <div><span>Drivetrain</span><strong>{{ $vehicle->drivetrain ?: '—' }}</strong></div>
+                        <div><span>Transmission</span><strong>{{ $vehicle->transmission ?: '—' }}</strong></div>
+                        <div><span>Weight (Dry)</span><strong>{{ collect($chassisSection['specs'] ?? [])->firstWhere('label', 'Dry Weight')['value'] ?? '—' }}</strong></div>
+                        <div><span>Dimensions</span><strong>{{ collect($detailSections->firstWhere('label','DIMENSIONS')['specs'] ?? [])->map(fn($s) => $s['value'])->implode(' × ') ?: '—' }}</strong></div>
+                        <div><span>Fuel Type</span><strong>{{ $vehicle->fuel_type ?: '—' }}</strong></div>
+                        <div><span>Production</span><strong>{{ $vehicle->production_year_start ?: '—' }}–{{ $vehicle->production_year_end ?: 'Present' }}</strong></div>
+                    </div>
+                </div>
+            </section>
+
+      </nav>
 
             @if ($quickInsights->isNotEmpty())
                 <section class="car-showcase-section car-showcase-quick-grid" id="insights">
@@ -577,5 +720,5 @@ use Illuminate\Support\Str;
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('js/car.js') }}?v=20260929-2"></script>
+    <script src="{{ asset('js/car.js') }}?v=20260929-3"></script>
 @endpush
