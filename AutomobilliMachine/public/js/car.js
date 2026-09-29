@@ -277,3 +277,87 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.key === 'ArrowRight') move(1);
     });
 });
+
+
+/* Sticky vehicle navigation */
+document.addEventListener('DOMContentLoaded', () => {
+    const nav = document.querySelector('.car-showcase-nav');
+    if (!nav) return;
+
+    const links = [...nav.querySelectorAll('.car-showcase-nav-scroll a[href^="#"]')];
+    const sections = links
+        .map((link) => {
+            const id = link.getAttribute('href')?.slice(1);
+            return id ? document.getElementById(id) : null;
+        })
+        .filter(Boolean);
+
+    if (!links.length || !sections.length) return;
+
+    const setActive = (sectionId) => {
+        links.forEach((link) => {
+            const active = link.getAttribute('href') === '#' + sectionId;
+            link.classList.toggle('is-active', active);
+
+            if (active && window.innerWidth > 700) {
+                link.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest',
+                    inline: 'center',
+                });
+            }
+        });
+    };
+
+    const getNavOffset = () => nav.getBoundingClientRect().height + 10;
+
+    links.forEach((link) => {
+        link.addEventListener('click', (event) => {
+            const id = link.getAttribute('href')?.slice(1);
+            const target = id ? document.getElementById(id) : null;
+            if (!target) return;
+
+            event.preventDefault();
+
+            const targetTop = target.getBoundingClientRect().top + window.scrollY - getNavOffset();
+            window.scrollTo({
+                top: Math.max(0, targetTop),
+                behavior: 'smooth',
+            });
+
+            history.replaceState(null, '', '#' + id);
+            setActive(id);
+        });
+    });
+
+    const rootMarginTop = '-' + Math.max(62, getNavOffset()) + 'px';
+    const observer = new IntersectionObserver((entries) => {
+        const visible = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+        if (visible[0]?.target?.id) {
+            setActive(visible[0].target.id);
+        }
+    }, {
+        root: null,
+        rootMargin: rootMarginTop + ' 0px -62% 0px',
+        threshold: [0.01, 0.12, 0.3, 0.55, 0.8],
+    });
+
+    sections.forEach((section) => observer.observe(section));
+
+    const initialHash = window.location.hash.slice(1);
+    if (initialHash && document.getElementById(initialHash)) {
+        requestAnimationFrame(() => {
+            setTimeout(() => {
+                const target = document.getElementById(initialHash);
+                const top = target.getBoundingClientRect().top + window.scrollY - getNavOffset();
+                window.scrollTo({ top: Math.max(0, top), behavior: 'auto' });
+                setActive(initialHash);
+            }, 0);
+        });
+    } else {
+        setActive(sections[0].id);
+    }
+});
