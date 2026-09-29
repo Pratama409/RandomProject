@@ -33,14 +33,16 @@
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
 
-                <a href="{{ route('collection.index', ['tab' => 'favorites']) }}"
+                <a href="{{ route('collection.index', ['tab' => 'favorites', 'return_to' => url()->full()]) }}"
                     class="automobilli-nav-icon {{ request()->routeIs('collection.index') && request('tab', 'favorites') === 'favorites' ? 'is-active' : '' }}"
+                    data-collection-link
                     aria-label="Favorites" title="Favorites">
                     <i class="fa-regular fa-heart"></i>
                 </a>
 
-                <a href="{{ route('collection.index', ['tab' => 'wishlist']) }}"
+                <a href="{{ route('collection.index', ['tab' => 'wishlist', 'return_to' => url()->full()]) }}"
                     class="automobilli-nav-icon {{ request()->routeIs('collection.index') && request('tab') === 'wishlist' ? 'is-active' : '' }}"
+                    data-collection-link
                     aria-label="Wishlist" title="Wishlist">
                     <i class="fa-regular fa-bookmark"></i>
                 </a>
