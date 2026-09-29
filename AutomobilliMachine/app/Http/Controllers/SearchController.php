@@ -37,6 +37,7 @@ class SearchController extends Controller
         $cars = Car::query()
             ->with('brand:id,name,slug')
             ->where('is_active', true)
+            ->whereHas('brand', fn ($query) => $query->where('is_active', true))
             ->where(function ($query) use ($like) {
                 $query
                     ->where('name', 'like', $like)
