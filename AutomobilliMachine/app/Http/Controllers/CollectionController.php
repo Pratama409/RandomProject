@@ -13,6 +13,9 @@ class CollectionController extends Controller
             ? 'wishlist'
             : 'favorites';
 
+        $returnTo = (string) $request->query('return_to', '');
+        $returnTo = $this->safeReturnUrl($request, $returnTo);
+
         $favorites = collect();
         $wishlist = collect();
 
@@ -35,7 +38,32 @@ class CollectionController extends Controller
         return view('collection.index', compact(
             'tab',
             'favorites',
-            'wishlist'
+            'wishlist',
+            'returnTo'
         ));
     }
+
+    private function safeReturnUrl(Request $request, string $returnTo): string
+    {
+        if ($returnTo === '') {
+            return route('home');
+        }
+
+        if (str_starts_with($returnTo, '/')) {
+            return url($returnTo);
+        }
+
+        $parsed = parse_url($returnTo);
+        $host = $parsed['host'] ?? null;
+        $scheme = $parsed['scheme'] ?? null;
+
+        if ($host === $request->getHost() && ($scheme === null || $scheme === $request->getScheme())) {
+            return $returnTo;
+        }
+
+        return route('home');
+
+    }
+}
+
 }
