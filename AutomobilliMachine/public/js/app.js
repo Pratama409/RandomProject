@@ -125,3 +125,46 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+
+    /* ---------------------------------
+       Collection remove
+       --------------------------------- */
+    document.querySelectorAll('.js-collection-remove').forEach((button) => {
+        button.addEventListener('click', async () => {
+            const carId = button.dataset.carId;
+            const type = button.dataset.type;
+            const card = button.closest('[data-collection-card]');
+
+            if (!carId || !card || !['favorites', 'wishlist'].includes(type)) return;
+
+            button.disabled = true;
+
+            try {
+                const response = await fetch('/cars/' + carId + '/' + (type === 'favorites' ? 'favorite' : 'wishlist'), {
+                    method: 'POST',
+                    headers: {
+                        Accept: 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || '',
+                        'X-Requested-With': 'XMLHttpRequest',
+                    },
+                });
+
+                const payload = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(payload.message || 'Unable to remove saved vehicle.');
+                }
+
+                card.remove();
+
+                const remaining = document.querySelectorAll('[data-collection-card]').length;
+                if (!remaining) {
+                    window.location.reload();
+                }
+            } catch (error) {
+                console.error(error);
+                button.disabled = false;
+            }
+        });
+    });
