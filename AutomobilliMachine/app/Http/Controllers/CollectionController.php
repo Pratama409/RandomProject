@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class CollectionController extends Controller
@@ -21,15 +22,17 @@ class CollectionController extends Controller
         $favorites = collect();
         $wishlist = collect();
 
-        if (auth()->check()) {
-            $favorites = auth()->user()
+        $user = Auth::user();
+
+        if ($user !== null) {
+            $favorites = $user
                 ->favoriteCars()
                 ->with('brand:id,name,slug')
                 ->where('cars.is_active', true)
                 ->orderBy('favorites.created_at', 'desc')
                 ->get();
 
-            $wishlist = auth()->user()
+            $wishlist = $user
                 ->wishlistCars()
                 ->with('brand:id,name,slug')
                 ->where('cars.is_active', true)
