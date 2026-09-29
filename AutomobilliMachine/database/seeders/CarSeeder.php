@@ -162,6 +162,7 @@ class CarSeeder extends Seeder
                     [
                         'label' => 'INTERIOR',
                         'title' => 'Driver-Focused Cockpit',
+                        'detail_image' => 'https://www.goodwood.com/globalassets/.road--racing/reviews/ferrari/sf90-stradale-july-2020/ferrari-sf90-stradale-review-interior-goodwood-24072020.jpg?rxy=0.5%2C0.5',
                         'paragraphs' => [
                             'The cockpit uses a curved digital display behind the steering wheel, a reconfigurable head-up display, and a steering wheel with capacitive touch controls.'
                         ],
@@ -186,6 +187,7 @@ class CarSeeder extends Seeder
                     [
                         'label' => 'CHASSIS',
                         'title' => 'Aluminium & Carbon-Fibre Structure',
+                        'detail_image' => 'https://realluxury.it/images/BLOG/Ferrari-SF90-Motor-chassis.jpg',
                         'paragraphs' => [
                             'The chassis combines aluminium and carbon fibre to improve structural rigidity while providing a suitable platform for the hybrid system.'
                         ],
