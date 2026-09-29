@@ -56,7 +56,7 @@ class CollectionController extends Controller
         $scheme = $parsed['scheme'] ?? null;
 
         if (
-            str_starts_with($returnTo, '/') ||
+            (str_starts_with($returnTo, '/') && !str_starts_with($returnTo, '//')) ||
             ($host === $request->getHost() &&
                 ($scheme === null || $scheme === $request->getScheme()))
         ) {
