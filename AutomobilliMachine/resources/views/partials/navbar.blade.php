@@ -47,8 +47,16 @@
                     <i class="fa-regular fa-bookmark"></i>
                 </a>
 
-                <a href="#" class="btn btn-outline-custom btn-sm px-3">Sign In</a>
-                <a href="#" class="btn btn-racing btn-sm px-3">Register</a>
+                @auth
+                    <a href="{{ route('profile.show') }}"
+                        class="automobilli-profile-link {{ request()->routeIs('profile.show') ? 'is-active' : '' }}"
+                        aria-label="Profile" title="Profile">
+                        <span>{{ strtoupper(substr(auth()->user()->name, 0, 1)) }}</span>
+                    </a>
+                @else
+                    <a href="{{ route('login') }}" class="btn btn-outline-custom btn-sm px-3">Sign In</a>
+                    <a href="{{ route('register') }}" class="btn btn-racing btn-sm px-3">Register</a>
+                @endauth
             </div>
         </div>
     </div>
