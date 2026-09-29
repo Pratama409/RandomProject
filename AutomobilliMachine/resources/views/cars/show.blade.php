@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 @section('title', $vehicle->name . ' - AutomobilliMachine')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/car.css') }}?v=20260928-15">
+    <link rel="stylesheet" href="{{ asset('css/car.css') }}?v=20260928-16">
 @endpush
 
 @section('content')
@@ -83,8 +83,10 @@ use Illuminate\Support\Str;
                 <div class="car-showcase-hero-media">
                     @if ($vehicle->image_path)
                         <img id="heroCarImage"
+                            class="js-lightbox-trigger"
                             src="{{ str_starts_with($vehicle->image_path, 'http') ? $vehicle->image_path : asset($vehicle->image_path) }}"
-                            alt="{{ $vehicle->name }}">
+                            alt="{{ $vehicle->name }}"
+                            data-lightbox-caption="{{ $vehicle->name }}">
                     @endif
                 </div>
                 <div class="car-showcase-hero-overlay"></div>
@@ -224,8 +226,10 @@ use Illuminate\Support\Str;
 
                     <div class="car-showcase-visual">
                         @if ($gallery->count() > 1)
-                            <img src="{{ str_starts_with($gallery->get(1), 'http') ? $gallery->get(1) : asset($gallery->get(1)) }}"
-                                alt="{{ $vehicle->name }} rear view">
+                            <img class="js-lightbox-trigger"
+                                src="{{ str_starts_with($gallery->get(1), 'http') ? $gallery->get(1) : asset($gallery->get(1)) }}"
+                                alt="{{ $vehicle->name }} rear view"
+                                data-lightbox-caption="{{ $vehicle->name }} — overview">
                         @else
                             <img src="{{ str_starts_with($vehicle->image_path, 'http') ? $vehicle->image_path : asset($vehicle->image_path) }}"
                                 alt="{{ $vehicle->name }}">
@@ -247,8 +251,10 @@ use Illuminate\Support\Str;
 
                         <div class="car-showcase-design-collage">
                             <div class="car-showcase-feature-media main">
-                                <img src="{{ str_starts_with($gallery->get(0), 'http') ? $gallery->get(0) : asset($gallery->get(0)) }}"
-                                    alt="{{ $vehicle->name }} front three-quarter">
+                                <img class="js-lightbox-trigger"
+                                    src="{{ str_starts_with($gallery->get(0), 'http') ? $gallery->get(0) : asset($gallery->get(0)) }}"
+                                    alt="{{ $vehicle->name }} front three-quarter"
+                                    data-lightbox-caption="{{ $vehicle->name }} — design">
                             </div>
 
                             @foreach ($gallery->slice(2, 2) as $image)
@@ -275,8 +281,23 @@ use Illuminate\Support\Str;
 
                         <div class="car-showcase-powertrain-visual">
                             <div class="car-powertrain-art">
-                                <span>V8</span>
-                                <strong>+ 3 ELECTRIC MOTORS</strong>
+                                @if (!empty($powertrainSection['image']))
+                                    <button
+                                        type="button"
+                                        class="car-powertrain-image js-lightbox-trigger"
+                                        data-lightbox-src="{{ $powertrainSection['image'] }}"
+                                        data-lightbox-caption="{{ $vehicle->name }} — powertrain"
+                                        aria-label="Enlarge {{ $vehicle->name }} powertrain image"
+                                    >
+                                        <img src="{{ $powertrainSection['image'] }}"
+                                            alt="{{ $vehicle->name }} powertrain">
+                                    </button>
+                                @else
+                                    <div class="car-powertrain-fallback">
+                                        <span>V8</span>
+                                        <strong>+ 3 ELECTRIC MOTORS</strong>
+                                    </div>
+                                @endif
                             </div>
 
                             <div class="car-showcase-spec-panel">
@@ -490,10 +511,12 @@ use Illuminate\Support\Str;
 
                     <div class="car-gallery-grid">
                         @foreach ($gallery->take(7) as $index => $image)
-                            <button type="button" class="car-gallery-card {{ $index === 0 ? 'is-large' : '' }}"
-                                data-gallery-jump="{{ str_starts_with($image, 'http') ? $image : asset($image) }}">
+                            <button type="button" class="car-gallery-card js-lightbox-trigger {{ $index === 0 ? 'is-large' : '' }}"
+                                data-lightbox-src="{{ str_starts_with($image, 'http') ? $image : asset($image) }}"
+                                data-lightbox-caption="{{ $vehicle->name }} — gallery {{ $index + 1 }}">
                                 <img src="{{ str_starts_with($image, 'http') ? $image : asset($image) }}"
-                                    alt="{{ $vehicle->name }} gallery image {{ $index + 1 }}" loading="lazy">
+                                    alt="{{ $vehicle->name }} gallery image {{ $index + 1 }}"
+                                    loading="lazy">
                             </button>
                         @endforeach
 
@@ -570,6 +593,26 @@ use Illuminate\Support\Str;
                     </div>
                 </div>
             </section>
+            <div class="car-lightbox" id="carLightbox" aria-hidden="true">
+                <div class="car-lightbox-backdrop" data-lightbox-close></div>
+                <div class="car-lightbox-dialog" role="dialog" aria-modal="true" aria-label="Vehicle image viewer">
+                    <button type="button" class="car-lightbox-close" data-lightbox-close aria-label="Close image viewer">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    <button type="button" class="car-lightbox-prev" data-lightbox-prev aria-label="Previous image">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <figure class="car-lightbox-figure">
+                        <img id="carLightboxImage" src="" alt="">
+                        <figcaption id="carLightboxCaption"></figcaption>
+                    </figure>
+                    <button type="button" class="car-lightbox-next" data-lightbox-next aria-label="Next image">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                    <div class="car-lightbox-counter" id="carLightboxCounter">1 / 1</div>
+                    <div class="car-lightbox-thumbs" id="carLightboxThumbs"></div>
+                </div>
+            </div>
         </main>
     </div>
 @endsection
