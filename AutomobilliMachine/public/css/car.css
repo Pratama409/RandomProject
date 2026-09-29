@@ -3540,3 +3540,107 @@
 .car-showcase-feature-copy {
     padding-bottom: 0;
 }
+
+
+/* =========================================================
+   OVERVIEW — KEY FACTS STRIP
+   ========================================================= */
+
+.car-showcase-overview .car-showcase-text p {
+    text-align: left;
+}
+
+.car-showcase-overview-facts {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: 30px;
+    border-top: 1px solid #2a3038;
+    border-bottom: 1px solid #2a3038;
+    background: transparent;
+}
+
+.car-showcase-overview-facts div {
+    min-width: 0;
+    padding: 15px 16px 14px 0;
+    border-right: 1px solid #2a3038;
+}
+
+.car-showcase-overview-facts div + div {
+    padding-left: 16px;
+}
+
+.car-showcase-overview-facts div:last-child {
+    padding-right: 0;
+    border-right: 0;
+}
+
+.car-showcase-overview-facts span {
+    display: block;
+    margin-bottom: 7px;
+    color: #7f8a97;
+    font-size: .58rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.car-showcase-overview-facts strong {
+    display: block;
+    color: #edf1f5;
+    font-size: .76rem;
+    font-weight: 800;
+    line-height: 1.35;
+}
+
+.car-showcase-overview .car-showcase-visual {
+    min-height: 390px;
+}
+
+.car-showcase-overview .car-showcase-visual img {
+    min-height: 390px;
+}
+
+@media (max-width: 991px) {
+    .car-showcase-overview-facts {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .car-showcase-overview-facts div:nth-child(2) {
+        border-right: 0;
+    }
+
+    .car-showcase-overview-facts div:nth-child(-n+2) {
+        border-bottom: 1px solid #2a3038;
+    }
+
+    .car-showcase-overview-facts div:nth-child(3) {
+        padding-left: 0;
+    }
+
+    .car-showcase-overview-facts div:nth-child(4) {
+        padding-left: 16px;
+    }
+}
+
+@media (max-width: 575px) {
+    .car-showcase-overview-facts {
+        grid-template-columns: 1fr 1fr;
+        margin-top: 24px;
+    }
+
+    .car-showcase-overview-facts div {
+        padding: 12px 10px 12px 0;
+    }
+
+    .car-showcase-overview-facts div + div {
+        padding-left: 10px;
+    }
+
+    .car-showcase-overview-facts strong {
+        font-size: .68rem;
+    }
+
+    .car-showcase-overview-facts span {
+        font-size: .53rem;
+    }
+}
