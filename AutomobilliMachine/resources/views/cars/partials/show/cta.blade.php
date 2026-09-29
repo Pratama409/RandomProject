@@ -1,0 +1,1 @@
+<section class="car-detail-cta"><div class="container"><div><span class="car-detail-label">EXPERIENCE {{ strtoupper($brand->name) }}</span><h2>Discover more models from {{ $brand->name }}</h2></div><a href="{{ route('brands.show', $brand) }}">View {{ $brand->name }} lineup <i class="fa-solid fa-arrow-right"></i></a></div></section>
