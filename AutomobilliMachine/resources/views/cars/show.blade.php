@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 @section('title', $vehicle->name . ' - AutomobilliMachine')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/car.css') }}?v=20260928-14">
+    <link rel="stylesheet" href="{{ asset('css/car.css') }}?v=20260928-15">
 @endpush
 
 @section('content')
@@ -198,10 +198,14 @@ use Illuminate\Support\Str;
                             <p>{{ $vehicle->description ?: ($vehicle->short_description ?: 'No extended description has been added yet.') }}</p>
                         @endif
 
-                        <div class="car-showcase-overview-facts">
+                        @php
+                            $overviewLayout = collect($designSection['specs'] ?? [])->firstWhere('label', 'Layout')['value'] ?? null;
+                        @endphp
+
+                        <div class="car-showcase-overview-facts" aria-label="Key facts">
                             <div>
-                                <span>Model Type</span>
-                                <strong>{{ $vehicle->vehicle_type ?: '—' }}</strong>
+                                <span>Model Family</span>
+                                <strong>{{ $vehicle->model_family ?: $vehicle->name }}</strong>
                             </div>
                             <div>
                                 <span>Production</span>
@@ -212,8 +216,8 @@ use Illuminate\Support\Str;
                                 <strong>{{ $vehicle->engine ?: '—' }}</strong>
                             </div>
                             <div>
-                                <span>Drive</span>
-                                <strong>{{ $vehicle->drivetrain ?: '—' }}</strong>
+                                <span>Layout</span>
+                                <strong>{{ $overviewLayout ?: ($vehicle->drivetrain ?: '—') }}</strong>
                             </div>
                         </div>
                     </div>
@@ -226,10 +230,6 @@ use Illuminate\Support\Str;
                             <img src="{{ str_starts_with($vehicle->image_path, 'http') ? $vehicle->image_path : asset($vehicle->image_path) }}"
                                 alt="{{ $vehicle->name }}">
                         @endif
-                        <div class="car-showcase-visual-overlay">
-                            <span>OVERVIEW</span>
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </div>
                     </div>
                 </div>
             </section>
