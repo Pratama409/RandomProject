@@ -2,12 +2,16 @@
 
 @section('title', 'Home - AutomobilliMachine')
 
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/home-polish.css') }}?v=20261014-2">
+@endpush
+
 @section('content')
 
     <!-- ==================================================================== -->
     <!-- 1. HERO SECTION: FULLSCREEN ANGLED GALLERY                           -->
     <!-- ==================================================================== -->
-    <main class="hero-wrapper" id="top">
+    <section class="hero-wrapper" id="top">
         <aside class="hero-visual-fullscreen">
             <div class="hero-backdrop-overlay"></div>
 
@@ -52,7 +56,7 @@
 
             <div class="scroll-indicator" title="Scroll down"></div>
         </section>
-    </main>
+    </section>
 
     <!-- NAVBAR STICKY DI BAWAH HERO -->
     @include('partials.navbar')
@@ -404,10 +408,8 @@
         <div class="container py-4">
             <div class="d-flex justify-content-between align-items-end mb-4">
                 <div>
-                    <div>
                     <h6 class="text-danger fw-bold text-uppercase section-kicker">Hall of Fame</h6>
                     <h2 class="fw-bold brand-font mb-0 text-white">ICONIC PICKS</h2>
-                </div>
                 </div>
                 <span class="text-muted small d-none d-md-block">Pure Performance & Timeless Engineering</span>
             </div>
