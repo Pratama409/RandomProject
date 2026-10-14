@@ -7,32 +7,28 @@
     <!-- ==================================================================== -->
     <!-- 1. HERO SECTION: FULLSCREEN ANGLED GALLERY                           -->
     <!-- ==================================================================== -->
-    <main class="hero-wrapper" id="top">
+    <section class="hero-wrapper" id="top">
         <aside class="hero-visual-fullscreen">
             <div class="hero-backdrop-overlay"></div>
 
             <div class="angled-gallery">
-                <div class="gallery-col col-offset-1">
-                    <div class="showcase-card"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=700&auto=format&fit=crop&q=80" alt="Porsche 911 GT3"></div>
-                    <div class="showcase-card"><img src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?w=700&auto=format&fit=crop&q=80" alt="Ferrari 812"></div>
-                    <div class="showcase-card"><img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=700&auto=format&fit=crop&q=80" alt="BMW M4"></div>
-                    <div class="showcase-card"><img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=700&auto=format&fit=crop&q=80" alt="Porsche Taycan"></div>
-                </div>
-
-                <div class="gallery-col col-offset-2">
-                    <div class="showcase-card"><img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=700&auto=format&fit=crop&q=80" alt="Lamborghini Aventador"></div>
-                    <div class="showcase-card"><img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=700&auto=format&fit=crop&q=80" alt="BMW M5 CS"></div>
-                    <div class="showcase-card"><img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?w=700&auto=format&fit=crop&q=80" alt="Ferrari Roma"></div>
-                    <div class="showcase-card"><img src="https://images.unsplash.com/photo-1611821064430-0d40291d0f0b?w=700&auto=format&fit=crop&q=80" alt="Porsche Cayman"></div>
-                </div>
-
-                <div class="gallery-col col-offset-3">
-                    <div class="showcase-card"><img src="https://images.unsplash.com/photo-1607853202273-797f1c22a38e?w=700&auto=format&fit=crop&q=80" alt="BMW M2"></div>
-                    <div class="showcase-card"><img src="https://images.unsplash.com/photo-1592198084033-aade902d1aae?w=700&auto=format&fit=crop&q=80" alt="Ferrari SF90"></div>
-                    <div class="showcase-card"><img src="https://images.unsplash.com/photo-1541348263662-e0c8de4259ba?w=700&auto=format&fit=crop&q=80" alt="Porsche Panamera"></div>
-                    <div class="showcase-card"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=700&auto=format&fit=crop&q=80" alt="Porsche 911"></div>
-                </div>
-            </div>
+                @for ($column = 0; $column < 4; $column++)
+                    <div class="gallery-col col-offset-{{ $column + 1 }}">
+                        @foreach ($heroCars as $index => $car)
+                            @if ($index % 4 === $column)
+                                @php
+                                    $imageUrl = str_starts_with($car->image_path, 'http')
+                                        ? $car->image_path
+                                        : asset($car->image_path);
+                                @endphp
+                                <div class="showcase-card">
+                                    <img src="{{ $imageUrl }}" alt="{{ $car->brand?->name }} {{ $car->name }}" loading="lazy" decoding="async">
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+                @endfor
+            </div>/div>
         </aside>
 
         <section class="hero-content">
@@ -52,7 +48,7 @@
 
             <div class="scroll-indicator" title="Scroll down"></div>
         </section>
-    </main>
+    </section>
 
     <!-- NAVBAR STICKY DI BAWAH HERO -->
     @include('partials.navbar')
@@ -60,19 +56,14 @@
     <!-- ==================================================================== -->
     <!-- 2. TRANSITION BANNER: ENGINEERED FOR PASSION                         -->
     <!-- ==================================================================== -->
-    <section class="transition-banner text-center">
+    <section class="transition-banner">
         <div class="container py-4">
-            <span class="badge bg-danger px-3 py-2 text-uppercase mb-3 tracking-wide">
-                The Ultimate Performance Hub
-            </span>
-
-            <h2 class="display-4 fw-bold brand-font text-white mb-3">
-                ENGINEERED FOR PASSION
-            </h2>
-
-            <p class="text-secondary mx-auto fs-5 mb-4 transition-desc">
-                Uncompromising engineering, racing heritage, and world-class automotive masterpieces united in one platform.
-            </p>
+            @include('partials.home-section-heading', [
+                'kicker' => 'THE ULTIMATE PERFORMANCE HUB',
+                'title' => 'ENGINEERED FOR PASSION',
+                'description' => 'Uncompromising engineering, racing heritage, and world-class automotive masterpieces united in one platform.'
+            ])
+       </p>
 
             <div class="row g-3 justify-content-center mt-2">
                 <div class="col-md-3 col-sm-6">
@@ -94,15 +85,12 @@
     <section id="brands" class="py-5 brand-slider-section position-relative">
         <div class="container py-4">
             
-            <div class="text-center mb-5">
-                <span class="badge bg-danger-subtle text-danger border border-danger-subtle px-3 py-1 text-uppercase mb-2 tracking-wide fw-bold">
-                    Brand Spotlight
-                </span>
-                <h2 class="display-5 fw-bold brand-font text-white mb-2">FEATURED BRANDS</h2>
-                <p class="text-secondary mx-auto mb-0 brand-slider-intro">
-                    Use the arrow buttons or click and drag with your mouse to explore each brand.
-                </p>
-            </div>
+            @include('partials.home-section-heading', [
+                'kicker' => 'BRAND SPOTLIGHT',
+                'title' => 'FEATURED BRANDS',
+                'description' => 'Use the arrow buttons or click and drag with your mouse to explore each brand.',
+                'class' => 'home-section-heading--brand'
+            ])
 
             <!-- Wrapper Slider dengan Tombol Melayang di Samping -->
             <div class="brand-slider-wrapper position-relative">
@@ -359,14 +347,16 @@
     <!-- ==================================================================== -->
     <section id="brand-directory" class="all-brands-section">
         <div class="container">
-            <div class="all-brands-heading">
-                <div>
-                    <span class="all-brands-kicker">BRAND DIRECTORY</span>
-                    <h2 class="brand-font">ALL BRANDS</h2>
-                    <p>Explore every active automotive brand currently available in the Automobilli catalog.</p>
-                </div>
-                <span class="all-brands-count">{{ $brands->count() }} {{ $brands->count() === 1 ? 'brand' : 'brands' }}</span>
+            <div class="home-section-heading-row all-brands-heading">
+                @include('partials.home-section-heading', [
+                    'kicker' => 'BRAND DIRECTORY',
+                    'title' => 'ALL BRANDS',
+                    'description' => 'Explore every active automotive brand currently available in the Automobilli catalog.'
+                ])
+                <span class="all-brands-count">{{ $brands->count() }} {{ $brands->count() === 1 ? 'BRAND' : 'BRANDS' }}</span>
             </div>
+
+
 
             <div class="all-brands-grid" id="allBrandsGrid">
                 @foreach ($brands as $brand)
@@ -402,71 +392,49 @@
     <!-- ==================================================================== -->
     <section id="iconic" class="py-5 solid-content-section">
         <div class="container py-4">
-            <div class="d-flex justify-content-between align-items-end mb-4">
-                <div>
-                    <h6 class="text-danger fw-bold text-uppercase section-kicker">Hall of Fame</h6>
-                    <h2 class="fw-bold brand-font mb-0 text-white">ICONIC PICKS</h2>
-                </div>
-                <span class="text-muted small d-none d-md-block">Pure Performance & Timeless Engineering</span>
-            </div>
+            @include('partials.home-section-heading', [
+                'kicker' => 'HALL OF FAME',
+                'title' => 'ICONIC PICKS',
+                'description' => 'A rotating selection of standout models from different automotive brands.'
+            ])
+
+
 
             <div class="row g-4">
-                <!-- Ferrari F40 -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="custom-card h-100">
-                        <img src="{{ asset('image/Ferrari F40.jpg') }}" class="card-img-top iconic-image" alt="Ferrari F40">
-                        <div class="p-4">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge bg-danger">FERRARI</span>
-                                <span class="text-muted small"><i class="fa-regular fa-calendar me-1"></i> 1987</span>
+                @forelse ($iconicCars as $car)
+                    @php
+                        $imageUrl = str_starts_with($car->image_path, 'http')
+                            ? $car->image_path
+                            : asset($car->image_path);
+                    @endphp
+                    <div class="col-lg-4 col-md-6">
+                        <a href="{{ route('cars.show', ['brand' => $car->brand->slug, 'car' => $car->slug]) }}"
+                           class="custom-card h-100 iconic-card-link">
+                            <div class="position-relative overflow-hidden">
+                                <img src="{{ $imageUrl }}" class="card-img-top iconic-image" alt="{{ $car->brand->name }} {{ $car->name }}" loading="lazy" decoding="async">
+                                <span class="iconic-brand-pill">{{ $car->brand->name }}</span>
                             </div>
-                            <h4 class="fw-bold brand-font text-white mb-3">Ferrari F40</h4>
-                            <div class="row g-2">
-                                <div class="col-4"><div class="spec-box"><div class="spec-label">Power</div><div class="spec-val">471 HP</div></div></div>
-                                <div class="col-4"><div class="spec-box"><div class="spec-label">0-100 km/h</div><div class="spec-val">4.1 s</div></div></div>
-                                <div class="col-4"><div class="spec-box"><div class="spec-label">Top Speed</div><div class="spec-val">324 km/h</div></div></div>
+                            <div class="p-4">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="text-secondary small text-uppercase">{{ $car->production_year_start ?? '—' }}</span>
+                                    <span class="iconic-open-indicator"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                                </div>
+                                <h4 class="fw-bold brand-font text-white mb-3">{{ $car->name }}</h4>
+                                @if ($car->horsepower || $car->acceleration_0_100 || $car->top_speed_kmh)
+                                    <div class="row g-2">
+                                        <div class="col-4"><div class="spec-box"><div class="spec-label">Power</div><div class="spec-val">{{ $car->horsepower ? number_format($car->horsepower) . ' HP' : '—' }}</div></div></div>
+                                        <div class="col-4"><div class="spec-box"><div class="spec-label">0–100</div><div class="spec-val">{{ $car->acceleration_0_100 !== null ? number_format((float) $car->acceleration_0_100, 1) . ' s' : '—' }}</div></div></div>
+                                        <div class="col-4"><div class="spec-box"><div class="spec-label">Top Speed</div><div class="spec-val">{{ $car->top_speed_kmh ? number_format($car->top_speed_kmh) . ' km/h' : '—' }}</div></div></div>
+                                    </div>
+                                @endif
                             </div>
-                        </div>
+                        </a>
                     </div>
-                </div>
-
-                <!-- Ferrari LaFerrari -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="custom-card h-100">
-                        <img src="{{ asset('image/Ferrari LaFerrari.avif') }}" class="card-img-top iconic-image" alt="Ferrari LaFerrari">
-                        <div class="p-4">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge bg-danger">FERRARI</span>
-                                <span class="text-muted small"><i class="fa-regular fa-calendar me-1"></i> 2013</span>
-                            </div>
-                            <h4 class="fw-bold brand-font text-white mb-3">LaFerrari</h4>
-                            <div class="row g-2">
-                                <div class="col-4"><div class="spec-box"><div class="spec-label">Power</div><div class="spec-val">950 HP</div></div></div>
-                                <div class="col-4"><div class="spec-box"><div class="spec-label">0-100 km/h</div><div class="spec-val">2.4 s</div></div></div>
-                                <div class="col-4"><div class="spec-box"><div class="spec-label">Top Speed</div><div class="spec-val">350 km/h</div></div></div>
-                            </div>
-                        </div>
+                @empty
+                    <div class="col-12">
+                        <div class="all-brands-empty">No iconic models with images are currently available.</div>
                     </div>
-                </div>
-
-                <!-- Ferrari SF90 Spider -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="custom-card h-100">
-                        <img src="{{ asset('image/Ferrari SF90 Spider.jpg') }}" class="card-img-top iconic-image" alt="Ferrari SF90 Spider">
-                        <div class="p-4">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge bg-danger">FERRARI</span>
-                                <span class="text-muted small"><i class="fa-regular fa-calendar me-1"></i> 2020</span>
-                            </div>
-                            <h4 class="fw-bold brand-font text-white mb-3">SF90 Spider</h4>
-                            <div class="row g-2">
-                                <div class="col-4"><div class="spec-box"><div class="spec-label">Power</div><div class="spec-val">986 HP</div></div></div>
-                                <div class="col-4"><div class="spec-box"><div class="spec-label">0-100 km/h</div><div class="spec-val">2.5 s</div></div></div>
-                                <div class="col-4"><div class="spec-box"><div class="spec-label">Top Speed</div><div class="spec-val">340 km/h</div></div></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforelse
             </div>
         </div>
     </section>
@@ -476,14 +444,16 @@
     <!-- ==================================================================== -->
     <section id="compare" class="py-5 solid-content-section">
         <div class="container py-4">
+            @include('partials.home-section-heading', [
+                'kicker' => 'HEAD-TO-HEAD',
+                'title' => 'BENCHMARK YOUR DREAM CARS',
+                'description' => 'Compare technical specifications side-by-side: from powertrain output, torque, and acceleration to curb weight and top speed.'
+            ])
+
             <div class="compare-teaser">
                 <div class="row align-items-center">
                     <div class="col-lg-7">
-                        <span class="badge bg-danger mb-2">HEAD-TO-HEAD</span>
-                        <h2 class="fw-bold brand-font mb-3 text-white">BENCHMARK YOUR DREAM CARS</h2>
-                        <p class="text-muted mb-4">
-                            Compare technical specifications side-by-side: from powertrain output, torque, and acceleration to curb weight and top speed.
-                        </p>
+<div>
                         <div class="d-flex flex-wrap gap-3">
                             <span class="text-secondary small"><i class="fa-solid fa-check text-danger me-1"></i> Powertrain & Engine Output</span>
                             <span class="text-secondary small"><i class="fa-solid fa-check text-danger me-1"></i> 0-100 km/h Acceleration</span>
@@ -507,13 +477,13 @@
     <!-- ==================================================================== -->
     <section id="membership" class="py-5 solid-content-section membership-section">
         <div class="container py-4">
-            <div class="row justify-content-center text-center mb-4">
-                <div class="col-md-8">
-                    <h6 class="text-danger fw-bold text-uppercase section-kicker">Exclusive Privilege</h6>
-                    <h2 class="fw-bold brand-font text-white">AUTOMOBILLI CLUB MEMBERSHIP</h2>
-                    <p class="text-muted">Unlock exclusive privileges curated for true automotive purists.</p>
-                </div>
-            </div>
+            @include('partials.home-section-heading', [
+                'kicker' => 'EXCLUSIVE PRIVILEGE',
+                'title' => 'AUTOMOBILLI CLUB MEMBERSHIP',
+                'description' => 'Unlock exclusive privileges curated for true automotive purists.'
+            ])
+
+
 
             <div class="row g-4 justify-content-center">
                 <div class="col-md-4">
