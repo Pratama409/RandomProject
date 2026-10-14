@@ -516,9 +516,11 @@ class CarSeeder extends Seeder
         ];
 
         foreach ($cars as $car) {
+            $brandId = $car['brand_id'] ?? $ferrari->id;
+
             Car::updateOrCreate(
-                ['brand_id' => $ferrari->id, 'slug' => $car['slug']],
-                array_merge($car, ['brand_id' => $ferrari->id])
+                ['brand_id' => $brandId, 'slug' => $car['slug']],
+                array_merge($car, ['brand_id' => $brandId])
             );
         }
     }
