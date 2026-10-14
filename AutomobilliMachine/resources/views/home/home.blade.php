@@ -22,7 +22,10 @@
                                         : asset($car->image_path);
                                 @endphp
                                 <div class="showcase-card">
-                                    <img src="{{ $imageUrl }}" alt="{{ $car->brand?->name }} {{ $car->name }}" loading="lazy" decoding="async">
+                                    <img src="{{ $imageUrl }}" alt="{{ $car->brand?->name }} {{ $car->name }}"
+                                     loading="{{ $index === 0 ? 'eager' : 'lazy' }}"
+                                     fetchpriority="{{ $index === 0 ? 'high' : 'low' }}"
+                                     decoding="async">
                                 </div>
                             @endif
                         @endforeach
