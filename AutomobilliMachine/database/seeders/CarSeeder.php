@@ -12,6 +12,8 @@ class CarSeeder extends Seeder
     public function run(): void
     {
         $ferrari = Brand::where('slug', 'ferrari')->firstOrFail();
+        $lamborghini = Brand::where('slug', 'lamborghini')->firstOrFail();
+        $mercedes = Brand::where('slug', 'mercedes-benz')->firstOrFail();
         $supercar = Category::where('slug', 'supercar')->firstOrFail();
         $grandTourer = Category::where('slug', 'grand-tourer')->firstOrFail();
         $sportsCar = Category::where('slug', 'sports-car')->firstOrFail();
@@ -19,6 +21,53 @@ class CarSeeder extends Seeder
         $raceCar = Category::where('slug', 'race-car')->firstOrFail();
 
         $cars = [
+            [
+                'brand_id' => $lamborghini->id,
+                'name' => 'Lamborghini Revuelto',
+                'slug' => 'revuelto',
+                'model_family' => 'Revuelto',
+                'production_type' => 'Production',
+                'vehicle_type' => 'Super Sports Car',
+                'road_legal' => true,
+                'publicly_sold' => true,
+                'category_id' => $supercar->id,
+                'production_year_start' => 2023,
+                'short_description' => 'A V12 plug-in hybrid super sports car combining Lamborghini heritage with electrification.',
+                'image_path' => 'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=1600&auto=format&fit=crop&q=85',
+                'engine' => '6.5L V12 Hybrid',
+                'horsepower' => 1001,
+                'torque_nm' => 807,
+                'top_speed_kmh' => 350,
+                'acceleration_0_100' => 2.50,
+                'drivetrain' => 'AWD',
+                'fuel_type' => 'Hybrid',
+                'is_iconic' => true,
+                'is_active' => true,
+            ],
+            [
+                'brand_id' => $mercedes->id,
+                'name' => 'Mercedes-AMG GT 63 4MATIC+',
+                'slug' => 'amg-gt-63-4matic-plus',
+                'model_family' => 'AMG GT',
+                'generation' => 'C192',
+                'production_type' => 'Production',
+                'vehicle_type' => 'Sports Car',
+                'road_legal' => true,
+                'publicly_sold' => true,
+                'category_id' => $supercar->id,
+                'production_year_start' => 2023,
+                'short_description' => 'A high-performance Mercedes-AMG sports coupé powered by a hand-built V8 biturbo.',
+                'image_path' => 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=1600&auto=format&fit=crop&q=85',
+                'engine' => '4.0L V8 Biturbo',
+                'horsepower' => 577,
+                'torque_nm' => 800,
+                'top_speed_kmh' => 315,
+                'acceleration_0_100' => 3.20,
+                'drivetrain' => 'AWD',
+                'fuel_type' => 'Petrol',
+                'is_iconic' => true,
+                'is_active' => true,
+            ],
             [
                 'name' => 'Ferrari F40',
                 'slug' => 'f40',
