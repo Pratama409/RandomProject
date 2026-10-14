@@ -453,7 +453,6 @@
             <div class="compare-teaser">
                 <div class="row align-items-center">
                     <div class="col-lg-7">
-<div>
                         <div class="d-flex flex-wrap gap-3">
                             <span class="text-secondary small"><i class="fa-solid fa-check text-danger me-1"></i> Powertrain & Engine Output</span>
                             <span class="text-secondary small"><i class="fa-solid fa-check text-danger me-1"></i> 0-100 km/h Acceleration</span>
