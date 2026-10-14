@@ -60,7 +60,7 @@
         <div class="container py-4">
             @include('partials.home-section-heading', [
                 'kicker' => 'THE ULTIMATE PERFORMANCE HUB',
-                'title' => 'ENGINEERED FOR PASSION',
+                'title' => 'Engineered for Passion',
                 'description' => 'Uncompromising engineering, racing heritage, and world-class automotive masterpieces united in one platform.'
             ])
 
@@ -87,7 +87,7 @@
             
             @include('partials.home-section-heading', [
                 'kicker' => 'BRAND SPOTLIGHT',
-                'title' => 'FEATURED BRANDS',
+                'title' => 'Featured Brands',
                 'description' => 'Use the arrow buttons or click and drag with your mouse to explore each brand.',
                 'class' => 'home-section-heading--brand'
             ])
@@ -350,7 +350,7 @@
             <div class="home-section-heading-row all-brands-heading">
                 @include('partials.home-section-heading', [
                     'kicker' => 'BRAND DIRECTORY',
-                    'title' => 'ALL BRANDS',
+                    'title' => 'All Brands',
                     'description' => 'Explore every active automotive brand currently available in the Automobilli catalog.'
                 ])
                 <span class="all-brands-count">{{ $brands->count() }} {{ $brands->count() === 1 ? 'BRAND' : 'BRANDS' }}</span>
@@ -394,7 +394,7 @@
         <div class="container py-4">
             @include('partials.home-section-heading', [
                 'kicker' => 'HALL OF FAME',
-                'title' => 'ICONIC PICKS',
+                'title' => 'Iconic Picks',
                 'description' => 'A rotating selection of standout models from different automotive brands.'
             ])
 
@@ -446,7 +446,7 @@
         <div class="container py-4">
             @include('partials.home-section-heading', [
                 'kicker' => 'HEAD-TO-HEAD',
-                'title' => 'BENCHMARK YOUR DREAM CARS',
+                'title' => 'Benchmark Your Dream Cars',
                 'description' => 'Compare technical specifications side-by-side: from powertrain output, torque, and acceleration to curb weight and top speed.'
             ])
 
@@ -478,7 +478,7 @@
         <div class="container py-4">
             @include('partials.home-section-heading', [
                 'kicker' => 'EXCLUSIVE PRIVILEGE',
-                'title' => 'AUTOMOBILLI CLUB MEMBERSHIP',
+                'title' => 'Automobilli Club Membership',
                 'description' => 'Unlock exclusive privileges curated for true automotive purists.'
             ])
 
