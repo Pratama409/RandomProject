@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         new Swiper('.brand-swiper', {
             slidesPerView: 1,
             spaceBetween: 20,
-            loop: true,
+            loop: false,
             speed: 360,
             grabCursor: true,
             simulateTouch: true,
@@ -91,9 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             autoHeight: false,
             watchOverflow: true,
-            observer: true,
-            observeParents: true,
-            observeSlideChildren: false,
         });
     }
 
