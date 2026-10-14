@@ -2859,3 +2859,123 @@ body {
         font-size: .47rem;
     }
 }
+
+
+/* =======================================================
+   MOBILE HERO — DENSE CARD COMPOSITION
+   Fill the hero with a tighter automotive collage.
+   No extra shadows, blur, or decorative UI.
+   ======================================================= */
+
+@media (max-width: 767.98px) {
+    .angled-gallery {
+        top: 51%;
+        left: 50%;
+        width: 168vw;
+        height: 132svh;
+        gap: .55rem;
+        transform: translate(-50%, -50%) rotate(-15deg) scale(1.08);
+        opacity: .78;
+        pointer-events: none;
+        contain: layout paint;
+    }
+
+    .gallery-col {
+        gap: .6rem;
+        will-change: auto;
+    }
+
+    .col-offset-1 { margin-top: -4rem; }
+    .col-offset-2 { margin-top: 2.5rem; }
+    .col-offset-3 { margin-top: -2rem; }
+    .col-offset-4 { margin-top: 3.5rem; }
+
+    .showcase-card {
+        width: 116px;
+        height: 174px;
+        border-radius: 10px;
+        box-shadow: none !important;
+        transition: none;
+    }
+
+    .showcase-card:hover {
+        transform: none;
+    }
+
+    .hero-backdrop-overlay {
+        background:
+            linear-gradient(90deg,
+                rgba(8, 9, 13, .80) 0%,
+                rgba(8, 9, 13, .56) 48%,
+                rgba(8, 9, 13, .38) 100%),
+            linear-gradient(180deg,
+                rgba(8, 9, 13, .18) 0%,
+                rgba(8, 9, 13, .30) 100%);
+    }
+
+    .hero-content {
+        padding: 6.2rem 1.1rem 3.6rem;
+    }
+
+    .hero-title {
+        max-width: 20rem;
+        margin-bottom: .85rem;
+        font-size: clamp(2.05rem, 10.2vw, 2.7rem);
+        line-height: 1.06;
+    }
+
+    .hero-desc {
+        max-width: 20.5rem;
+        margin-bottom: 1.35rem;
+        font-size: .88rem;
+        line-height: 1.55;
+    }
+
+    .hero-actions {
+        flex-direction: row;
+        gap: .55rem;
+        margin-bottom: 1.7rem;
+    }
+
+    .hero-actions a {
+        flex: 1 1 0;
+        width: auto;
+        min-height: 42px;
+        padding: .68rem .55rem;
+        display: grid;
+        place-items: center;
+        font-size: .71rem;
+        text-align: center;
+    }
+
+    .scroll-indicator {
+        margin-left: 1px;
+    }
+}
+
+@media (max-width: 390px) {
+    .angled-gallery {
+        width: 176vw;
+        height: 134svh;
+        transform: translate(-50%, -50%) rotate(-15deg) scale(1.10);
+        opacity: .75;
+    }
+
+    .showcase-card {
+        width: 106px;
+        height: 160px;
+    }
+
+    .hero-content {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .hero-title {
+        max-width: 17.5rem;
+    }
+
+    .hero-actions a {
+        font-size: .67rem;
+    }
+}
