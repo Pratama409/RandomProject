@@ -2,16 +2,12 @@
 
 @section('title', 'Home - AutomobilliMachine')
 
-@push('styles')
-    <link rel="stylesheet" href="{{ asset('css/home-polish.css') }}?v=20261014-2">
-@endpush
-
 @section('content')
 
     <!-- ==================================================================== -->
     <!-- 1. HERO SECTION: FULLSCREEN ANGLED GALLERY                           -->
     <!-- ==================================================================== -->
-    <section class="hero-wrapper" id="top">
+    <main class="hero-wrapper" id="top">
         <aside class="hero-visual-fullscreen">
             <div class="hero-backdrop-overlay"></div>
 
@@ -56,7 +52,7 @@
 
             <div class="scroll-indicator" title="Scroll down"></div>
         </section>
-    </section>
+    </main>
 
     <!-- NAVBAR STICKY DI BAWAH HERO -->
     @include('partials.navbar')
@@ -104,7 +100,7 @@
                 </span>
                 <h2 class="display-5 fw-bold brand-font text-white mb-2">FEATURED BRANDS</h2>
                 <p class="text-secondary mx-auto mb-0 brand-slider-intro">
-                    Discover the people, place, heritage, and engineering behind each featured brand.
+                    Use the arrow buttons or click and drag with your mouse to explore each brand.
                 </p>
             </div>
 
@@ -168,7 +164,7 @@
                                                     Its lineup continues to set the benchmark for supercar power, from twin-turbo V8 masterpieces to the 1,000 HP hybrid system of the SF90 Stradale.
                                                 </p>
                                             </div>
-                                            <a href="{{ route('brands.show', ['brand' => 'ferrari']) }}" class="btn btn-racing w-100 py-2 d-flex justify-content-center align-items-center gap-2">
+                                            <a href="{{ url('/ferrari') }}" class="btn btn-racing w-100 py-2 d-flex justify-content-center align-items-center gap-2">
                                                 <span>Explore Complete Ferrari Lineup</span>
                                                 <i class="fa-solid fa-arrow-right"></i>
                                             </a>
