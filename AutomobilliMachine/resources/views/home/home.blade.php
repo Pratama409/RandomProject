@@ -28,7 +28,7 @@
                         @endforeach
                     </div>
                 @endfor
-            </div>/div>
+            </div>
         </aside>
 
         <section class="hero-content">
@@ -63,7 +63,7 @@
                 'title' => 'ENGINEERED FOR PASSION',
                 'description' => 'Uncompromising engineering, racing heritage, and world-class automotive masterpieces united in one platform.'
             ])
-       </p>
+
 
             <div class="row g-3 justify-content-center mt-2">
                 <div class="col-md-3 col-sm-6">
