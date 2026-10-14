@@ -30,7 +30,7 @@ class HomeController extends Controller
             ->with('brand:id,name,slug')
             ->where('is_active', true)
             ->whereNotNull('image_path')
-            ->orderByRaw('RAND()')
+            ->inRandomOrder()
             ->limit(12)
             ->get([
                 'id',
@@ -46,7 +46,7 @@ class HomeController extends Controller
             ->where('is_active', true)
             ->where('is_iconic', true)
             ->whereNotNull('image_path')
-            ->orderByRaw('RAND()')
+            ->inRandomOrder()
             ->get([
                 'id',
                 'brand_id',
