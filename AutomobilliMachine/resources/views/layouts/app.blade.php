@@ -20,7 +20,9 @@
     <link rel="icon" type="image/jpg/png" href="{{ asset('image/Favicon/Favicon.jpg') }}">
 
     <!-- Custom CSS Proyek Terpisah -->
-    <link rel="stylesheet" href="{{ asset('css/home.css') }}?v=20261014-2">
+    @if (request()->routeIs('home') || request()->is('home'))
+        <link rel="stylesheet" href="{{ asset('css/home.css') }}?v=20261014-3">
+    @endif
     <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=20260929-2">
     <link rel="stylesheet" href="{{ asset('css/auth-profile.css') }}?v=20260929-1">
     @stack('styles')
@@ -42,7 +44,9 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <!-- Custom JS Proyek Terpisah -->
-    <script src="{{ asset('js/home.js') }}?v=20261014-1"></script>
+    @if (request()->routeIs('home') || request()->is('home'))
+        <script src="{{ asset('js/home.js') }}?v=20261014-2"></script>
+    @endif
     <script src="{{ asset('js/app.js') }}?v=20260929-1"></script>
     @stack('scripts')
 </body>
