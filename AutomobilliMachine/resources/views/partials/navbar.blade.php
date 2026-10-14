@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top navbar-custom py-3">
     <div class="container">
-        <a class="navbar-brand brand-font fw-bold" href="{{ route('home') }}">
-            <i class="fa-solid fa-gauge-high text-danger me-2"></i>AUTOMOBILLI
+        <a class="navbar-brand" href="{{ route('home') }}#top" aria-label="Automobilli Home">
+            <img src="{{ asset('image/logo.png') }}" alt="Automobilli" class="navbar-brand-logo">
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
@@ -12,19 +12,28 @@
         <div class="collapse navbar-collapse" id="navMenu">
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-3">
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Home</a>
+                    <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}"
+                       href="{{ route('home') }}#top" data-home-nav="top">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('brands.*', 'brand.ferrari') ? 'active' : '' }}" href="{{ route('home') }}#brands">Brands</a>
+                    <a class="nav-link {{ request()->routeIs('brands.*', 'brand.ferrari') ? 'active' : '' }}"
+                       href="{{ route('home') }}#brands" data-home-nav="brands">Brands</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}#iconic">Iconic Cars</a>
+                    <a class="nav-link {{ request()->routeIs('home') ? '' : '' }}"
+                       href="{{ route('home') }}#brand-directory" data-home-nav="brand-directory">Brand Directory</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('compare.index') ? 'active' : '' }}" href="{{ route('compare.index') }}">Compare</a>
+                    <a class="nav-link {{ request()->routeIs('home') ? '' : '' }}"
+                       href="{{ route('home') }}#iconic" data-home-nav="iconic">Hall of Fame</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}#membership">Membership</a>
+                    <a class="nav-link {{ request()->routeIs('compare.index') ? 'active' : '' }}"
+                       href="{{ route('compare.index') }}" data-home-nav="compare">Compare</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('home') ? '' : '' }}"
+                       href="{{ route('home') }}#membership" data-home-nav="membership">Membership</a>
                 </li>
             </ul>
 
