@@ -2979,3 +2979,83 @@ body {
         font-size: .67rem;
     }
 }
+
+
+/* =======================================================
+   MOBILE HERO — PHOTO WALL COMPOSITION
+   Six database images become a compact 3 × 2 collage.
+   No extra shadows, blur, animation, or decorative layers.
+   ======================================================= */
+
+@media (max-width: 767.98px) {
+    .angled-gallery {
+        top: 50%;
+        left: 56%;
+        width: 142vw;
+        height: 106svh;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: .7rem;
+        align-items: center;
+        justify-items: center;
+        transform: translate(-50%, -50%) rotate(-11deg) scale(1.06);
+        opacity: .78;
+        overflow: visible;
+    }
+
+    .gallery-col {
+        display: contents;
+        gap: 0;
+        margin-top: 0 !important;
+        will-change: auto;
+    }
+
+    .showcase-card {
+        width: 100%;
+        height: 100%;
+        max-width: 138px;
+        max-height: 198px;
+        min-height: 0;
+        border-radius: 9px;
+        box-shadow: none !important;
+        transition: none !important;
+        transform: none !important;
+    }
+
+    .showcase-card img {
+        object-fit: cover;
+    }
+
+    .hero-backdrop-overlay {
+        background:
+            linear-gradient(90deg,
+                rgba(8, 9, 13, .84) 0%,
+                rgba(8, 9, 13, .60) 46%,
+                rgba(8, 9, 13, .36) 100%),
+            linear-gradient(180deg,
+                rgba(8, 9, 13, .40) 0%,
+                rgba(8, 9, 13, .14) 42%,
+                rgba(8, 9, 13, .46) 100%);
+    }
+
+    .hero-content {
+        padding: 6rem 1rem 3.4rem;
+    }
+}
+
+@media (max-width: 390px) {
+    .angled-gallery {
+        left: 58%;
+        width: 148vw;
+        height: 108svh;
+        gap: .58rem;
+        transform: translate(-50%, -50%) rotate(-11deg) scale(1.07);
+        opacity: .75;
+    }
+
+    .showcase-card {
+        max-width: 124px;
+        max-height: 182px;
+    }
+}
