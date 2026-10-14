@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use App\Models\Car;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class HomeController extends Controller
 {
-    public function index(): View
+    public function index(Request $request): View
     {
         $brands = Brand::query()
             ->where('is_active', true)
@@ -26,12 +27,16 @@ class HomeController extends Controller
 
         // The homepage hero is intentionally randomized on each request so a
         // refresh presents a different selection from the catalog database.
+        // Mobile gets fewer tiles to reduce initial DOM/image work.
+        $isMobile = preg_match('/Mobile|Android|iPhone|iPad|iPod/i', $request->userAgent()) === 1;
+        $heroLimit = $isMobile ? 6 : 12;
+
         $heroCars = Car::query()
             ->with('brand:id,name,slug')
             ->where('is_active', true)
             ->whereNotNull('image_path')
             ->inRandomOrder()
-            ->limit(12)
+            ->limit($heroLimit)
             ->get([
                 'id',
                 'brand_id',
