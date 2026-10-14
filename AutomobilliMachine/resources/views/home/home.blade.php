@@ -34,6 +34,12 @@
             </div>
         </aside>
 
+        <div class="hero-catalog-label">
+            <span>Automotive Database</span>
+            <span class="hero-catalog-dot"></span>
+            <span>Explore · Compare · Discover</span>
+        </div>
+
         <section class="hero-content">
             <h1 class="hero-title">
                 Automotive Excellence
@@ -51,6 +57,16 @@
 
             <div class="scroll-indicator" title="Scroll down"></div>
         </section>
+
+        <div class="hero-catalog-footer" aria-hidden="true">
+            <span>Discover</span>
+            <i></i>
+            <span>Compare</span>
+            <i></i>
+            <span>Save</span>
+            <i></i>
+            <span>Explore</span>
+        </div>
     </section>
 
     <!-- NAVBAR STICKY DI BAWAH HERO -->
