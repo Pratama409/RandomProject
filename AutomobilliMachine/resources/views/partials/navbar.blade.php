@@ -1,7 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top navbar-custom py-3">
     <div class="container">
-        <a class="navbar-brand" href="{{ route('home') }}#top" aria-label="Automobilli Home">
-            <img src="{{ asset('image/BrandLogo/BrandLogo.jpg') }}" alt="Automobilli" class="navbar-brand-logo">
+        <a class="navbar-brand automobilli-brand" href="{{ route('home') }}#top" aria-label="Automobilli Home">
+            <span class="automobilli-brand-mark">
+                <img src="{{ asset('image/BrandLogo/BrandLogo.jpg') }}" alt="" aria-hidden="true">
+            </span>
+            <span class="automobilli-brand-name">AUTOMOBILLI</span>
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
