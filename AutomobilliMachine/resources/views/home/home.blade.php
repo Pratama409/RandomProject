@@ -100,7 +100,7 @@
                 </span>
                 <h2 class="display-5 fw-bold brand-font text-white mb-2">FEATURED BRANDS</h2>
                 <p class="text-secondary mx-auto mb-0 brand-slider-intro">
-                    Use the arrow buttons or click and drag with your mouse to explore each brand.
+                    Discover the people, place, heritage, and engineering behind each featured brand.
                 </p>
             </div>
 
@@ -164,7 +164,7 @@
                                                     Its lineup continues to set the benchmark for supercar power, from twin-turbo V8 masterpieces to the 1,000 HP hybrid system of the SF90 Stradale.
                                                 </p>
                                             </div>
-                                            <a href="{{ url('/ferrari') }}" class="btn btn-racing w-100 py-2 d-flex justify-content-center align-items-center gap-2">
+                                            <a href="{{ route('brands.show', ['brand' => 'ferrari']) }}" class="btn btn-racing w-100 py-2 d-flex justify-content-center align-items-center gap-2">
                                                 <span>Explore Complete Ferrari Lineup</span>
                                                 <i class="fa-solid fa-arrow-right"></i>
                                             </a>
@@ -404,8 +404,10 @@
         <div class="container py-4">
             <div class="d-flex justify-content-between align-items-end mb-4">
                 <div>
+                    <div>
                     <h6 class="text-danger fw-bold text-uppercase section-kicker">Hall of Fame</h6>
                     <h2 class="fw-bold brand-font mb-0 text-white">ICONIC PICKS</h2>
+                </div>
                 </div>
                 <span class="text-muted small d-none d-md-block">Pure Performance & Timeless Engineering</span>
             </div>
