@@ -133,4 +133,50 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // ====================================================
+    // 5. HOMEPAGE SECTION SPY
+    //    Keeps the navbar active state tied to the visible
+    //    homepage section instead of leaving Home selected.
+    // ====================================================
+    if (document.querySelector('.hero-wrapper') && document.querySelector('[data-home-nav]')) {
+        const sectionIds = ['top', 'brands', 'brand-directory', 'iconic', 'compare', 'membership'];
+        const navLinks = [...document.querySelectorAll('[data-home-nav]')];
+        const observedSections = sectionIds
+            .map((id) => document.getElementById(id))
+            .filter(Boolean);
+
+        const setActiveNav = (id) => {
+            navLinks.forEach((link) => {
+                link.classList.toggle('active', link.dataset.homeNav === id);
+            });
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            const visible = entries
+                .filter((entry) => entry.isIntersecting)
+                .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+            if (visible[0]?.target?.id) {
+                setActiveNav(visible[0].target.id);
+            }
+        }, {
+            rootMargin: '-18% 0px -62% 0px',
+            threshold: [0.08, 0.2, 0.45, 0.7],
+        });
+
+        observedSections.forEach((section) => observer.observe(section));
+
+        navLinks.forEach((link) => {
+            link.addEventListener('click', () => {
+                const id = link.dataset.homeNav;
+                if (document.getElementById(id)) {
+                    setActiveNav(id);
+                }
+            });
+        });
+
+        setActiveNav('top');
+    }
+
 });
