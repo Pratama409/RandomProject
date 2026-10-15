@@ -45,7 +45,7 @@
 
     <!-- Custom JS Proyek Terpisah -->
     @if (request()->routeIs('home') || request()->is('home'))
-        <script src="{{ asset('js/home.js') }}?v=20261015-3"></script>
+        <script src="{{ asset('js/home.js') }}?v=20261015-4"></script>
     @endif
     <script src="{{ asset('js/app.js') }}?v=20260929-1"></script>
     @stack('scripts')
