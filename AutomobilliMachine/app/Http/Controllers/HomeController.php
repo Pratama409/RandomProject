@@ -45,32 +45,41 @@ class HomeController extends Controller
                 'image_path',
             ]);
 
-        // One Hall of Fame pick per brand keeps the showcase diverse.
-        $iconicCandidates = Car::query()
-            ->with('brand:id,name,slug')
+        // Select a small set of brands first, then fetch only one random
+        // iconic car per brand. Avoid loading every iconic car into PHP just
+        // to keep six showcase cards.
+        $iconicBrandIds = Car::query()
             ->where('is_active', true)
             ->where('is_iconic', true)
             ->whereNotNull('image_path')
-            ->inRandomOrder()
-            ->get([
-                'id',
-                'brand_id',
-                'name',
-                'slug',
-                'production_year_start',
-                'production_year_end',
-                'image_path',
-                'horsepower',
-                'acceleration_0_100',
-                'top_speed_kmh',
-            ]);
-
-        $iconicCars = $iconicCandidates
-            ->groupBy('brand_id')
-            ->map(fn ($cars) => $cars->first())
+            ->distinct()
+            ->pluck('brand_id')
             ->shuffle()
-            ->take(6)
+            ->take(6);
+
+        $iconicCars = $iconicBrandIds
+            ->map(fn ($brandId) => Car::query()
+                ->where('brand_id', $brandId)
+                ->where('is_active', true)
+                ->where('is_iconic', true)
+                ->whereNotNull('image_path')
+                ->inRandomOrder()
+                ->first([
+                    'id',
+                    'brand_id',
+                    'name',
+                    'slug',
+                    'production_year_start',
+                    'production_year_end',
+                    'image_path',
+                    'horsepower',
+                    'acceleration_0_100',
+                    'top_speed_kmh',
+                ]))
+            ->filter()
             ->values();
+
+        $iconicCars->load('brand:id,name,slug');
 
         return view('home.home', compact(
             'brands',
