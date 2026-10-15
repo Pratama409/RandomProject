@@ -29,7 +29,7 @@ class HomeController extends Controller
         // refresh presents a different selection from the catalog database.
         // Mobile gets fewer tiles to reduce initial DOM/image work.
         $isMobile = preg_match('/Mobile|Android|iPhone|iPad|iPod/i', $request->userAgent()) === 1;
-        $heroLimit = $isMobile ? 6 : 12;
+        $heroLimit = $isMobile ? 4 : 12;
 
         $heroCars = Car::query()
             ->with('brand:id,name,slug')
