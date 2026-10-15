@@ -6,6 +6,50 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollIndicator = document.querySelector('.scroll-indicator');
     const btnScrollTop = document.querySelector('.btn-scroll-top');
 
+    const heroWrapper = document.querySelector('.hero-wrapper');
+    const galleryColumns = [...document.querySelectorAll('.hero-wrapper .angled-gallery .gallery-col')];
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    // Scroll-linked parallax: each column follows a slightly different path.
+    // All work is batched into one animation frame to avoid scroll jank.
+    if (heroWrapper && galleryColumns.length && !reduceMotion.matches) {
+        const parallaxRates = [-0.12, 0.075, -0.09, 0.055];
+        let parallaxFrame = false;
+
+        const updateGalleryParallax = () => {
+            const heroHeight = heroWrapper.offsetHeight || window.innerHeight;
+            const progress = Math.max(0, Math.min(
+                -heroWrapper.getBoundingClientRect().top,
+                heroHeight
+            ));
+
+            galleryColumns.forEach((column, index) => {
+                const rate = parallaxRates[index % parallaxRates.length];
+                const offset = Math.max(-85, Math.min(85, progress * rate));
+                column.style.transform = `translate3d(0, ${offset.toFixed(2)}px, 0)`;
+            });
+
+            parallaxFrame = false;
+        };
+
+        const requestGalleryParallax = () => {
+            if (parallaxFrame) return;
+            parallaxFrame = true;
+            window.requestAnimationFrame(updateGalleryParallax);
+        };
+
+        window.addEventListener('scroll', requestGalleryParallax, { passive: true });
+        window.addEventListener('resize', requestGalleryParallax, { passive: true });
+        reduceMotion.addEventListener?.('change', (event) => {
+            if (event.matches) {
+                galleryColumns.forEach((column) => { column.style.transform = ''; });
+            } else {
+                requestGalleryParallax();
+            }
+        });
+        requestGalleryParallax();
+    }
+
     let ticking = false;
 
     window.addEventListener('scroll', () => {
