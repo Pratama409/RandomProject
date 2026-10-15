@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Scroll-linked parallax: each column follows a slightly different path.
     // All work is batched into one animation frame to avoid scroll jank.
     if (heroWrapper && galleryColumns.length && !reduceMotion.matches) {
-        const parallaxRates = [-0.12, 0.075, -0.09, 0.055];
+        const parallaxRates = [-0.32, 0.24, -0.27, 0.19];
         let parallaxFrame = false;
 
         const updateGalleryParallax = () => {
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             galleryColumns.forEach((column, index) => {
                 const rate = parallaxRates[index % parallaxRates.length];
-                const offset = Math.max(-85, Math.min(85, progress * rate));
+                const offset = Math.max(-190, Math.min(190, progress * rate));
                 column.style.transform = `translate3d(0, ${offset.toFixed(2)}px, 0)`;
             });
 
