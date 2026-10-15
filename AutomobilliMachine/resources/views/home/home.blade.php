@@ -34,6 +34,25 @@
             </div>
         </aside>
 
+        <aside class="hero-mobile-editorial-gallery" aria-hidden="true">
+            @foreach ($heroCars as $index => $car)
+                @php
+                    $imageUrl = str_starts_with($car->image_path, 'http')
+                        ? $car->image_path
+                        : asset($car->image_path);
+                @endphp
+
+                <div class="hero-mobile-photo hero-mobile-photo-{{ $index + 1 }}">
+                    <img
+                        src="{{ $imageUrl }}"
+                        alt=""
+                        loading="{{ $index === 0 ? 'eager' : 'lazy' }}"
+                        fetchpriority="{{ $index === 0 ? 'high' : 'low' }}"
+                        decoding="async">
+                </div>
+            @endforeach
+        </aside>
+
         <section class="hero-content">
             <h1 class="hero-title">
                 Automotive Excellence
