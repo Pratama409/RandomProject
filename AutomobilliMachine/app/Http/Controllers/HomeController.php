@@ -59,6 +59,7 @@ class HomeController extends Controller
 
         $iconicCars = $iconicBrandIds
             ->map(fn ($brandId) => Car::query()
+                ->with('brand:id,name,slug')
                 ->where('brand_id', $brandId)
                 ->where('is_active', true)
                 ->where('is_iconic', true)
@@ -79,7 +80,6 @@ class HomeController extends Controller
             ->filter()
             ->values();
 
-        $iconicCars->load('brand:id,name,slug');
 
         return view('home.home', compact(
             'brands',
