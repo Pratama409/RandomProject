@@ -3308,3 +3308,78 @@ body {
         font-size: .82rem;
     }
 }
+
+
+/* =======================================================
+   MOBILE HERO + PERFORMANCE SAFETY PASS
+   Keep the mobile editorial collage stable and avoid scroll-driven
+   transforms on the decorative gallery.
+   ======================================================= */
+.gallery-col {
+    will-change: auto;
+}
+
+@media (max-width: 767.98px) {
+    .hero-mobile-editorial-gallery {
+        top: 8%;
+        right: -4%;
+        width: min(84vw, 420px);
+        height: min(54svh, 430px);
+        gap: 8px;
+    }
+
+    .hero-mobile-photo {
+        border-radius: 10px;
+        box-shadow: none;
+    }
+
+    .hero-mobile-photo-2 {
+        transform: translateY(8px);
+    }
+
+    .hero-mobile-photo-3 {
+        transform: translateY(-2px);
+    }
+
+    .hero-mobile-photo-4 {
+        left: 19%;
+        bottom: -11%;
+        width: 44%;
+        height: 25%;
+        transform: rotate(-3deg);
+    }
+}
+
+@media (max-width: 390px) {
+    .hero-mobile-editorial-gallery {
+        top: 9%;
+        right: -8%;
+        width: 87vw;
+        height: min(51svh, 390px);
+        gap: 7px;
+    }
+
+    .hero-mobile-photo-4 {
+        left: 17%;
+        bottom: -10%;
+        width: 46%;
+        height: 25%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .scroll-indicator::after {
+        animation: none;
+    }
+
+    .showcase-card,
+    .all-brand-card,
+    .brand-nav-btn,
+    .automobilli-brand-mark img {
+        transition: none !important;
+    }
+}

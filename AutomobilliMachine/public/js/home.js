@@ -1,9 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     // ====================================================
-    // 1. NAVBAR & PARALLAX HERO GALLERY
+    // 1. NAVBAR & HERO GALLERY
     // ====================================================
     const navbar = document.querySelector('.navbar-custom');
-    const columns = document.querySelectorAll('.gallery-col');
     const scrollIndicator = document.querySelector('.scroll-indicator');
     const btnScrollTop = document.querySelector('.btn-scroll-top');
 
@@ -22,14 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!ticking) {
             window.requestAnimationFrame(() => {
-                if (window.innerWidth > 768 && columns.length > 0) {
-                    columns.forEach((col, index) => {
-                        const direction = index % 2 === 0 ? 1 : -1;
-                        const speed = 0.35 + (index * 0.05);
-                        col.style.transform = `translateY(${scrollY * speed * direction}px)`;
-                    });
-                }
-
                 if (btnScrollTop) {
                     if (scrollY > 500) {
                         btnScrollTop.classList.add('show');
