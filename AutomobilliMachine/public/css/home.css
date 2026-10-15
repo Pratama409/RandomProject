@@ -3384,38 +3384,37 @@ body {
     }
 }
 
+
 /* =========================================================
-   DESKTOP HERO GALLERY — SLOW AUTONOMOUS MOTION
-   Animate the cinematic collage without tying motion to scroll.
-   Keep mobile static for a lighter experience.
+   HERO GALLERY — VISIBLE, SMOOTH AUTO MOTION (DESKTOP)
    ========================================================= */
 @media (min-width: 768px) {
     .hero-wrapper .angled-gallery .gallery-col {
-        animation: automobilliGalleryDrift 24s ease-in-out infinite alternate;
-        will-change: translate;
+        animation: automobilliGalleryDrift 9s ease-in-out infinite alternate;
+        will-change: transform;
     }
 
     .hero-wrapper .angled-gallery .gallery-col:nth-child(2) {
-        animation-duration: 29s;
-        animation-delay: -7s;
+        animation-duration: 11s;
+        animation-delay: -3s;
         animation-direction: alternate-reverse;
     }
 
     .hero-wrapper .angled-gallery .gallery-col:nth-child(3) {
-        animation-duration: 26s;
-        animation-delay: -12s;
+        animation-duration: 10s;
+        animation-delay: -5s;
     }
 
     .hero-wrapper .angled-gallery .gallery-col:nth-child(4) {
-        animation-duration: 31s;
-        animation-delay: -4s;
+        animation-duration: 12s;
+        animation-delay: -2s;
         animation-direction: alternate-reverse;
     }
 }
 
 @keyframes automobilliGalleryDrift {
-    from { translate: 0 0; }
-    to { translate: 0 -34px; }
+    from { transform: translate3d(0, 22px, 0); }
+    to   { transform: translate3d(0, -58px, 0); }
 }
 
 @media (max-width: 767.98px) {
@@ -3428,7 +3427,7 @@ body {
 @media (prefers-reduced-motion: reduce) {
     .hero-wrapper .angled-gallery .gallery-col {
         animation: none !important;
-        translate: none !important;
+        transform: none !important;
         will-change: auto;
     }
 }
