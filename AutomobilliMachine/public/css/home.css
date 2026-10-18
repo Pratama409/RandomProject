@@ -4010,3 +4010,91 @@ body {
         scroll-behavior: auto;
     }
 }
+
+
+/* Mobile composition refinement: keep every sharp photo panel in
+   the upper visual zone and give the headline a clean dark stage. */
+@media (max-width: 767.98px) {
+    .hero-mobile-photo-1 {
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        z-index: 0;
+        clip-path: none !important;
+    }
+
+    .hero-mobile-photo-1 img {
+        object-position: center 32%;
+        filter: saturate(1.03) contrast(1.03);
+    }
+
+    .hero-mobile-photo-2 {
+        top: 0 !important;
+        right: -1% !important;
+        width: 54% !important;
+        height: 29% !important;
+        z-index: 2;
+        clip-path: polygon(22% 0, 100% 0, 100% 100%, 0 82%);
+    }
+
+    .hero-mobile-photo-3 {
+        top: 25% !important;
+        left: -1% !important;
+        right: auto !important;
+        width: 56% !important;
+        height: 23% !important;
+        z-index: 2;
+        clip-path: polygon(0 0, 100% 15%, 88% 100%, 0 84%);
+    }
+
+    .hero-mobile-photo-4 {
+        top: 27% !important;
+        right: -1% !important;
+        bottom: auto !important;
+        left: auto !important;
+        width: 49% !important;
+        height: 23% !important;
+        z-index: 2;
+        clip-path: polygon(13% 0, 100% 13%, 100% 100%, 0 100%);
+    }
+
+    .hero-backdrop-overlay {
+        background:
+            linear-gradient(180deg,
+                rgba(4, 6, 10, .02) 0%,
+                rgba(4, 6, 10, .02) 26%,
+                rgba(4, 6, 10, .20) 39%,
+                rgba(4, 6, 10, .72) 48%,
+                rgba(4, 6, 10, .94) 61%,
+                rgba(4, 6, 10, .97) 100%),
+            linear-gradient(90deg,
+                rgba(4, 6, 10, .12) 0%,
+                rgba(4, 6, 10, .02) 60%,
+                rgba(4, 6, 10, .16) 100%);
+    }
+
+    .hero-content {
+        padding-top: 40svh;
+        padding-bottom: max(2.1rem, env(safe-area-inset-bottom));
+    }
+}
+
+@media (max-width: 390px) {
+    .hero-mobile-photo-2 {
+        height: 28% !important;
+    }
+
+    .hero-mobile-photo-3 {
+        top: 24% !important;
+        height: 22% !important;
+    }
+
+    .hero-mobile-photo-4 {
+        top: 27% !important;
+        height: 21% !important;
+    }
+
+    .hero-content {
+        padding-top: 39svh;
+    }
+}
