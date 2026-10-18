@@ -3759,23 +3759,20 @@ body {
 }
 
 
-/* =========================================================
-   MOBILE HERO — FULL-SCREEN ANGULAR EDITORIAL
-   Inspired by the approved reference: one dominant car image,
-   sharp diagonal supporting panels, and copy layered over the
-   lower half. Desktop styles remain untouched.
-   ========================================================= */
-.hero-mobile-topbar {
-    display: none;
-}
 
+/* =========================================================
+   MOBILE HERO — FULL-BLEED ANGULAR COLLAGE
+   No duplicate masthead; the existing navbar follows the hero.
+   The first photo is a full-height fallback layer so the hero
+   never develops a blank gap if fewer than four cars are loaded.
+   ========================================================= */
 @media (max-width: 767.98px) {
     .hero-wrapper {
         position: relative;
         isolation: isolate;
         width: 100%;
         height: 100svh;
-        min-height: 680px;
+        min-height: 700px;
         max-height: 960px;
         overflow: hidden;
         padding: 0;
@@ -3795,6 +3792,10 @@ body {
         display: none !important;
     }
 
+    .hero-mobile-topbar {
+        display: none !important;
+    }
+
     .hero-mobile-editorial-gallery {
         position: absolute !important;
         inset: 0 !important;
@@ -3802,12 +3803,14 @@ body {
         width: 100% !important;
         height: 100% !important;
         max-height: none !important;
+        margin: 0;
         right: auto !important;
         top: 0 !important;
         opacity: 1;
         overflow: hidden;
         z-index: 1;
         pointer-events: none;
+        background: #080a0e;
     }
 
     .hero-mobile-photo,
@@ -3838,44 +3841,47 @@ body {
         filter: saturate(1.08) contrast(1.04);
     }
 
-    /* Dominant left/center image */
+    /* Full-height base layer prevents any empty black region. */
     .hero-mobile-photo-1 {
-        top: 8%;
-        left: -2%;
-        width: 83%;
-        height: 57%;
-        z-index: 1;
-        clip-path: polygon(0 0, 100% 0, 83% 100%, 0 87%);
-    }
-
-    /* Upper-right supporting image */
-    .hero-mobile-photo-2 {
-        top: 5%;
-        right: -2%;
-        width: 57%;
-        height: 31%;
-        z-index: 2;
-        clip-path: polygon(23% 0, 100% 0, 100% 100%, 0 78%);
-    }
-
-    /* Mid-right panel */
-    .hero-mobile-photo-3 {
-        top: 34%;
-        right: -2%;
-        width: 51%;
-        height: 34%;
-        z-index: 2;
-        clip-path: polygon(0 0, 100% 13%, 100% 100%, 13% 100%);
-    }
-
-    /* Bottom image creates the full-bleed finish */
-    .hero-mobile-photo-4 {
-        right: -2%;
-        bottom: -2%;
-        width: 100%;
-        height: 39%;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
         z-index: 0;
-        clip-path: polygon(17% 0, 100% 0, 100% 100%, 0 100%, 0 39%);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    /* Angular upper-right panel */
+    .hero-mobile-photo-2 {
+        top: 0 !important;
+        right: -2% !important;
+        left: auto !important;
+        width: 59% !important;
+        height: 35% !important;
+        z-index: 2;
+        clip-path: polygon(26% 0, 100% 0, 100% 100%, 0 78%);
+    }
+
+    /* Diagonal mid-right panel */
+    .hero-mobile-photo-3 {
+        top: 31% !important;
+        right: -2% !important;
+        left: auto !important;
+        width: 53% !important;
+        height: 36% !important;
+        z-index: 2;
+        clip-path: polygon(0 0, 100% 12%, 100% 100%, 13% 100%);
+    }
+
+    /* Bottom panel adds the sharp automotive-editorial finish. */
+    .hero-mobile-photo-4 {
+        right: -2% !important;
+        bottom: -2% !important;
+        left: auto !important;
+        top: auto !important;
+        width: 88% !important;
+        height: 39% !important;
+        z-index: 1;
+        clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%, 0 38%);
     }
 
     .hero-backdrop-overlay {
@@ -3885,92 +3891,17 @@ body {
         pointer-events: none;
         background:
             linear-gradient(180deg,
-                rgba(4, 6, 10, .12) 0%,
-                rgba(4, 6, 10, .02) 25%,
-                rgba(4, 6, 10, .18) 37%,
-                rgba(4, 6, 10, .72) 52%,
-                rgba(4, 6, 10, .91) 70%,
-                rgba(4, 6, 10, .60) 84%,
-                rgba(4, 6, 10, .22) 100%),
+                rgba(4, 6, 10, .03) 0%,
+                rgba(4, 6, 10, .02) 24%,
+                rgba(4, 6, 10, .16) 38%,
+                rgba(4, 6, 10, .55) 49%,
+                rgba(4, 6, 10, .82) 66%,
+                rgba(4, 6, 10, .90) 79%,
+                rgba(4, 6, 10, .38) 100%),
             linear-gradient(90deg,
-                rgba(4, 6, 10, .24) 0%,
-                rgba(4, 6, 10, .02) 70%);
-    }
-
-    .hero-mobile-topbar {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 6;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: .75rem;
-        min-height: 64px;
-        padding: max(.65rem, env(safe-area-inset-top)) 1rem .65rem;
-        background: linear-gradient(180deg, rgba(4, 6, 10, .7), transparent);
-    }
-
-    .hero-mobile-brand {
-        display: inline-flex;
-        align-items: center;
-        gap: .5rem;
-        min-width: 0;
-        color: #fff;
-        text-decoration: none;
-        font-family: 'Montserrat', sans-serif;
-        font-size: .88rem;
-        line-height: 1;
-        font-weight: 800;
-        letter-spacing: .01em;
-        white-space: nowrap;
-    }
-
-    .hero-mobile-brand:hover {
-        color: #fff;
-    }
-
-    .hero-mobile-brand-mark {
-        display: grid;
-        place-items: center;
-        flex: 0 0 29px;
-        width: 29px;
-        height: 29px;
-        overflow: hidden;
-    }
-
-    .hero-mobile-brand-mark img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        transform: scale(1.2);
-    }
-
-    .hero-mobile-top-actions {
-        display: flex;
-        align-items: center;
-        gap: .35rem;
-    }
-
-    .hero-mobile-icon {
-        display: grid;
-        place-items: center;
-        width: 36px;
-        height: 36px;
-        padding: 0;
-        color: #fff;
-        background: rgba(10, 12, 17, .36);
-        border: 1px solid rgba(255, 255, 255, .14);
-        border-radius: 50%;
-        font-size: .95rem;
-        -webkit-backdrop-filter: blur(8px);
-        backdrop-filter: blur(8px);
-    }
-
-    .hero-mobile-icon:active {
-        background: rgba(229, 9, 20, .72);
+                rgba(4, 6, 10, .20) 0%,
+                rgba(4, 6, 10, .02) 68%,
+                rgba(4, 6, 10, .12) 100%);
     }
 
     .hero-content {
@@ -3985,17 +3916,17 @@ body {
         height: 100%;
         min-height: 0;
         margin: 0;
-        padding: 41svh 1.15rem max(2.5rem, env(safe-area-inset-bottom));
+        padding: 35svh 1.1rem max(2.2rem, env(safe-area-inset-bottom));
     }
 
     .hero-title {
         max-width: 21rem;
         margin: 0 0 .65rem;
-        font-size: clamp(2rem, 9.2vw, 2.65rem);
+        font-size: clamp(2rem, 9.2vw, 2.6rem);
         line-height: .99;
         letter-spacing: -.045em;
         text-wrap: balance;
-        text-shadow: 0 2px 20px rgba(0, 0, 0, .3);
+        text-shadow: 0 2px 20px rgba(0, 0, 0, .45);
     }
 
     .hero-title span {
@@ -4010,10 +3941,10 @@ body {
     .hero-desc {
         max-width: 22rem;
         margin: 0 0 1rem;
-        color: rgba(255, 255, 255, .88);
+        color: rgba(255, 255, 255, .92);
         font-size: .81rem;
         line-height: 1.42;
-        text-shadow: 0 1px 12px rgba(0, 0, 0, .6);
+        text-shadow: 0 1px 12px rgba(0, 0, 0, .75);
     }
 
     .hero-actions {
@@ -4047,21 +3978,11 @@ body {
 
 @media (max-width: 390px) {
     .hero-wrapper {
-        min-height: 620px;
-    }
-
-    .hero-mobile-brand {
-        font-size: .8rem;
-    }
-
-    .hero-mobile-brand-mark {
-        flex-basis: 26px;
-        width: 26px;
-        height: 26px;
+        min-height: 660px;
     }
 
     .hero-content {
-        padding: 42svh 1rem max(2.15rem, env(safe-area-inset-bottom));
+        padding: 34svh 1rem max(2rem, env(safe-area-inset-bottom));
     }
 
     .hero-title {
