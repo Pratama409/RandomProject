@@ -51,7 +51,7 @@
         </aside>
 
         <aside class="hero-mobile-editorial-gallery" aria-hidden="true">
-            @foreach ($heroCars as $index => $car)
+            @foreach ($heroCars->take(4) as $index => $car)
                 @php
                     $imageUrl = str_starts_with($car->image_path, 'http')
                         ? $car->image_path
