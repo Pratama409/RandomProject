@@ -8,22 +8,6 @@
     <!-- 1. HERO SECTION: FULLSCREEN ANGLED GALLERY                           -->
     <!-- ==================================================================== -->
     <section class="hero-wrapper" id="top">
-        <div class="hero-mobile-topbar">
-            <a class="hero-mobile-brand" href="{{ route('home') }}#top" aria-label="Automobilli Home">
-                <span class="hero-mobile-brand-mark">
-                    <img src="{{ asset('image/BrandLogo/BrandLogo.jpg') }}" alt="" aria-hidden="true">
-                </span>
-                <span>AUTOMOBILLI</span>
-            </a>
-            <div class="hero-mobile-top-actions">
-                <button type="button" class="hero-mobile-icon automobilli-search-trigger" aria-label="Search Automobilli" title="Search">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-                <button type="button" class="hero-mobile-icon hero-mobile-menu-trigger" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-label="Open navigation" title="Menu">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-            </div>
-        </div>
         <aside class="hero-visual-fullscreen">
             <div class="hero-backdrop-overlay"></div>
 
