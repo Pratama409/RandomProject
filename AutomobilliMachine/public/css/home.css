@@ -3757,3 +3757,335 @@ body {
         font-size: .66rem;
     }
 }
+
+
+/* =========================================================
+   MOBILE HERO — FULL-SCREEN ANGULAR EDITORIAL
+   Inspired by the approved reference: one dominant car image,
+   sharp diagonal supporting panels, and copy layered over the
+   lower half. Desktop styles remain untouched.
+   ========================================================= */
+.hero-mobile-topbar {
+    display: none;
+}
+
+@media (max-width: 767.98px) {
+    .hero-wrapper {
+        position: relative;
+        isolation: isolate;
+        width: 100%;
+        height: 100svh;
+        min-height: 680px;
+        max-height: 960px;
+        overflow: hidden;
+        padding: 0;
+        background: #07090d;
+    }
+
+    .hero-visual-fullscreen {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 0;
+    }
+
+    .hero-visual-fullscreen .angled-gallery {
+        display: none !important;
+    }
+
+    .hero-mobile-editorial-gallery {
+        position: absolute !important;
+        inset: 0 !important;
+        display: block !important;
+        width: 100% !important;
+        height: 100% !important;
+        max-height: none !important;
+        right: auto !important;
+        top: 0 !important;
+        opacity: 1;
+        overflow: hidden;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .hero-mobile-photo,
+    .hero-mobile-photo-1,
+    .hero-mobile-photo-2,
+    .hero-mobile-photo-3,
+    .hero-mobile-photo-4 {
+        position: absolute !important;
+        display: block;
+        min-width: 0;
+        min-height: 0;
+        margin: 0;
+        padding: 0;
+        border: 2px solid #080a0e;
+        border-radius: 0;
+        background: #080a0e;
+        overflow: hidden;
+        box-shadow: none;
+        transform: none;
+    }
+
+    .hero-mobile-photo img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        filter: saturate(1.08) contrast(1.04);
+    }
+
+    /* Dominant left/center image */
+    .hero-mobile-photo-1 {
+        top: 8%;
+        left: -2%;
+        width: 83%;
+        height: 57%;
+        z-index: 1;
+        clip-path: polygon(0 0, 100% 0, 83% 100%, 0 87%);
+    }
+
+    /* Upper-right supporting image */
+    .hero-mobile-photo-2 {
+        top: 5%;
+        right: -2%;
+        width: 57%;
+        height: 31%;
+        z-index: 2;
+        clip-path: polygon(23% 0, 100% 0, 100% 100%, 0 78%);
+    }
+
+    /* Mid-right panel */
+    .hero-mobile-photo-3 {
+        top: 34%;
+        right: -2%;
+        width: 51%;
+        height: 34%;
+        z-index: 2;
+        clip-path: polygon(0 0, 100% 13%, 100% 100%, 13% 100%);
+    }
+
+    /* Bottom image creates the full-bleed finish */
+    .hero-mobile-photo-4 {
+        right: -2%;
+        bottom: -2%;
+        width: 100%;
+        height: 39%;
+        z-index: 0;
+        clip-path: polygon(17% 0, 100% 0, 100% 100%, 0 100%, 0 39%);
+    }
+
+    .hero-backdrop-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 3;
+        pointer-events: none;
+        background:
+            linear-gradient(180deg,
+                rgba(4, 6, 10, .12) 0%,
+                rgba(4, 6, 10, .02) 25%,
+                rgba(4, 6, 10, .18) 37%,
+                rgba(4, 6, 10, .72) 52%,
+                rgba(4, 6, 10, .91) 70%,
+                rgba(4, 6, 10, .60) 84%,
+                rgba(4, 6, 10, .22) 100%),
+            linear-gradient(90deg,
+                rgba(4, 6, 10, .24) 0%,
+                rgba(4, 6, 10, .02) 70%);
+    }
+
+    .hero-mobile-topbar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 6;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: .75rem;
+        min-height: 64px;
+        padding: max(.65rem, env(safe-area-inset-top)) 1rem .65rem;
+        background: linear-gradient(180deg, rgba(4, 6, 10, .7), transparent);
+    }
+
+    .hero-mobile-brand {
+        display: inline-flex;
+        align-items: center;
+        gap: .5rem;
+        min-width: 0;
+        color: #fff;
+        text-decoration: none;
+        font-family: 'Montserrat', sans-serif;
+        font-size: .88rem;
+        line-height: 1;
+        font-weight: 800;
+        letter-spacing: .01em;
+        white-space: nowrap;
+    }
+
+    .hero-mobile-brand:hover {
+        color: #fff;
+    }
+
+    .hero-mobile-brand-mark {
+        display: grid;
+        place-items: center;
+        flex: 0 0 29px;
+        width: 29px;
+        height: 29px;
+        overflow: hidden;
+    }
+
+    .hero-mobile-brand-mark img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transform: scale(1.2);
+    }
+
+    .hero-mobile-top-actions {
+        display: flex;
+        align-items: center;
+        gap: .35rem;
+    }
+
+    .hero-mobile-icon {
+        display: grid;
+        place-items: center;
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        color: #fff;
+        background: rgba(10, 12, 17, .36);
+        border: 1px solid rgba(255, 255, 255, .14);
+        border-radius: 50%;
+        font-size: .95rem;
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
+    }
+
+    .hero-mobile-icon:active {
+        background: rgba(229, 9, 20, .72);
+    }
+
+    .hero-content {
+        position: absolute;
+        inset: 0;
+        z-index: 5;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        margin: 0;
+        padding: 41svh 1.15rem max(2.5rem, env(safe-area-inset-bottom));
+    }
+
+    .hero-title {
+        max-width: 21rem;
+        margin: 0 0 .65rem;
+        font-size: clamp(2rem, 9.2vw, 2.65rem);
+        line-height: .99;
+        letter-spacing: -.045em;
+        text-wrap: balance;
+        text-shadow: 0 2px 20px rgba(0, 0, 0, .3);
+    }
+
+    .hero-title span {
+        display: block;
+        margin-top: .18rem;
+        font-size: .91em;
+        font-weight: 400;
+        letter-spacing: -.035em;
+        line-height: 1.02;
+    }
+
+    .hero-desc {
+        max-width: 22rem;
+        margin: 0 0 1rem;
+        color: rgba(255, 255, 255, .88);
+        font-size: .81rem;
+        line-height: 1.42;
+        text-shadow: 0 1px 12px rgba(0, 0, 0, .6);
+    }
+
+    .hero-actions {
+        display: flex;
+        width: 100%;
+        max-width: 23rem;
+        gap: .55rem;
+        margin: 0 0 .85rem;
+    }
+
+    .hero-actions a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1 1 0;
+        min-width: 0;
+        min-height: 46px;
+        padding: .7rem .4rem;
+        font-size: .69rem;
+        line-height: 1.15;
+        white-space: nowrap;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, .2);
+    }
+
+    .scroll-indicator {
+        align-self: flex-start;
+        margin: 0 0 .1rem .1rem;
+        opacity: .85;
+    }
+}
+
+@media (max-width: 390px) {
+    .hero-wrapper {
+        min-height: 620px;
+    }
+
+    .hero-mobile-brand {
+        font-size: .8rem;
+    }
+
+    .hero-mobile-brand-mark {
+        flex-basis: 26px;
+        width: 26px;
+        height: 26px;
+    }
+
+    .hero-content {
+        padding: 42svh 1rem max(2.15rem, env(safe-area-inset-bottom));
+    }
+
+    .hero-title {
+        font-size: clamp(1.85rem, 9.3vw, 2.25rem);
+    }
+
+    .hero-desc {
+        font-size: .76rem;
+        line-height: 1.4;
+    }
+
+    .hero-actions {
+        gap: .45rem;
+    }
+
+    .hero-actions a {
+        min-height: 44px;
+        padding-inline: .25rem;
+        font-size: .64rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-mobile-photo img {
+        scroll-behavior: auto;
+    }
+}
