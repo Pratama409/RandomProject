@@ -4358,3 +4358,101 @@ body {
         font-size: .64rem;
     }
 }
+
+
+/* MOBILE HERO FINAL FIX — isolated polygon tiles, never overlapping */
+@media (max-width: 767.98px) {
+    .hero-mobile-editorial-gallery {
+        background: #030609 !important;
+    }
+
+    .hero-mobile-photo-1,
+    .hero-mobile-photo-2,
+    .hero-mobile-photo-3,
+    .hero-mobile-photo-4 {
+        position: absolute !important;
+        width: calc(50% - 3px) !important;
+        height: calc(25% - 3px) !important;
+        margin: 0 !important;
+        border: 0 !important;
+        overflow: hidden !important;
+        background: #030609 !important;
+        transform: none !important;
+    }
+
+    /* Upper-left tile */
+    .hero-mobile-photo-1 {
+        top: 0 !important;
+        left: 0 !important;
+        right: auto !important;
+        bottom: auto !important;
+        z-index: 1 !important;
+        clip-path: polygon(0 0, 100% 0, 84% 100%, 0 88%) !important;
+    }
+
+    /* Upper-right tile */
+    .hero-mobile-photo-2 {
+        top: 0 !important;
+        right: 0 !important;
+        left: auto !important;
+        bottom: auto !important;
+        z-index: 1 !important;
+        clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 84%) !important;
+    }
+
+    /* Lower-left tile — separate bounding box from the upper row */
+    .hero-mobile-photo-3 {
+        top: 25% !important;
+        left: 0 !important;
+        right: auto !important;
+        bottom: auto !important;
+        z-index: 1 !important;
+        clip-path: polygon(0 12%, 100% 0, 83% 100%, 0 88%) !important;
+    }
+
+    /* Lower-right tile */
+    .hero-mobile-photo-4 {
+        top: 25% !important;
+        right: 0 !important;
+        left: auto !important;
+        bottom: auto !important;
+        z-index: 1 !important;
+        clip-path: polygon(18% 0, 100% 12%, 100% 100%, 0 88%) !important;
+    }
+
+    .hero-mobile-photo img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center !important;
+    }
+
+    .hero-backdrop-overlay {
+        background: linear-gradient(
+            180deg,
+            rgba(3, 6, 9, 0) 0%,
+            rgba(3, 6, 9, 0) 39%,
+            rgba(3, 6, 9, .55) 47%,
+            #030609 55%,
+            #030609 100%
+        ) !important;
+    }
+
+    .hero-content {
+        padding-top: 51svh !important;
+        padding-bottom: max(1.8rem, env(safe-area-inset-bottom)) !important;
+    }
+}
+
+@media (max-width: 390px) {
+    .hero-mobile-photo-1,
+    .hero-mobile-photo-2,
+    .hero-mobile-photo-3,
+    .hero-mobile-photo-4 {
+        height: calc(25% - 2px) !important;
+    }
+
+    .hero-content {
+        padding-top: 50svh !important;
+    }
+}
