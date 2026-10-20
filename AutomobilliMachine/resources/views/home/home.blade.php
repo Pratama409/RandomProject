@@ -34,7 +34,7 @@
             </div>
         </aside>
 
-        <aside class="hero-mobile-editorial-gallery" aria-hidden="true">
+        <aside class="hero-mobile-editorial-gallery" aria-label="Featured automotive gallery">
             @foreach ($heroCars->take(4) as $index => $car)
                 @php
                     $imageUrl = str_starts_with($car->image_path, 'http')
@@ -42,14 +42,18 @@
                         : asset($car->image_path);
                 @endphp
 
-                <div class="hero-mobile-photo hero-mobile-photo-{{ $index + 1 }}">
+                <article class="hero-mobile-photo hero-mobile-photo-{{ $index + 1 }} showcase-card slot-panel-{{ $index + 1 }}">
                     <img
                         src="{{ $imageUrl }}"
-                        alt=""
+                        alt="{{ $car->brand?->name }} {{ $car->name }}"
                         loading="{{ $index === 0 ? 'eager' : 'lazy' }}"
                         fetchpriority="{{ $index === 0 ? 'high' : 'low' }}"
                         decoding="async">
-                </div>
+                    <div class="showcase-card-meta">
+                        <span class="showcase-badge">{{ str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT) }} · {{ $car->brand?->name ?? 'Automotive' }}</span>
+                        <h2 class="showcase-title">{{ $car->name }}</h2>
+                    </div>
+                </article>
             @endforeach
         </aside>
 
