@@ -8,73 +8,56 @@
     <!-- 1. HERO SECTION: FULLSCREEN ANGLED GALLERY                           -->
     <!-- ==================================================================== -->
     <section class="hero-wrapper" id="top">
-        <aside class="hero-visual-fullscreen">
+        <aside class="hero-visual-fullscreen" aria-label="Featured automotive gallery">
             <div class="hero-backdrop-overlay"></div>
-
             <div class="angled-gallery">
-                @for ($column = 0; $column < 4; $column++)
-                    <div class="gallery-col col-offset-{{ $column + 1 }}">
-                        @foreach ($heroCars as $index => $car)
-                            @if ($index % 4 === $column)
-                                @php
-                                    $imageUrl = str_starts_with($car->image_path, 'http')
-                                        ? $car->image_path
-                                        : asset($car->image_path);
-                                @endphp
-                                <div class="showcase-card">
-                                    <img src="{{ $imageUrl }}" alt="{{ $car->brand?->name }} {{ $car->name }}"
-                                     loading="{{ $index === 0 ? 'eager' : 'lazy' }}"
-                                     fetchpriority="{{ $index === 0 ? 'high' : 'low' }}"
-                                     decoding="async">
-                                </div>
-                            @endif
-                        @endforeach
+                @foreach ($panels as $index => $panel)
+                    @php
+                        $imageUrl = str_starts_with($panel['image'], 'http')
+                            ? $panel['image']
+                            : asset($panel['image']);
+                    @endphp
+                    <div class="gallery-col col-offset-{{ $index + 1 }}">
+                        <a href="{{ $index < 2 ? '#brands' : '#compare' }}"
+                           class="showcase-card slot-panel-{{ $index + 1 }}"
+                           aria-label="{{ $panel['title'] }}">
+                            <img src="{{ $imageUrl }}"
+                                 alt="{{ $panel['title'] }}"
+                                 class="showcase-img"
+                                 loading="{{ $index === 0 ? 'eager' : 'lazy' }}"
+                                 fetchpriority="{{ $index === 0 ? 'high' : 'low' }}"
+                                 decoding="async">
+                            <div class="showcase-card-meta">
+                                <span class="showcase-badge">{{ $panel['category'] }}</span>
+                                <h3 class="showcase-title">{{ $panel['title'] }}</h3>
+                            </div>
+                        </a>
                     </div>
-                @endfor
+                @endforeach
             </div>
         </aside>
 
-        <aside class="hero-mobile-editorial-gallery" aria-label="Featured automotive gallery">
-            @foreach ($heroCars->take(4) as $index => $car)
-                @php
-                    $imageUrl = str_starts_with($car->image_path, 'http')
-                        ? $car->image_path
-                        : asset($car->image_path);
-                @endphp
+        <aside class="hero-mobile-editorial">
+            <div class="hero-editorial-inner">
+                <h1 class="hero-headline">
+                    <span class="hero-headline-bold">Automotive<br>Excellence</span>
+                    <span class="hero-headline-light">to kick-start<br>your passion</span>
+                </h1>
 
-                <article class="hero-mobile-photo hero-mobile-photo-{{ $index + 1 }} showcase-card slot-panel-{{ $index + 1 }}">
-                    <img
-                        src="{{ $imageUrl }}"
-                        alt="{{ $car->brand?->name }} {{ $car->name }}"
-                        loading="{{ $index === 0 ? 'eager' : 'lazy' }}"
-                        fetchpriority="{{ $index === 0 ? 'high' : 'low' }}"
-                        decoding="async">
-                    <div class="showcase-card-meta">
-                        <span class="showcase-badge">{{ str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT) }} · {{ $car->brand?->name ?? 'Automotive' }}</span>
-                        <h2 class="showcase-title">{{ $car->name }}</h2>
-                    </div>
-                </article>
-            @endforeach
-        </aside>
+                <p class="hero-description">
+                    Explore the heritage, philosophy, and engineering of legendary automotive brands. Compare technical specifications and uncover your ultimate driving machine.
+                </p>
 
-        <section class="hero-content">
-            <h1 class="hero-title">
-                Automotive Excellence
-                <span>to kick-start your passion</span>
-            </h1>
+                <div class="hero-cta-group">
+                    <a href="#brands" class="btn-explore-brands">Explore Brands</a>
+                    <a href="#compare" class="btn-compare-cars">Compare Cars</a>
+                </div>
 
-            <p class="hero-desc">
-                Explore the heritage, philosophy, and engineering of legendary automotive brands. Compare technical specifications and uncover your ultimate driving machine.
-            </p>
-
-            <div class="hero-actions">
-                <a href="#brands" class="btn-primary">Explore Brands</a>
-                <a href="#compare" class="btn-outline">Compare Cars</a>
+                <a href="#explore-section" class="hero-scroll-indicator" aria-label="Scroll down">
+                    <span class="mouse-icon"><span class="mouse-wheel"></span></span>
+                </a>
             </div>
-
-            <div class="scroll-indicator" title="Scroll down"></div>
-        </section>
-
+        </aside>
     </section>
 
     <!-- NAVBAR STICKY DI BAWAH HERO -->
