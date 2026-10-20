@@ -21,7 +21,7 @@
 
     <!-- Custom CSS Proyek Terpisah -->
     @if (request()->routeIs('home') || request()->is('home'))
-        <link rel="stylesheet" href="{{ asset('css/home.css') }}?v=20261019-4">
+        <link rel="stylesheet" href="{{ asset('css/home.css') }}?v=20261020-1">
     @endif
     <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=20260929-2">
     <link rel="stylesheet" href="{{ asset('css/auth-profile.css') }}?v=20260929-1">
