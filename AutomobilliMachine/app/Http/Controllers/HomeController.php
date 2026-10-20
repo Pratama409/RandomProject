@@ -51,10 +51,10 @@ class HomeController extends Controller
         // Build the four diagonal hero panels from real catalog cars.
         // This keeps the reference layout while avoiding hard-coded image files.
         $panelCategories = [
-            '01 • MARANELLO',
-            '02 • PERFORMANCE',
-            '03 • TRACK ENGINEERING',
-            '04 • HYPERCAR',
+            'Maranello',
+            'Performance',
+            'Track Engineering',
+            'Hypercar',
         ];
 
         $panels = $heroCars->take(4)->values()->map(function ($car, $index) use ($panelCategories) {
