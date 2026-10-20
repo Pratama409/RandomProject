@@ -5327,3 +5327,341 @@ body {
         font-size: .74rem !important;
     }
 }
+
+
+/* =====================================================================
+   REFERENCE HERO IMPLEMENTATION — 4 FULL-CANVAS DIAGONAL IMAGE SLOTS
+   Adapted from the supplied source. This block intentionally comes last
+   to override earlier experimental mobile gallery rules.
+   ===================================================================== */
+.hero-wrapper {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    width: 100% !important;
+    min-height: 100vh !important;
+    background: #050507 !important;
+    overflow: hidden !important;
+    isolation: isolate !important;
+}
+
+.hero-visual-fullscreen {
+    display: block !important;
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 1 !important;
+    pointer-events: auto !important;
+    opacity: 1 !important;
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
+}
+
+.hero-backdrop-overlay {
+    display: block !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 3 !important;
+    pointer-events: none !important;
+    background: linear-gradient(
+        180deg,
+        rgba(5, 5, 7, .05) 0%,
+        rgba(5, 5, 7, .12) 48%,
+        rgba(5, 5, 7, .88) 58%,
+        #050507 65%,
+        #050507 100%
+    ) !important;
+}
+
+.angled-gallery {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    transform: none !important;
+    z-index: 2 !important;
+}
+
+.gallery-col {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+.angled-gallery .showcase-card {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden !important;
+    background: #050507 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+}
+
+.col-offset-1 .showcase-card,
+.angled-gallery .slot-panel-1 {
+    clip-path: polygon(0% 0%, 47.28% 0.78%, 62.21% 9.22%, 33.74% 24.84%, 0% 28.20%) !important;
+}
+
+.col-offset-2 .showcase-card,
+.angled-gallery .slot-panel-2 {
+    clip-path: polygon(79.44% 0%, 99.82% 0.31%, 99.82% 34.61%, 46.05% 21.09%, 64.20% 9.22%) !important;
+}
+
+.col-offset-3 .showcase-card,
+.angled-gallery .slot-panel-3 {
+    clip-path: polygon(1.05% 35.16%, 45.34% 26.64%, 22.85% 60.39%, 0.53% 58.05%) !important;
+}
+
+.col-offset-4 .showcase-card,
+.angled-gallery .slot-panel-4 {
+    clip-path: polygon(53.43% 25.70%, 96.13% 37.58%, 94.73% 62.58%, 40.07% 51.25%) !important;
+}
+
+.angled-gallery .showcase-img {
+    display: block !important;
+    max-width: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    object-fit: cover !important;
+    opacity: 1 !important;
+    filter: none !important;
+    transition: transform .55s cubic-bezier(.16, 1, .3, 1), filter .35s ease !important;
+}
+
+.col-offset-1 .showcase-img {
+    position: absolute !important; left: 0% !important; top: 0% !important;
+    width: 63% !important; height: 29% !important;
+}
+.col-offset-2 .showcase-img {
+    position: absolute !important; left: 45% !important; top: 0% !important;
+    width: 55% !important; height: 35% !important;
+}
+.col-offset-3 .showcase-img {
+    position: absolute !important; left: 0% !important; top: 26% !important;
+    width: 46% !important; height: 35% !important;
+}
+.col-offset-4 .showcase-img {
+    position: absolute !important; left: 40% !important; top: 25% !important;
+    width: 57% !important; height: 38% !important;
+}
+
+.angled-gallery .showcase-card:hover .showcase-img {
+    transform: scale(1.04) !important;
+    filter: brightness(1.08) !important;
+}
+
+.angled-gallery .showcase-card-meta {
+    position: absolute !important;
+    z-index: 4 !important;
+    display: block !important;
+    pointer-events: none !important;
+    max-width: 36% !important;
+}
+
+.col-offset-1 .showcase-card-meta { left: 4.5% !important; top: 15.5% !important; }
+.col-offset-2 .showcase-card-meta { left: 63% !important; top: 16.5% !important; }
+.col-offset-3 .showcase-card-meta { left: 4.5% !important; top: 46% !important; }
+.col-offset-4 .showcase-card-meta { left: 51% !important; top: 44.5% !important; }
+
+.angled-gallery .showcase-badge {
+    display: inline-block !important;
+    padding: 2px 7px !important;
+    font-size: 9px !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: .08em !important;
+    background: rgba(229, 9, 20, .94) !important;
+    color: #fff !important;
+    border-radius: 4px !important;
+    white-space: nowrap !important;
+}
+
+.angled-gallery .showcase-title {
+    margin: 4px 0 0 !important;
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+    font-weight: 800 !important;
+    color: #fff !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, .9) !important;
+}
+
+.hero-mobile-editorial {
+    position: relative !important;
+    z-index: 10 !important;
+    width: 100% !important;
+    margin-top: auto !important;
+    padding: 0 22px 24px !important;
+    background: transparent !important;
+}
+
+.hero-editorial-inner {
+    width: 100% !important;
+    max-width: 520px !important;
+    margin: 0 auto !important;
+}
+
+.hero-headline {
+    margin: 0 0 12px !important;
+    font-size: clamp(1.75rem, 6.2vw, 2.5rem) !important;
+    line-height: 1.08 !important;
+    letter-spacing: -.02em !important;
+}
+
+.hero-headline-bold {
+    display: block !important;
+    color: #fff !important;
+    font-weight: 800 !important;
+}
+.hero-headline-light {
+    display: block !important;
+    color: #f4f4f5 !important;
+    font-weight: 400 !important;
+}
+
+.hero-description {
+    margin: 0 0 18px !important;
+    color: rgba(255, 255, 255, .78) !important;
+    font-size: .78rem !important;
+    line-height: 1.55 !important;
+}
+
+.hero-cta-group {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: 10px !important;
+    margin: 0 0 18px !important;
+}
+
+.hero-cta-group .btn-explore-brands,
+.hero-cta-group .btn-compare-cars {
+    display: inline-flex !important;
+    min-width: 0 !important;
+    min-height: 46px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 12px 10px !important;
+    border-radius: 8px !important;
+    color: #fff !important;
+    font-size: .76rem !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+}
+
+.hero-cta-group .btn-explore-brands {
+    background: #e50914 !important;
+    border: 1px solid #e50914 !important;
+    box-shadow: 0 8px 24px rgba(229, 9, 20, .3) !important;
+}
+.hero-cta-group .btn-compare-cars {
+    background: rgba(255, 255, 255, .06) !important;
+    border: 1px solid rgba(255, 255, 255, .2) !important;
+}
+
+.hero-scroll-indicator {
+    display: inline-flex !important;
+    align-items: center !important;
+    text-decoration: none !important;
+}
+.hero-scroll-indicator .mouse-icon {
+    display: flex !important;
+    width: 20px !important;
+    height: 32px !important;
+    justify-content: center !important;
+    padding-top: 6px !important;
+    border: 1.5px solid rgba(255, 255, 255, .42) !important;
+    border-radius: 12px !important;
+}
+.hero-scroll-indicator .mouse-wheel {
+    width: 3px !important;
+    height: 6px !important;
+    border-radius: 999px !important;
+    background: rgba(255, 255, 255, .8) !important;
+    animation: scrollWheel 1.6s infinite ease-in-out !important;
+}
+
+@media (max-width: 767.98px) {
+    .hero-wrapper {
+        height: 100svh !important;
+        min-height: 780px !important;
+        max-height: none !important;
+    }
+
+    .hero-visual-fullscreen {
+        display: block !important;
+        height: 100% !important;
+    }
+
+    .angled-gallery {
+        display: block !important;
+        height: 100% !important;
+    }
+
+    .hero-mobile-editorial {
+        padding: 0 22px max(24px, env(safe-area-inset-bottom)) !important;
+    }
+
+    .hero-editorial-inner {
+        max-width: none !important;
+    }
+
+    .hero-headline {
+        font-size: clamp(1.8rem, 8.2vw, 2.4rem) !important;
+        line-height: 1.04 !important;
+        margin-bottom: 10px !important;
+    }
+
+    .hero-description {
+        font-size: .76rem !important;
+        line-height: 1.45 !important;
+        margin-bottom: 14px !important;
+    }
+
+    .hero-cta-group {
+        gap: 9px !important;
+        margin-bottom: 16px !important;
+    }
+
+    .hero-cta-group .btn-explore-brands,
+    .hero-cta-group .btn-compare-cars {
+        min-height: 46px !important;
+        padding: 11px 6px !important;
+        font-size: .69rem !important;
+    }
+
+    .angled-gallery .showcase-card-meta {
+        max-width: 40% !important;
+    }
+
+    .angled-gallery .showcase-badge {
+        font-size: clamp(6px, 1.9vw, 8px) !important;
+        letter-spacing: .035em !important;
+        padding: 2px 4px !important;
+    }
+
+    .angled-gallery .showcase-title {
+        font-size: clamp(8px, 2.5vw, 11px) !important;
+    }
+}
+
+@media (max-width: 390px) {
+    .hero-wrapper { min-height: 780px !important; }
+    .hero-mobile-editorial { padding-left: 18px !important; padding-right: 18px !important; }
+    .hero-headline { font-size: clamp(1.75rem, 8vw, 2.1rem) !important; }
+    .hero-description { font-size: .73rem !important; }
+    .hero-cta-group .btn-explore-brands,
+    .hero-cta-group .btn-compare-cars { font-size: .64rem !important; }
+}
