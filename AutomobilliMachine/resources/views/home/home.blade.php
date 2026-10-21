@@ -7,61 +7,56 @@
     <!-- ==================================================================== -->
     <!-- 1. HERO SECTION: FULLSCREEN ANGLED GALLERY                           -->
     <!-- ==================================================================== -->
+    @include('partials.navbar')
+
     <section class="hero-wrapper" id="top">
-        <aside class="hero-visual-fullscreen" aria-label="Featured automotive gallery">
+        <aside class="hero-visual-fullscreen">
             <div class="hero-backdrop-overlay"></div>
+
             <div class="angled-gallery">
-                @foreach ($panels as $index => $panel)
-                    @php
-                        $imageUrl = str_starts_with($panel['image'], 'http')
-                            ? $panel['image']
-                            : asset($panel['image']);
-                    @endphp
-                    <div class="gallery-col col-offset-{{ $index + 1 }}">
-                        <a href="{{ $index < 2 ? '#brands' : '#compare' }}"
-                           class="showcase-card slot-panel-{{ $index + 1 }}"
-                           aria-label="{{ $panel['title'] }}">
-                            <img src="{{ $imageUrl }}"
-                                 alt="{{ $panel['title'] }}"
-                                 class="showcase-img"
-                                 loading="{{ $index === 0 ? 'eager' : 'lazy' }}"
-                                 fetchpriority="{{ $index === 0 ? 'high' : 'low' }}"
-                                 decoding="async">
-                            <div class="showcase-card-meta">
-                                <span class="showcase-badge">{{ $panel['category'] }}</span>
-                                <h3 class="showcase-title">{{ $panel['title'] }}</h3>
-                            </div>
-                        </a>
+                @for ($column = 0; $column < 4; $column++)
+                    <div class="gallery-col col-offset-{{ $column + 1 }}">
+                        @foreach ($heroCars as $index => $car)
+                            @if ($index % 4 === $column)
+                                @php
+                                    $imageUrl = str_starts_with($car->image_path, 'http')
+                                        ? $car->image_path
+                                        : asset($car->image_path);
+                                @endphp
+                                <div class="showcase-card">
+                                    <img src="{{ $imageUrl }}"
+                                     alt="{{ $car->brand?->name }} {{ $car->name }}"
+                                     loading="{{ $index === 0 ? 'eager' : 'lazy' }}"
+                                     fetchpriority="{{ $index === 0 ? 'high' : 'low' }}"
+                                     decoding="async">
+                                </div>
+                            @endif
+                        @endforeach
                     </div>
-                @endforeach
+                @endfor
             </div>
         </aside>
 
-        <aside class="hero-mobile-editorial">
-            <div class="hero-editorial-inner">
-                <h1 class="hero-headline">
-                    <span class="hero-headline-bold">Automotive<br>Excellence</span>
-                    <span class="hero-headline-light">to kick-start<br>your passion</span>
-                </h1>
+        <section class="hero-content">
+            <h1 class="hero-title">
+                Automotive Excellence
+                <span>to kick-start your passion</span>
+            </h1>
 
-                <p class="hero-description">
-                    Explore the heritage, philosophy, and engineering of legendary automotive brands. Compare technical specifications and uncover your ultimate driving machine.
-                </p>
+            <p class="hero-desc">
+                Explore the heritage, philosophy, and engineering of legendary automotive brands. Compare technical specifications and uncover your ultimate driving machine.
+            </p>
 
-                <div class="hero-cta-group">
-                    <a href="#brands" class="btn-explore-brands">Explore Brands</a>
-                    <a href="#compare" class="btn-compare-cars">Compare Cars</a>
-                </div>
-
-                <a href="#explore-section" class="hero-scroll-indicator" aria-label="Scroll down">
-                    <span class="mouse-icon"><span class="mouse-wheel"></span></span>
-                </a>
+            <div class="hero-actions">
+                <a href="#brands" class="btn-primary">Explore Brands</a>
+                <a href="#compare" class="btn-outline">Compare Cars</a>
             </div>
-        </aside>
+
+            <div class="scroll-indicator" title="Scroll down"></div>
+        </section>
     </section>
 
-    <!-- NAVBAR STICKY DI BAWAH HERO -->
-    @include('partials.navbar')
+
 
     <!-- ==================================================================== -->
     <!-- 2. TRANSITION BANNER: ENGINEERED FOR PASSION                         -->
