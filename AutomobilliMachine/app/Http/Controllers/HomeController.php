@@ -29,7 +29,7 @@ class HomeController extends Controller
         // refresh presents a different selection from the catalog database.
         // Mobile gets fewer tiles to reduce initial DOM/image work.
         $isMobile = preg_match('/Mobile|Android|iPhone|iPad|iPod/i', $request->userAgent()) === 1;
-        $heroLimit = $isMobile ? 4 : 12;
+        $heroLimit = $isMobile ? 8 : 12;
 
         $heroCars = Car::query()
             ->with('brand:id,name,slug')
@@ -48,26 +48,6 @@ class HomeController extends Controller
         // Select a small set of brands first, then fetch only one random
         // iconic car per brand. Avoid loading every iconic car into PHP just
         // to keep six showcase cards.
-        // Build the four diagonal hero panels from real catalog cars.
-        // This keeps the reference layout while avoiding hard-coded image files.
-        $panelCategories = [
-            'Maranello',
-            'Performance',
-            'Track Engineering',
-            'Hypercar',
-        ];
-
-        $panels = $heroCars->take(4)->values()->map(function ($car, $index) use ($panelCategories) {
-            return [
-                'id' => $car->id,
-                'title' => $car->name,
-                'category' => str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT)
-                    . ' • ' . ($car->brand?->name ?? $panelCategories[$index]),
-                'image' => $car->image_path,
-                'clip_class' => 'clip-panel-' . ($index + 1),
-            ];
-        })->all();
-
         $iconicBrandIds = Car::query()
             ->where('is_active', true)
             ->where('is_iconic', true)
@@ -104,7 +84,6 @@ class HomeController extends Controller
         return view('home.home', compact(
             'brands',
             'heroCars',
-            'panels',
             'iconicCars'
         ));
     }
