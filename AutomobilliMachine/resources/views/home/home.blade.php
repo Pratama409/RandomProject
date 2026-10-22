@@ -7,8 +7,6 @@
     <!-- ==================================================================== -->
     <!-- 1. HERO SECTION: FULLSCREEN ANGLED GALLERY                           -->
     <!-- ==================================================================== -->
-    @include('partials.navbar')
-
     <section class="hero-wrapper" id="top">
         <aside class="hero-visual-fullscreen">
             <div class="hero-backdrop-overlay"></div>
@@ -57,6 +55,8 @@
     </section>
 
 
+
+    @include('partials.navbar')
 
     <!-- ==================================================================== -->
     <!-- 2. TRANSITION BANNER: ENGINEERED FOR PASSION                         -->
