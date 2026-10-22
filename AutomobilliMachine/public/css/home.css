@@ -2326,83 +2326,117 @@ body:has(.hero-wrapper) .hero-content {
 
 
 /* =======================================================
-   HOME SECTION HEADINGS
-   Shared styling for headings rendered by the Blade partial.
+   HOME SECTION HEADINGS — STRONGER VISUAL HIERARCHY
+   Desktop + responsive mobile styling.
    ======================================================= */
 .home-section-heading {
     position: relative;
     z-index: 2;
     width: 100%;
-    max-width: 1080px;
-    margin: 0 0 1.35rem;
+    max-width: 1180px;
+    margin: 0 0 1.6rem;
     color: #f5f7fa;
 }
 
 .home-section-heading .home-section-kicker {
-    display: block;
-    margin: 0 0 .58rem;
-    color: #e50914;
+    display: inline-block;
+    margin: 0 0 .72rem;
+    color: #ff2632;
     font-family: 'Montserrat', sans-serif;
-    font-size: .7rem;
-    font-weight: 800;
+    font-size: .78rem;
+    font-weight: 900;
     line-height: 1.45;
-    letter-spacing: .16em;
+    letter-spacing: .19em;
     text-transform: uppercase;
+    text-shadow: 0 0 18px rgba(229, 9, 20, .18);
 }
 
 .home-section-heading h2 {
-    margin: 0 0 .62rem;
-    color: #f4f6f9;
+    margin: 0 0 .78rem;
+    color: #f7f8fb;
     font-family: 'Montserrat', 'Plus Jakarta Sans', sans-serif;
-    font-size: clamp(2rem, 3vw, 2.55rem);
-    font-weight: 500;
-    line-height: 1.13;
-    letter-spacing: -.035em;
+    font-size: clamp(2.65rem, 3.7vw, 3.5rem);
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -.045em;
     text-wrap: balance;
+    text-shadow: 0 6px 28px rgba(0, 0, 0, .2);
 }
 
 .home-section-heading p {
-    max-width: 980px;
+    max-width: 1120px;
     margin: 0;
-    color: #c4cbd5;
-    font-size: 1rem;
+    color: #cbd2dc;
+    font-size: clamp(1rem, 1.05vw, 1.12rem);
     font-weight: 400;
-    line-height: 1.65;
-    letter-spacing: -.01em;
+    line-height: 1.7;
+    letter-spacing: -.012em;
 }
 
 .home-section-heading--brand {
-    max-width: 900px;
-    margin-bottom: 1.4rem;
+    max-width: 980px;
+    margin-bottom: 1.65rem;
 }
 
 .transition-banner .home-section-heading {
-    max-width: 1120px;
+    max-width: 1220px;
+}
+
+.transition-banner .transition-feature {
+    min-height: 60px;
+    padding: 15px 18px;
+    font-size: .96rem;
+    border-color: rgba(255, 255, 255, .12);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .025);
+}
+
+.transition-banner .transition-feature:hover {
+    border-color: rgba(229, 9, 20, .62);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .18);
 }
 
 @media (max-width: 767.98px) {
     .home-section-heading {
-        margin-bottom: 1.1rem;
+        margin-bottom: 1.2rem;
     }
 
     .home-section-heading .home-section-kicker {
-        margin-bottom: .48rem;
-        font-size: .62rem;
-        letter-spacing: .14em;
+        margin-bottom: .55rem;
+        font-size: .66rem;
+        letter-spacing: .15em;
+        line-height: 1.5;
     }
 
     .home-section-heading h2 {
-        margin-bottom: .55rem;
-        font-size: clamp(1.7rem, 7.5vw, 2.15rem);
-        line-height: 1.14;
+        margin-bottom: .62rem;
+        font-size: clamp(2rem, 8.2vw, 2.55rem);
+        font-weight: 600;
+        line-height: 1.1;
+        letter-spacing: -.04em;
+    }
+
+    .home-section-heading p {
+        font-size: .94rem;
+        line-height: 1.62;
+    }
+
+    .home-section-heading--brand {
+        margin-bottom: 1.2rem;
+    }
+
+    .transition-banner .transition-feature {
+        min-height: 54px;
+        padding: 13px 14px;
+        font-size: .88rem;
+    }
+}
+
+@media (max-width: 390px) {
+    .home-section-heading h2 {
+        font-size: clamp(1.85rem, 8.5vw, 2.2rem);
     }
 
     .home-section-heading p {
         font-size: .88rem;
-        line-height: 1.58;
-    }
-
-    .home-section-heading--brand {
-        margin-bottom: 1.1rem;
     }
 }
