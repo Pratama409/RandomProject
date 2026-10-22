@@ -2288,3 +2288,38 @@ body {
     html { scroll-behavior: auto; }
     .scroll-indicator::after { animation: none !important; }
 }
+
+
+/* =======================================================
+   HOMEPAGE NAVBAR PLACEMENT — BELOW THE HERO GALLERY
+   Keep the full navigation bar in the red-marked transition
+   between the hero gallery and "Engineered for Passion".
+   Shared navbar styles for internal pages remain unchanged.
+   ======================================================= */
+@media (min-width: 992px) {
+    body:has(.hero-wrapper) .navbar-custom {
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 1000 !important;
+        margin: 0 !important;
+    }
+}
+
+body:has(.hero-wrapper) .hero-wrapper {
+    min-height: calc(100vh - 86px) !important;
+}
+
+body:has(.hero-wrapper) .hero-content {
+    min-height: calc(100vh - 86px) !important;
+}
+
+@media (max-width: 767.98px) {
+    body:has(.hero-wrapper) .hero-wrapper {
+        min-height: calc(100svh - 64px) !important;
+        height: auto !important;
+    }
+
+    body:has(.hero-wrapper) .hero-content {
+        min-height: calc(100svh - 64px) !important;
+    }
+}
