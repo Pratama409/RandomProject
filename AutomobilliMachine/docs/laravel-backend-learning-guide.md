@@ -24,7 +24,7 @@ A browser request follows this path:
 2. **Authentication middleware** — `auth` redirects guests to the login page.
 3. **Admin middleware** — `admin` checks that the authenticated user's `role` is `admin`; ordinary users receive HTTP 403.
 4. **Form Request** — `SaveCarRequest` authorizes the operation and validates user input before the controller receives it.
-5. **Controller** — `App\\Http\\Controllers\\Admin\\CarController` coordinates the operation.
+5. **Controller** — `App\Http\Controllers\Admin\CarController` coordinates the operation.
 6. **Eloquent Model** — `Car::create()`, `$car->update()`, query builders, and `$car->delete()` read or write the database.
 7. **Response** — the controller redirects back to the catalog with a success message; Blade views render the form or list.
 
@@ -107,7 +107,7 @@ php artisan tinker
 Then, in Tinker, replace the email with the account you own:
 
 ```php
-\\App\\Models\\User::where('email', 'your-email@example.com')->update(['role' => 'admin']);
+\App\Models\User::where('email', 'your-email@example.com')->update(['role' => 'admin']);
 ```
 
 Verify the role, log out/in if needed, and visit `/admin/cars`. Do not promote users based on untrusted form input and do not use a shared example password for a production administrator.
