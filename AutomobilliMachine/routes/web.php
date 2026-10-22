@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CarController as AdminCarController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SearchController;
@@ -30,6 +31,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
+
+Route::prefix('admin')
+    ->name('admin.')
+    ->middleware(['auth', 'admin'])
+    ->group(function () {
+        Route::get('/', fn () => redirect()->route('admin.cars.index'))->name('dashboard');
+        Route::resource('cars', AdminCarController::class)->except(['show']);
+    });
 
 Route::get('/brands/{brand:slug}', [BrandController::class, 'show'])->name('brands.show');
 Route::get('/brands/{brand:slug}/cars', [BrandController::class, 'cars'])->name('brands.cars');
