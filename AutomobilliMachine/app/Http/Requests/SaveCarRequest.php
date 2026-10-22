@@ -27,6 +27,7 @@ class SaveCarRequest extends FormRequest
             'is_concept',
             'is_track_only',
             'is_racing',
+            'stats_tested',
             'is_iconic',
             'is_featured',
             'is_active',
