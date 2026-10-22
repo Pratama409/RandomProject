@@ -135,7 +135,7 @@
         </div>
         <div class="col-md-3">
             <label for="acceleration_0_100" class="form-label">0–100 km/h (seconds)</label>
-            <input id="acceleration_0_100" name="acceleration_0_100" type="number" min="0" max="999" step="0.01"
+            <input id="acceleration_0_100" name="acceleration_0_100" type="number" min="0" max="99.99" step="0.01"
                 value="{{ old('acceleration_0_100', $car->acceleration_0_100) }}" class="form-control admin-input @error('acceleration_0_100') is-invalid @enderror">
             @error('acceleration_0_100') <div class="invalid-feedback">{{ $message }}</div> @enderror
         </div>
@@ -151,7 +151,7 @@
         </div>
         <div class="col-md-6">
             <label for="image_path" class="form-label">Image path or URL</label>
-            <input id="image_path" name="image_path" type="text" value="{{ old('image_path', $car->image_path) }}" class="form-control admin-input" placeholder="image/cars/ferrari-458.jpg or https://...">
+            <input id="image_path" name="image_path" type="text" maxlength="255" value="{{ old('image_path', $car->image_path) }}" class="form-control admin-input" placeholder="image/cars/ferrari-458.jpg or https://...">
             <small class="admin-field-hint">This field accepts a local public path or an image URL; it does not upload a file.</small>
         </div>
         <div class="col-md-4">
