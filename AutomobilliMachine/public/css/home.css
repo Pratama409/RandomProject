@@ -2147,12 +2147,12 @@ body {
 }
 
 .hero-wrapper {
-    min-height: calc(100vh - 86px) !important;
+    min-height: 100vh !important;
     background: #090b0f !important;
 }
 
 .hero-content {
-    min-height: calc(100vh - 86px) !important;
+    min-height: 100vh !important;
 }
 
 .hero-backdrop-overlay {
@@ -2169,7 +2169,7 @@ body {
 
 @media (max-width: 767.98px) {
     .hero-wrapper {
-        min-height: calc(100svh - 64px) !important;
+        min-height: 100svh !important;
         height: auto !important;
     }
 
@@ -2222,7 +2222,7 @@ body {
     }
 
     .hero-content {
-        min-height: calc(100svh - 64px) !important;
+        min-height: 100svh !important;
         width: 100% !important;
         max-width: none !important;
         justify-content: center !important;
@@ -2306,20 +2306,20 @@ body {
 }
 
 body:has(.hero-wrapper) .hero-wrapper {
-    min-height: calc(100vh - 86px) !important;
+    min-height: 100vh !important;
 }
 
 body:has(.hero-wrapper) .hero-content {
-    min-height: calc(100vh - 86px) !important;
+    min-height: 100vh !important;
 }
 
 @media (max-width: 767.98px) {
     body:has(.hero-wrapper) .hero-wrapper {
-        min-height: calc(100svh - 64px) !important;
+        min-height: 100svh !important;
         height: auto !important;
     }
 
     body:has(.hero-wrapper) .hero-content {
-        min-height: calc(100svh - 64px) !important;
+        min-height: 100svh !important;
     }
 }
