@@ -1,3 +1,4 @@
+@if ($gallery->isNotEmpty())
 <section class="car-detail-section car-detail-gallery" id="gallery">
     <div class="container">
         <div class="car-detail-section-heading"><div><span class="car-detail-label">GALLERY</span><h2>Explore every angle</h2><p>Click any image to view it fullscreen.</p></div></div>
@@ -13,3 +14,4 @@
         </div>
     </div>
 </section>
+@endif
