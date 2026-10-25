@@ -12,6 +12,28 @@ class AdminCarCrudTest extends TestCase
 {
     use RefreshDatabase;
 
+    public function test_guest_is_redirected_from_admin_dashboard(): void
+    {
+        $this->get(route('admin.dashboard'))
+            ->assertRedirect(route('login'));
+    }
+
+    public function test_admin_dashboard_shows_catalog_summary(): void
+    {
+        $admin = User::factory()->create(['role' => 'admin']);
+        $brand = $this->createBrand();
+
+        Car::create($this->validCarData($brand));
+
+        $this->actingAs($admin)
+            ->get(route('admin.dashboard'))
+            ->assertOk()
+            ->assertSee('Welcome back')
+            ->assertSee('Total vehicles')
+            ->assertSee('Test Roadster')
+            ->assertSee('Car Catalog');
+    }
+
     public function test_guest_is_redirected_from_admin_catalog(): void
     {
         $this->get(route('admin.cars.index'))
