@@ -171,14 +171,25 @@
                 const progress = toast.querySelector('.admin-toast-progress > span');
                 if (progress) progress.style.setProperty('--toast-duration', duration + 'ms');
 
-                let timer = window.setTimeout(() => dismissToast(toast), duration);
-                const resetTimer = () => {
+                let remaining = duration;
+                let startedAt = performance.now();
+                let timer = window.setTimeout(() => dismissToast(toast), remaining);
+
+                const pauseTimer = () => {
+                    if (timer === null || toast.classList.contains('is-leaving')) return;
                     window.clearTimeout(timer);
-                    timer = window.setTimeout(() => dismissToast(toast), duration);
+                    timer = null;
+                    remaining = Math.max(0, remaining - (performance.now() - startedAt));
                 };
 
-                toast.addEventListener('mouseenter', () => window.clearTimeout(timer));
-                toast.addEventListener('mouseleave', resetTimer);
+                const resumeTimer = () => {
+                    if (timer !== null || toast.classList.contains('is-leaving')) return;
+                    startedAt = performance.now();
+                    timer = window.setTimeout(() => dismissToast(toast), remaining);
+                };
+
+                toast.addEventListener('mouseenter', pauseTimer);
+                toast.addEventListener('mouseleave', resumeTimer);
 
                 const closeButton = toast.querySelector('[data-admin-toast-close]');
                 if (closeButton) closeButton.addEventListener('click', () => dismissToast(toast));
