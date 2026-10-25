@@ -13,12 +13,12 @@
             <div class="car-detail-collage">
                 @php
                     $designImages = [
-                        $gallery->get(0) ?? $gallery->first(),
+                        $designSection['detail_image'] ?? $gallery->get(0) ?? $gallery->first(),
                         $gallery->get(2) ?? $gallery->first(),
                         $gallery->get(3) ?? $gallery->get(2) ?? $gallery->first()
                     ];
                 @endphp
-                @foreach ($designImages as $index => $image)
+                @foreach (array_values(array_filter($designImages)) as $index => $image)
                     @php $url = str_starts_with($image, 'http') ? $image : asset($image); @endphp
                     <button type="button" class="car-detail-collage-item {{ $index === 0 ? 'main' : 'small' }} js-lightbox-trigger"
                         data-lightbox-src="{{ $url }}" data-lightbox-caption="{{ $vehicle->name }} — design">
