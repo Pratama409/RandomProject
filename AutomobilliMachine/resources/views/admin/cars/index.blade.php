@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('title', 'Manage Cars — Automobilli Admin')
 
@@ -6,8 +6,7 @@
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}?v=20261022-1">
 @endpush
 
-@section('content')
-    @include('partials.navbar')
+@section('admin-content')
 
     <section class="admin-page">
         <div class="container admin-shell">
