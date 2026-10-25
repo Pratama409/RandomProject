@@ -16,13 +16,14 @@ class AuthRedirectTest extends TestCase
             'password' => 'password',
         ]);
 
-        $this->withSession(['url.intended' => route('profile.show')])
+        $response = $this->withSession(['url.intended' => route('profile.show')])
             ->post(route('login.store'), [
                 'email' => $admin->email,
                 'password' => 'password',
-            ])
-            ->assertRedirect(route('admin.dashboard'))
-            ->assertAuthenticatedAs($admin);
+            ]);
+
+        $response->assertRedirect(route('admin.dashboard'));
+        $this->assertAuthenticatedAs($admin);
     }
 
     public function test_regular_user_login_redirects_to_profile(): void
@@ -32,12 +33,13 @@ class AuthRedirectTest extends TestCase
             'password' => 'password',
         ]);
 
-        $this->post(route('login.store'), [
+        $response = $this->post(route('login.store'), [
             'email' => $user->email,
             'password' => 'password',
-        ])
-            ->assertRedirect(route('profile.show'))
-            ->assertAuthenticatedAs($user);
+        ]);
+
+        $response->assertRedirect(route('profile.show'));
+        $this->assertAuthenticatedAs($user);
     }
 
     public function test_login_rejects_protocol_relative_external_redirects(): void
