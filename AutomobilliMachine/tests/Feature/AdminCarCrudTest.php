@@ -29,6 +29,19 @@ class AdminCarCrudTest extends TestCase
         $this->assertFalse(Route::has('cars.destroy'));
     }
 
+    public function test_admin_catalog_uses_quick_notifications_and_custom_delete_confirmation(): void
+    {
+        $admin = User::factory()->create(['role' => 'admin']);
+
+        $this->actingAs($admin)
+            ->get(route('admin.cars.index'))
+            ->assertOk()
+            ->assertSee('data-admin-toast-region', false)
+            ->assertSee('data-admin-confirm-dialog', false)
+            ->assertSee('data-confirm-submit', false)
+            ->assertDontSee('onsubmit="return confirm(', false);
+    }
+
     public function test_guest_is_redirected_from_admin_dashboard(): void
     {
         $this->get(route('admin.dashboard'))
