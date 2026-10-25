@@ -24,6 +24,7 @@
                 <form action="{{ route('admin.cars.store') }}" method="POST" enctype="multipart/form-data" data-admin-validate data-unsaved-guard data-unsaved-start-dirty="{{ $errors->any() ? 'true' : 'false' }}" novalidate>
                     @csrf
                     @include('admin.cars.form-fields')
+                    @include('admin.cars.rich-fields')
 
                     <div class="admin-form-footer">
                         <a href="{{ route('admin.cars.index') }}" class="btn btn-outline-custom"
@@ -43,3 +44,7 @@
         </div>
     </section>
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('js/admin-car-editor.js') }}?v=20261025-full-editor"></script>
+@endpush
