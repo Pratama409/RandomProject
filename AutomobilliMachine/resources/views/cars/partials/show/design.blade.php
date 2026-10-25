@@ -10,6 +10,7 @@
                 @endforeach
             </div>
 
+            @if ($gallery->isNotEmpty() || !empty($designSection['detail_image']))
             <div class="car-detail-collage">
                 @php
                     $designImages = [
@@ -27,6 +28,7 @@
                     </button>
                 @endforeach
             </div>
+            @endif
         </div>
 
         @if (!empty($designSection['specs']))
