@@ -1,10 +1,8 @@
 @extends('layouts.admin')
 
 @section('title', 'Manage Cars — Automobilli Admin')
+@section('admin-page-title', 'Car Catalog')
 
-@push('styles')
-    <link rel="stylesheet" href="{{ asset('css/admin.css') }}?v=20261022-1">
-@endpush
 
 @section('admin-content')
 
