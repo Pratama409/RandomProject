@@ -72,6 +72,7 @@ class SaveCarRequest extends FormRequest
             'short_description' => ['nullable', 'string', 'max:1000'],
             'description' => ['nullable', 'string', 'max:20000'],
             'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
+            'remove_hero_image' => ['sometimes', 'boolean'],
             'gallery_files' => ['sometimes', 'array', 'max:16'],
             'gallery_files.*' => ['image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
             'gallery_remove' => ['sometimes', 'array', 'max:80'],
