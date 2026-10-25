@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/admin.css') }}?v=20261025-required-toast">
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}?v=20261025-unsaved-guard">
     @stack('styles')
 </head>
 <body class="admin-body">
@@ -132,7 +132,7 @@
                 <strong data-confirm-item-output></strong>
             </div>
             <div class="admin-confirm-actions">
-                <button type="button" class="admin-confirm-cancel" data-confirm-cancel>Cancel</button>
+                <button type="button" class="admin-confirm-cancel" data-confirm-cancel><span data-confirm-cancel-label>Cancel</span></button>
                 <button type="button" class="admin-confirm-danger" data-confirm-submit>
                     <i class="fa-solid fa-trash-can" data-confirm-button-icon></i>
                     <span data-confirm-button-label>Delete vehicle</span>
@@ -295,7 +295,7 @@
             app.addEventListener('input', clearFieldError);
             app.addEventListener('change', clearFieldError);
 
-            // Branded confirmation dialog for destructive forms (instead of window.confirm).
+            // Branded confirmation dialog for destructive actions and leaving dirty forms.
             const dialog = document.querySelector('[data-admin-confirm-dialog]');
             const confirmTitle = dialog?.querySelector('[data-confirm-title-output]');
             const confirmMessage = dialog?.querySelector('[data-confirm-message-output]');
@@ -306,20 +306,79 @@
             const confirmEyebrow = dialog?.querySelector('[data-confirm-eyebrow-output]');
             const confirmButtonIcon = dialog?.querySelector('[data-confirm-button-icon]');
             const confirmButtonLabel = dialog?.querySelector('[data-confirm-button-label]');
+            const confirmCancelLabel = dialog?.querySelector('[data-confirm-cancel-label]');
+
             let pendingForm = null;
             let pendingSubmitter = null;
             let pendingHref = null;
+            let pendingType = null;
+            let allowUnload = false;
 
-            function configureConfirmation(source) {
-                if (confirmTitle) confirmTitle.textContent = source.dataset.confirmTitle || 'Are you sure?';
-                if (confirmMessage) confirmMessage.textContent = source.dataset.confirmMessage || 'This action cannot be undone.';
+            // Capture the initial values so opening Edit Car alone is not treated as a change.
+            const guardedForms = Array.from(app.querySelectorAll('form[data-unsaved-guard]'));
+            const initialFormStates = new WeakMap();
+
+            function getFormState(form) {
+                return JSON.stringify(Array.from(form.querySelectorAll('input, select, textarea'))
+                    .filter((field) => {
+                        if (!field.name || field.disabled) return false;
+                        if (field.tagName === 'INPUT' && ['hidden', 'submit', 'button', 'reset', 'image'].includes(field.type)) return false;
+                        return true;
+                    })
+                    .map((field) => {
+                        const type = (field.type || '').toLowerCase();
+
+                        if (type === 'file') {
+                            return [field.name, type, Array.from(field.files || []).map((file) => [
+                                file.name, file.size, file.lastModified, file.type
+                            ])];
+                        }
+
+                        if (type === 'checkbox' || type === 'radio') {
+                            return [field.name, type, field.value, field.checked];
+                        }
+
+                        if (field.tagName === 'SELECT' && field.multiple) {
+                            return [field.name, Array.from(field.selectedOptions).map((option) => option.value)];
+                        }
+
+                        return [field.name, type, field.value];
+                    }));
+            }
+
+            guardedForms.forEach((form) => {
+                initialFormStates.set(form, getFormState(form));
+            });
+
+            function getDirtyGuardedForm() {
+                return guardedForms.find((form) => {
+                    if (form.dataset.unsavedStartDirty === 'true') return true;
+                    return getFormState(form) !== initialFormStates.get(form);
+                }) || null;
+            }
+
+            function configureConfirmation(source, mode = 'action') {
+                const isNavigation = mode === 'navigation';
+                if (confirmTitle) {
+                    confirmTitle.textContent = source.dataset.confirmTitle ||
+                        (isNavigation ? 'Leave without saving?' : 'Are you sure?');
+                }
+                if (confirmMessage) {
+                    confirmMessage.textContent = source.dataset.confirmMessage ||
+                        (isNavigation
+                            ? 'You have unsaved changes. If you continue, your changes will be lost.'
+                            : 'This action cannot be undone.');
+                }
                 if (itemOutput) itemOutput.textContent = source.dataset.confirmItem || '';
                 if (itemRow) itemRow.hidden = !source.dataset.confirmItem;
 
-                const variant = source.dataset.confirmVariant || 'danger';
-                const iconName = source.dataset.confirmIcon || 'trash-can';
-                const buttonLabel = source.dataset.confirmConfirmLabel || 'Delete vehicle';
-                const eyebrow = source.dataset.confirmEyebrow || 'CONFIRM ACTION';
+                const variant = source.dataset.confirmVariant || (isNavigation ? 'warning' : 'danger');
+                const iconName = source.dataset.confirmIcon || (isNavigation ? 'triangle-exclamation' : 'trash-can');
+                const buttonLabel = source.dataset.confirmConfirmLabel ||
+                    (isNavigation ? 'Discard changes & leave' : 'Delete vehicle');
+                const cancelLabel = source.dataset.confirmCancelLabel ||
+                    (isNavigation ? 'Stay and continue editing' : 'Cancel');
+                const eyebrow = source.dataset.confirmEyebrow || (isNavigation ? 'UNSAVED CHANGES' : 'CONFIRM ACTION');
 
                 dialog?.classList.toggle('is-warning', variant === 'warning');
                 confirmButton?.classList.toggle('is-warning-action', variant === 'warning');
@@ -327,10 +386,11 @@
                 if (confirmIcon) confirmIcon.className = 'fa-solid fa-' + iconName;
                 if (confirmButtonIcon) confirmButtonIcon.className = 'fa-solid fa-' + iconName;
                 if (confirmButtonLabel) confirmButtonLabel.textContent = buttonLabel;
+                if (confirmCancelLabel) confirmCancelLabel.textContent = cancelLabel;
             }
 
-            function openConfirmation(source) {
-                configureConfirmation(source);
+            function openConfirmation(source, mode = 'action') {
+                configureConfirmation(source, mode);
 
                 if (dialog && typeof dialog.showModal === 'function') {
                     dialog.showModal();
@@ -341,6 +401,14 @@
                 return false;
             }
 
+            function clearPendingConfirmation() {
+                pendingForm = null;
+                pendingSubmitter = null;
+                pendingHref = null;
+                pendingType = null;
+            }
+
+            // Keep the existing branded confirmation for destructive forms.
             app.addEventListener('submit', (event) => {
                 const form = event.target.closest('form[data-confirm-submit]');
                 if (!form) return;
@@ -353,9 +421,10 @@
                 event.preventDefault();
                 pendingForm = form;
                 pendingSubmitter = event.submitter || form.querySelector('button[type="submit"]');
+                pendingHref = null;
+                pendingType = 'action';
 
-                if (!openConfirmation(form)) {
-                    // Fallback for browsers without native dialog support.
+                if (!openConfirmation(form, 'action')) {
                     if (window.confirm((form.dataset.confirmTitle || 'Confirm action') + '\\n\\n' + (form.dataset.confirmMessage || 'Continue?'))) {
                         submitConfirmedAction();
                     } else {
@@ -364,21 +433,83 @@
                 }
             });
 
-            // Warn when leaving an edit form with the Cancel link.
+            // Guard all same-site admin navigation, but only if a guarded form is actually dirty.
             app.addEventListener('click', (event) => {
-                const link = event.target.closest('a[data-confirm-navigation]');
-                if (!link) return;
-                if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+                const link = event.target instanceof Element ? event.target.closest('a[href]') : null;
+                if (!link || event.defaultPrevented || event.button !== 0 ||
+                    event.metaKey || event.ctrlKey || event.shiftKey || event.altKey ||
+                    link.hasAttribute('download') ||
+                    (link.target && link.target.toLowerCase() !== '_self')) {
+                    return;
+                }
+
+                const dirtyForm = getDirtyGuardedForm();
+                if (!dirtyForm) return;
+
+                let target;
+                try {
+                    target = new URL(link.href, window.location.href);
+                } catch {
+                    return;
+                }
+
+                if (target.origin !== window.location.origin) return;
+
+                const samePathAndQuery =
+                    target.pathname === window.location.pathname &&
+                    target.search === window.location.search;
+
+                if (target.href === window.location.href ||
+                    (samePathAndQuery && target.hash && target.hash !== window.location.hash)) {
+                    return;
+                }
 
                 event.preventDefault();
                 pendingForm = null;
                 pendingSubmitter = null;
-                pendingHref = link.href;
+                pendingHref = target.href;
+                pendingType = 'navigation';
 
-                if (!openConfirmation(link)) {
-                    const message = link.dataset.confirmMessage || 'Leave this page?';
-                    if (window.confirm((link.dataset.confirmTitle || 'Discard your changes?') + '\\n\\n' + message)) {
-                        navigateToPendingHref();
+                if (!openConfirmation(link, 'navigation')) {
+                    if (window.confirm(
+                        (link.dataset.confirmTitle || 'Leave without saving?') + '\\n\\n' +
+                        (link.dataset.confirmMessage || 'You have unsaved changes. If you continue, your changes will be lost.')
+                    )) {
+                        submitConfirmedAction();
+                    } else {
+                        clearPendingConfirmation();
+                    }
+                }
+            });
+
+            // Also guard form submissions that leave the page (for example Sign out in the sidebar).
+            app.addEventListener('submit', (event) => {
+                if (event.defaultPrevented) return;
+
+                const submittedForm = event.target;
+                if (!(submittedForm instanceof HTMLFormElement)) return;
+
+                if (submittedForm.dataset.allowDirtyNavigation === 'true') {
+                    delete submittedForm.dataset.allowDirtyNavigation;
+                    return;
+                }
+
+                const dirtyForm = getDirtyGuardedForm();
+                if (!dirtyForm || submittedForm === dirtyForm) {
+                    // Saving the actual edited form is intentional; don't show a navigation warning.
+                    if (submittedForm === dirtyForm) allowUnload = true;
+                    return;
+                }
+
+                event.preventDefault();
+                pendingForm = submittedForm;
+                pendingSubmitter = event.submitter || submittedForm.querySelector('button[type="submit"]');
+                pendingHref = null;
+                pendingType = 'external-submit';
+
+                if (!openConfirmation(submittedForm, 'navigation')) {
+                    if (window.confirm('Leave without saving?\\n\\nYour changes will be lost.')) {
+                        submitConfirmedAction();
                     } else {
                         clearPendingConfirmation();
                     }
@@ -386,22 +517,29 @@
             });
 
             function submitConfirmedAction() {
-                if (pendingHref) {
+                if (pendingType === 'navigation' && pendingHref) {
                     navigateToPendingHref();
                     return;
                 }
 
                 if (!pendingForm) return;
+
                 const form = pendingForm;
                 const submitter = pendingSubmitter;
-                pendingForm = null;
-                pendingSubmitter = null;
+                const actionType = pendingType;
+                clearPendingConfirmation();
 
                 if (dialog?.open) {
                     dialog.dataset.confirming = 'true';
                     dialog.close();
                 }
-                form.dataset.confirmed = 'true';
+
+                if (actionType === 'external-submit') {
+                    form.dataset.allowDirtyNavigation = 'true';
+                    allowUnload = true;
+                } else {
+                    form.dataset.confirmed = 'true';
+                }
 
                 if (submitter && submitter.form === form) {
                     form.requestSubmit(submitter);
@@ -413,17 +551,14 @@
             function navigateToPendingHref() {
                 const href = pendingHref;
                 clearPendingConfirmation();
+                allowUnload = true;
+
                 if (dialog?.open) {
                     dialog.dataset.confirming = 'true';
                     dialog.close();
                 }
-                if (href) window.location.assign(href);
-            }
 
-            function clearPendingConfirmation() {
-                pendingForm = null;
-                pendingSubmitter = null;
-                pendingHref = null;
+                if (href) window.location.assign(href);
             }
 
             confirmButton?.addEventListener('click', submitConfirmedAction);
@@ -440,9 +575,15 @@
                 }
             });
             dialog?.addEventListener('close', () => {
-                // A confirmed action consumes its pending target before closing the dialog.
                 if (dialog.dataset.confirming !== 'true') clearPendingConfirmation();
                 delete dialog.dataset.confirming;
+            });
+
+            // Browser back/refresh/close: ask only when a form is dirty.
+            window.addEventListener('beforeunload', (event) => {
+                if (allowUnload || !getDirtyGuardedForm()) return;
+                event.preventDefault();
+                event.returnValue = '';
             });
 
             document.addEventListener('keydown', (event) => {
