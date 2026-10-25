@@ -213,7 +213,7 @@ class CarController extends Controller
 
     private function splitLines(string $text): array
     {
-        return collect(preg_split('/\\r\\n|\\r|\\n/', $text) ?: [])
+        return collect(preg_split('/\r\n|\r|\n/', $text) ?: [])
             ->map(fn (string $line) => trim($line))
             ->filter(fn (string $line) => $line !== '')
             ->values()->all();
