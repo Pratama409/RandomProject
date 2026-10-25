@@ -95,6 +95,29 @@ class AdminCarCrudTest extends TestCase
         $this->assertDatabaseMissing('cars', ['id' => $car->id]);
     }
 
+    public function test_admin_can_upload_a_car_image_to_the_public_image_directory(): void
+    {
+        $admin = User::factory()->create(['role' => 'admin']);
+        $brand = $this->createBrand();
+
+        $response = $this->actingAs($admin)->post(route('admin.cars.store'), array_merge(
+            $this->validCarData($brand),
+            ['image' => UploadedFile::fake()->image('test-roadster.jpg')]
+        ));
+
+        $response->assertRedirect(route('admin.cars.index'));
+
+        $car = Car::query()
+            ->where('brand_id', $brand->id)
+            ->where('slug', 'test-roadster')
+            ->firstOrFail();
+
+        $this->assertStringStartsWith('image/cars/', $car->image_path);
+        $this->assertFileExists(public_path($car->image_path));
+
+        @unlink(public_path($car->image_path));
+    }
+
     public function test_slug_must_be_unique_within_the_selected_brand(): void
     {
         $admin = User::factory()->create(['role' => 'admin']);
