@@ -42,6 +42,21 @@ class AdminCarCrudTest extends TestCase
             ->assertDontSee('onsubmit="return confirm(', false);
     }
 
+    public function test_edit_cancel_button_warns_before_discarding_changes(): void
+    {
+        $admin = User::factory()->create(['role' => 'admin']);
+        $brand = $this->createBrand();
+        $car = Car::create($this->validCarData($brand));
+
+        $this->actingAs($admin)
+            ->get(route('admin.cars.edit', $car))
+            ->assertOk()
+            ->assertSee('data-confirm-navigation', false)
+            ->assertSee('data-confirm-variant="warning"', false)
+            ->assertSee('data-confirm-title="Discard your changes?"', false)
+            ->assertSee('data-confirm-confirm-label="Discard changes"', false);
+    }
+
     public function test_guest_is_redirected_from_admin_dashboard(): void
     {
         $this->get(route('admin.dashboard'))
