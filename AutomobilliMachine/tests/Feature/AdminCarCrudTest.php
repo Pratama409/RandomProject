@@ -53,6 +53,10 @@ class AdminCarCrudTest extends TestCase
             ->assertSee('novalidate', false)
             ->assertSee('placeholder="Enter the vehicle name"', false)
             ->assertSee('placeholder="e.g. model-name"', false)
+            ->assertSee('placeholder="e.g. Production / Concept / Racing"', false)
+            ->assertSee('placeholder="e.g. Road Car / Race Car / Concept Car"', false)
+            ->assertDontSee('value="Production"', false)
+            ->assertDontSee('value="Road Car"', false)
             ->assertDontSee('placeholder="Ferrari 458 Italia"', false);
 
         $brand = $this->createBrand();
