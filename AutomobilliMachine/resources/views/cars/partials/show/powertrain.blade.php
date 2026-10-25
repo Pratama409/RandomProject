@@ -1,3 +1,4 @@
+@if (!empty($powertrainSection))
 <section class="car-detail-section car-detail-powertrain" id="powertrain">
     <div class="container">
         <div class="car-detail-powertrain-layout">
@@ -12,13 +13,13 @@
             <div class="car-detail-engine-wrap">
                 @if (!empty($powertrainSection['image']))
                     <button type="button" class="car-detail-engine-image js-lightbox-trigger"
-                        data-lightbox-src="{{ $powertrainSection['image'] }}"
+                        data-lightbox-src="{{ str_starts_with($powertrainSection['image'], 'http') ? $powertrainSection['image'] : asset($powertrainSection['image']) }}"
                         data-lightbox-caption="{{ $vehicle->name }} — powertrain">
-                        <img src="{{ $powertrainSection['image'] }}" alt="{{ $vehicle->name }} powertrain" loading="lazy">
+                        <img src="{{ str_starts_with($powertrainSection['image'], 'http') ? $powertrainSection['image'] : asset($powertrainSection['image']) }}" alt="{{ $vehicle->name }} powertrain" loading="lazy">
                         <span class="car-detail-image-expand"><i class="fa-solid fa-expand"></i></span>
                     </button>
                 @else
-                    <div class="car-detail-powertrain-fallback"><span>V8</span><strong>+ 3 ELECTRIC MOTORS</strong></div>
+                    <div class="car-detail-powertrain-fallback"><span>{{ $vehicle->engine ?: 'ENGINE' }}</span><strong>{{ $vehicle->vehicle_type ?: 'POWERTRAIN DETAILS' }}</strong></div>
                 @endif
             </div>
 
@@ -30,3 +31,4 @@
         </div>
     </div>
 </section>
+@endif
