@@ -21,7 +21,7 @@
             </div>
 
             <div class="admin-panel admin-form-panel">
-                <form action="{{ route('admin.cars.update', $car) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.cars.update', $car) }}" method="POST" enctype="multipart/form-data" data-admin-validate novalidate>
                     @csrf
                     @method('PUT')
                     @include('admin.cars.form-fields')
