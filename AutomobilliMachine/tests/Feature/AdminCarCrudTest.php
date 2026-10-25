@@ -42,6 +42,29 @@ class AdminCarCrudTest extends TestCase
             ->assertDontSee('onsubmit="return confirm(', false);
     }
 
+    public function test_car_forms_use_universal_placeholders_and_custom_required_notifications(): void
+    {
+        $admin = User::factory()->create(['role' => 'admin']);
+
+        $this->actingAs($admin)
+            ->get(route('admin.cars.create'))
+            ->assertOk()
+            ->assertSee('data-admin-validate', false)
+            ->assertSee('novalidate', false)
+            ->assertSee('placeholder="Enter the vehicle name"', false)
+            ->assertSee('placeholder="e.g. model-name"', false)
+            ->assertDontSee('placeholder="Ferrari 458 Italia"', false);
+
+        $brand = $this->createBrand();
+        $car = Car::create($this->validCarData($brand));
+
+        $this->actingAs($admin)
+            ->get(route('admin.cars.edit', $car))
+            ->assertOk()
+            ->assertSee('data-admin-validate', false)
+            ->assertSee('novalidate', false);
+    }
+
     public function test_edit_cancel_button_warns_before_discarding_changes(): void
     {
         $admin = User::factory()->create(['role' => 'admin']);
