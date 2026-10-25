@@ -88,14 +88,16 @@
         <div class="col-md-3">
             <label for="production_type" class="form-label">Production type <span class="text-danger">*</span></label>
             <input id="production_type" name="production_type" type="text" maxlength="40" required
-                value="{{ old('production_type', $car->production_type ?? 'Production') }}"
+                value="{{ old('production_type', $car->production_type) }}"
+                placeholder="e.g. Production / Concept / Racing"
                 class="form-control admin-input @error('production_type') is-invalid @enderror">
             @error('production_type') <div class="invalid-feedback">{{ $message }}</div> @enderror
         </div>
         <div class="col-md-3">
             <label for="vehicle_type" class="form-label">Vehicle type <span class="text-danger">*</span></label>
             <input id="vehicle_type" name="vehicle_type" type="text" maxlength="40" required
-                value="{{ old('vehicle_type', $car->vehicle_type ?? 'Road Car') }}"
+                value="{{ old('vehicle_type', $car->vehicle_type) }}"
+                placeholder="e.g. Road Car / Race Car / Concept Car"
                 class="form-control admin-input @error('vehicle_type') is-invalid @enderror">
             @error('vehicle_type') <div class="invalid-feedback">{{ $message }}</div> @enderror
         </div>
