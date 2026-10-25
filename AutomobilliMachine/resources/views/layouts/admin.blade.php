@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/admin.css') }}?v=20261025-cancel-warning">
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}?v=20261025-required-toast">
     @stack('styles')
 </head>
 <body class="admin-body">
@@ -166,8 +166,8 @@
                 button.addEventListener('click', () => setSidebarOpen(false));
             });
 
-            // Quick notifications: close button and automatic dismissal.
-            document.querySelectorAll('[data-admin-toast]').forEach((toast) => {
+            // Quick notifications: close button, auto-dismiss, and pause while hovered.
+            function initializeToast(toast) {
                 const duration = Number(toast.dataset.duration || 6000);
                 const progress = toast.querySelector('.admin-toast-progress > span');
                 if (progress) progress.style.setProperty('--toast-duration', duration + 'ms');
@@ -194,7 +194,9 @@
 
                 const closeButton = toast.querySelector('[data-admin-toast-close]');
                 if (closeButton) closeButton.addEventListener('click', () => dismissToast(toast));
-            });
+            }
+
+            document.querySelectorAll('[data-admin-toast]').forEach(initializeToast);
 
             function dismissToast(toast) {
                 if (!toast || toast.classList.contains('is-leaving')) return;
@@ -202,6 +204,96 @@
                 toast.addEventListener('animationend', () => toast.remove(), { once: true });
                 window.setTimeout(() => toast.remove(), 350);
             }
+
+            function showRequiredFieldsToast(form, missingFields) {
+                const region = document.querySelector('[data-admin-toast-region]');
+                if (!region) return;
+
+                const toast = document.createElement('section');
+                toast.className = 'admin-toast is-error is-validation';
+                toast.dataset.duration = '9500';
+                toast.setAttribute('role', 'alert');
+
+                const icon = document.createElement('span');
+                icon.className = 'admin-toast-icon';
+                icon.innerHTML = '<i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>';
+
+                const copy = document.createElement('div');
+                copy.className = 'admin-toast-copy';
+
+                const heading = document.createElement('strong');
+                heading.textContent = 'Required fields missing';
+
+                const description = document.createElement('p');
+                description.textContent = 'Complete these fields before saving:';
+
+                const list = document.createElement('ul');
+                const labels = Array.from(form.querySelectorAll('label[for]'));
+
+                missingFields.forEach((field) => {
+                    const label = labels.find((candidate) => candidate.htmlFor === field.id);
+                    const item = document.createElement('li');
+                    item.textContent = label
+                        ? label.textContent.replace(/\s*\*\s*/g, ' ').trim()
+                        : (field.name || 'Required field');
+                    list.appendChild(item);
+                });
+
+                copy.append(heading, description, list);
+
+                const close = document.createElement('button');
+                close.type = 'button';
+                close.className = 'admin-toast-close';
+                close.setAttribute('aria-label', 'Dismiss notification');
+                close.innerHTML = '<i class="fa-solid fa-xmark" aria-hidden="true"></i>';
+
+                const progress = document.createElement('span');
+                progress.className = 'admin-toast-progress';
+                progress.innerHTML = '<span></span>';
+
+                toast.append(icon, copy, close, progress);
+                region.appendChild(toast);
+                initializeToast(toast);
+            }
+
+            // Replace native browser required-field popups with the branded quick toast.
+            app.addEventListener('submit', (event) => {
+                const form = event.target.closest('form[data-admin-validate]');
+                if (!form) return;
+
+                const requiredFields = Array.from(form.querySelectorAll('[required]'));
+                const missingFields = requiredFields.filter((field) => {
+                    if (field.disabled) return false;
+                    if (field.type === 'checkbox') return !field.checked;
+                    if (field.type === 'file') return !field.files || field.files.length === 0;
+                    return !String(field.value ?? '').trim();
+                });
+
+                if (missingFields.length === 0) return;
+
+                event.preventDefault();
+
+                missingFields.forEach((field) => field.classList.add('is-invalid'));
+                showRequiredFieldsToast(form, missingFields);
+
+                const firstInvalid = missingFields[0];
+                firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                firstInvalid.focus({ preventScroll: true });
+            });
+
+            // Clear client-side required highlights when the field is corrected.
+            const clearFieldError = (event) => {
+                const field = event.target;
+                if (!field.matches('input, select, textarea')) return;
+                const form = field.closest('form[data-admin-validate]');
+                if (!form || !field.classList.contains('is-invalid')) return;
+
+                const value = String(field.value ?? '').trim();
+                if (value && field.checkValidity()) field.classList.remove('is-invalid');
+            };
+
+            app.addEventListener('input', clearFieldError);
+            app.addEventListener('change', clearFieldError);
 
             // Branded confirmation dialog for destructive forms (instead of window.confirm).
             const dialog = document.querySelector('[data-admin-confirm-dialog]');
