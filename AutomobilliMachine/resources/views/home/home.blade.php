@@ -232,7 +232,7 @@
                                                     Known for sharp geometry, iconic scissor doors, and the legendary naturally aspirated V12 roar carried from the Countach and Diablo to the Aventador and Revuelto.
                                                 </p>
                                             </div>
-                                            <a href="{{ route('brands.cars', ['brand' => 'lamborghini']) }}" class="btn btn-outline-custom w-100 py-2 d-flex justify-content-center align-items-center gap-2">
+                                            <a href="{{ route('brands.show', ['brand' => 'lamborghini']) }}" class="btn btn-outline-custom w-100 py-2 d-flex justify-content-center align-items-center gap-2">
                                                 <span>Explore Lamborghini Lineup</span>
                                                 <i class="fa-solid fa-arrow-right"></i>
                                             </a>
@@ -307,7 +307,7 @@
                                                     From the legendary 300 SL Gullwing to the Formula 1-powered Mercedes-AMG ONE, the brand represents the pinnacle of German technology and luxury.
                                                 </p>
                                             </div>
-                                            <a href="{{ route('brands.cars', ['brand' => 'mercedes-benz']) }}" class="btn btn-outline-custom w-100 py-2 d-flex justify-content-center align-items-center gap-2">
+                                            <a href="{{ route('brands.show', ['brand' => 'mercedes-benz']) }}" class="btn btn-outline-custom w-100 py-2 d-flex justify-content-center align-items-center gap-2">
                                                 <span>Explore Mercedes-AMG Lineup</span>
                                                 <i class="fa-solid fa-arrow-right"></i>
                                             </a>
