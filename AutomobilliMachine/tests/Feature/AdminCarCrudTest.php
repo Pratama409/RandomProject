@@ -209,6 +209,116 @@ class AdminCarCrudTest extends TestCase
         @unlink(public_path($car->image_path));
     }
 
+    public function test_admin_can_manage_complete_vehicle_details_and_photo_gallery(): void
+    {
+        $admin = User::factory()->create(['role' => 'admin']);
+        $brand = $this->createBrand();
+
+        $payload = array_merge($this->validCarData($brand), [
+            'detail_editor' => [
+                'OVERVIEW' => [
+                    'title' => 'An automotive milestone',
+                    'paragraphs_text' => "First paragraph.\nSecond paragraph.",
+                    'specs_text' => "Year | 2024\nDrive | AWD",
+                    'items_text' => '',
+                ],
+                'POWERTRAIN' => [
+                    'title' => 'Powertrain explained',
+                    'paragraphs_text' => 'Hybrid powertrain description.',
+                    'specs_text' => 'Output | 500 HP',
+                    'items_text' => 'Electric boost',
+                ],
+            ],
+            'section_images' => [
+                'POWERTRAIN' => UploadedFile::fake()->image('powertrain.jpg'),
+            ],
+            'gallery_editor_present' => '1',
+            'gallery_files' => [UploadedFile::fake()->image('side.jpg')],
+            'variants_editor_present' => '1',
+            'variants_editor' => [
+                ['name' => 'Sport', 'type' => 'Performance', 'years' => '2024–2025', 'description' => 'Sport package'],
+            ],
+            'sources_editor_present' => '1',
+            'sources_editor' => [
+                ['label' => 'Manufacturer', 'url' => 'https://example.com/specifications'],
+            ],
+        ]);
+
+        $this->actingAs($admin)
+            ->post(route('admin.cars.store'), $payload)
+            ->assertRedirect(route('admin.cars.index'))
+            ->assertSessionHas('success');
+
+        $car = Car::query()->where('slug', 'test-roadster')->firstOrFail();
+        $sections = collect($car->detail_sections)->keyBy('label');
+        $this->assertSame(['First paragraph.', 'Second paragraph.'], $sections->get('OVERVIEW')['paragraphs']);
+        $this->assertSame('AWD', $sections->get('OVERVIEW')['specs'][1]['value']);
+        $this->assertStringStartsWith('image/cars/', $sections->get('POWERTRAIN')['image']);
+        $this->assertSame('Sport', $car->variants[0]['name']);
+        $this->assertSame('https://example.com/specifications', $car->source_links[0]['url']);
+        $this->assertCount(1, $car->gallery_images);
+        $this->assertFileExists(public_path($car->gallery_images[0]));
+        $this->assertFileExists(public_path($sections->get('POWERTRAIN')['image']));
+
+        $oldGallery = $car->gallery_images[0];
+        $oldEngineImage = $sections->get('POWERTRAIN')['image'];
+
+        $updated = array_merge($this->validCarData($brand), [
+            'gallery_editor_present' => '1',
+            'gallery_remove' => [$oldGallery],
+            'detail_editor' => [
+                'OVERVIEW' => [
+                    'title' => 'Updated story',
+                    'paragraphs_text' => 'Revised introduction.',
+                    'specs_text' => '',
+                    'items_text' => '',
+                ],
+                'POWERTRAIN' => [
+                    'title' => 'Powertrain explained',
+                    'paragraphs_text' => 'Hybrid powertrain description.',
+                    'specs_text' => 'Output | 500 HP',
+                    'items_text' => '',
+                ],
+            ],
+            'section_image_remove' => ['POWERTRAIN' => '1'],
+            'variants_editor_present' => '1',
+            'sources_editor_present' => '1',
+        ]);
+
+        $this->actingAs($admin)
+            ->put(route('admin.cars.update', $car), $updated)
+            ->assertRedirect(route('admin.cars.index'));
+
+        $car->refresh();
+        $this->assertSame([], $car->gallery_images);
+        $this->assertSame([], $car->variants);
+        $this->assertSame([], $car->source_links);
+        $updatedSections = collect($car->detail_sections)->keyBy('label');
+        $this->assertSame('Updated story', $updatedSections->get('OVERVIEW')['title']);
+        $this->assertArrayNotHasKey('image', $updatedSections->get('POWERTRAIN'));
+
+        // Uploaded files are intentionally not deleted when references change;
+        // this test cleans its own artifacts instead.
+        @unlink(public_path($oldGallery));
+        @unlink(public_path($oldEngineImage));
+    }
+
+    public function test_car_form_renders_full_vehicle_editor(): void
+    {
+        $admin = User::factory()->create(['role' => 'admin']);
+
+        $this->actingAs($admin)
+            ->get(route('admin.cars.create'))
+            ->assertOk()
+            ->assertSee('Vehicle Photo Gallery')
+            ->assertSee('Editorial Detail Sections')
+            ->assertSee('Variants &amp; Related Models')
+            ->assertSee('Sources &amp; References')
+            ->assertSee('name="gallery_files[]"', false)
+            ->assertSee('name="detail_editor[OVERVIEW][title]"', false)
+            ->assertSee('name="section_images[POWERTRAIN]"', false);
+    }
+
     public function test_slug_must_be_unique_within_the_selected_brand(): void
     {
         $admin = User::factory()->create(['role' => 'admin']);
