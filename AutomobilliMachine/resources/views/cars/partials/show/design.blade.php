@@ -1,3 +1,4 @@
+@if (!empty($designSection))
 <section class="car-detail-section car-detail-design" id="design">
     <div class="container">
         <div class="car-detail-editorial-grid">
@@ -37,3 +38,4 @@
         @endif
     </div>
 </section>
+@endif
