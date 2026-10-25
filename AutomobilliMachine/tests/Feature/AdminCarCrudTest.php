@@ -80,7 +80,7 @@ class AdminCarCrudTest extends TestCase
             ->assertOk()
             ->assertSee('getDirtyGuardedForm', false)
             ->assertSee('Stay and continue editing')
-            ->assertSee('Discard changes &amp; leave');
+            ->assertSee('Discard changes & leave', false);
     }
 
     public function test_edit_cancel_button_warns_before_discarding_changes(): void
