@@ -1668,3 +1668,347 @@ textarea.admin-input {
         padding: 9px;
     }
 }
+
+/* =========================================================
+   Quick notifications — dark Automobilli toast system
+   ========================================================= */
+.admin-toast-region {
+    position: fixed;
+    z-index: 2000;
+    top: 92px;
+    right: 24px;
+    display: grid;
+    gap: 11px;
+    width: min(390px, calc(100vw - 32px));
+    pointer-events: none;
+}
+
+.admin-toast {
+    --toast-accent: #e50914;
+    --toast-soft: rgba(229,9,20,.12);
+    position: relative;
+    display: grid;
+    grid-template-columns: 37px minmax(0, 1fr) 25px;
+    align-items: start;
+    gap: 11px;
+    overflow: hidden;
+    padding: 15px 13px 17px;
+    border: 1px solid rgba(229,9,20,.26);
+    border-radius: 13px;
+    background:
+        radial-gradient(circle at 0 0, var(--toast-soft), transparent 62%),
+        rgba(16,21,29,.97);
+    color: #eef2f7;
+    box-shadow: 0 20px 55px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.04);
+    backdrop-filter: blur(16px);
+    pointer-events: auto;
+    animation: admin-toast-enter .24s ease-out both;
+}
+
+.admin-toast.is-success {
+    --toast-accent: #47d39a;
+    --toast-soft: rgba(42,190,128,.10);
+    border-color: rgba(71,211,154,.24);
+}
+
+.admin-toast.is-error {
+    --toast-accent: #ff5963;
+    --toast-soft: rgba(229,9,20,.13);
+    border-color: rgba(255,89,99,.3);
+}
+
+.admin-toast.is-warning {
+    --toast-accent: #f2bc62;
+    --toast-soft: rgba(242,188,98,.10);
+    border-color: rgba(242,188,98,.25);
+}
+
+.admin-toast.is-info {
+    --toast-accent: #6eb5ff;
+    --toast-soft: rgba(110,181,255,.10);
+    border-color: rgba(110,181,255,.24);
+}
+
+.admin-toast-icon {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border: 1px solid color-mix(in srgb, var(--toast-accent) 26%, transparent);
+    border-radius: 11px;
+    background: var(--toast-soft);
+    color: var(--toast-accent);
+    font-size: .86rem;
+}
+
+.admin-toast-copy {
+    min-width: 0;
+    padding-top: 1px;
+}
+
+.admin-toast-copy strong {
+    display: block;
+    padding-right: 4px;
+    color: #f4f6fa;
+    font-size: .75rem;
+    font-weight: 800;
+    line-height: 1.45;
+}
+
+.admin-toast-copy p {
+    margin: 4px 0 0;
+    color: #a4afbd;
+    font-size: .67rem;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+}
+
+.admin-toast-copy ul {
+    display: grid;
+    gap: 4px;
+    margin: 7px 0 0;
+    padding-left: 15px;
+    color: #c0cad6;
+    font-size: .64rem;
+    line-height: 1.45;
+}
+
+.admin-toast-copy li::marker {
+    color: var(--toast-accent);
+}
+
+.admin-toast-close {
+    width: 25px;
+    height: 25px;
+    display: grid;
+    place-items: center;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    background: transparent;
+    color: #8793a2;
+    font-size: .78rem;
+    cursor: pointer;
+    transition: border-color .2s ease, background .2s ease, color .2s ease;
+}
+
+.admin-toast-close:hover {
+    border-color: rgba(255,255,255,.09);
+    background: rgba(255,255,255,.05);
+    color: #fff;
+}
+
+.admin-toast-progress {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    overflow: hidden;
+    background: rgba(255,255,255,.04);
+}
+
+.admin-toast-progress > span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: var(--toast-accent);
+    transform-origin: left center;
+    animation: admin-toast-countdown var(--toast-duration, 6000ms) linear forwards;
+}
+
+.admin-toast:hover .admin-toast-progress > span {
+    animation-play-state: paused;
+}
+
+.admin-toast.is-leaving {
+    animation: admin-toast-leave .2s ease-in forwards;
+}
+
+@keyframes admin-toast-enter {
+    from { opacity: 0; transform: translate3d(16px, -5px, 0) scale(.985); }
+    to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes admin-toast-leave {
+    to { opacity: 0; transform: translate3d(12px, -3px, 0) scale(.985); }
+}
+
+@keyframes admin-toast-countdown {
+    from { transform: scaleX(1); }
+    to { transform: scaleX(0); }
+}
+
+/* =========================================================
+   Destructive action confirmation dialog
+   ========================================================= */
+.admin-confirm-dialog {
+    width: min(440px, calc(100vw - 30px));
+    max-width: none;
+    max-height: calc(100dvh - 32px);
+    padding: 0;
+    overflow: auto;
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 18px;
+    background: transparent;
+    color: var(--admin-text);
+    box-shadow: 0 30px 100px rgba(0,0,0,.58);
+}
+
+.admin-confirm-dialog::backdrop {
+    background: rgba(2,4,8,.76);
+    backdrop-filter: blur(7px);
+}
+
+.admin-confirm-card {
+    position: relative;
+    padding: 28px;
+    background:
+        radial-gradient(circle at 0 0, rgba(229,9,20,.12), transparent 45%),
+        linear-gradient(145deg, #151b24, #0d1118);
+}
+
+.admin-confirm-icon {
+    width: 47px;
+    height: 47px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 19px;
+    border: 1px solid rgba(255,89,99,.27);
+    border-radius: 14px;
+    background: rgba(229,9,20,.11);
+    color: #ff626b;
+    font-size: 1.05rem;
+}
+
+.admin-confirm-eyebrow {
+    color: #ff5963;
+    font-size: .57rem;
+    font-weight: 900;
+    letter-spacing: .17em;
+}
+
+.admin-confirm-card h2 {
+    margin: 8px 0 9px;
+    color: #f6f8fb;
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -.035em;
+}
+
+.admin-confirm-card > p {
+    margin: 0;
+    color: #98a4b3;
+    font-size: .72rem;
+    line-height: 1.7;
+}
+
+.admin-confirm-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 17px;
+    padding: 12px 13px;
+    border: 1px solid rgba(255,255,255,.075);
+    border-radius: 10px;
+    background: rgba(255,255,255,.025);
+    color: #dbe2ea;
+}
+
+.admin-confirm-item[hidden] {
+    display: none;
+}
+
+.admin-confirm-item i {
+    color: #ff5963;
+}
+
+.admin-confirm-item strong {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    font-size: .72rem;
+    font-weight: 800;
+}
+
+.admin-confirm-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 9px;
+    margin-top: 25px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255,255,255,.07);
+}
+
+.admin-confirm-cancel,
+.admin-confirm-danger {
+    min-height: 40px;
+    padding: 9px 14px;
+    border: 1px solid #343e4b;
+    border-radius: 9px;
+    font-size: .68rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform .18s ease, background .18s ease, border-color .18s ease;
+}
+
+.admin-confirm-cancel {
+    background: #111720;
+    color: #bec8d4;
+}
+
+.admin-confirm-cancel:hover {
+    border-color: #657283;
+    background: #19212c;
+    color: #fff;
+}
+
+.admin-confirm-danger {
+    border-color: #ed2732;
+    background: linear-gradient(135deg, #ed1722, #b90711);
+    color: #fff;
+    box-shadow: 0 8px 18px rgba(229,9,20,.15);
+}
+
+.admin-confirm-danger:hover {
+    border-color: #ff5059;
+    background: linear-gradient(135deg, #ff2732, #cc0a15);
+    transform: translateY(-1px);
+}
+
+.admin-confirm-cancel:focus-visible,
+.admin-confirm-danger:focus-visible,
+.admin-toast-close:focus-visible {
+    outline: 2px solid #ff6b73;
+    outline-offset: 3px;
+}
+
+@media (max-width: 575.98px) {
+    .admin-toast-region {
+        top: 78px;
+        right: 12px;
+        left: 12px;
+        width: auto;
+    }
+
+    .admin-toast {
+        grid-template-columns: 33px minmax(0, 1fr) 24px;
+        gap: 9px;
+        padding: 12px 10px 15px;
+    }
+
+    .admin-toast-icon {
+        width: 33px;
+        height: 33px;
+    }
+
+    .admin-confirm-card {
+        padding: 23px 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .admin-toast,
+    .admin-toast.is-leaving,
+    .admin-toast-progress > span {
+        animation-duration: .01ms !important;
+    }
+}
