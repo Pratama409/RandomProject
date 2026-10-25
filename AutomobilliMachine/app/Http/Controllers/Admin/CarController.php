@@ -48,7 +48,15 @@ class CarController extends Controller
 
     public function store(SaveCarRequest $request): RedirectResponse
     {
-        $car = Car::create($request->validated());
+        $data = $request->validated();
+
+        if ($request->hasFile('image')) {
+            $data['image_path'] = $this->storeCarImage($request->file('image'));
+        }
+
+        unset($data['image']);
+
+        $car = Car::create($data);
 
         return redirect()
             ->route('admin.cars.index')
@@ -66,11 +74,36 @@ class CarController extends Controller
 
     public function update(SaveCarRequest $request, Car $car): RedirectResponse
     {
-        $car->update($request->validated());
+        $data = $request->validated();
+
+        if ($request->hasFile('image')) {
+            $data['image_path'] = $this->storeCarImage($request->file('image'));
+        }
+
+        unset($data['image']);
+
+        $car->update($data);
 
         return redirect()
             ->route('admin.cars.index')
             ->with('success', $car->name . ' was updated successfully.');
+    }
+
+    /**
+     * Store a catalog image in public/image/cars and return its relative public path.
+     */
+    private function storeCarImage(UploadedFile $image): string
+    {
+        $directory = public_path('image/cars');
+
+        if (! is_dir($directory)) {
+            mkdir($directory, 0755, true);
+        }
+
+        $filename = Str::uuid()->toString() . '.' . $image->extension();
+        $image->move($directory, $filename);
+
+        return 'image/cars/' . $filename;
     }
 
     public function destroy(Car $car): RedirectResponse
