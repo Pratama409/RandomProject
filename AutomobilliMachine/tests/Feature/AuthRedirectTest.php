@@ -2,10 +2,13 @@
 
 namespace Tests\Feature;
 
+use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class AuthRedirectTest extends TestCase
 {
+    use RefreshDatabase;
     public function test_admin_login_redirects_directly_to_admin_dashboard(): void
     {
         $admin = User::factory()->create([
