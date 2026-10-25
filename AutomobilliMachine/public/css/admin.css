@@ -1588,3 +1588,83 @@ textarea.admin-input {
 .admin-page .container.admin-form-shell {
     max-width: 1120px;
 }
+
+/* Uploaded car image control and existing-image preview. */
+.admin-file-input {
+    padding: 7px;
+    color: #aeb9c7;
+}
+
+.admin-file-input::file-selector-button {
+    margin: -2px 12px -2px -1px;
+    padding: 8px 12px;
+    border: 1px solid rgba(229,9,20,.3);
+    border-radius: 7px;
+    background: rgba(229,9,20,.11);
+    color: #ff626b;
+    font-size: .68rem;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.admin-file-input::file-selector-button:hover {
+    background: rgba(229,9,20,.19);
+}
+
+.admin-current-image {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    max-width: 560px;
+    padding: 12px;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 12px;
+    background: rgba(255,255,255,.018);
+}
+
+.admin-current-image img {
+    width: 126px;
+    height: 80px;
+    flex: 0 0 126px;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 8px;
+    background: #090d13;
+    object-fit: cover;
+}
+
+.admin-current-image > div {
+    display: grid;
+    gap: 5px;
+    min-width: 0;
+}
+
+.admin-current-image strong {
+    color: #e8edf3;
+    font-size: .72rem;
+    font-weight: 800;
+}
+
+.admin-current-image span {
+    overflow-wrap: anywhere;
+    color: #9aa6b5;
+    font-size: .63rem;
+}
+
+.admin-current-image small {
+    color: #6f7c8c;
+    font-size: .61rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+    .admin-current-image img {
+        width: 92px;
+        height: 68px;
+        flex-basis: 92px;
+    }
+
+    .admin-current-image {
+        gap: 10px;
+        padding: 9px;
+    }
+}
