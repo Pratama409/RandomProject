@@ -36,7 +36,7 @@ Route::prefix('admin')
     ->name('admin.')
     ->middleware(['auth', 'admin'])
     ->group(function () {
-        Route::get('/', fn () => redirect()->route('admin.cars.index'))->name('dashboard');
+        Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
         Route::resource('cars', AdminCarController::class)->except(['show']);
     });
 
