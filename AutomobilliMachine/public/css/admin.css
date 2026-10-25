@@ -1583,3 +1583,8 @@ textarea.admin-input {
         max-width: 148px;
     }
 }
+
+/* Keep the edit/create form comfortably narrower than the catalog table. */
+.admin-page .container.admin-form-shell {
+    max-width: 1120px;
+}
