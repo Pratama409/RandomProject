@@ -19,10 +19,6 @@
                 </a>
             </div>
 
-            @if (session('success'))
-                <div class="alert alert-success admin-alert" role="status">{{ session('success') }}</div>
-            @endif
-
             <div class="admin-panel">
                 <div class="admin-panel-toolbar">
                     <div>
@@ -101,7 +97,10 @@
                                                 <i class="fa-solid fa-pen"></i>
                                             </a>
                                             <form action="{{ route('admin.cars.destroy', $car) }}" method="POST"
-                                                onsubmit="return confirm('Delete {{ addslashes($car->name) }} from the catalog? This cannot be undone.');">
+                                                data-confirm-submit
+                                                data-confirm-title="Delete this vehicle?"
+                                                data-confirm-message="This will permanently remove this vehicle from your catalog. This action cannot be undone."
+                                                data-confirm-item="{{ $car->name }}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="admin-icon-action is-danger"
