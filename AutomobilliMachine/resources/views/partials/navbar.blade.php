@@ -31,10 +31,6 @@
                        href="{{ route('home') }}#iconic" data-home-nav="iconic">Hall of Fame</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('compare.index') ? 'active' : '' }}"
-                       href="{{ route('compare.index') }}" data-home-nav="compare">Compare</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('home') ? '' : '' }}"
                        href="{{ route('home') }}#membership" data-home-nav="membership">Membership</a>
                 </li>
