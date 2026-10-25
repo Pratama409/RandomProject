@@ -7,11 +7,27 @@ use App\Models\Car;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Route;
 use Tests\TestCase;
 
 class AdminCarCrudTest extends TestCase
 {
     use RefreshDatabase;
+
+    public function test_catalog_create_update_and_delete_routes_exist_only_in_admin_namespace(): void
+    {
+        $this->assertTrue(Route::has('admin.cars.create'));
+        $this->assertTrue(Route::has('admin.cars.store'));
+        $this->assertTrue(Route::has('admin.cars.edit'));
+        $this->assertTrue(Route::has('admin.cars.update'));
+        $this->assertTrue(Route::has('admin.cars.destroy'));
+
+        $this->assertFalse(Route::has('cars.create'));
+        $this->assertFalse(Route::has('cars.store'));
+        $this->assertFalse(Route::has('cars.edit'));
+        $this->assertFalse(Route::has('cars.update'));
+        $this->assertFalse(Route::has('cars.destroy'));
+    }
 
     public function test_guest_is_redirected_from_admin_dashboard(): void
     {
