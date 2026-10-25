@@ -312,8 +312,8 @@ class AdminCarCrudTest extends TestCase
             ->assertOk()
             ->assertSee('Vehicle Photo Gallery')
             ->assertSee('Editorial Detail Sections')
-            ->assertSee('Variants &amp; Related Models')
-            ->assertSee('Sources &amp; References')
+            ->assertSee('Variants & Related Models', false)
+            ->assertSee('Sources & References', false)
             ->assertSee('name="gallery_files[]"', false)
             ->assertSee('name="detail_editor[OVERVIEW][title]"', false)
             ->assertSee('name="section_images[POWERTRAIN]"', false);
