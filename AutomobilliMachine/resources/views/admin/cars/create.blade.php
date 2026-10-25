@@ -26,7 +26,14 @@
                     @include('admin.cars.form-fields')
 
                     <div class="admin-form-footer">
-                        <a href="{{ route('admin.cars.index') }}" class="btn btn-outline-custom">Cancel</a>
+                        <a href="{{ route('admin.cars.index') }}" class="btn btn-outline-custom"
+                            data-confirm-navigation
+                            data-confirm-variant="warning"
+                            data-confirm-eyebrow="UNSAVED CHANGES"
+                            data-confirm-title="Discard your changes?"
+                            data-confirm-message="If you leave this page now, any changes you have made will be lost."
+                            data-confirm-confirm-label="Discard changes"
+                            data-confirm-icon="triangle-exclamation">Cancel</a>
                         <button type="submit" class="btn btn-racing">
                             <i class="fa-solid fa-floppy-disk me-2"></i> Create Car
                         </button>
