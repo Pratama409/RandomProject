@@ -163,6 +163,12 @@
                 class="form-control admin-input admin-file-input @error('image') is-invalid @enderror">
             @error('image') <div class="invalid-feedback">{{ $message }}</div> @enderror
             <small class="admin-field-hint">Choose JPG, PNG, or WEBP up to 5 MB. The file will be saved in public/image/cars.</small>
+            @if ($currentImageUrl)
+                <label class="admin-editor-check mt-2">
+                    <input type="checkbox" name="remove_hero_image" value="1" @checked(old('remove_hero_image'))>
+                    Remove current main photo (unless a new photo is uploaded)
+                </label>
+            @endif
         </div>
         @if ($currentImageUrl)
             <div class="col-12">
@@ -204,7 +210,7 @@
     </div>
 </div>
 
-<div class="admin-form-section admin-form-section-last">
+<div class="admin-form-section">
     <div class="admin-form-section-heading">
         <span>03</span>
         <div><h2>Visibility & Vehicle Flags</h2><p>These switches affect where the vehicle may appear on the site.</p></div>
@@ -219,5 +225,12 @@
                 <span>{{ $field['label'] }}</span>
             </label>
         @endforeach
+    <div class="mt-3" style="max-width:260px">
+        <label for="iconic_order" class="form-label">Iconic display order</label>
+        <input id="iconic_order" name="iconic_order" type="number" min="0" max="255"
+            value="{{ old('iconic_order', $car->iconic_order) }}"
+            class="form-control admin-input" placeholder="Optional sort order">
+        <small class="admin-field-hint">Smaller values appear first in Iconic Picks.</small>
+    </div>
     </div>
 </div>
