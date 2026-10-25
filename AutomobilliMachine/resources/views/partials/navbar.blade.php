@@ -39,16 +39,6 @@
                        href="{{ route('home') }}#membership" data-home-nav="membership">Membership</a>
                 </li>
 
-                @auth
-                    @if (auth()->user()->isAdmin())
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('admin.*') ? 'active' : '' }}"
-                               href="{{ route('admin.dashboard') }}">
-                                <i class="fa-solid fa-shield-halved me-1"></i> Admin
-                            </a>
-                        </li>
-                    @endif
-                @endauth
             </ul>
 
             <div class="automobilli-nav-tools">
