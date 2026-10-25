@@ -162,22 +162,13 @@
             @error('image') <div class="invalid-feedback">{{ $message }}</div> @enderror
             <small class="admin-field-hint">Choose JPG, PNG, or WEBP up to 5 MB. The file will be saved in public/image/cars.</small>
         </div>
-        <div class="col-md-6">
-            <label for="image_path" class="form-label">Image path or URL <span class="text-secondary">(optional)</span></label>
-            <input id="image_path" name="image_path" type="text" maxlength="255"
-                value="{{ old('image_path', $car->image_path) }}"
-                class="form-control admin-input @error('image_path') is-invalid @enderror"
-                placeholder="image/cars/ferrari-458.jpg or https://...">
-            @error('image_path') <div class="invalid-feedback">{{ $message }}</div> @enderror
-            <small class="admin-field-hint">Kept for existing catalog images. If you upload a file, the new upload takes priority.</small>
-        </div>
         @if ($currentImageUrl)
             <div class="col-12">
                 <div class="admin-current-image">
                     <img src="{{ $currentImageUrl }}" alt="Current image for {{ $car->name }}" loading="lazy">
                     <div>
                         <strong>Current catalog image</strong>
-                        <span>{{ $car->image_path }}</span>
+                        <span>A photo is already assigned to this vehicle.</span>
                         <small>Upload a new file above to replace this image.</small>
                     </div>
                 </div>
