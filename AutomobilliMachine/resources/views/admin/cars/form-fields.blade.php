@@ -33,7 +33,7 @@
             <input id="name" name="name" type="text" maxlength="255" required
                 value="{{ old('name', $car->name) }}"
                 class="form-control admin-input @error('name') is-invalid @enderror"
-                placeholder="Ferrari 458 Italia">
+                placeholder="Enter the vehicle name">
             @error('name') <div class="invalid-feedback">{{ $message }}</div> @enderror
         </div>
         <div class="col-md-6">
@@ -41,7 +41,7 @@
             <input id="slug" name="slug" type="text" maxlength="255" required
                 value="{{ old('slug', $car->slug) }}"
                 class="form-control admin-input @error('slug') is-invalid @enderror"
-                placeholder="ferrari-458-italia">
+                placeholder="e.g. model-name">
             @error('slug') <div class="invalid-feedback">{{ $message }}</div> @enderror
             <small class="admin-field-hint">Use lowercase words separated by hyphens; unique within each brand.</small>
         </div>
@@ -71,19 +71,19 @@
         </div>
         <div class="col-md-4">
             <label for="model_family" class="form-label">Model family</label>
-            <input id="model_family" name="model_family" type="text" value="{{ old('model_family', $car->model_family) }}" class="form-control admin-input" placeholder="458">
+            <input id="model_family" name="model_family" type="text" value="{{ old('model_family', $car->model_family) }}" class="form-control admin-input" placeholder="e.g. model family">
         </div>
         <div class="col-md-4">
             <label for="generation" class="form-label">Generation</label>
-            <input id="generation" name="generation" type="text" value="{{ old('generation', $car->generation) }}" class="form-control admin-input" placeholder="F142">
+            <input id="generation" name="generation" type="text" value="{{ old('generation', $car->generation) }}" class="form-control admin-input" placeholder="e.g. generation or series">
         </div>
         <div class="col-md-4">
             <label for="variant" class="form-label">Variant</label>
-            <input id="variant" name="variant" type="text" value="{{ old('variant', $car->variant) }}" class="form-control admin-input" placeholder="Speciale">
+            <input id="variant" name="variant" type="text" value="{{ old('variant', $car->variant) }}" class="form-control admin-input" placeholder="e.g. Sport / Performance">
         </div>
         <div class="col-md-6">
             <label for="base_model" class="form-label">Base model</label>
-            <input id="base_model" name="base_model" type="text" value="{{ old('base_model', $car->base_model) }}" class="form-control admin-input" placeholder="458 Italia">
+            <input id="base_model" name="base_model" type="text" value="{{ old('base_model', $car->base_model) }}" class="form-control admin-input" placeholder="Enter base model">
         </div>
         <div class="col-md-3">
             <label for="production_type" class="form-label">Production type <span class="text-danger">*</span></label>
@@ -153,7 +153,7 @@
         </div>
         <div class="col-md-6">
             <label for="engine" class="form-label">Engine</label>
-            <input id="engine" name="engine" type="text" value="{{ old('engine', $car->engine) }}" class="form-control admin-input" placeholder="4.5L naturally aspirated V8">
+            <input id="engine" name="engine" type="text" value="{{ old('engine', $car->engine) }}" class="form-control admin-input" placeholder="e.g. 3.0L turbocharged V6">
         </div>
         <div class="col-md-6">
             <label for="image" class="form-label">Upload vehicle image</label>
@@ -176,19 +176,19 @@
         @endif
         <div class="col-md-4">
             <label for="drivetrain" class="form-label">Drivetrain</label>
-            <input id="drivetrain" name="drivetrain" type="text" value="{{ old('drivetrain', $car->drivetrain) }}" class="form-control admin-input" placeholder="RWD">
+            <input id="drivetrain" name="drivetrain" type="text" value="{{ old('drivetrain', $car->drivetrain) }}" class="form-control admin-input" placeholder="e.g. RWD / AWD / FWD">
         </div>
         <div class="col-md-4">
             <label for="transmission" class="form-label">Transmission</label>
-            <input id="transmission" name="transmission" type="text" value="{{ old('transmission', $car->transmission) }}" class="form-control admin-input" placeholder="7-speed dual-clutch">
+            <input id="transmission" name="transmission" type="text" value="{{ old('transmission', $car->transmission) }}" class="form-control admin-input" placeholder="e.g. 8-speed automatic">
         </div>
         <div class="col-md-4">
             <label for="fuel_type" class="form-label">Fuel type</label>
-            <input id="fuel_type" name="fuel_type" type="text" value="{{ old('fuel_type', $car->fuel_type) }}" class="form-control admin-input" placeholder="Petrol / Hybrid / Electric">
+            <input id="fuel_type" name="fuel_type" type="text" value="{{ old('fuel_type', $car->fuel_type) }}" class="form-control admin-input" placeholder="e.g. Petrol / Hybrid / Electric">
         </div>
         <div class="col-md-4">
             <label for="body_type" class="form-label">Body type</label>
-            <input id="body_type" name="body_type" type="text" value="{{ old('body_type', $car->body_type) }}" class="form-control admin-input" placeholder="Coupe">
+            <input id="body_type" name="body_type" type="text" value="{{ old('body_type', $car->body_type) }}" class="form-control admin-input" placeholder="e.g. Coupe / SUV / Sedan">
         </div>
         <div class="col-md-8">
             <label for="short_description" class="form-label">Short description</label>
