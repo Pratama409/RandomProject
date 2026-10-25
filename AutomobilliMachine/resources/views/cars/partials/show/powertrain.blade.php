@@ -1,4 +1,4 @@
-@if (!empty($powertrainSection))
+@if (!empty($powertrainSection) || $detailSections->whereIn('label', ['DRIVING', 'TRANSMISSION'])->isNotEmpty())
 <section class="car-detail-section car-detail-powertrain" id="powertrain">
     <div class="container">
         <div class="car-detail-powertrain-layout">
