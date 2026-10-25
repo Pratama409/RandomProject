@@ -6,6 +6,37 @@ use Tests\TestCase;
 
 class AuthRedirectTest extends TestCase
 {
+    public function test_admin_login_redirects_directly_to_admin_dashboard(): void
+    {
+        $admin = User::factory()->create([
+            'role' => 'admin',
+            'password' => 'password',
+        ]);
+
+        $this->withSession(['url.intended' => route('profile.show')])
+            ->post(route('login.store'), [
+                'email' => $admin->email,
+                'password' => 'password',
+            ])
+            ->assertRedirect(route('admin.dashboard'))
+            ->assertAuthenticatedAs($admin);
+    }
+
+    public function test_regular_user_login_redirects_to_profile(): void
+    {
+        $user = User::factory()->create([
+            'role' => 'user',
+            'password' => 'password',
+        ]);
+
+        $this->post(route('login.store'), [
+            'email' => $user->email,
+            'password' => 'password',
+        ])
+            ->assertRedirect(route('profile.show'))
+            ->assertAuthenticatedAs($user);
+    }
+
     public function test_login_rejects_protocol_relative_external_redirects(): void
     {
         $this->get('/login?redirect=//example.com')
