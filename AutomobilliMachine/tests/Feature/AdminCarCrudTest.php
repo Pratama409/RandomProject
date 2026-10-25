@@ -50,6 +50,7 @@ class AdminCarCrudTest extends TestCase
             ->get(route('admin.cars.create'))
             ->assertOk()
             ->assertSee('data-admin-validate', false)
+            ->assertSee('data-unsaved-guard', false)
             ->assertSee('novalidate', false)
             ->assertSee('placeholder="Enter the vehicle name"', false)
             ->assertSee('placeholder="e.g. model-name"', false)
@@ -66,7 +67,20 @@ class AdminCarCrudTest extends TestCase
             ->get(route('admin.cars.edit', $car))
             ->assertOk()
             ->assertSee('data-admin-validate', false)
+            ->assertSee('data-unsaved-guard', false)
             ->assertSee('novalidate', false);
+    }
+
+    public function test_admin_layout_supports_dirty_form_navigation_guard(): void
+    {
+        $admin = User::factory()->create(['role' => 'admin']);
+
+        $this->actingAs($admin)
+            ->get(route('admin.cars.create'))
+            ->assertOk()
+            ->assertSee('getDirtyGuardedForm', false)
+            ->assertSee('Stay and continue editing')
+            ->assertSee('Discard changes &amp; leave');
     }
 
     public function test_edit_cancel_button_warns_before_discarding_changes(): void
@@ -78,6 +92,7 @@ class AdminCarCrudTest extends TestCase
         $this->actingAs($admin)
             ->get(route('admin.cars.edit', $car))
             ->assertOk()
+            ->assertSee('data-unsaved-guard', false)
             ->assertSee('data-confirm-navigation', false)
             ->assertSee('data-confirm-variant="warning"', false)
             ->assertSee('data-confirm-title="Discard your changes?"', false)
