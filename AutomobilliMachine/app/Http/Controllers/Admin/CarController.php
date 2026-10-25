@@ -8,6 +8,8 @@ use App\Models\Brand;
 use App\Models\Car;
 use App\Models\Category;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class CarController extends Controller
