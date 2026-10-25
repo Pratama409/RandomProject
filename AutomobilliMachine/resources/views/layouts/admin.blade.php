@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/admin.css') }}?v=20261025-quick-notifications">
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}?v=20261025-cancel-warning">
     @stack('styles')
 </head>
 <body class="admin-body">
@@ -123,8 +123,8 @@
 
     <dialog class="admin-confirm-dialog" data-admin-confirm-dialog aria-labelledby="adminConfirmTitle" aria-describedby="adminConfirmMessage">
         <div class="admin-confirm-card">
-            <span class="admin-confirm-icon"><i class="fa-solid fa-trash-can"></i></span>
-            <span class="admin-confirm-eyebrow">CONFIRM ACTION</span>
+            <span class="admin-confirm-icon" data-confirm-icon><i class="fa-solid fa-trash-can"></i></span>
+            <span class="admin-confirm-eyebrow" data-confirm-eyebrow-output>CONFIRM ACTION</span>
             <h2 id="adminConfirmTitle" data-confirm-title-output>Delete this vehicle?</h2>
             <p id="adminConfirmMessage" data-confirm-message-output>This action cannot be undone.</p>
             <div class="admin-confirm-item" data-confirm-item-row hidden>
@@ -134,7 +134,8 @@
             <div class="admin-confirm-actions">
                 <button type="button" class="admin-confirm-cancel" data-confirm-cancel>Cancel</button>
                 <button type="button" class="admin-confirm-danger" data-confirm-submit>
-                    <i class="fa-solid fa-trash-can"></i> Delete vehicle
+                    <i class="fa-solid fa-trash-can" data-confirm-button-icon></i>
+                    <span data-confirm-button-label>Delete vehicle</span>
                 </button>
             </div>
         </div>
@@ -209,8 +210,44 @@
             const itemRow = dialog?.querySelector('[data-confirm-item-row]');
             const itemOutput = dialog?.querySelector('[data-confirm-item-output]');
             const confirmButton = dialog?.querySelector('[data-confirm-submit]');
+            const confirmIcon = dialog?.querySelector('[data-confirm-icon] i');
+            const confirmEyebrow = dialog?.querySelector('[data-confirm-eyebrow-output]');
+            const confirmButtonIcon = dialog?.querySelector('[data-confirm-button-icon]');
+            const confirmButtonLabel = dialog?.querySelector('[data-confirm-button-label]');
             let pendingForm = null;
             let pendingSubmitter = null;
+            let pendingHref = null;
+
+            function configureConfirmation(source) {
+                if (confirmTitle) confirmTitle.textContent = source.dataset.confirmTitle || 'Are you sure?';
+                if (confirmMessage) confirmMessage.textContent = source.dataset.confirmMessage || 'This action cannot be undone.';
+                if (itemOutput) itemOutput.textContent = source.dataset.confirmItem || '';
+                if (itemRow) itemRow.hidden = !source.dataset.confirmItem;
+
+                const variant = source.dataset.confirmVariant || 'danger';
+                const iconName = source.dataset.confirmIcon || 'trash-can';
+                const buttonLabel = source.dataset.confirmConfirmLabel || 'Delete vehicle';
+                const eyebrow = source.dataset.confirmEyebrow || 'CONFIRM ACTION';
+
+                dialog?.classList.toggle('is-warning', variant === 'warning');
+                confirmButton?.classList.toggle('is-warning-action', variant === 'warning');
+                if (confirmEyebrow) confirmEyebrow.textContent = eyebrow;
+                if (confirmIcon) confirmIcon.className = 'fa-solid fa-' + iconName;
+                if (confirmButtonIcon) confirmButtonIcon.className = 'fa-solid fa-' + iconName;
+                if (confirmButtonLabel) confirmButtonLabel.textContent = buttonLabel;
+            }
+
+            function openConfirmation(source) {
+                configureConfirmation(source);
+
+                if (dialog && typeof dialog.showModal === 'function') {
+                    dialog.showModal();
+                    confirmButton?.focus();
+                    return true;
+                }
+
+                return false;
+            }
 
             app.addEventListener('submit', (event) => {
                 const form = event.target.closest('form[data-confirm-submit]');
@@ -225,33 +262,53 @@
                 pendingForm = form;
                 pendingSubmitter = event.submitter || form.querySelector('button[type="submit"]');
 
-                if (confirmTitle) confirmTitle.textContent = form.dataset.confirmTitle || 'Are you sure?';
-                if (confirmMessage) confirmMessage.textContent = form.dataset.confirmMessage || 'This action cannot be undone.';
-                if (itemOutput) itemOutput.textContent = form.dataset.confirmItem || '';
-                if (itemRow) itemRow.hidden = !form.dataset.confirmItem;
-
-                if (dialog && typeof dialog.showModal === 'function') {
-                    dialog.showModal();
-                    confirmButton?.focus();
-                } else {
+                if (!openConfirmation(form)) {
                     // Fallback for browsers without native dialog support.
                     if (window.confirm((form.dataset.confirmTitle || 'Confirm action') + '\\n\\n' + (form.dataset.confirmMessage || 'Continue?'))) {
-                        submitConfirmedForm();
+                        submitConfirmedAction();
                     } else {
-                        pendingForm = null;
-                        pendingSubmitter = null;
+                        clearPendingConfirmation();
                     }
                 }
             });
 
-            function submitConfirmedForm() {
+            // Warn when leaving an edit form with the Cancel link.
+            app.addEventListener('click', (event) => {
+                const link = event.target.closest('a[data-confirm-navigation]');
+                if (!link) return;
+                if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+                event.preventDefault();
+                pendingForm = null;
+                pendingSubmitter = null;
+                pendingHref = link.href;
+
+                if (!openConfirmation(link)) {
+                    const message = link.dataset.confirmMessage || 'Leave this page?';
+                    if (window.confirm((link.dataset.confirmTitle || 'Discard your changes?') + '\\n\\n' + message)) {
+                        navigateToPendingHref();
+                    } else {
+                        clearPendingConfirmation();
+                    }
+                }
+            });
+
+            function submitConfirmedAction() {
+                if (pendingHref) {
+                    navigateToPendingHref();
+                    return;
+                }
+
                 if (!pendingForm) return;
                 const form = pendingForm;
                 const submitter = pendingSubmitter;
                 pendingForm = null;
                 pendingSubmitter = null;
 
-                if (dialog?.open) dialog.close();
+                if (dialog?.open) {
+                    dialog.dataset.confirming = 'true';
+                    dialog.close();
+                }
                 form.dataset.confirmed = 'true';
 
                 if (submitter && submitter.form === form) {
@@ -261,24 +318,39 @@
                 }
             }
 
-            confirmButton?.addEventListener('click', submitConfirmedForm);
+            function navigateToPendingHref() {
+                const href = pendingHref;
+                clearPendingConfirmation();
+                if (dialog?.open) {
+                    dialog.dataset.confirming = 'true';
+                    dialog.close();
+                }
+                if (href) window.location.assign(href);
+            }
+
+            function clearPendingConfirmation() {
+                pendingForm = null;
+                pendingSubmitter = null;
+                pendingHref = null;
+            }
+
+            confirmButton?.addEventListener('click', submitConfirmedAction);
             dialog?.querySelectorAll('[data-confirm-cancel]').forEach((button) => {
                 button.addEventListener('click', () => {
                     if (dialog.open) dialog.close();
-                    pendingForm = null;
-                    pendingSubmitter = null;
+                    clearPendingConfirmation();
                 });
             });
             dialog?.addEventListener('click', (event) => {
                 if (event.target === dialog) {
                     dialog.close();
-                    pendingForm = null;
-                    pendingSubmitter = null;
+                    clearPendingConfirmation();
                 }
             });
             dialog?.addEventListener('close', () => {
-                pendingForm = null;
-                pendingSubmitter = null;
+                // A confirmed action consumes its pending target before closing the dialog.
+                if (dialog.dataset.confirming !== 'true') clearPendingConfirmation();
+                delete dialog.dataset.confirming;
             });
 
             document.addEventListener('keydown', (event) => {
