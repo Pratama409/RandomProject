@@ -52,11 +52,14 @@ class CarController extends Controller
     {
         $data = $request->validated();
 
+        if (! empty($data['remove_hero_image'])) {
+            $data['image_path'] = null;
+        }
         if ($request->hasFile('image')) {
             $data['image_path'] = $this->storeCarImage($request->file('image'));
         }
 
-        unset($data['image']);
+        unset($data['image'], $data['remove_hero_image']);
         $this->prepareRichDetails($request, $data);
 
         $car = Car::create($data);
@@ -79,11 +82,14 @@ class CarController extends Controller
     {
         $data = $request->validated();
 
+        if (! empty($data['remove_hero_image'])) {
+            $data['image_path'] = null;
+        }
         if ($request->hasFile('image')) {
             $data['image_path'] = $this->storeCarImage($request->file('image'));
         }
 
-        unset($data['image']);
+        unset($data['image'], $data['remove_hero_image']);
         $this->prepareRichDetails($request, $data, $car);
 
         $car->update($data);
