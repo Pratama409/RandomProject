@@ -72,7 +72,6 @@ class SaveCarRequest extends FormRequest
             'short_description' => ['nullable', 'string', 'max:1000'],
             'description' => ['nullable', 'string', 'max:20000'],
             'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
-            'image_path' => ['nullable', 'string', 'max:255'],
             'engine' => ['nullable', 'string', 'max:255'],
             'horsepower' => ['nullable', 'integer', 'min:0', 'max:10000'],
             'torque_nm' => ['nullable', 'integer', 'min:0', 'max:100000'],
