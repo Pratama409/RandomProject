@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/admin.css') }}?v=20261025-unsaved-guard">
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}?v=20261025-nav-guard-toast">
     @stack('styles')
 </head>
 <body class="admin-body">
@@ -433,7 +433,51 @@
                 }
             });
 
-            // Guard all same-site admin navigation, but only if a guarded form is actually dirty.
+            function getActiveGuardedForm() {
+                return guardedForms.find((form) => form.isConnected) || null;
+            }
+
+            // Show a small, themed notification when navigation is blocked by an open form.
+            function showTransientToast(titleText, messageText, variant = 'warning', iconName = 'triangle-exclamation', duration = 6500) {
+                const region = document.querySelector('[data-admin-toast-region]');
+                if (!region) return;
+
+                const toast = document.createElement('section');
+                toast.className = 'admin-toast is-' + variant;
+                toast.dataset.duration = String(duration);
+                toast.setAttribute('role', variant === 'error' ? 'alert' : 'status');
+
+                const icon = document.createElement('span');
+                icon.className = 'admin-toast-icon';
+                icon.innerHTML = '<i class="fa-solid fa-' + iconName + '" aria-hidden="true"></i>';
+
+                const copy = document.createElement('div');
+                copy.className = 'admin-toast-copy';
+
+                const heading = document.createElement('strong');
+                heading.textContent = titleText;
+
+                const message = document.createElement('p');
+                message.textContent = messageText;
+                copy.append(heading, message);
+
+                const close = document.createElement('button');
+                close.type = 'button';
+                close.className = 'admin-toast-close';
+                close.setAttribute('aria-label', 'Dismiss notification');
+                close.innerHTML = '<i class="fa-solid fa-xmark" aria-hidden="true"></i>';
+
+                const progress = document.createElement('span');
+                progress.className = 'admin-toast-progress';
+                progress.innerHTML = '<span></span>';
+
+                toast.append(icon, copy, close, progress);
+                region.appendChild(toast);
+                initializeToast(toast);
+            }
+
+            // Keep the user on Add/Edit while a form is open. Clean forms are blocked
+            // with a small info toast; dirty forms require explicit discard confirmation.
             app.addEventListener('click', (event) => {
                 const link = event.target instanceof Element ? event.target.closest('a[href]') : null;
                 if (!link || event.defaultPrevented || event.button !== 0 ||
@@ -443,8 +487,14 @@
                     return;
                 }
 
+                const activeForm = getActiveGuardedForm();
+                if (!activeForm) return;
+
                 const dirtyForm = getDirtyGuardedForm();
-                if (!dirtyForm) return;
+
+                // The explicit Cancel link is the intended exit. It leaves directly when
+                // pristine and triggers the discard-warning dialog after edits.
+                if (!dirtyForm && link.hasAttribute('data-confirm-navigation')) return;
 
                 let target;
                 try {
@@ -465,6 +515,18 @@
                 }
 
                 event.preventDefault();
+
+                if (!dirtyForm) {
+                    showTransientToast(
+                        'Form in progress',
+                        'You are currently editing a vehicle. Use Cancel to leave this form or save your changes first.',
+                        'warning',
+                        'lock',
+                        6000
+                    );
+                    return;
+                }
+
                 pendingForm = null;
                 pendingSubmitter = null;
                 pendingHref = target.href;
@@ -472,7 +534,7 @@
 
                 if (!openConfirmation(link, 'navigation')) {
                     if (window.confirm(
-                        (link.dataset.confirmTitle || 'Leave without saving?') + '\\n\\n' +
+                        (link.dataset.confirmTitle || 'Discard your changes?') + '\\n\\n' +
                         (link.dataset.confirmMessage || 'You have unsaved changes. If you continue, your changes will be lost.')
                     )) {
                         submitConfirmedAction();
@@ -494,10 +556,23 @@
                     return;
                 }
 
+                const activeForm = getActiveGuardedForm();
+                if (!activeForm || submittedForm === activeForm) {
+                    // Saving the currently edited form is intentional.
+                    if (submittedForm === activeForm) allowUnload = true;
+                    return;
+                }
+
                 const dirtyForm = getDirtyGuardedForm();
-                if (!dirtyForm || submittedForm === dirtyForm) {
-                    // Saving the actual edited form is intentional; don't show a navigation warning.
-                    if (submittedForm === dirtyForm) allowUnload = true;
+                if (!dirtyForm) {
+                    event.preventDefault();
+                    showTransientToast(
+                        'Form in progress',
+                        'Finish or cancel the current vehicle form before using this action.',
+                        'warning',
+                        'lock',
+                        6000
+                    );
                     return;
                 }
 
