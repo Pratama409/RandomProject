@@ -2012,3 +2012,26 @@ textarea.admin-input {
         animation-duration: .01ms !important;
     }
 }
+
+/* Warning variant for leaving edit forms without saving. */
+.admin-confirm-dialog.is-warning .admin-confirm-icon {
+    border-color: rgba(242,188,98,.30);
+    background: rgba(242,188,98,.11);
+    color: #f2bc62;
+}
+
+.admin-confirm-dialog.is-warning .admin-confirm-eyebrow {
+    color: #f2bc62;
+}
+
+.admin-confirm-danger.is-warning-action {
+    border-color: #b9822e;
+    background: linear-gradient(135deg, #ad7627, #80551b);
+    color: #fffaf0;
+    box-shadow: 0 8px 18px rgba(173,118,39,.14);
+}
+
+.admin-confirm-danger.is-warning-action:hover {
+    border-color: #e0ad58;
+    background: linear-gradient(135deg, #c48a33, #91611e);
+}
