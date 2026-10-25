@@ -51,6 +51,7 @@ class AdminCarCrudTest extends TestCase
             ->assertOk()
             ->assertSee('data-admin-validate', false)
             ->assertSee('data-unsaved-guard', false)
+            ->assertSee('data-confirm-navigation', false)
             ->assertSee('novalidate', false)
             ->assertSee('placeholder="Enter the vehicle name"', false)
             ->assertSee('placeholder="e.g. model-name"', false)
@@ -79,6 +80,9 @@ class AdminCarCrudTest extends TestCase
             ->get(route('admin.cars.create'))
             ->assertOk()
             ->assertSee('getDirtyGuardedForm', false)
+            ->assertSee('getActiveGuardedForm', false)
+            ->assertSee('Form in progress', false)
+            ->assertSee('Use Cancel to leave this form', false)
             ->assertSee('Stay and continue editing')
             ->assertSee('Discard changes & leave', false);
     }
