@@ -99,6 +99,11 @@
                             <textarea id="detail-specs-{{ $key }}" name="detail_editor[{{ $key }}][specs_text]"
                                 class="form-control admin-input" rows="4" placeholder="Label | Value&#10;Engine | 3.0L V6">{{ old("detail_editor.$key.specs_text", $specs) }}</textarea>
                             <small class="admin-field-hint">One fact per line, separated by the | character.</small>
+                            @if ($key === 'PERFORMANCE')
+                                <small class="admin-field-hint">For the performance cards, use labels exactly: 0–200 km/h and Fiorano Lap.</small>
+                            @elseif ($key === 'DIMENSIONS')
+                                <small class="admin-field-hint">For dimensions, use labels such as Length, Width, Height and Wheelbase.</small>
+                            @endif
                         </div>
                         <div class="col-md-6">
                             <label for="detail-items-{{ $key }}" class="form-label">Bullet points</label>
