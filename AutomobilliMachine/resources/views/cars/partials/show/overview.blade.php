@@ -16,11 +16,16 @@
             </div>
         </div>
 
-        @php $overviewImage = $gallery->get(1) ?? $gallery->first(); $overviewUrl = str_starts_with($overviewImage, 'http') ? $overviewImage : asset($overviewImage); @endphp
+        @php
+            $overviewImage = $overviewSection['detail_image'] ?? $gallery->get(1) ?? $gallery->first();
+            $overviewUrl = $overviewImage ? (str_starts_with($overviewImage, 'http') ? $overviewImage : asset($overviewImage)) : null;
+        @endphp
+        @if ($overviewUrl)
         <button type="button" class="car-detail-image-frame js-lightbox-trigger"
             data-lightbox-src="{{ $overviewUrl }}" data-lightbox-caption="{{ $vehicle->name }} — overview">
             <img src="{{ $overviewUrl }}" alt="{{ $vehicle->name }} overview" loading="lazy">
             <span class="car-detail-image-expand"><i class="fa-solid fa-expand"></i></span>
         </button>
+        @endif
     </div>
 </section>

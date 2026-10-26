@@ -13,12 +13,17 @@
                     </ul>
                 @endif
             </div>
-            @php $image = $chassisSection['detail_image'] ?? $gallery->get(3) ?? $gallery->first(); $url = str_starts_with($image, 'http') ? $image : asset($image); @endphp
+            @php
+                $image = $chassisSection['detail_image'] ?? $handlingSection['detail_image'] ?? $gallery->get(3) ?? $gallery->first();
+                $url = $image ? (str_starts_with($image, 'http') ? $image : asset($image)) : null;
+            @endphp
+            @if ($url)
             <button type="button" class="car-detail-feature-image js-lightbox-trigger"
                 data-lightbox-src="{{ $url }}" data-lightbox-caption="{{ $vehicle->name }} — chassis and handling">
                 <img src="{{ $url }}" alt="{{ $vehicle->name }} chassis and handling" loading="lazy">
                 <span class="car-detail-image-expand"><i class="fa-solid fa-expand"></i></span>
             </button>
+            @endif
         </div>
         @if (!empty($chassisSection['specs']) || !empty($handlingSection['specs']))
             <div class="car-detail-spec-strip">

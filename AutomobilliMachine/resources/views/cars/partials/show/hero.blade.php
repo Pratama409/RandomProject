@@ -1,11 +1,13 @@
 <section class="car-detail-hero" id="hero">
     <div class="car-detail-hero-media">
-        @if ($vehicle->image_path)
+        @php $heroPhoto = $vehicle->image_path ?: $gallery->first(); @endphp
+        @if ($heroPhoto)
+            @php $heroPhotoUrl = str_starts_with($heroPhoto, 'http') ? $heroPhoto : asset($heroPhoto); @endphp
             <img id="carHeroImage"
-                src="{{ str_starts_with($vehicle->image_path, 'http') ? $vehicle->image_path : asset($vehicle->image_path) }}"
+                src="{{ $heroPhotoUrl }}"
                 alt="{{ $vehicle->name }}"
                 class="js-lightbox-trigger"
-                data-lightbox-src="{{ str_starts_with($vehicle->image_path, 'http') ? $vehicle->image_path : asset($vehicle->image_path) }}"
+                data-lightbox-src="{{ $heroPhotoUrl }}"
                 data-lightbox-caption="{{ $vehicle->name }}">
         @endif
     </div>

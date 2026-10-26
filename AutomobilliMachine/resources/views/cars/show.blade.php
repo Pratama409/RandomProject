@@ -46,7 +46,9 @@
         @include('cars.partials.show.overview')
         @include('cars.partials.show.design')
         @include('cars.partials.show.powertrain')
-        @include('cars.partials.show.performance')
+        @if ($vehicle->acceleration_0_100 !== null || $vehicle->top_speed_kmh !== null || !empty($performanceSection))
+            @include('cars.partials.show.performance')
+        @endif
         @include('cars.partials.show.specifications')
         @include('cars.partials.show.interior')
         @include('cars.partials.show.chassis')

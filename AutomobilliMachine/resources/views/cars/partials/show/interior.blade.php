@@ -7,12 +7,17 @@
                 <h2>{{ $interiorSection['title'] }}</h2>
                 @foreach ($interiorSection['paragraphs'] ?? [] as $paragraph)<p>{{ $paragraph }}</p>@endforeach
             </div>
-            @php $image = $interiorSection['detail_image'] ?? $gallery->get(2) ?? $gallery->first(); $url = str_starts_with($image, 'http') ? $image : asset($image); @endphp
+            @php
+                $image = $interiorSection['detail_image'] ?? $gallery->get(2) ?? $gallery->first();
+                $url = $image ? (str_starts_with($image, 'http') ? $image : asset($image)) : null;
+            @endphp
+            @if ($url)
             <button type="button" class="car-detail-feature-image js-lightbox-trigger"
                 data-lightbox-src="{{ $url }}" data-lightbox-caption="{{ $vehicle->name }} — interior">
                 <img src="{{ $url }}" alt="{{ $vehicle->name }} interior" loading="lazy">
                 <span class="car-detail-image-expand"><i class="fa-solid fa-expand"></i></span>
             </button>
+            @endif
         </div>
         @if (!empty($interiorSection['specs']))
             <div class="car-detail-spec-strip">

@@ -232,7 +232,7 @@
                                                     Known for sharp geometry, iconic scissor doors, and the legendary naturally aspirated V12 roar carried from the Countach and Diablo to the Aventador and Revuelto.
                                                 </p>
                                             </div>
-                                            <a href="#" class="btn btn-outline-custom w-100 py-2 d-flex justify-content-center align-items-center gap-2">
+                                            <a href="{{ route('brands.show', ['brand' => 'lamborghini']) }}" class="btn btn-outline-custom w-100 py-2 d-flex justify-content-center align-items-center gap-2">
                                                 <span>Explore Lamborghini Lineup</span>
                                                 <i class="fa-solid fa-arrow-right"></i>
                                             </a>
@@ -307,7 +307,7 @@
                                                     From the legendary 300 SL Gullwing to the Formula 1-powered Mercedes-AMG ONE, the brand represents the pinnacle of German technology and luxury.
                                                 </p>
                                             </div>
-                                            <a href="#" class="btn btn-outline-custom w-100 py-2 d-flex justify-content-center align-items-center gap-2">
+                                            <a href="{{ route('brands.show', ['brand' => 'mercedes-benz']) }}" class="btn btn-outline-custom w-100 py-2 d-flex justify-content-center align-items-center gap-2">
                                                 <span>Explore Mercedes-AMG Lineup</span>
                                                 <i class="fa-solid fa-arrow-right"></i>
                                             </a>
@@ -468,7 +468,7 @@
                         <div class="p-4 bg-dark rounded border border-secondary">
                             <div class="display-6 brand-font fw-bold text-danger mb-3">VS</div>
                             <p class="small text-secondary mb-3">Select 2 to 3 vehicles across multiple brands</p>
-                            <a href="#" class="btn btn-racing w-100">Launch Comparison Tool</a>
+                            <span class="d-block small text-secondary">Comparison tool in development</span>
                         </div>
                     </div>
                 </div>

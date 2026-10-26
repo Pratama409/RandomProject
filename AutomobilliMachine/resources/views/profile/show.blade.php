@@ -75,6 +75,12 @@
                     <a href="{{ route('home') }}#brand-directory">
                         <i class="fa-solid fa-car-side"></i> Explore brands
                     </a>
+
+                    @if ($user->isAdmin())
+                        <a href="{{ route('admin.dashboard') }}">
+                            <i class="fa-solid fa-shield-halved"></i> Admin Dashboard
+                        </a>
+                    @endif
                 </div>
             </section>
         </div>
